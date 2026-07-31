@@ -462,15 +462,9 @@
         <h3>Agenda una llamada de 30 min</h3>
         <p style="color:var(--ink-soft);font-size:.92rem;">Cuéntame el tamaño de tu equipo y qué dudas se repiten más, y diseñamos el taller a medida.</p>
 
-        <!-- 
-          INTEGRACIÓN CALENDLY:
-          Sustituye este bloque por el widget embebido de Calendly cuando tengas tu enlace.
-          Ejemplo:
-          <div class="calendly-inline-widget" data-url="https://calendly.com/tu-usuario/30min" style="min-width:280px;height:480px;"></div>
-          <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
-        -->
-        <div class="booking-slot">
-          [ Espacio reservado para el widget de Calendly ]<br>calendly.com/entendertunomina
+        <!-- Reservas gestionadas con Zoho Bookings: ver script de botón flotante al final del <body> -->
+        <div class="booking-slot" style="border-style:solid;">
+          📅 Usa el botón <strong>«Reservar ahora»</strong> que aparece abajo a la derecha en toda la web para elegir tu hueco directamente en mi calendario.
         </div>
 
         <div class="digital-line">
@@ -564,6 +558,18 @@
     <span class="mono">entendertunomina.com</span>
   </div>
 </footer>
+
+<!-- Botón flotante de reservas — Zoho Bookings -->
+<script src="https://bookings.nimbuspop.com/assets/embed.js"></script>
+<script>
+  Bookings.buttonModal({
+    url: "https://entendertunomina.zohobookings.eu/portal-embed#/entendertunomina",
+    text: "Reservar ahora",
+    color: "#2F5D50",
+    textColor: "#ffffff",
+    position: "bottom-right"
+  });
+</script>
 
 </body>
 </html>
