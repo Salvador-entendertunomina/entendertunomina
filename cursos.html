@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Curso Nóminas y Seguridad Social — EntenderTuNomina</title>
+<meta name="description" content="Curso online en directo de Nóminas y Seguridad Social con Salvador Fernández: 23 clases, 8 bloques. Reserva clases sueltas, bloques o el curso completo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#182B3A;
+    --ink-soft:#3E5164;
+    --paper:#E9E7DE;
+    --paper-deep:#DFDCCF;
+    --card:#FBFAF6;
+    --ledger:#2F5D50;
+    --ledger-deep:#20463B;
+    --gold:#C79A45;
+    --brick:#AE4A30;
+    --line:rgba(24,43,58,0.14);
+    --shadow: 0 18px 40px -20px rgba(24,43,58,0.35);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{font-family:'Fraunces', serif;margin:0 0 .4em;color:var(--ink);letter-spacing:-0.01em;}
+  a{color:inherit;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
+  img{max-width:100%;display:block;}
+
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+    background-image:repeating-linear-gradient(to bottom, transparent 0, transparent 37px, rgba(24,43,58,0.05) 38px);
+    opacity:.5;
+  }
+
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(233,231,222,0.92);backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;max-width:1120px;margin:0 auto;}
+  .brand{font-family:'Fraunces', serif;font-weight:600;font-size:1.15rem;display:flex;align-items:baseline;gap:.5em;}
+  .brand span.tag{
+    font-family:'IBM Plex Mono', monospace;font-size:.62rem;color:var(--ledger);
+    letter-spacing:.14em;font-weight:600;border:1px solid var(--ledger);padding:2px 6px;border-radius:3px;
+  }
+  nav.links{display:flex;gap:28px;font-size:.92rem;}
+  nav.links a{text-decoration:none;color:var(--ink-soft);}
+  nav.links a:hover, nav.links a.active{color:var(--ink);}
+  .btn{
+    font-family:'IBM Plex Sans', sans-serif;font-weight:600;font-size:.88rem;
+    padding:10px 20px;border-radius:3px;text-decoration:none;
+    display:inline-flex;align-items:center;gap:8px;border:1px solid transparent;
+    transition:transform .15s ease, box-shadow .15s ease;cursor:pointer;
+  }
+  .btn-primary{background:var(--ledger);color:#fff;}
+  .btn-primary:hover{transform:translateY(-1px);box-shadow:0 8px 18px -8px rgba(47,93,80,0.55);}
+  .btn-ghost{border-color:var(--ink);color:var(--ink);}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper);}
+  .btn-sm{padding:8px 14px;font-size:.8rem;}
+
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;font-size:.72rem;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--ledger);font-weight:600;margin-bottom:18px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--ledger);}
+
+  section{position:relative;z-index:1;padding:88px 0;}
+  .section-head{max-width:680px;margin-bottom:44px;}
+  .section-head h2{font-size:clamp(1.8rem,3vw,2.4rem);font-weight:600;}
+  .section-head p{color:var(--ink-soft);font-size:1.02rem;margin-top:10px;}
+
+  /* ---------- Hero del curso ---------- */
+  .course-hero{padding:72px 0 40px;}
+  .course-hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;}
+  .course-hero h1{font-size:clamp(2.1rem,4vw,3.1rem);font-weight:600;line-height:1.1;}
+  .course-hero p.lead{font-size:1.08rem;color:var(--ink-soft);max-width:50ch;margin:18px 0 28px;}
+
+  .payslip{
+    background:var(--card);border:1px solid var(--line);border-radius:6px;
+    box-shadow:var(--shadow);overflow:hidden;transform:rotate(1.2deg);
+  }
+  .payslip-head{
+    background:var(--ink);color:#F3F1E8;padding:16px 20px;
+    display:flex;justify-content:space-between;align-items:center;
+    font-family:'IBM Plex Mono', monospace;font-size:.7rem;letter-spacing:.08em;
+  }
+  .payslip-head .stamp{border:1px solid var(--gold);color:var(--gold);padding:2px 8px;border-radius:20px;font-size:.62rem;}
+  .payslip-body{padding:22px 22px 8px;}
+  .p-line{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px dashed var(--line);font-size:.88rem;}
+  .p-line:last-child{border-bottom:none;}
+  .p-line .concept{color:var(--ink-soft);}
+  .p-line .amount{font-family:'IBM Plex Mono', monospace;font-weight:600;white-space:nowrap;color:var(--ledger);}
+  .payslip-foot{background:var(--paper-deep);padding:16px 22px;display:flex;flex-direction:column;gap:4px;font-family:'IBM Plex Mono', monospace;}
+  .payslip-foot .label{font-size:.66rem;letter-spacing:.1em;color:var(--ink-soft);}
+  .payslip-foot .value{font-size:.86rem;font-weight:600;color:var(--ledger);}
+
+  /* ---------- Cómo funciona ---------- */
+  #como-funciona{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+  .step{padding:28px 0 0;border-top:2px solid var(--ledger);}
+  .step .num{font-family:'IBM Plex Mono', monospace;font-size:.72rem;color:var(--ledger);letter-spacing:.1em;}
+  .step h3{font-size:1.08rem;margin:8px 0 6px;}
+  .step p{color:var(--ink-soft);font-size:.92rem;margin:0;}
+
+  /* ---------- Precios ---------- */
+  .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .price-card{
+    background:var(--card);border:1px solid var(--line);border-radius:6px;
+    padding:30px 26px;display:flex;flex-direction:column;
+  }
+  .price-card.featured{background:var(--ink);color:#F3F1E8;border-color:var(--ink);position:relative;}
+  .price-card.featured .price-card-label{color:#B9C2CB;}
+  .price-card.featured h3{color:#F3F1E8;}
+  .price-card.featured .price-card-desc{color:#B9C2CB;}
+  .price-card.featured .save-badge{
+    position:absolute;top:-11px;right:26px;background:var(--gold);color:var(--ink);
+    font-family:'IBM Plex Mono', monospace;font-size:.64rem;font-weight:700;
+    padding:4px 10px;border-radius:20px;letter-spacing:.04em;
+  }
+  .price-card-label{
+    font-family:'IBM Plex Mono', monospace;font-size:.66rem;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--ledger);
+  }
+  .price-card h3{font-size:1.15rem;margin:8px 0 4px;}
+  .price-card-desc{color:var(--ink-soft);font-size:.88rem;margin-bottom:18px;}
+  .price-card .amount{
+    font-family:'IBM Plex Mono', monospace;font-size:2rem;font-weight:600;
+    margin-bottom:2px;
+  }
+  .price-card .amount .strike{
+    font-size:1rem;font-weight:400;color:var(--brick);text-decoration:line-through;
+    margin-right:8px;opacity:.7;
+  }
+  .price-card .per{font-size:.78rem;color:var(--ink-soft);margin-bottom:20px;}
+  .price-card.featured .per{color:#B9C2CB;}
+  .price-card .btn{width:100%;justify-content:center;margin-top:auto;}
+
+  /* ---------- Bloques (acordeón) ---------- */
+  .block-list{display:flex;flex-direction:column;gap:12px;}
+  details.block{
+    background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden;
+  }
+  details.block[open]{border-color:var(--ledger);}
+  details.block summary{
+    list-style:none;cursor:pointer;padding:20px 24px;
+    display:flex;align-items:center;gap:18px;
+  }
+  details.block summary::-webkit-details-marker{display:none;}
+  .block-code{
+    font-family:'IBM Plex Mono', monospace;font-size:.7rem;color:var(--ledger);
+    border:1px solid var(--ledger);border-radius:4px;padding:4px 8px;letter-spacing:.05em;
+    white-space:nowrap;
+  }
+  .block-summary-text{flex:1;}
+  .block-summary-text h3{font-size:1.02rem;margin:0 0 3px;font-family:'IBM Plex Sans',sans-serif;font-weight:600;}
+  .block-summary-text p{margin:0;color:var(--ink-soft);font-size:.86rem;}
+  .block-meta{
+    font-family:'IBM Plex Mono', monospace;font-size:.76rem;color:var(--ink-soft);
+    white-space:nowrap;text-align:right;
+  }
+  .block-meta .b-price{color:var(--ledger);font-weight:600;display:block;}
+  .chevron{transition:transform .2s ease;color:var(--ink-soft);flex-shrink:0;}
+  details.block[open] .chevron{transform:rotate(180deg);}
+
+  .block-content{padding:0 24px 24px;border-top:1px dashed var(--line);}
+  .lesson-list{list-style:none;margin:16px 0;padding:0;}
+  .lesson-list li{
+    display:flex;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);
+    font-size:.9rem;align-items:baseline;
+  }
+  .lesson-list li:last-child{border-bottom:none;}
+  .lesson-list .l-num{
+    font-family:'IBM Plex Mono', monospace;font-size:.72rem;color:var(--ledger);
+    min-width:22px;
+  }
+  .block-content .btn{margin-top:6px;}
+
+  footer{
+    padding:36px 0;border-top:1px solid var(--line);font-size:.82rem;color:var(--ink-soft);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+  }
+
+  @media (max-width:860px){
+    nav.links{display:none;}
+    .course-hero-grid{grid-template-columns:1fr;}
+    .payslip{transform:none;justify-self:center;max-width:420px;}
+    .steps{grid-template-columns:1fr;}
+    .pricing-grid{grid-template-columns:1fr;}
+    details.block summary{flex-wrap:wrap;}
+    .block-meta{text-align:left;}
+    section{padding:60px 0;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="index.html" style="text-decoration:none;">
+      <div class="brand">Entender<span style="color:var(--ledger)">TuNómina</span> <span class="tag">S.F.</span></div>
+    </a>
+    <nav class="links">
+      <a href="index.html#sobre">Sobre mí</a>
+      <a href="index.html#medios">En medios</a>
+      <a href="index.html#servicios">Servicios</a>
+      <a href="cursos.html" class="active">Cursos</a>
+      <a href="index.html#divulgacion">Divulgación</a>
+      <a href="index.html#contacto">Contacto</a>
+    </nav>
+    <a class="btn btn-primary" href="#precios">Reservar clase</a>
+  </div>
+</header>
+
+<section class="course-hero">
+  <div class="wrap course-hero-grid">
+    <div>
+      <div class="eyebrow">Curso online en directo</div>
+      <h1>Nóminas y Seguridad Social,<br>clase a clase, <em style="font-style:italic;color:var(--ledger);">contigo al otro lado</em>.</h1>
+      <p class="lead">23 clases en directo conmigo, organizadas en 8 bloques. Vas a tu ritmo: reserva una clase suelta, un bloque completo, o el curso entero.</p>
+      <div class="cta-row" style="display:flex;gap:14px;flex-wrap:wrap;">
+        <a class="btn btn-primary" href="#precios">Ver precios y reservar</a>
+        <a class="btn btn-ghost" href="#temario">Ver el temario completo</a>
+      </div>
+    </div>
+
+    <div class="payslip">
+      <div class="payslip-head">
+        <span>PROGRAMA DEL CURSO</span>
+        <span class="stamp">EN DIRECTO</span>
+      </div>
+      <div class="payslip-body">
+        <div class="p-line"><span class="concept">Clases totales</span><span class="amount">23</span></div>
+        <div class="p-line"><span class="concept">Bloques temáticos</span><span class="amount">8</span></div>
+        <div class="p-line"><span class="concept">Duración por clase</span><span class="amount">1 hora</span></div>
+        <div class="p-line"><span class="concept">Formato</span><span class="amount">1 a 1, online</span></div>
+      </div>
+      <div class="payslip-foot">
+        <span class="label">MATERIAL INCLUIDO</span>
+        <span class="value">DIAPOSITIVAS + PDF APLICATIVO</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="como-funciona">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Cómo funciona</div>
+      <h2>Sin calendario fijo, a tu ritmo</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="num mono">01</div>
+        <h3>Clases en directo conmigo</h3>
+        <p>Sesiones online individuales de 1 hora, con diapositivas y un PDF aplicativo que te llevas de cada tema.</p>
+      </div>
+      <div class="step">
+        <div class="num mono">02</div>
+        <h3>Reserva como quieras</h3>
+        <p>Una clase suelta para resolver un tema concreto, un bloque completo, o los 8 bloques del curso entero.</p>
+      </div>
+      <div class="step">
+        <div class="num mono">03</div>
+        <h3>Tú marcas el calendario</h3>
+        <p>No hay fecha de inicio ni de fin. Reservas cuando te viene bien, según tu disponibilidad.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="precios">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Precios</div>
+      <h2>Elige cómo quieres avanzar</h2>
+      <p>Todas las reservas se gestionan desde el mismo calendario. Al reservar, indica en el campo de notas qué quieres reservar exactamente (ej. «Bloque 2 completo» o «Clase 9: La nómina, estructura práctica»).</p>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="price-card">
+        <span class="price-card-label mono">Flexible</span>
+        <h3>Clase suelta</h3>
+        <p class="price-card-desc">1 hora, un tema concreto. Ideal para resolver una duda puntual del temario.</p>
+        <div class="amount">20 €</div>
+        <div class="per">por clase</div>
+        <a class="btn btn-primary" href="https://entendertunomina.zohobookings.eu/portal-embed#/entendertunomina" target="_blank" rel="noopener">Reservar clase</a>
+      </div>
+
+      <div class="price-card featured">
+        <span class="save-badge">AHORRAS HASTA 10€</span>
+        <span class="price-card-label mono">Recomendado</span>
+        <h3>Bloque completo</h3>
+        <p class="price-card-desc">Todas las clases de un bloque temático, reservadas juntas.</p>
+        <div class="amount">50 €</div>
+        <div class="per">precio cerrado por bloque</div>
+        <a class="btn" style="background:var(--gold);color:var(--ink);width:100%;justify-content:center;margin-top:auto;" href="https://entendertunomina.zohobookings.eu/portal-embed#/entendertunomina" target="_blank" rel="noopener">Reservar un bloque</a>
+      </div>
+
+      <div class="price-card">
+        <span class="price-card-label mono">Completo</span>
+        <h3>Curso entero</h3>
+        <p class="price-card-desc">Los 8 bloques, las 23 clases. De cero a saber elaborar y explicar una nómina completa.</p>
+        <div class="amount"><span class="strike">460 €</span>399 €</div>
+        <div class="per">precio cerrado, curso completo</div>
+        <a class="btn btn-primary" href="https://entendertunomina.zohobookings.eu/portal-embed#/entendertunomina" target="_blank" rel="noopener">Reservar el curso</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="temario">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Temario completo</div>
+      <h2>8 bloques, 23 clases</h2>
+      <p>Despliega cada bloque para ver sus clases. Puedes reservar cualquier clase suelta o el bloque entero.</p>
+    </div>
+
+    <div class="block-list">
+
+      <details class="block">
+        <summary>
+          <span class="block-code mono">BLOQUE 0</span>
+          <span class="block-summary-text">
+            <h3>Fundamentos del Marco Laboral</h3>
+            <p>Las normas que rigen la relación laboral: el ET, los convenios colectivos, los principios del derecho laboral y los organismos clave vinculados a la nómina.</p>
+          </span>
+          <span class="block-meta">3 clases<span class="b-price">50 €</span></span>
+          <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="block-content">
+          <ol class="lesson-list">
+            <li><span class="l-num mono">01</span> El Derecho del Trabajo</li>
+            <li><span class="l-num mono">02</span> El contrato de trabajo y período de prueba</li>
+            <li><span class="l-num mono">03</span> Modalidades contractuales y categoría profesional</li>
+          </ol>
+          <a class="btn btn-ghost btn-sm" href="https://entendertunomina.zohobookings.eu/portal-embed#/entendertunomina" target="_blank" rel="noopener">Reservar este bloque — 50 € →</a>
+        </div>
+      </details>
+
+      <details class="block">
+        <summary>
+          <span class="block-code mono">BLOQUE 1</span>
+          <span class="block-summary-text">
+            <h3>El Sistema de Seguridad Social</h3>
+            <p>Estructura del sistema público de protección social: regímenes, inscripción de empresas, afiliación de trabajadores y situaciones asimiladas al alta.</p>
+          </span>
+          <span class="block-meta">3 clases<span class="b-price">50 €</span></span>
+          <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="block-content">
+          <ol class="lesson-list">
+            <li><span class="l-num mono">04</span> Introducción al sistema de SS</li>
+            <li><span class="l-num mono">05</span> Actos de encuadramiento</li>
+            <li><span class="l-num mono">06</span> Obligación de cotizar y base de cotización</li>
+          </ol>
+          <a class="btn btn-ghost btn-sm" href="https://entendertunomina.zohobookings.eu/portal-embed#/entendertunomina" target="_blank" rel="noopener">Reservar este bloque — 50 € →</a>
+        </div>
+      </details>
+
+      <details class="block">
+        <summary>
+          <span class="block-code mono">BLOQUE 2</span>
+          <span class="block-summary-text">
+            <h3>Cotización y Nómina</h3>
+            <p>Cómo se calculan las cotizaciones, el concepto de salario y sus complementos, y la elaboración práctica de una nómina completa.</p>
+          </span>
+          <span class="block-meta">3 clases<span class="b-price">50 €</span></span>
+          <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="block-content">
+          <ol class="lesson-list">
+            <li><span class="l-num mono">07</span> Tipos de cotización</li>
+            <li><span class="l-num mono">08</span> El salario</li>
+            <li><span class="l-num mono">09</span> La nómina: estructura práctica</li>
+          </ol>
+          <a class="btn btn-ghost btn-sm" href="https://entendertunomina.zohobookings.eu/portal-embed#/entendertunomina" target="_blank" rel="noopener">Reservar este bloque — 50 € →</a>
+        </div>
+      </details>
+
+      <details class="block">
+        <summary>
+          <span class="block-code mono">BLOQUE 3</span>
+          <span class="block-summary-text">
+            <h3>Recaudación, Gestión e Impuestos</h3>
+            <p>Gestión de cuotas a la SS, tiempo de trabajo, IT en nómina y la fiscalidad aplicada: retenciones de IRPF, Modelo 111 mensual y resumen anual 190.</p>
+          </span>
+          <span class="block-meta">3 clases<span class="b-price">50 €</span></span>
+          <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="block-content">
+          <ol class="lesson-list">
+            <li><span class="l-num mono">10</span> Recaudación de cuotas SS</li>
+            <li><span class="l-num mono">11</span> Tiempo de trabajo y gestión de IT en nómina</li>
+            <li><span class="l-num mono">12</span> IRPF y nóminas: Modelo 111 y 190</li>
+          </ol>
+          <a class="btn btn-ghost btn-sm" href="https://entendertunomina.zohobookings.eu/portal-embed#/entendertunomina" target="_blank" rel="noopener">Reservar este bloque — 50 € →</a>
+        </div>
+      </details>
+
+      <details class="block">
+        <summary>
+          <span class="block-code mono">BLOQUE 4</span>
+          <span class="block-summary-text">
+            <h3>Prestaciones I: Incapacidades</h3>
+            <p>Contingencias profesionales y comunes: accidentes de trabajo, IT, maternidad/paternidad, riesgo durante el embarazo e incapacidad permanente y sus grados.</p>
+          </span>
+          <span class="block-meta">3 clases<span class="b-price">50 €</span></span>
+          <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="block-content">
+          <ol class="lesson-list">
+            <li><span class="l-num mono">13</span> Acción protectora y accidentes de trabajo</li>
+            <li><span class="l-num mono">14</span> Incapacidad Temporal + Maternidad/Paternidad</li>
+            <li><span class="l-num mono">15</span> Incapacidad Permanente</li>
+          </ol>
+          <a class="btn btn-ghost btn-sm" href="https://entendertunomina.zohobookings.eu/portal-embed#/entendertunomina" target="_blank" rel="noopener">Reservar este bloque — 50 € →</a>
+        </div>
+      </details>
+
+      <details class="block">
+        <summary>
+          <span class="block-code mono">BLOQUE 5</span>
+          <span class="block-summary-text">
+            <h3>Prestaciones II: Pensiones y Desempleo</h3>
+            <p>Las principales pensiones del sistema: jubilación ordinaria y anticipada, prestaciones de muerte y supervivencia, y la protección por desempleo.</p>
+          </span>
+          <span class="block-meta">3 clases<span class="b-price">50 €</span></span>
+          <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="block-content">
+          <ol class="lesson-list">
+            <li><span class="l-num mono">16</span> Jubilación</li>
+            <li><span class="l-num mono">17</span> Muerte y supervivencia + Prestaciones familiares</li>
+            <li><span class="l-num mono">18</span> Desempleo: prestación contributiva y subsidio</li>
+          </ol>
+          <a class="btn btn-ghost btn-sm" href="https://entendertunomina.zohobookings.eu/portal-embed#/entendertunomina" target="_blank" rel="noopener">Reservar este bloque — 50 € →</a>
+        </div>
+      </details>
+
+      <details class="block">
+        <summary>
+          <span class="block-code mono">BLOQUE 6</span>
+          <span class="block-summary-text">
+            <h3>Extinción del Contrato</h3>
+            <p>Todas las formas de terminar un contrato: dimisión, causas objetivas, despido disciplinario, procedente e improcedente, ERE, ERTE y elaboración del finiquito.</p>
+          </span>
+          <span class="block-meta">3 clases<span class="b-price">50 €</span></span>
+          <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="block-content">
+          <ol class="lesson-list">
+            <li><span class="l-num mono">19</span> Extinción contractual (I)</li>
+            <li><span class="l-num mono">20</span> Extinción contractual (II): Despido disciplinario</li>
+            <li><span class="l-num mono">21</span> Extinción contractual (III): ERE, ERTE y finiquito</li>
+          </ol>
+          <a class="btn btn-ghost btn-sm" href="https://entendertunomina.zohobookings.eu/portal-embed#/entendertunomina" target="_blank" rel="noopener">Reservar este bloque — 50 € →</a>
+        </div>
+      </details>
+
+      <details class="block">
+        <summary>
+          <span class="block-code mono">BLOQUE 7</span>
+          <span class="block-summary-text">
+            <h3>Colectivo y Regímenes Especiales</h3>
+            <p>La negociación colectiva, la estructura y eficacia de los convenios colectivos, la representación de los trabajadores y las particularidades del régimen de autónomos (RETA).</p>
+          </span>
+          <span class="block-meta">2 clases<span class="b-price">50 €</span></span>
+          <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="block-content">
+          <ol class="lesson-list">
+            <li><span class="l-num mono">22</span> Negociación colectiva y representación</li>
+            <li><span class="l-num mono">23</span> RETA: Régimen de Autónomos</li>
+          </ol>
+          <a class="btn btn-ghost btn-sm" href="https://entendertunomina.zohobookings.eu/portal-embed#/entendertunomina" target="_blank" rel="noopener">Reservar este bloque — 50 € →</a>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;width:100%;">
+    <span>© 2026 EntenderTuNomina — Salvador Fernández</span>
+    <span class="mono">entendertunomina.com</span>
+  </div>
+</footer>
+
+<!-- Botón flotante de reservas — Zoho Bookings -->
+<script src="https://bookings.nimbuspop.com/assets/embed.js"></script>
+<script>
+  Bookings.buttonModal({
+    url: "https://entendertunomina.zohobookings.eu/portal-embed#/entendertunomina",
+    text: "Reservar ahora",
+    color: "#2F5D50",
+    textColor: "#ffffff",
+    position: "bottom-right"
+  });
+</script>
+
+</body>
+</html>
