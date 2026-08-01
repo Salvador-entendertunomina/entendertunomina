@@ -292,6 +292,7 @@
   @media (max-width:860px){
     nav.links{display:none;}
     .menu-toggle{display:block;}
+    .nav > a.btn-primary{display:none;}
     .hero-grid{grid-template-columns:1fr;}
     .payslip{transform:none;justify-self:center;max-width:420px;}
     .about-grid{grid-template-columns:1fr;}
@@ -308,7 +309,9 @@
 
 <header>
   <div class="nav">
-    <div class="brand">Entender<span style="color:var(--ledger)">TuNómina</span> <span class="tag">S.F.</span></div>
+    <a href="index.html" style="text-decoration:none;">
+      <div class="brand">Entender<span style="color:var(--ledger)">TuNómina</span> <span class="tag">S.F.</span></div>
+    </a>
     <nav class="links">
       <a href="index.html" class="active">Inicio</a>
       <a href="#sobre">Sobre mí</a>
