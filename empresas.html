@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Talleres para Empresas — EntenderTuNomina</title>
+<meta name="description" content="Taller «Tus empleados entienden su nómina» para empresas: formación en nómina, IRPF y Seguridad Social con respaldo legal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#182B3A;--ink-soft:#3E5164;--paper:#E9E7DE;--paper-deep:#DFDCCF;--card:#FBFAF6;
+    --ledger:#2F5D50;--ledger-deep:#20463B;--gold:#C79A45;--brick:#AE4A30;
+    --line:rgba(24,43,58,0.14);--shadow: 0 18px 40px -20px rgba(24,43,58,0.35);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans', sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3,h4{font-family:'Fraunces', serif;margin:0 0 .4em;color:var(--ink);letter-spacing:-0.01em;}
+  a{color:inherit;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
+  img{max-width:100%;display:block;}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background-image:repeating-linear-gradient(to bottom, transparent 0, transparent 37px, rgba(24,43,58,0.05) 38px);opacity:.5;}
+  header{position:sticky;top:0;z-index:50;background:rgba(31,54,77,0.96);backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,0.12);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;max-width:1120px;margin:0 auto;}
+  .brand{font-family:'Fraunces', serif;font-weight:600;font-size:1.15rem;display:flex;align-items:baseline;gap:.5em;color:#F3F1E8;}
+  .brand span.tag{font-family:'IBM Plex Mono', monospace;font-size:.62rem;color:var(--gold);letter-spacing:.14em;font-weight:600;border:1px solid var(--gold);padding:2px 6px;border-radius:3px;}
+  nav.links{display:flex;gap:28px;font-size:.92rem;}
+  nav.links a{text-decoration:none;color:#B9C2CB;}
+  nav.links a:hover, nav.links a.active{color:#fff;}
+  .btn{font-family:'IBM Plex Sans', sans-serif;font-weight:600;font-size:.88rem;padding:10px 20px;border-radius:3px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;border:1px solid transparent;transition:transform .15s ease, box-shadow .15s ease;cursor:pointer;}
+  .btn-primary{background:var(--ledger);color:#fff;}
+  .btn-primary:hover{transform:translateY(-1px);box-shadow:0 8px 18px -8px rgba(47,93,80,0.55);}
+  .btn-ghost{border-color:var(--ink);color:var(--ink);}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper);}
+  .menu-toggle{display:none;background:none;border:none;font-size:1.4rem;cursor:pointer;color:#F3F1E8;padding:4px;line-height:1;}
+
+  /* ---------- Menú móvil desplegable ---------- */
+  .mobile-panel{
+    display:none;position:fixed;top:0;right:0;bottom:0;width:min(78vw, 320px);
+    background:var(--card);z-index:100;box-shadow:-18px 0 40px -20px rgba(24,43,58,0.5);
+    transform:translateX(100%);transition:transform .25s ease;padding:24px;overflow-y:auto;
+  }
+  .mobile-panel.open{transform:translateX(0);}
+  .mobile-panel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;}
+  .mobile-panel-head .brand{color:var(--ink);}
+  .mobile-panel-close{background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--ink);line-height:1;}
+  .mobile-panel nav{display:flex;flex-direction:column;gap:4px;}
+  .mobile-panel nav a{text-decoration:none;color:var(--ink);font-size:1.05rem;font-weight:500;padding:14px 4px;border-bottom:1px solid var(--line);}
+  .mobile-panel nav a.active{color:var(--ledger);}
+  .mobile-panel .btn{margin-top:22px;width:100%;justify-content:center;box-sizing:border-box;}
+  .mobile-overlay{display:none;position:fixed;inset:0;background:rgba(24,43,58,0.4);z-index:99;}
+  .mobile-overlay.open{display:block;}
+  .eyebrow{font-family:'IBM Plex Mono', monospace;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ledger);font-weight:600;margin-bottom:18px;display:flex;align-items:center;gap:10px;}
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--ledger);}
+  section{position:relative;z-index:1;padding:88px 0;}
+  .section-head{max-width:680px;margin-bottom:44px;}
+  .section-head h2{font-size:clamp(1.8rem,3vw,2.4rem);font-weight:600;}
+  .section-head p{color:var(--ink-soft);font-size:1.02rem;margin-top:10px;}
+
+  .page-hero{padding:72px 0 40px;}
+  .page-hero h1{font-size:clamp(2.1rem,4vw,3.1rem);font-weight:600;line-height:1.1;}
+  .page-hero p.lead{font-size:1.08rem;color:var(--ink-soft);max-width:56ch;margin:18px 0 28px;}
+
+  #oferta{background:var(--ink);color:#F3F1E8;}
+  #oferta .section-head h2{color:#F3F1E8;}
+  #oferta .section-head p{color:#B9C2CB;}
+  #oferta .eyebrow{color:var(--gold);}
+  #oferta .eyebrow::before{background:var(--gold);}
+  .service-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.14);border-radius:6px;padding:32px;}
+  .argument-box{background:rgba(255,255,255,0.05);border-left:3px solid var(--gold);padding:20px 22px;border-radius:0 4px 4px 0;font-size:.94rem;color:#D9DEE2;margin-top:28px;}
+  .price-table{width:100%;border-collapse:collapse;margin-top:8px;}
+  .price-table tr{border-bottom:1px solid rgba(255,255,255,0.12);}
+  .price-table tr:last-child{border-bottom:none;}
+  .price-table td{padding:14px 6px;font-size:.9rem;}
+  .price-table td:first-child{color:#D9DEE2;}
+  .price-table td:last-child{font-family:'IBM Plex Mono', monospace;text-align:right;font-weight:600;color:var(--gold);white-space:nowrap;}
+  .booking-panel{background:#F3F1E8;color:var(--ink);border-radius:6px;padding:32px;}
+  .booking-panel h3{font-size:1.2rem;}
+  .booking-slot{border:1.5px dashed var(--line);border-radius:6px;padding:26px;text-align:center;color:var(--ink-soft);font-family:'IBM Plex Mono', monospace;font-size:.8rem;margin-top:18px;}
+  .digital-line{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 0;border-top:1px solid var(--line);margin-top:22px;}
+  .digital-line .price{font-family:'IBM Plex Mono', monospace;font-weight:600;color:var(--ledger);}
+
+  #captacion{background:var(--card);border-top:1px solid var(--line);}
+  .chan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .chan-card{background:#fff;border:1px solid var(--line);border-radius:6px;padding:24px;}
+  .chan-card h3{font-size:1rem;margin-bottom:8px;}
+  .chan-card p{color:var(--ink-soft);font-size:.88rem;margin:0;}
+
+  footer{padding:36px 0;border-top:1px solid var(--line);font-size:.82rem;color:var(--ink-soft);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+
+  @media (max-width:860px){
+    nav.links{display:none;}
+    .menu-toggle{display:block;}
+    section{padding:60px 0;}
+    #oferta > .wrap > div{grid-template-columns:1fr !important;}
+    .chan-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="index.html" style="text-decoration:none;">
+      <div class="brand">Entender<span style="color:var(--gold)">TuNómina</span> <span class="tag">S.F.</span></div>
+    </a>
+    <nav class="links">
+      <a href="index.html">Inicio</a>
+      <a href="index.html#sobre">Sobre mí</a>
+      <a href="index.html#medios">En medios</a>
+      <a href="index.html#servicios">Servicios</a>
+      <a href="cursos.html">Cursos</a>
+      <a href="index.html#divulgacion">Divulgación</a>
+      <a href="index.html#contacto">Contacto</a>
+    </nav>
+    <a class="btn btn-primary" href="#oferta">Reservar taller</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
+  </div>
+</header>
+
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<div class="mobile-panel" id="mobilePanel">
+  <div class="mobile-panel-head">
+    <div class="brand" style="font-size:1rem;">Menú</div>
+    <button class="mobile-panel-close" id="mobileClose" aria-label="Cerrar menú">✕</button>
+  </div>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="index.html#sobre">Sobre mí</a>
+    <a href="index.html#medios">En medios</a>
+    <a href="index.html#servicios">Servicios</a>
+    <a href="cursos.html">Cursos</a>
+    <a href="index.html#divulgacion">Divulgación</a>
+    <a href="index.html#contacto">Contacto</a>
+  </nav>
+  <a class="btn btn-primary" href="#oferta">Reservar taller</a>
+</div>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="eyebrow">Para empresas</div>
+    <h1>Tus empleados entienden su nómina.<br><em style="font-style:italic;color:var(--ledger);">Tu empresa cumple la ley.</em></h1>
+    <p class="lead">Un taller de 90–120 minutos para que tu equipo deje de tener dudas cada mes de nómina — y para que RRHH deje de ser el traductor oficial de cada recibo de salario.</p>
+    <a class="btn btn-primary" href="#oferta">Ver precios y reservar llamada</a>
+  </div>
+</section>
+
+<section id="oferta">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">El taller</div>
+      <h2>«Tus empleados entienden su nómina»</h2>
+      <p>Presencial u online, hasta 30 personas por sesión para mantener la interactividad. Incluye presentación, guía descargable y nómina comentada.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:32px;align-items:start;">
+      <div class="service-card">
+        <h3 style="color:#F3F1E8;font-size:1.25rem;">Qué incluye la sesión</h3>
+        <table class="price-table">
+          <tr><td>Anatomía de la nómina: cada concepto explicado</td><td>30 min</td></tr>
+          <tr><td>IRPF: por qué te retienen eso, y cómo te afecta</td><td>20 min</td></tr>
+          <tr><td>Seguridad Social: qué se descuenta y para qué</td><td>20 min</td></tr>
+          <tr><td>Tus derechos: vacaciones, pagas extra, finiquito</td><td>15 min</td></tr>
+          <tr><td>Preguntas y respuestas en directo</td><td>15 min</td></tr>
+        </table>
+
+        <h3 style="color:#F3F1E8;font-size:1.05rem;margin-top:30px;">Módulos adicionales (versión premium)</h3>
+        <table class="price-table">
+          <tr><td>Adaptación al convenio colectivo de la empresa</td><td></td></tr>
+          <tr><td>Taller específico para expatriados</td><td></td></tr>
+          <tr><td>Retribución flexible y beneficios</td><td></td></tr>
+        </table>
+
+        <h3 style="color:#F3F1E8;font-size:1.05rem;margin-top:30px;">Precios</h3>
+        <table class="price-table">
+          <tr><td>Taller básico (hasta 15 personas)</td><td>400–500 €</td></tr>
+          <tr><td>Taller básico (16–30 personas)</td><td>600–700 €</td></tr>
+          <tr><td>Taller premium + adaptado al convenio (2h)</td><td>900–1.200 €</td></tr>
+          <tr><td>Pack de 3 talleres anuales</td><td>1.500–2.000 €</td></tr>
+        </table>
+        <p style="font-size:.78rem;color:#8D98A3;margin-top:10px;">Estos precios son una referencia base. Cada empresa es distinta — cuéntame el tamaño de tu equipo y lo que necesitáis, y te preparo un presupuesto a medida sin compromiso.</p>
+
+        <div class="argument-box">
+          <strong>El respaldo legal:</strong> la Directiva Europea 2019/1152 (transpuesta por el RD-ley 32/2021) obliga a informar a los trabajadores de sus condiciones laborales de forma clara y comprensible — incluida la retribución. La Ley de Transparencia Salarial (transposición de la Directiva 2023/970) refuerza esa exigencia. Un taller de 90 minutos protege a tu empresa y mejora la satisfacción de tu equipo.
+        </div>
+      </div>
+
+      <div class="booking-panel">
+        <h3>Agenda una llamada de 30 min</h3>
+        <p style="color:var(--ink-soft);font-size:.92rem;">Cuéntame el tamaño de tu equipo y qué dudas se repiten más, y diseñamos el taller a medida.</p>
+
+        <div class="booking-slot" style="border-style:solid;">
+          📅 Pulsa el botón de abajo para elegir tu hueco directamente en mi calendario.
+        </div>
+        <a class="btn btn-primary" style="width:100%;justify-content:center;margin-top:16px;box-sizing:border-box;" href="https://entendertunomina.zohobookings.eu/portal-embed#/entendertunomina" target="_blank" rel="noopener">Reservar llamada →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="captacion">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Otros canales</div>
+      <h2>También puedes encontrarme a través de</h2>
+    </div>
+    <div class="chan-grid">
+      <div class="chan-card">
+        <h3>Asociaciones empresariales</h3>
+        <p>Cámaras de comercio, CEOE, federaciones sectoriales.</p>
+      </div>
+      <div class="chan-card">
+        <h3>Gestorías y asesorías</h3>
+        <p>Colaboro con despachos que refieren a sus clientes.</p>
+      </div>
+      <div class="chan-card">
+        <h3>Mutuas laborales</h3>
+        <p>Formaciones organizadas junto a mutuas para sus empresas asociadas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;width:100%;">
+    <span>© 2026 EntenderTuNomina — Salvador Fernández</span>
+    <span class="mono">entendertunomina.com</span>
+  </div>
+</footer>
+
+<script src="https://bookings.nimbuspop.com/assets/embed.js"></script>
+<script>
+  Bookings.buttonModal({
+    url: "https://entendertunomina.zohobookings.eu/portal-embed#/entendertunomina",
+    text: "Reservar ahora",
+    color: "#2F5D50",
+    textColor: "#ffffff",
+    position: "bottom-right"
+  });
+</script>
+
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const mobilePanel = document.getElementById('mobilePanel');
+  const mobileOverlay = document.getElementById('mobileOverlay');
+  const mobileClose = document.getElementById('mobileClose');
+  function openMenu(){mobilePanel.classList.add('open');mobileOverlay.classList.add('open');document.body.style.overflow='hidden';}
+  function closeMenu(){mobilePanel.classList.remove('open');mobileOverlay.classList.remove('open');document.body.style.overflow='';}
+  menuToggle.addEventListener('click', openMenu);
+  mobileClose.addEventListener('click', closeMenu);
+  mobileOverlay.addEventListener('click', closeMenu);
+  mobilePanel.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clases Particulares — EntenderTuNomina</title>
+<meta name="description" content="Clases particulares online de nóminas, contratos y derecho laboral con Salvador Fernández. Primera llamada gratuita para adaptar el temario a ti.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#182B3A;--ink-soft:#3E5164;--paper:#E9E7DE;--paper-deep:#DFDCCF;--card:#FBFAF6;
+    --ledger:#2F5D50;--ledger-deep:#20463B;--gold:#C79A45;--brick:#AE4A30;
+    --line:rgba(24,43,58,0.14);--shadow: 0 18px 40px -20px rgba(24,43,58,0.35);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans', sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3,h4{font-family:'Fraunces', serif;margin:0 0 .4em;color:var(--ink);letter-spacing:-0.01em;}
+  a{color:inherit;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
+  img{max-width:100%;display:block;}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background-image:repeating-linear-gradient(to bottom, transparent 0, transparent 37px, rgba(24,43,58,0.05) 38px);opacity:.5;}
+  header{position:sticky;top:0;z-index:50;background:rgba(31,54,77,0.96);backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,0.12);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;max-width:1120px;margin:0 auto;}
+  .brand{font-family:'Fraunces', serif;font-weight:600;font-size:1.15rem;display:flex;align-items:baseline;gap:.5em;color:#F3F1E8;}
+  .brand span.tag{font-family:'IBM Plex Mono', monospace;font-size:.62rem;color:var(--gold);letter-spacing:.14em;font-weight:600;border:1px solid var(--gold);padding:2px 6px;border-radius:3px;}
+  nav.links{display:flex;gap:28px;font-size:.92rem;}
+  nav.links a{text-decoration:none;color:#B9C2CB;}
+  nav.links a:hover, nav.links a.active{color:#fff;}
+  .btn{font-family:'IBM Plex Sans', sans-serif;font-weight:600;font-size:.88rem;padding:10px 20px;border-radius:3px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;border:1px solid transparent;transition:transform .15s ease, box-shadow .15s ease;cursor:pointer;}
+  .btn-primary{background:var(--ledger);color:#fff;}
+  .btn-primary:hover{transform:translateY(-1px);box-shadow:0 8px 18px -8px rgba(47,93,80,0.55);}
+  .btn-ghost{border-color:var(--ink);color:var(--ink);}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper);}
+  .menu-toggle{display:none;background:none;border:none;font-size:1.4rem;cursor:pointer;color:#F3F1E8;padding:4px;line-height:1;}
+
+  /* ---------- Menú móvil desplegable ---------- */
+  .mobile-panel{
+    display:none;position:fixed;top:0;right:0;bottom:0;width:min(78vw, 320px);
+    background:var(--card);z-index:100;box-shadow:-18px 0 40px -20px rgba(24,43,58,0.5);
+    transform:translateX(100%);transition:transform .25s ease;padding:24px;overflow-y:auto;
+  }
+  .mobile-panel.open{transform:translateX(0);}
+  .mobile-panel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;}
+  .mobile-panel-head .brand{color:var(--ink);}
+  .mobile-panel-close{background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--ink);line-height:1;}
+  .mobile-panel nav{display:flex;flex-direction:column;gap:4px;}
+  .mobile-panel nav a{text-decoration:none;color:var(--ink);font-size:1.05rem;font-weight:500;padding:14px 4px;border-bottom:1px solid var(--line);}
+  .mobile-panel nav a.active{color:var(--ledger);}
+  .mobile-panel .btn{margin-top:22px;width:100%;justify-content:center;box-sizing:border-box;}
+  .mobile-overlay{display:none;position:fixed;inset:0;background:rgba(24,43,58,0.4);z-index:99;}
+  .mobile-overlay.open{display:block;}
+  .eyebrow{font-family:'IBM Plex Mono', monospace;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ledger);font-weight:600;margin-bottom:18px;display:flex;align-items:center;gap:10px;}
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--ledger);}
+  section{position:relative;z-index:1;padding:88px 0;}
+  .section-head{max-width:680px;margin-bottom:44px;}
+  .section-head h2{font-size:clamp(1.8rem,3vw,2.4rem);font-weight:600;}
+  .section-head p{color:var(--ink-soft);font-size:1.02rem;margin-top:10px;}
+
+  .page-hero{padding:72px 0 40px;}
+  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;}
+  .page-hero h1{font-size:clamp(2.1rem,4vw,3.1rem);font-weight:600;line-height:1.1;}
+  .page-hero p.lead{font-size:1.08rem;color:var(--ink-soft);max-width:52ch;margin:18px 0 28px;}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;}
+
+  .payslip{background:var(--card);border:1px solid var(--line);border-radius:6px;box-shadow:var(--shadow);overflow:hidden;transform:rotate(1deg);}
+  .payslip-head{background:var(--ink);color:#F3F1E8;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;font-family:'IBM Plex Mono', monospace;font-size:.7rem;letter-spacing:.08em;}
+  .payslip-head .stamp{border:1px solid var(--gold);color:var(--gold);padding:2px 8px;border-radius:20px;font-size:.62rem;}
+  .payslip-body{padding:22px 22px 8px;}
+  .p-line{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px dashed var(--line);font-size:.88rem;}
+  .p-line:last-child{border-bottom:none;}
+  .p-line .concept{color:var(--ink-soft);}
+  .p-line .amount{font-family:'IBM Plex Mono', monospace;font-weight:600;white-space:nowrap;color:var(--ledger);}
+  .payslip-foot{background:var(--paper-deep);padding:16px 22px;display:flex;flex-direction:column;gap:4px;font-family:'IBM Plex Mono', monospace;}
+  .payslip-foot .label{font-size:.66rem;letter-spacing:.1em;color:var(--ink-soft);}
+  .payslip-foot .value{font-size:.86rem;font-weight:600;color:var(--ledger);}
+
+  #metodo{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .method-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
+  .method-grid p{color:var(--ink-soft);}
+  .credential-line{display:flex;gap:14px;padding:12px 0;border-bottom:1px solid var(--line);font-size:.9rem;align-items:baseline;}
+  .credential-line:last-child{border-bottom:none;}
+  .credential-line .code{font-family:'IBM Plex Mono', monospace;font-size:.66rem;color:var(--ledger);min-width:150px;letter-spacing:.05em;text-transform:uppercase;padding-top:2px;}
+
+  #para-quien{}
+  .who-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+  .who-card{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:22px 24px;font-size:.92rem;color:var(--ink-soft);}
+  .who-card b{color:var(--ink);}
+
+  #puente{background:var(--card);border-top:1px solid var(--line);}
+  .puente-box{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;background:#fff;border:1px solid var(--line);border-radius:6px;padding:26px 30px;}
+  .puente-box p{margin:0;color:var(--ink-soft);font-size:.92rem;max-width:60ch;}
+
+  #reserva{text-align:center;}
+  .booking-panel{max-width:600px;margin:0 auto;background:var(--ink);color:#F3F1E8;border-radius:6px;padding:40px;}
+  .booking-panel .eyebrow{color:var(--gold);justify-content:center;}
+  .booking-panel .eyebrow::before{background:var(--gold);}
+  .booking-panel h2{color:#F3F1E8;}
+  .booking-panel p{color:#C9CFD4;}
+  .price-line{font-family:'IBM Plex Mono', monospace;font-size:1.6rem;font-weight:600;color:var(--gold);margin:14px 0;}
+  .booking-slot{border:1px solid rgba(255,255,255,0.2);border-radius:6px;padding:22px;color:#C9CFD4;font-family:'IBM Plex Mono', monospace;font-size:.8rem;margin:20px 0;}
+
+  footer{padding:36px 0;border-top:1px solid var(--line);font-size:.82rem;color:var(--ink-soft);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+
+  @media (max-width:860px){
+    nav.links{display:none;}
+    .menu-toggle{display:block;}
+    .hero-grid{grid-template-columns:1fr;}
+    .payslip{transform:none;max-width:420px;justify-self:center;}
+    .method-grid{grid-template-columns:1fr;}
+    .who-grid{grid-template-columns:1fr;}
+    section{padding:60px 0;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="index.html" style="text-decoration:none;">
+      <div class="brand">Entender<span style="color:var(--gold)">TuNómina</span> <span class="tag">S.F.</span></div>
+    </a>
+    <nav class="links">
+      <a href="index.html">Inicio</a>
+      <a href="index.html#sobre">Sobre mí</a>
+      <a href="index.html#medios">En medios</a>
+      <a href="index.html#servicios">Servicios</a>
+      <a href="cursos.html">Cursos</a>
+      <a href="index.html#divulgacion">Divulgación</a>
+      <a href="index.html#contacto">Contacto</a>
+    </nav>
+    <a class="btn btn-primary" href="#reserva">Reservar clase</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
+  </div>
+</header>
+
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<div class="mobile-panel" id="mobilePanel">
+  <div class="mobile-panel-head">
+    <div class="brand" style="font-size:1rem;">Menú</div>
+    <button class="mobile-panel-close" id="mobileClose" aria-label="Cerrar menú">✕</button>
+  </div>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="index.html#sobre">Sobre mí</a>
+    <a href="index.html#medios">En medios</a>
+    <a href="index.html#servicios">Servicios</a>
+    <a href="cursos.html">Cursos</a>
+    <a href="index.html#divulgacion">Divulgación</a>
+    <a href="index.html#contacto">Contacto</a>
+  </nav>
+  <a class="btn btn-primary" href="#reserva">Reservar clase</a>
+</div>
+
+<section class="page-hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Clases particulares</div>
+      <h1>Aprende nóminas y contratos<br><em style="font-style:italic;color:var(--ledger);">de verdad, 1 a 1.</em></h1>
+      <p class="lead">Soy Salvador. Doy clases individuales de nóminas, contratos y derecho laboral, 100% online, con el temario adaptado a ti tras una primera llamada gratuita.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#reserva">Reservar mi primera llamada</a>
+        <a class="btn btn-ghost" href="https://www.tusclasesparticulares.com/profesores/salvador-fernandez-martinez.htm" target="_blank" rel="noopener">Ver mi perfil y reseñas</a>
+      </div>
+    </div>
+
+    <div class="payslip">
+      <div class="payslip-head">
+        <span>CLASES DE NÓMINAS Y CONTRATOS</span>
+        <span class="stamp">ACTIVO</span>
+      </div>
+      <div class="payslip-body">
+        <div class="p-line"><span class="concept">Precio</span><span class="amount">20 €/hora</span></div>
+        <div class="p-line"><span class="concept">Sesión mínima recomendada</span><span class="amount">1h30 (30€)</span></div>
+        <div class="p-line"><span class="concept">Primera llamada</span><span class="amount">Gratis</span></div>
+        <div class="p-line"><span class="concept">Formato</span><span class="amount">100% online</span></div>
+      </div>
+      <div class="payslip-foot">
+        <span class="label">TEMARIO</span>
+        <span class="value">ADAPTADO TRAS LLAMADA INICIAL GRATUITA</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="metodo">
+  <div class="wrap method-grid">
+    <div>
+      <div class="eyebrow">Cómo trabajo</div>
+      <h2>Antes de empezar, hablamos</h2>
+      <p>Hacemos una primera llamada gratuita en la que me cuentas tu situación y tus objetivos: un examen, dudas del trabajo, prepararte para una oposición, formar a tu equipo... A partir de ahí, diseño el temario y el ritmo de las clases a tu medida.</p>
+      <p>Nada de contenido genérico: solo lo que realmente necesitas.</p>
+    </div>
+    <div>
+      <div class="credential-line"><span class="code mono">Niveles</span><span>Bachillerato, universitarios, adultos</span></div>
+      <div class="credential-line"><span class="code mono">Idioma</span><span>Español</span></div>
+      <div class="credential-line"><span class="code mono">Formación</span><span>Máster en asesoría laboral, legal, contable y fiscal</span></div>
+      <div class="credential-line"><span class="code mono">Formato</span><span>100% online, por videollamada</span></div>
+      <div class="credential-line"><span class="code mono">Valoración</span><span>Ver reseñas en mi perfil de TusClasesParticulares</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="para-quien">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Para quién son</div>
+      <h2>¿A quién van dirigidas?</h2>
+    </div>
+    <div class="who-grid">
+      <div class="who-card"><b>Estudiantes</b> de RRHH, Relaciones Laborales o Derecho que necesitan reforzar nóminas, Seguridad Social o contratación.</div>
+      <div class="who-card"><b>Opositores y profesionales</b> que se preparan para certificaciones o cambios de puesto.</div>
+      <div class="who-card"><b>Departamentos de RRHH</b> que quieren actualizar o profundizar sus conocimientos en materia laboral y de nómina.</div>
+      <div class="who-card"><b>Cualquiera</b> que quiera perder el miedo a leer su propia nómina.</div>
+    </div>
+  </div>
+</section>
+
+<section id="puente">
+  <div class="wrap">
+    <div class="puente-box">
+      <p>¿Buscas formación para todo tu equipo, no solo clases individuales? También imparto <strong>cursos y talleres a medida para empresas</strong>, pensados para que cualquier empleado entienda su nómina.</p>
+      <a class="btn btn-ghost" href="empresas.html">Ver talleres para empresas →</a>
+    </div>
+  </div>
+</section>
+
+<section id="reserva">
+  <div class="wrap">
+    <div class="booking-panel">
+      <div class="eyebrow">Reserva</div>
+      <h2>Elige cómo quieres reservar</h2>
+      <p>Reserva tu primera llamada gratuita directamente aquí, o desde mi perfil en TusClasesParticulares si prefieres ver antes las reseñas de otros alumnos.</p>
+      <div class="price-line">Primera llamada gratis</div>
+      <div class="booking-slot">
+        📅 Pulsa el botón de abajo para elegir tu hora. Cuéntame en las notas qué quieres reforzar, así llegamos a la llamada con el terreno ya preparado.
+      </div>
+      <a class="btn btn-primary" style="width:100%;justify-content:center;box-sizing:border-box;margin-bottom:12px;" href="https://entendertunomina.zohobookings.eu/portal-embed#/entendertunomina" target="_blank" rel="noopener">Reservar mi primera llamada →</a>
+      <a class="btn" style="background:var(--gold);color:var(--ink);width:100%;justify-content:center;box-sizing:border-box;" href="https://www.tusclasesparticulares.com/profesores/salvador-fernandez-martinez.htm" target="_blank" rel="noopener">O ver mi perfil en TusClasesParticulares →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;width:100%;">
+    <span>© 2026 EntenderTuNomina — Salvador Fernández</span>
+    <span class="mono">entendertunomina.com</span>
+  </div>
+</footer>
+
+<script src="https://bookings.nimbuspop.com/assets/embed.js"></script>
+<script>
+  Bookings.buttonModal({
+    url: "https://entendertunomina.zohobookings.eu/portal-embed#/entendertunomina",
+    text: "Reservar ahora",
+    color: "#2F5D50",
+    textColor: "#ffffff",
+    position: "bottom-right"
+  });
+</script>
+
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const mobilePanel = document.getElementById('mobilePanel');
+  const mobileOverlay = document.getElementById('mobileOverlay');
+  const mobileClose = document.getElementById('mobileClose');
+  function openMenu(){mobilePanel.classList.add('open');mobileOverlay.classList.add('open');document.body.style.overflow='hidden';}
+  function closeMenu(){mobilePanel.classList.remove('open');mobileOverlay.classList.remove('open');document.body.style.overflow='';}
+  menuToggle.addEventListener('click', openMenu);
+  mobileClose.addEventListener('click', closeMenu);
+  mobileOverlay.addEventListener('click', closeMenu);
+  mobilePanel.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+</script>
+
+</body>
+</html>

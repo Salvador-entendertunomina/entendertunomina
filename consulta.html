@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consulta Individual — EntenderTuNomina</title>
+<meta name="description" content="¿Tienes una duda sobre tu nómina, finiquito o contrato? Resuélvela en una consulta individual de 30 minutos con Salvador Fernández.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#182B3A;--ink-soft:#3E5164;--paper:#E9E7DE;--paper-deep:#DFDCCF;--card:#FBFAF6;
+    --ledger:#2F5D50;--ledger-deep:#20463B;--gold:#C79A45;--brick:#AE4A30;
+    --line:rgba(24,43,58,0.14);--shadow: 0 18px 40px -20px rgba(24,43,58,0.35);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans', sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3,h4{font-family:'Fraunces', serif;margin:0 0 .4em;color:var(--ink);letter-spacing:-0.01em;}
+  a{color:inherit;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
+  img{max-width:100%;display:block;}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background-image:repeating-linear-gradient(to bottom, transparent 0, transparent 37px, rgba(24,43,58,0.05) 38px);opacity:.5;}
+  header{position:sticky;top:0;z-index:50;background:rgba(31,54,77,0.96);backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,0.12);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;max-width:1120px;margin:0 auto;}
+  .brand{font-family:'Fraunces', serif;font-weight:600;font-size:1.15rem;display:flex;align-items:baseline;gap:.5em;color:#F3F1E8;}
+  .brand span.tag{font-family:'IBM Plex Mono', monospace;font-size:.62rem;color:var(--gold);letter-spacing:.14em;font-weight:600;border:1px solid var(--gold);padding:2px 6px;border-radius:3px;}
+  nav.links{display:flex;gap:28px;font-size:.92rem;}
+  nav.links a{text-decoration:none;color:#B9C2CB;}
+  nav.links a:hover, nav.links a.active{color:#fff;}
+  .btn{font-family:'IBM Plex Sans', sans-serif;font-weight:600;font-size:.88rem;padding:10px 20px;border-radius:3px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;border:1px solid transparent;transition:transform .15s ease, box-shadow .15s ease;cursor:pointer;}
+  .btn-primary{background:var(--ledger);color:#fff;}
+  .btn-primary:hover{transform:translateY(-1px);box-shadow:0 8px 18px -8px rgba(47,93,80,0.55);}
+  .btn-ghost{border-color:var(--ink);color:var(--ink);}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper);}
+  .menu-toggle{display:none;background:none;border:none;font-size:1.4rem;cursor:pointer;color:#F3F1E8;padding:4px;line-height:1;}
+
+  /* ---------- Menú móvil desplegable ---------- */
+  .mobile-panel{
+    display:none;position:fixed;top:0;right:0;bottom:0;width:min(78vw, 320px);
+    background:var(--card);z-index:100;box-shadow:-18px 0 40px -20px rgba(24,43,58,0.5);
+    transform:translateX(100%);transition:transform .25s ease;padding:24px;overflow-y:auto;
+  }
+  .mobile-panel.open{transform:translateX(0);}
+  .mobile-panel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;}
+  .mobile-panel-head .brand{color:var(--ink);}
+  .mobile-panel-close{background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--ink);line-height:1;}
+  .mobile-panel nav{display:flex;flex-direction:column;gap:4px;}
+  .mobile-panel nav a{text-decoration:none;color:var(--ink);font-size:1.05rem;font-weight:500;padding:14px 4px;border-bottom:1px solid var(--line);}
+  .mobile-panel nav a.active{color:var(--ledger);}
+  .mobile-panel .btn{margin-top:22px;width:100%;justify-content:center;box-sizing:border-box;}
+  .mobile-overlay{display:none;position:fixed;inset:0;background:rgba(24,43,58,0.4);z-index:99;}
+  .mobile-overlay.open{display:block;}
+  .eyebrow{font-family:'IBM Plex Mono', monospace;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ledger);font-weight:600;margin-bottom:18px;display:flex;align-items:center;gap:10px;}
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--ledger);}
+  section{position:relative;z-index:1;padding:88px 0;}
+  .section-head{max-width:680px;margin-bottom:44px;}
+  .section-head h2{font-size:clamp(1.8rem,3vw,2.4rem);font-weight:600;}
+  .section-head p{color:var(--ink-soft);font-size:1.02rem;margin-top:10px;}
+
+  .page-hero{padding:72px 0 40px;}
+  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;}
+  .page-hero h1{font-size:clamp(2.1rem,4vw,3.1rem);font-weight:600;line-height:1.1;}
+  .page-hero p.lead{font-size:1.08rem;color:var(--ink-soft);max-width:52ch;margin:18px 0 28px;}
+
+  .payslip{background:var(--card);border:1px solid var(--line);border-radius:6px;box-shadow:var(--shadow);overflow:hidden;transform:rotate(-1deg);}
+  .payslip-head{background:var(--ink);color:#F3F1E8;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;font-family:'IBM Plex Mono', monospace;font-size:.7rem;letter-spacing:.08em;}
+  .payslip-head .stamp{border:1px solid var(--gold);color:var(--gold);padding:2px 8px;border-radius:20px;font-size:.62rem;}
+  .payslip-body{padding:22px 22px 8px;}
+  .p-line{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px dashed var(--line);font-size:.88rem;}
+  .p-line:last-child{border-bottom:none;}
+  .p-line .concept{color:var(--ink-soft);}
+  .p-line .amount{font-family:'IBM Plex Mono', monospace;font-weight:600;white-space:nowrap;color:var(--ledger);}
+  .payslip-foot{background:var(--paper-deep);padding:16px 22px;display:flex;flex-direction:column;gap:4px;font-family:'IBM Plex Mono', monospace;}
+  .payslip-foot .label{font-size:.66rem;letter-spacing:.1em;color:var(--ink-soft);}
+  .payslip-foot .value{font-size:.86rem;font-weight:600;color:var(--ledger);}
+
+  #casos{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .case-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+  .case-card{background:#fff;border:1px solid var(--line);border-radius:6px;padding:26px;}
+  .case-card .q{font-family:'Fraunces', serif;font-style:italic;font-size:1.05rem;color:var(--ink);}
+  .case-card p{color:var(--ink-soft);font-size:.88rem;margin-top:10px;}
+
+  #reserva{}
+  .booking-panel{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:36px;max-width:560px;margin:0 auto;text-align:center;}
+  .booking-panel .amount{font-family:'IBM Plex Mono', monospace;font-size:2.4rem;font-weight:600;color:var(--ledger);margin:8px 0;}
+  .booking-slot{border:1.5px solid var(--line);border-radius:6px;padding:26px;color:var(--ink-soft);font-family:'IBM Plex Mono', monospace;font-size:.8rem;margin:22px 0;}
+
+  footer{padding:36px 0;border-top:1px solid var(--line);font-size:.82rem;color:var(--ink-soft);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+
+  @media (max-width:860px){
+    nav.links{display:none;}
+    .menu-toggle{display:block;}
+    .hero-grid{grid-template-columns:1fr;}
+    .payslip{transform:none;max-width:420px;justify-self:center;}
+    .case-grid{grid-template-columns:1fr;}
+    section{padding:60px 0;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="index.html" style="text-decoration:none;">
+      <div class="brand">Entender<span style="color:var(--gold)">TuNómina</span> <span class="tag">S.F.</span></div>
+    </a>
+    <nav class="links">
+      <a href="index.html">Inicio</a>
+      <a href="index.html#sobre">Sobre mí</a>
+      <a href="index.html#medios">En medios</a>
+      <a href="index.html#servicios">Servicios</a>
+      <a href="cursos.html">Cursos</a>
+      <a href="index.html#divulgacion">Divulgación</a>
+      <a href="index.html#contacto">Contacto</a>
+    </nav>
+    <a class="btn btn-primary" href="#reserva">Reservar consulta</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
+  </div>
+</header>
+
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<div class="mobile-panel" id="mobilePanel">
+  <div class="mobile-panel-head">
+    <div class="brand" style="font-size:1rem;">Menú</div>
+    <button class="mobile-panel-close" id="mobileClose" aria-label="Cerrar menú">✕</button>
+  </div>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="index.html#sobre">Sobre mí</a>
+    <a href="index.html#medios">En medios</a>
+    <a href="index.html#servicios">Servicios</a>
+    <a href="cursos.html">Cursos</a>
+    <a href="index.html#divulgacion">Divulgación</a>
+    <a href="index.html#contacto">Contacto</a>
+  </nav>
+  <a class="btn btn-primary" href="#reserva">Reservar consulta</a>
+</div>
+
+<section class="page-hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Para particulares</div>
+      <h1>¿Te la están jugando<br>con <em style="font-style:italic;color:var(--ledger);">tu nómina?</em></h1>
+      <p class="lead">Una consulta de 30 minutos conmigo para resolver tu caso concreto: no es formación, es tu duda, resuelta. "¿Me han hecho bien el finiquito?", "¿es legal esta cláusula?", "¿por qué me descuentan esto?".</p>
+      <a class="btn btn-primary" href="#reserva">Reservar mi consulta — 30 €</a>
+    </div>
+
+    <div class="payslip">
+      <div class="payslip-head">
+        <span>CONSULTA EXPRÉS</span>
+        <span class="stamp">30 MIN</span>
+      </div>
+      <div class="payslip-body">
+        <div class="p-line"><span class="concept">Duda sin resolver</span><span class="amount">antes</span></div>
+        <div class="p-line"><span class="concept">Respuesta clara sobre tu caso</span><span class="amount">después</span></div>
+        <div class="p-line"><span class="concept">Formato</span><span class="amount">Videollamada</span></div>
+        <div class="p-line"><span class="concept">Duración</span><span class="amount">30 min</span></div>
+      </div>
+      <div class="payslip-foot">
+        <span class="label">A PAGAR AL RESERVAR</span>
+        <span class="value">30 €</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="casos">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Casos típicos</div>
+      <h2>El tipo de dudas que resolvemos en 30 minutos</h2>
+    </div>
+    <div class="case-grid">
+      <div class="case-card">
+        <div class="q">"¿Me han hecho bien el finiquito?"</div>
+        <p>Revisamos el cálculo, qué debería incluir y si falta algo por liquidar.</p>
+      </div>
+      <div class="case-card">
+        <div class="q">"¿Es legal esta cláusula de mi contrato?"</div>
+        <p>Leemos juntos el contrato y te digo qué es negociable y qué no.</p>
+      </div>
+      <div class="case-card">
+        <div class="q">"¿Por qué me descuentan esto de la nómina?"</div>
+        <p>Desglosamos tu nómina concepto a concepto hasta que quede claro.</p>
+      </div>
+      <div class="case-card">
+        <div class="q">"¿Me están aplicando bien el IRPF?"</div>
+        <p>Comprobamos tu porcentaje de retención según tu situación real (hijos, otras rentas, circunstancias personales) y si la empresa lo está calculando correctamente.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reserva">
+  <div class="wrap">
+    <div class="section-head" style="margin:0 auto 44px;text-align:center;">
+      <div class="eyebrow" style="justify-content:center;">Reserva</div>
+      <h2>Elige tu hora y paga al reservar</h2>
+      <p>El pago se hace al confirmar la cita — así el hueco queda bloqueado solo para ti.</p>
+    </div>
+
+    <div class="booking-panel">
+      <div class="mono" style="font-size:.72rem;letter-spacing:.1em;color:var(--ink-soft);">CONSULTA INDIVIDUAL · 30 MIN</div>
+      <div class="amount">30 €</div>
+      <div class="booking-slot">
+        📅 Pulsa el botón de abajo para elegir tu hora y reservar.
+      </div>
+      <p style="font-size:.82rem;color:var(--ink-soft);margin:-6px 0 20px;">Al reservar, cuéntame en pocas líneas cuál es tu caso — así llego a la llamada con los deberes hechos y aprovechamos los 30 minutos para darte respuestas, no para que me expliques desde cero.</p>
+      <a class="btn btn-primary" style="width:100%;justify-content:center;box-sizing:border-box;" href="https://entendertunomina.zohobookings.eu/portal-embed#/entendertunomina" target="_blank" rel="noopener">Reservar mi consulta →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;width:100%;">
+    <span>© 2026 EntenderTuNomina — Salvador Fernández</span>
+    <span class="mono">entendertunomina.com</span>
+  </div>
+</footer>
+
+<script src="https://bookings.nimbuspop.com/assets/embed.js"></script>
+<script>
+  Bookings.buttonModal({
+    url: "https://entendertunomina.zohobookings.eu/portal-embed#/entendertunomina",
+    text: "Reservar ahora",
+    color: "#2F5D50",
+    textColor: "#ffffff",
+    position: "bottom-right"
+  });
+</script>
+
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const mobilePanel = document.getElementById('mobilePanel');
+  const mobileOverlay = document.getElementById('mobileOverlay');
+  const mobileClose = document.getElementById('mobileClose');
+  function openMenu(){mobilePanel.classList.add('open');mobileOverlay.classList.add('open');document.body.style.overflow='hidden';}
+  function closeMenu(){mobilePanel.classList.remove('open');mobileOverlay.classList.remove('open');document.body.style.overflow='';}
+  menuToggle.addEventListener('click', openMenu);
+  mobileClose.addEventListener('click', closeMenu);
+  mobileOverlay.addEventListener('click', closeMenu);
+  mobilePanel.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+</script>
+
+</body>
+</html>
