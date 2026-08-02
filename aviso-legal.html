@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aviso Legal — EntenderTuNomina</title>
+<meta name="description" content="Aviso legal de entendertunomina.com">
+<style>
+  :root{
+    --ink:#182B3A;--ink-soft:#3E5164;--paper:#E9E7DE;--paper-deep:#DFDCCF;--card:#FBFAF6;
+    --ledger:#2F5D50;--ledger-deep:#20463B;--gold:#C79A45;--brick:#AE4A30;
+    --line:rgba(24,43,58,0.14);--shadow: 0 18px 40px -20px rgba(24,43,58,0.35);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans', sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  h1,h2{font-family:'Fraunces', serif;margin:0 0 .4em;color:var(--ink);letter-spacing:-0.01em;}
+  a{color:var(--ledger);}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  .wrap{max-width:760px;margin:0 auto;padding:0 28px;}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background-image:repeating-linear-gradient(to bottom, transparent 0, transparent 37px, rgba(24,43,58,0.05) 38px);opacity:.5;}
+  header{position:sticky;top:0;z-index:50;background:rgba(31,54,77,0.96);backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,0.12);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;max-width:1120px;margin:0 auto;}
+  .brand{font-family:'Fraunces', serif;font-weight:600;font-size:1.15rem;display:flex;align-items:baseline;gap:.5em;color:#F3F1E8;}
+  .brand span.tag{font-family:'IBM Plex Mono', monospace;font-size:.62rem;color:var(--gold);letter-spacing:.14em;font-weight:600;border:1px solid var(--gold);padding:2px 6px;border-radius:3px;}
+  nav.links{display:flex;gap:28px;font-size:.92rem;}
+  nav.links a{text-decoration:none;color:#B9C2CB;}
+  nav.links a:hover{color:#fff;}
+  .btn{font-family:'IBM Plex Sans', sans-serif;font-weight:600;font-size:.88rem;padding:10px 20px;border-radius:3px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;border:1px solid transparent;cursor:pointer;}
+  .btn-primary{background:var(--ledger);color:#fff;}
+  .btn-ghost{border-color:var(--ink);color:var(--ink);}
+  .menu-toggle{display:none;background:none;border:none;font-size:1.4rem;cursor:pointer;color:#F3F1E8;padding:4px;line-height:1;}
+  .mobile-panel{position:fixed;top:0;right:0;bottom:0;width:min(78vw, 320px);background:var(--card);z-index:100;box-shadow:-18px 0 40px -20px rgba(24,43,58,0.5);transform:translateX(100%);transition:transform .25s ease;padding:24px;overflow-y:auto;}
+  .mobile-panel.open{transform:translateX(0);}
+  .mobile-panel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;}
+  .mobile-panel-head .brand{color:var(--ink);}
+  .mobile-panel-close{background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--ink);line-height:1;}
+  .mobile-panel nav{display:flex;flex-direction:column;gap:4px;}
+  .mobile-panel nav a{text-decoration:none;color:var(--ink);font-size:1.05rem;font-weight:500;padding:14px 4px;border-bottom:1px solid var(--line);}
+  .mobile-overlay{display:none;position:fixed;inset:0;background:rgba(24,43,58,0.4);z-index:99;}
+  .mobile-overlay.open{display:block;}
+
+  main{position:relative;z-index:1;padding:72px 0 100px;}
+  .eyebrow{font-family:'IBM Plex Mono', monospace;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ledger);font-weight:600;margin-bottom:14px;}
+  .updated{font-family:'IBM Plex Mono', monospace;font-size:.76rem;color:var(--ink-soft);margin-bottom:40px;}
+  h1{font-size:clamp(1.9rem,3.4vw,2.5rem);margin-bottom:8px;}
+  section.block{margin-bottom:34px;}
+  section.block h2{font-size:1.15rem;font-weight:600;margin-bottom:10px;}
+  section.block p, section.block li{color:var(--ink-soft);font-size:.98rem;}
+  section.block ul{padding-left:20px;margin:10px 0;}
+  .disclaimer{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:0 4px 4px 0;padding:18px 22px;font-size:.9rem;color:var(--ink-soft);margin-top:48px;}
+
+  footer{padding:36px 0;border-top:1px solid var(--line);font-size:.82rem;color:var(--ink-soft);}
+  footer .wrap{max-width:1120px;}
+
+  /* ---------- Banner de cookies ---------- */
+  .cookie-banner{display:none;position:fixed;left:0;right:0;bottom:0;z-index:200;background:var(--ink);border-top:1px solid rgba(255,255,255,0.15);}
+  .cookie-banner.visible{display:block;}
+  .cookie-banner-inner{max-width:1120px;margin:0 auto;padding:20px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+  .cookie-banner p{margin:0;color:#C9CFD4;font-size:.86rem;max-width:70ch;}
+  .cookie-banner p a{color:var(--gold);text-decoration:underline;}
+  .cookie-banner-actions{display:flex;gap:10px;flex-shrink:0;}
+  .cookie-banner .btn-ghost{border-color:rgba(255,255,255,0.4);color:#F3F1E8;}
+  .cookie-banner .btn-ghost:hover{background:rgba(255,255,255,0.1);color:#fff;}
+
+  @media (max-width:860px){
+    nav.links{display:none;}
+    .menu-toggle{display:block;}
+    .nav > a.btn-primary{display:none;}
+  }
+</style>
+</head>
+<body>
+<div class="cookie-banner" id="cookieBanner">
+  <div class="cookie-banner-inner">
+    <p>Usamos cookies técnicas necesarias para el funcionamiento del sitio. Si aceptas, también cargamos tipografías externas (Google Fonts) para mejorar el diseño. Más información en la <a href="cookies.html">Política de Cookies</a>.</p>
+    <div class="cookie-banner-actions">
+      <button id="cookieReject" class="btn btn-ghost">Rechazar</button>
+      <button id="cookieAccept" class="btn btn-primary">Aceptar</button>
+    </div>
+  </div>
+</div>
+
+<header>
+  <div class="nav">
+    <a href="index.html" style="text-decoration:none;">
+      <div class="brand">Entender<span style="color:var(--gold)">TuNómina</span> <span class="tag">S.F.</span></div>
+    </a>
+    <nav class="links">
+      <a href="index.html">Inicio</a>
+      <a href="index.html#servicios">Servicios</a>
+      <a href="cursos.html">Cursos</a>
+      <a href="index.html#sobre">Sobre mí</a>
+      <a href="index.html#medios">En medios</a>
+      <a href="index.html#divulgacion">Divulgación</a>
+      <a href="index.html#contacto">Contacto</a>
+    </nav>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
+  </div>
+</header>
+
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<div class="mobile-panel" id="mobilePanel">
+  <div class="mobile-panel-head">
+    <div class="brand" style="font-size:1rem;">Menú</div>
+    <button class="mobile-panel-close" id="mobileClose" aria-label="Cerrar menú">✕</button>
+  </div>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="index.html#servicios">Servicios</a>
+    <a href="cursos.html">Cursos</a>
+    <a href="index.html#sobre">Sobre mí</a>
+    <a href="index.html#medios">En medios</a>
+    <a href="index.html#divulgacion">Divulgación</a>
+    <a href="index.html#contacto">Contacto</a>
+  </nav>
+</div>
+
+<main>
+  <div class="wrap">
+    <div class="eyebrow">Legal</div>
+    <h1>Aviso Legal</h1>
+    <div class="updated">Última actualización: agosto de 2026</div>
+
+    <section class="block">
+      <h2>1. Identificación</h2>
+      <p>En cumplimiento del artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSICE), se informa que el presente sitio web, <strong>entendertunomina.com</strong> (en adelante, "el Sitio"), es un proyecto personal de divulgación gestionado por:</p>
+      <ul>
+        <li><strong>Titular:</strong> Salvador Fernández Martínez</li>
+        <li><strong>Correo de contacto:</strong> salvador@entendertunomina.com</li>
+      </ul>
+      <p>El Sitio se encuentra actualmente en fase de lanzamiento. El titular no opera todavía bajo un régimen de alta como empresario individual (autónomo) ni bajo forma societaria; en consecuencia, no se muestran datos identificativos adicionales (NIF, domicilio fiscal) que solo resultan exigibles una vez iniciada formalmente la actividad económica.</p>
+    </section>
+
+    <section class="block">
+      <h2>2. Objeto y actividad</h2>
+      <p>El Sitio tiene como finalidad la divulgación de contenido informativo sobre nóminas, Seguridad Social y derecho laboral, así como la presentación de servicios de formación y asesoría que el titular ofrece de forma personal.</p>
+      <p>La contratación de cualquier servicio mostrado en el Sitio (talleres, consultas, clases) no se formaliza automáticamente a través de la web: se acuerda directamente con el titular, previa comunicación expresa entre las partes.</p>
+    </section>
+
+    <section class="block">
+      <h2>3. Condiciones de uso</h2>
+      <p>El acceso y la navegación por el Sitio atribuyen la condición de usuario y suponen la aceptación de las condiciones aquí descritas. El usuario se compromete a hacer un uso adecuado de los contenidos y servicios ofrecidos, y a no emplearlos para incurrir en actividades ilícitas o contrarias a la buena fe.</p>
+    </section>
+
+    <section class="block">
+      <h2>4. Propiedad intelectual</h2>
+      <p>Todos los contenidos del Sitio (textos, diseño gráfico, estructura, logotipos y materiales descargables) son propiedad de Salvador Fernández Martínez, salvo indicación expresa contraria, y están protegidos por la normativa de propiedad intelectual vigente. Queda prohibida su reproducción total o parcial sin autorización previa.</p>
+    </section>
+
+    <section class="block">
+      <h2>5. Enlaces externos</h2>
+      <p>El Sitio puede incluir enlaces a sitios web de terceros (medios de comunicación, plataformas de reserva o pago). El titular no se hace responsable del contenido ni de las políticas de privacidad de dichos sitios externos.</p>
+    </section>
+
+    <section class="block">
+      <h2>6. Legislación aplicable</h2>
+      <p>Las presentes condiciones se rigen por la legislación española. Para cualquier controversia derivada del uso del Sitio, las partes se someten a los juzgados y tribunales que correspondan conforme a derecho.</p>
+    </section>
+
+    <div class="disclaimer">
+      <strong>Aviso sobre el contenido:</strong> el contenido divulgativo de este sitio tiene carácter meramente informativo y general. No sustituye el asesoramiento profesional individualizado, que debe basarse en el análisis específico de cada caso.
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap" style="display:flex;flex-direction:column;gap:14px;width:100%;">
+    <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+      <span>© 2026 EntenderTuNomina — Salvador Fernández</span>
+      <span class="mono">entendertunomina.com</span>
+    </div>
+    <div style="display:flex;gap:18px;flex-wrap:wrap;font-size:.82rem;">
+      <a href="aviso-legal.html" style="color:var(--ink-soft);text-decoration:underline;">Aviso legal</a>
+      <a href="privacidad.html" style="color:var(--ink-soft);text-decoration:underline;">Privacidad</a>
+      <a href="cookies.html" style="color:var(--ink-soft);text-decoration:underline;">Cookies</a>
+      <a href="condiciones.html" style="color:var(--ink-soft);text-decoration:underline;">Condiciones de uso</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const mobilePanel = document.getElementById('mobilePanel');
+  const mobileOverlay = document.getElementById('mobileOverlay');
+  const mobileClose = document.getElementById('mobileClose');
+  function openMenu(){mobilePanel.classList.add('open');mobileOverlay.classList.add('open');document.body.style.overflow='hidden';}
+  function closeMenu(){mobilePanel.classList.remove('open');mobileOverlay.classList.remove('open');document.body.style.overflow='';}
+  menuToggle.addEventListener('click', openMenu);
+  mobileClose.addEventListener('click', closeMenu);
+  mobileOverlay.addEventListener('click', closeMenu);
+  mobilePanel.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+</script>
+
+<script>
+  (function(){
+    function loadGoogleFonts(){
+      if (document.getElementById('gfonts-stylesheet')) return;
+      var l1 = document.createElement('link'); l1.rel='preconnect'; l1.href='https://fonts.googleapis.com';
+      var l2 = document.createElement('link'); l2.rel='preconnect'; l2.href='https://fonts.gstatic.com'; l2.crossOrigin='anonymous';
+      var l3 = document.createElement('link'); l3.id='gfonts-stylesheet'; l3.rel='stylesheet';
+      l3.href='https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap';
+      document.head.appendChild(l1);
+      document.head.appendChild(l2);
+      document.head.appendChild(l3);
+    }
+    var consent = localStorage.getItem('etn_cookie_consent');
+    var banner = document.getElementById('cookieBanner');
+    if (consent === 'accepted') {
+      loadGoogleFonts();
+    } else if (consent !== 'rejected') {
+      if (banner) banner.classList.add('visible');
+    }
+    var acceptBtn = document.getElementById('cookieAccept');
+    var rejectBtn = document.getElementById('cookieReject');
+    if (acceptBtn) acceptBtn.addEventListener('click', function(){
+      localStorage.setItem('etn_cookie_consent','accepted');
+      loadGoogleFonts();
+      banner.classList.remove('visible');
+    });
+    if (rejectBtn) rejectBtn.addEventListener('click', function(){
+      localStorage.setItem('etn_cookie_consent','rejected');
+      banner.classList.remove('visible');
+    });
+  })();
+</script>
+
+</body>
+</html>

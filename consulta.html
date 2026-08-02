@@ -5,9 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Consulta Individual — EntenderTuNomina</title>
 <meta name="description" content="¿Tienes una duda sobre tu nómina, finiquito o contrato? Resuélvela en una consulta individual de 30 minutos con Salvador Fernández.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     --ink:#182B3A;--ink-soft:#3E5164;--paper:#E9E7DE;--paper-deep:#DFDCCF;--card:#FBFAF6;
@@ -99,9 +96,29 @@
     .case-grid{grid-template-columns:1fr;}
     section{padding:60px 0;}
   }
+
+  /* ---------- Banner de cookies ---------- */
+  .cookie-banner{display:none;position:fixed;left:0;right:0;bottom:0;z-index:200;background:var(--ink);border-top:1px solid rgba(255,255,255,0.15);}
+  .cookie-banner.visible{display:block;}
+  .cookie-banner-inner{max-width:1120px;margin:0 auto;padding:20px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+  .cookie-banner p{margin:0;color:#C9CFD4;font-size:.86rem;max-width:70ch;}
+  .cookie-banner p a{color:var(--gold);text-decoration:underline;}
+  .cookie-banner-actions{display:flex;gap:10px;flex-shrink:0;}
+  .cookie-banner .btn-ghost{border-color:rgba(255,255,255,0.4);color:#F3F1E8;}
+  .cookie-banner .btn-ghost:hover{background:rgba(255,255,255,0.1);color:#fff;}
 </style>
 </head>
 <body>
+<div class="cookie-banner" id="cookieBanner">
+  <div class="cookie-banner-inner">
+    <p>Usamos cookies técnicas necesarias para el funcionamiento del sitio. Si aceptas, también cargamos tipografías externas (Google Fonts) para mejorar el diseño. Más información en la <a href="cookies.html">Política de Cookies</a>.</p>
+    <div class="cookie-banner-actions">
+      <button id="cookieReject" class="btn btn-ghost">Rechazar</button>
+      <button id="cookieAccept" class="btn btn-primary">Aceptar</button>
+    </div>
+  </div>
+</div>
+
 
 <header>
   <div class="nav">
@@ -216,9 +233,17 @@
 </section>
 
 <footer>
-  <div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;width:100%;">
-    <span>© 2026 EntenderTuNomina — Salvador Fernández</span>
-    <span class="mono">entendertunomina.com</span>
+  <div class="wrap" style="display:flex;flex-direction:column;gap:14px;width:100%;">
+    <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+      <span>© 2026 EntenderTuNomina — Salvador Fernández</span>
+      <span class="mono">entendertunomina.com</span>
+    </div>
+    <div style="display:flex;gap:18px;flex-wrap:wrap;font-size:.82rem;">
+      <a href="aviso-legal.html" style="color:var(--ink-soft);text-decoration:underline;">Aviso legal</a>
+      <a href="privacidad.html" style="color:var(--ink-soft);text-decoration:underline;">Privacidad</a>
+      <a href="cookies.html" style="color:var(--ink-soft);text-decoration:underline;">Cookies</a>
+      <a href="condiciones.html" style="color:var(--ink-soft);text-decoration:underline;">Condiciones de uso</a>
+    </div>
   </div>
 </footer>
 
@@ -244,6 +269,40 @@
   mobileClose.addEventListener('click', closeMenu);
   mobileOverlay.addEventListener('click', closeMenu);
   mobilePanel.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+</script>
+
+
+<script>
+  (function(){
+    function loadGoogleFonts(){
+      if (document.getElementById('gfonts-stylesheet')) return;
+      var l1 = document.createElement('link'); l1.rel='preconnect'; l1.href='https://fonts.googleapis.com';
+      var l2 = document.createElement('link'); l2.rel='preconnect'; l2.href='https://fonts.gstatic.com'; l2.crossOrigin='anonymous';
+      var l3 = document.createElement('link'); l3.id='gfonts-stylesheet'; l3.rel='stylesheet';
+      l3.href='https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap';
+      document.head.appendChild(l1);
+      document.head.appendChild(l2);
+      document.head.appendChild(l3);
+    }
+    var consent = localStorage.getItem('etn_cookie_consent');
+    var banner = document.getElementById('cookieBanner');
+    if (consent === 'accepted') {
+      loadGoogleFonts();
+    } else if (consent !== 'rejected') {
+      if (banner) banner.classList.add('visible');
+    }
+    var acceptBtn = document.getElementById('cookieAccept');
+    var rejectBtn = document.getElementById('cookieReject');
+    if (acceptBtn) acceptBtn.addEventListener('click', function(){
+      localStorage.setItem('etn_cookie_consent','accepted');
+      loadGoogleFonts();
+      banner.classList.remove('visible');
+    });
+    if (rejectBtn) rejectBtn.addEventListener('click', function(){
+      localStorage.setItem('etn_cookie_consent','rejected');
+      banner.classList.remove('visible');
+    });
+  })();
 </script>
 
 </body>
