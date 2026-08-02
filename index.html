@@ -247,6 +247,26 @@
   .st-price{font-family:'IBM Plex Mono', monospace;font-size:.92rem;font-weight:600;color:#F3F1E8;margin-top:6px;}
   .st-cta{font-family:'IBM Plex Mono', monospace;font-size:.78rem;color:var(--gold);}
 
+  /* ---------- Banner de Cursos ---------- */
+  #cursos-banner{padding:96px 0;}
+  .course-banner{
+    background:var(--ledger-deep);color:#F3F1E8;border-radius:6px;overflow:hidden;
+    display:grid;grid-template-columns:1.3fr 1fr;align-items:stretch;
+  }
+  .cb-text{padding:44px 44px;}
+  .cb-text .eyebrow{color:var(--gold);}
+  .cb-text .eyebrow::before{background:var(--gold);}
+  .cb-text h2{color:#F3F1E8;font-size:clamp(1.6rem,2.6vw,2.1rem);}
+  .cb-text p{color:#C9CFD4;font-size:.98rem;max-width:48ch;margin:12px 0 24px;}
+  .cb-mini{
+    background:rgba(255,255,255,0.04);border-left:1px solid rgba(255,255,255,0.12);
+    padding:32px 36px;display:flex;flex-direction:column;justify-content:center;gap:14px;
+  }
+  .cb-mini .cb-line{display:flex;justify-content:space-between;font-size:.88rem;padding:9px 0;border-bottom:1px dashed rgba(255,255,255,0.15);}
+  .cb-mini .cb-line:last-child{border-bottom:none;}
+  .cb-mini .cb-line span:first-child{color:#B9C2CB;}
+  .cb-mini .cb-line span:last-child{font-family:'IBM Plex Mono', monospace;font-weight:600;color:var(--gold);}
+
   /* ---------- Divulgación ---------- */
   .article-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
   .article-card{
@@ -299,6 +319,8 @@
     .press-item{grid-template-columns:1fr;gap:8px;}
     .article-grid{grid-template-columns:1fr;}
     .service-grid{grid-template-columns:1fr;}
+    .course-banner{grid-template-columns:1fr;}
+    .cb-mini{border-left:none;border-top:1px solid rgba(255,255,255,0.12);}
     .contact-grid{grid-template-columns:1fr;}
     section{padding:64px 0;}
   }
@@ -313,10 +335,10 @@
     </a>
     <nav class="links">
       <a href="index.html" class="active">Inicio</a>
-      <a href="#sobre">Sobre mí</a>
-      <a href="#medios">En medios</a>
       <a href="#servicios">Servicios</a>
       <a href="cursos.html">Cursos</a>
+      <a href="#sobre">Sobre mí</a>
+      <a href="#medios">En medios</a>
       <a href="#divulgacion">Divulgación</a>
       <a href="#contacto">Contacto</a>
     </nav>
@@ -333,10 +355,10 @@
   </div>
   <nav>
     <a href="index.html" class="active">Inicio</a>
-    <a href="#sobre">Sobre mí</a>
-    <a href="#medios">En medios</a>
     <a href="#servicios">Servicios</a>
     <a href="cursos.html">Cursos</a>
+    <a href="#sobre">Sobre mí</a>
+    <a href="#medios">En medios</a>
     <a href="#divulgacion">Divulgación</a>
     <a href="#contacto">Contacto</a>
   </nav>
@@ -403,6 +425,56 @@
   </div>
 </section>
 
+<section id="cursos-banner">
+  <div class="wrap">
+    <div class="course-banner">
+      <div class="cb-text">
+        <div class="eyebrow">Programa del curso</div>
+        <h2>Nóminas y Seguridad Social,<br>clase a clase.</h2>
+        <p>23 clases en directo conmigo, organizadas en 8 bloques. Reserva una clase suelta, un bloque completo, o el curso entero — a tu ritmo, sin calendario fijo.</p>
+        <a class="btn" style="background:var(--gold);color:var(--ink);" href="cursos.html">Ver el curso completo →</a>
+      </div>
+      <div class="cb-mini">
+        <div class="cb-line"><span>Clases totales</span><span>23</span></div>
+        <div class="cb-line"><span>Bloques temáticos</span><span>8</span></div>
+        <div class="cb-line"><span>Formato</span><span>1 a 1, online</span></div>
+        <div class="cb-line"><span>Precio</span><span>Desde 20 €</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sobre">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Quién soy</div>
+      <h2>Diez años traduciendo nóminas al lenguaje humano</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-photo">
+        <img src="salvador-headshot.png" alt="Salvador Fernández Martínez">
+      </div>
+      <div>
+        <div class="credential-line"><span class="code mono">Nombre</span><span>Salvador Fernández Martínez</span></div>
+        <div class="credential-line"><span class="code mono">Ocupación</span><span>Especialista en nóminas, IRPF y Seguridad Social — más de 10 años de experiencia</span></div>
+        <div class="credential-line"><span class="code mono">Formación</span><span>Diplomado en Ciencias Empresariales (Universidad de Murcia) y Máster en asesoría laboral, legal, contable y fiscal</span></div>
+        <div class="credential-line"><span class="code mono">Especialidad</span><span>Fiscalidad, derecho laboral y contabilidad aplicada a la nómina</span></div>
+        <div class="credential-line"><span class="code mono">Ponente</span><span>Accountex España y foros del sector laboral y de Seguridad Social</span></div>
+
+        <p class="about-bio">
+          Soy Salvador, con más de 10 años de experiencia en asesoría laboral, fiscal y contable. He gestionado equipos de asesores laborales, formado a profesionales en el cálculo e interpretación de nóminas, y colaborado directamente con equipos de producto en la adaptación de software de nóminas a los cambios normativos.
+        </p>
+        <p class="about-bio">
+          ¿Quieres entender de verdad cómo funciona una nómina, un contrato o la normativa laboral? Te lo explico de forma clara y práctica, desde la experiencia real, sin fórmulas memorizadas ni teoría vacía.
+        </p>
+        <p class="about-bio">
+          Con <strong>EntenderTuNomina</strong> traslado esa misma vocación fuera del día a día: que cualquier persona pueda leer su nómina sin ayuda de un experto, y que cualquier empresa pueda demostrar que forma bien a su equipo.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="medios">
   <div class="wrap">
     <div class="section-head">
@@ -454,37 +526,6 @@
           <p>Sesión grabada explicando, concepto a concepto, cómo leer una nómina española de principio a fin.</p>
         </div>
         <a class="go" href="https://www.youtube.com/watch?v=sZfwJLb59k8" target="_blank" rel="noopener">Ver →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="sobre">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Quién soy</div>
-      <h2>Diez años traduciendo nóminas al lenguaje humano</h2>
-    </div>
-    <div class="about-grid">
-      <div class="about-photo">
-        <img src="salvador-headshot.png" alt="Salvador Fernández Martínez">
-      </div>
-      <div>
-        <div class="credential-line"><span class="code mono">Nombre</span><span>Salvador Fernández Martínez</span></div>
-        <div class="credential-line"><span class="code mono">Ocupación</span><span>Especialista en nóminas, IRPF y Seguridad Social — más de 10 años de experiencia</span></div>
-        <div class="credential-line"><span class="code mono">Formación</span><span>Diplomado en Ciencias Empresariales (Universidad de Murcia) y Máster en asesoría laboral, legal, contable y fiscal</span></div>
-        <div class="credential-line"><span class="code mono">Especialidad</span><span>Fiscalidad, derecho laboral y contabilidad aplicada a la nómina</span></div>
-        <div class="credential-line"><span class="code mono">Ponente</span><span>Accountex España y foros del sector laboral y de Seguridad Social</span></div>
-
-        <p class="about-bio">
-          Soy Salvador, con más de 10 años de experiencia en asesoría laboral, fiscal y contable. He gestionado equipos de asesores laborales, formado a profesionales en el cálculo e interpretación de nóminas, y colaborado directamente con equipos de producto en la adaptación de software de nóminas a los cambios normativos.
-        </p>
-        <p class="about-bio">
-          ¿Quieres entender de verdad cómo funciona una nómina, un contrato o la normativa laboral? Te lo explico de forma clara y práctica, desde la experiencia real, sin fórmulas memorizadas ni teoría vacía.
-        </p>
-        <p class="about-bio">
-          Con <strong>EntenderTuNomina</strong> traslado esa misma vocación fuera del día a día: que cualquier persona pueda leer su nómina sin ayuda de un experto, y que cualquier empresa pueda demostrar que forma bien a su equipo.
-        </p>
       </div>
     </div>
   </div>
