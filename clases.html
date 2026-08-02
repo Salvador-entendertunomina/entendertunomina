@@ -27,7 +27,7 @@
   nav.links{display:flex;gap:28px;font-size:.92rem;}
   nav.links a{text-decoration:none;color:#B9C2CB;}
   nav.links a:hover, nav.links a.active{color:#fff;}
-  .btn{font-family:'IBM Plex Sans', sans-serif;font-weight:600;font-size:.88rem;padding:10px 20px;border-radius:3px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;border:1px solid transparent;transition:transform .15s ease, box-shadow .15s ease;cursor:pointer;}
+  .btn{font-family:'IBM Plex Sans', sans-serif;font-weight:600;font-size:.88rem;padding:10px 20px;border-radius:3px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;border:1px solid transparent;background:transparent;-webkit-appearance:none;appearance:none;outline:none;transition:transform .15s ease, box-shadow .15s ease;cursor:pointer;}
   .btn-primary{background:var(--ledger);color:#fff;}
   .btn-primary:hover{transform:translateY(-1px);box-shadow:0 8px 18px -8px rgba(47,93,80,0.55);}
   .btn-ghost{border-color:var(--ink);color:var(--ink);}
@@ -279,13 +279,17 @@
 
 <script src="https://bookings.nimbuspop.com/assets/embed.js"></script>
 <script>
-  Bookings.buttonModal({
-    url: "https://entendertunomina.zohobookings.eu/portal-embed#/entendertunomina",
-    text: "Reservar ahora",
-    color: "#2F5D50",
-    textColor: "#ffffff",
-    position: "bottom-right"
-  });
+  function initZohoBooking(){
+    if (window.__zohoBookingInit) return;
+    window.__zohoBookingInit = true;
+    Bookings.buttonModal({
+      url: "https://entendertunomina.zohobookings.eu/portal-embed#/entendertunomina",
+      text: "Reservar ahora",
+      color: "#2F5D50",
+      textColor: "#ffffff",
+      position: "bottom-right"
+    });
+  }
 </script>
 
 <script>
@@ -318,7 +322,10 @@
     var banner = document.getElementById('cookieBanner');
     if (consent === 'accepted') {
       loadGoogleFonts();
-    } else if (consent !== 'rejected') {
+      if (typeof initZohoBooking === 'function') initZohoBooking();
+    } else if (consent === 'rejected') {
+      if (typeof initZohoBooking === 'function') initZohoBooking();
+    } else {
       if (banner) banner.classList.add('visible');
     }
     var acceptBtn = document.getElementById('cookieAccept');
@@ -326,10 +333,12 @@
     if (acceptBtn) acceptBtn.addEventListener('click', function(){
       localStorage.setItem('etn_cookie_consent','accepted');
       loadGoogleFonts();
+      if (typeof initZohoBooking === 'function') initZohoBooking();
       banner.classList.remove('visible');
     });
     if (rejectBtn) rejectBtn.addEventListener('click', function(){
       localStorage.setItem('etn_cookie_consent','rejected');
+      if (typeof initZohoBooking === 'function') initZohoBooking();
       banner.classList.remove('visible');
     });
   })();
