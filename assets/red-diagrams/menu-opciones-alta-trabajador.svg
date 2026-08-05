@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 300" width="480" height="300" role="img">
+<title>Ilustración del proceso — EntenderTuNomina</title>
+
+  <rect x="0" y="0" width="480" height="300" rx="10" fill="#FBFAF6"/>
+  <rect x="0.5" y="0.5" width="479" height="299" rx="9.5" fill="none" stroke="#D8DCE6" stroke-width="1"/>
+  <rect x="0" y="0" width="480" height="34" rx="10" fill="#182B3A"/>
+  <rect x="0" y="24" width="480" height="10" fill="#182B3A"/>
+  <circle cx="18" cy="17" r="4" fill="#AE4A30"/>
+  <circle cx="32" cy="17" r="4" fill="#C79A45"/>
+  <circle cx="46" cy="17" r="4" fill="#2F5D50"/>
+  <text x="240.0" y="21" text-anchor="middle" font-family="IBM Plex Mono, Menlo, Consolas, monospace" font-size="10" letter-spacing="1.5" fill="#F3F1E8">Menú de alta</text>
+  <rect x="362" y="270" width="102" height="20" rx="10" fill="#FBFAF6" stroke="#C79A45" stroke-width="1"/>
+  <text x="413" y="284" text-anchor="middle" font-family="IBM Plex Mono, Menlo, Consolas, monospace" font-size="8" letter-spacing=".5" fill="#20463B" font-weight="600">ENTENDERTUNOMINA.COM</text>
+
+    <rect x="26" y="58" width="428" height="34" rx="4" fill="#FFFFFF" stroke="#C79A45" stroke-width="2"/>
+    <rect x="38" y="71" width="8" height="8" rx="2" fill="#C79A45"/>
+    <text x="56" y="80" font-family="IBM Plex Sans, Arial, sans-serif" font-size="11" font-weight="700" fill="#182B3A">Situación</text>
+    <path d="M434 71 l6 4 l-6 4" fill="none" stroke="#3E5164" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <rect x="26" y="100" width="428" height="34" rx="4" fill="#FBFAF6" stroke="#D8DCE6" stroke-width="1"/>
+    <rect x="38" y="113" width="8" height="8" rx="2" fill="#3E5164"/>
+    <text x="56" y="122" font-family="IBM Plex Sans, Arial, sans-serif" font-size="11" font-weight="500" fill="#182B3A">Fecha real de alta</text>
+    <path d="M434 113 l6 4 l-6 4" fill="none" stroke="#3E5164" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <rect x="26" y="142" width="428" height="34" rx="4" fill="#FBFAF6" stroke="#D8DCE6" stroke-width="1"/>
+    <rect x="38" y="155" width="8" height="8" rx="2" fill="#3E5164"/>
+    <text x="56" y="164" font-family="IBM Plex Sans, Arial, sans-serif" font-size="11" font-weight="500" fill="#182B3A">Grupo de cotización</text>
+    <path d="M434 155 l6 4 l-6 4" fill="none" stroke="#3E5164" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <rect x="26" y="184" width="428" height="34" rx="4" fill="#FBFAF6" stroke="#D8DCE6" stroke-width="1"/>
+    <rect x="38" y="197" width="8" height="8" rx="2" fill="#3E5164"/>
+    <text x="56" y="206" font-family="IBM Plex Sans, Arial, sans-serif" font-size="11" font-weight="500" fill="#182B3A">Tipo de contrato</text>
+    <path d="M434 197 l6 4 l-6 4" fill="none" stroke="#3E5164" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+
+</svg>
