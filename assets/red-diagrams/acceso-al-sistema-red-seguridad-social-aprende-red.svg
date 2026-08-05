@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 300" width="480" height="300" role="img">
+<title>Ilustración del proceso — EntenderTuNomina</title>
+
+  <rect x="0" y="0" width="480" height="300" rx="10" fill="#FBFAF6"/>
+  <rect x="0.5" y="0.5" width="479" height="299" rx="9.5" fill="none" stroke="#D8DCE6" stroke-width="1"/>
+  <rect x="0" y="0" width="480" height="34" rx="10" fill="#182B3A"/>
+  <rect x="0" y="24" width="480" height="10" fill="#182B3A"/>
+  <circle cx="18" cy="17" r="4" fill="#AE4A30"/>
+  <circle cx="32" cy="17" r="4" fill="#C79A45"/>
+  <circle cx="46" cy="17" r="4" fill="#2F5D50"/>
+  <text x="240.0" y="21" text-anchor="middle" font-family="IBM Plex Mono, Menlo, Consolas, monospace" font-size="10" letter-spacing="1.5" fill="#F3F1E8">Oficina Virtual</text>
+  <rect x="362" y="270" width="102" height="20" rx="10" fill="#FBFAF6" stroke="#C79A45" stroke-width="1"/>
+  <text x="413" y="284" text-anchor="middle" font-family="IBM Plex Mono, Menlo, Consolas, monospace" font-size="8" letter-spacing=".5" fill="#20463B" font-weight="600">ENTENDERTUNOMINA.COM</text>
+
+  <circle cx="70" cy="115" r="30" fill="#DFDCCF"/>
+  <path d="M58 108 v-8 a12 12 0 0 1 24 0 v8" fill="none" stroke="#2F5D50" stroke-width="4" stroke-linecap="round"/>
+  <rect x="52" y="106" width="36" height="26" rx="4" fill="#2F5D50"/>
+  <circle cx="70" cy="119" r="3" fill="#C79A45"/>
+  <text x="130" y="105" font-family="IBM Plex Sans, Arial, sans-serif" font-size="15" font-weight="700" fill="#182B3A">Acceso al Sistema RED</text>
+  <text x="130" y="126" font-family="IBM Plex Sans, Arial, sans-serif" font-size="11" fill="#3E5164">Certificado digital o Cl@ve</text>
+  <rect x="130" y="142" width="150" height="30" rx="4" fill="#2F5D50"/>
+  <text x="205" y="161" text-anchor="middle" font-family="IBM Plex Sans, Arial, sans-serif" font-size="11" font-weight="700" fill="#FFFFFF">Entrar en la sede</text>
+  <rect x="26" y="210" width="428" height="1" fill="#D8DCE6"/>
+  <text x="26" y="235" font-family="IBM Plex Mono, Menlo, Consolas, monospace" font-size="9" letter-spacing=".5" fill="#3E5164">ILUSTRACIÓN DEL PROCESO · NO ES UNA CAPTURA REAL</text>
+
+</svg>
