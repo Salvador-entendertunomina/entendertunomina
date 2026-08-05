@@ -322,6 +322,28 @@
     section{padding:64px 0;}
   }
 
+  /* ---------- Banner Biblioteca RED (recurso gratuito) ---------- */
+  #biblioteca-banner .lib-banner{
+    background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden;
+    display:grid;grid-template-columns:1.3fr 1fr;align-items:stretch;
+  }
+  .lib-text{padding:44px 44px;}
+  .lib-text .eyebrow{color:var(--ledger);}
+  .lib-text h2{font-size:clamp(1.6rem,2.6vw,2.1rem);}
+  .lib-text p{color:var(--ink-soft);font-size:.98rem;max-width:50ch;margin:12px 0 24px;}
+  .lib-mini{
+    background:var(--paper-deep);border-left:1px solid var(--line);
+    padding:32px 36px;display:flex;flex-direction:column;justify-content:center;gap:14px;
+  }
+  .lib-mini .lib-line{display:flex;justify-content:space-between;gap:12px;font-size:.88rem;padding:9px 0;border-bottom:1px dashed var(--line);}
+  .lib-mini .lib-line:last-child{border-bottom:none;}
+  .lib-mini .lib-line span:first-child{color:var(--ink-soft);}
+  .lib-mini .lib-line span:last-child{font-family:'IBM Plex Mono', monospace;font-weight:600;color:var(--ledger);text-align:right;}
+  @media (max-width:860px){
+    #biblioteca-banner .lib-banner{grid-template-columns:1fr;}
+    .lib-mini{border-left:none;border-top:1px solid var(--line);}
+  }
+
   /* ---------- Banner de cookies ---------- */
   .cookie-banner{display:none;position:fixed;left:0;right:0;bottom:0;z-index:200;background:var(--ink);border-top:1px solid rgba(255,255,255,0.15);}
   .cookie-banner.visible{display:block;}
@@ -354,7 +376,6 @@
       <a href="index.html" class="active">Inicio</a>
       <a href="#servicios">Servicios</a>
       <a href="cursos.html">Cursos</a>
-      <a href="biblioteca-red.html">Biblioteca RED</a>
       <a href="#sobre">Sobre mí</a>
       <a href="#medios">En medios</a>
       <a href="#divulgacion">Divulgación</a>
@@ -457,6 +478,25 @@
         <div class="cb-line"><span>Bloques temáticos</span><span>8</span></div>
         <div class="cb-line"><span>Formato</span><span>1 a 1, online</span></div>
         <div class="cb-line"><span>Precio</span><span>Desde 20 €</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="biblioteca-banner">
+  <div class="wrap">
+    <div class="lib-banner">
+      <div class="lib-text">
+        <div class="eyebrow">Recurso gratuito</div>
+        <h2>La Biblioteca del Sistema RED,<br>abierta y sin coste.</h2>
+        <p>20 fichas documentales, 22 claves de baja y la guía completa de altas, CNO y becarios — cada dato enlazado a su fuente oficial en la Seguridad Social, el BOE, el INE y el SEPE.</p>
+        <a class="btn btn-primary" href="biblioteca-red.html">Abrir la biblioteca →</a>
+      </div>
+      <div class="lib-mini">
+        <div class="lib-line"><span>Fichas documentales</span><span>20</span></div>
+        <div class="lib-line"><span>Claves de baja</span><span>22</span></div>
+        <div class="lib-line"><span>Guías paso a paso</span><span>Altas · CNO · Becarios</span></div>
+        <div class="lib-line"><span>Coste</span><span>Gratis, sin registro</span></div>
       </div>
     </div>
   </div>
