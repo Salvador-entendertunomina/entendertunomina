@@ -14,7 +14,14 @@
 
   const block = (id, title, tag, body, open=false) => `<details class="block" data-block="${esc(id)}" ${open?'open':''}><summary><span class="block-code mono">${esc(tag||'Consulta')}</span><span class="block-summary-text"><h3>${esc(title)}</h3></span><svg class="chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><div class="block-content">${body}</div></details>`;
 
-  const table = (t) => `<div class="r-block"><h4>${esc(t.title)}</h4><div class="r-table-wrap"><table class="r-table"><thead><tr>${(t.columns||[]).map(c=>`<th>${esc(c)}</th>`).join('')}</tr></thead><tbody>${(t.rows||[]).map(row=>`<tr>${row.map(c=>`<td>${esc(c)}</td>`).join('')}</tr>`).join('')}</tbody></table></div></div>`;
+  const table = (t) => {
+    const rows = t.rows || [];
+    const body = `<div class="r-table-wrap"><table class="r-table"><thead><tr>${(t.columns||[]).map(c=>`<th>${esc(c)}</th>`).join('')}</tr></thead><tbody>${rows.map(row=>`<tr>${row.map(c=>`<td>${esc(c)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+    if (rows.length > 15) {
+      return `<div class="r-block"><details class="r-table-details"><summary><h4>${esc(t.title)}</h4><span class="r-table-count mono">${rows.length} filas · ver tabla</span></summary>${body}</details></div>`;
+    }
+    return `<div class="r-block"><h4>${esc(t.title)}</h4>${body}</div>`;
+  };
 
   const sections = (p) => (p.sections||[]).map(s=>`<div class="r-block"><h4>${esc(s.heading)}</h4>${(s.paragraphs||[]).map(x=>`<p>${esc(x)}</p>`).join('')}${s.bullets?.length?`<ul>${s.bullets.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:''}</div>`).join('');
 
