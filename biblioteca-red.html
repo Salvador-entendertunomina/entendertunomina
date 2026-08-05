@@ -167,6 +167,17 @@
   .r-images{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;}
   .r-images img{width:100%;border:1px solid var(--line);border-radius:6px;background:var(--paper);padding:6px;}
 
+  .r-step img, .r-images img{cursor:zoom-in;transition:opacity .15s ease, box-shadow .15s ease;}
+  .r-step img:hover, .r-images img:hover{opacity:.82;box-shadow:0 0 0 2px var(--gold);}
+
+  /* ---------- Lightbox ---------- */
+  .lightbox{display:none;position:fixed;inset:0;z-index:500;background:rgba(24,43,58,0.92);align-items:center;justify-content:center;padding:40px;}
+  .lightbox.open{display:flex;}
+  .lightbox img{max-width:92vw;max-height:88vh;border-radius:8px;box-shadow:0 30px 70px -20px rgba(0,0,0,.6);background:#fff;cursor:default;}
+  .lightbox-close{position:fixed;top:18px;right:22px;background:none;border:none;color:#F3F1E8;font-size:2rem;line-height:1;cursor:pointer;padding:8px;}
+  .lightbox-close:hover{color:var(--gold);}
+  .lightbox-hint{position:fixed;bottom:20px;left:0;right:0;text-align:center;font-family:'IBM Plex Mono', monospace;font-size:.72rem;letter-spacing:.05em;color:#B9C2CB;}
+
   .r-notice{border:1px solid var(--ledger);background:rgba(47,93,80,0.06);border-radius:6px;padding:16px 18px;margin:16px 0;}
   .r-notice strong{display:block;color:var(--ledger-deep);margin-bottom:4px;}
   .r-notice p{color:var(--ink-soft);font-size:.9rem;margin:0 0 8px;}
@@ -282,6 +293,12 @@
 </div>
 
 <main id="red-content"></main>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Imagen ampliada">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Cerrar imagen">✕</button>
+  <img id="lightboxImg" src="" alt="">
+  <div class="lightbox-hint">Clic fuera de la imagen o Esc para cerrar</div>
+</div>
 
 <footer>
   <div class="wrap" style="display:flex;flex-direction:column;gap:14px;width:100%;">

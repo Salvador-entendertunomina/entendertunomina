@@ -88,6 +88,27 @@
     q('#red-content').innerHTML=altaSection()+bajasSection()+librarySection()+becariosSection();
   }
 
+  const lightbox = q('#lightbox');
+  const lightboxImg = q('#lightboxImg');
+  const openLightbox = (src, alt) => {
+    lightboxImg.src = src;
+    lightboxImg.alt = alt || '';
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+  const closeLightbox = () => {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+    lightboxImg.src = '';
+  };
+  q('#red-content').addEventListener('click', e => {
+    const img = e.target.closest('.r-step img, .r-images img');
+    if (img) openLightbox(img.src, img.alt);
+  });
+  q('#lightboxClose').addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
   q('#red-search').addEventListener('input',e=>{state.query=e.target.value.trim().toLowerCase();render();});
   render();
 })();
