@@ -27,7 +27,7 @@
 
   const steps = (p) => p.steps?.length ? `<div class="r-block"><h4>Procedimiento paso a paso</h4><div class="r-tiles">${p.steps.map(s=>`<div class="r-tile"><span class="num mono">Paso ${esc(s.order)}</span><strong>${esc(s.title)}</strong><p>${esc(s.detail)}</p></div>`).join('')}</div></div>` : '';
 
-  const images = (p) => p.image_urls?.length ? `<div class="r-block"><h4>Imágenes del proceso</h4><div class="r-images">${p.image_urls.map(url=>`<img src="${esc(url)}" alt="Imagen del proceso" loading="lazy">`).join('')}</div></div>` : '';
+  const images = (p) => p.image_urls?.length ? `<div class="r-block"><h4>Imágenes del proceso</h4><div class="r-images">${p.image_urls.map((url,i)=>`<img src="${esc(url)}" alt="${esc(p.title)} — Sistema RED, paso ${i+1} de ${p.image_urls.length}" loading="lazy">`).join('')}</div></div>` : '';
 
   const warnings = (p) => p.warnings?.length ? `<div class="r-warning"><strong>Advertencias y validaciones</strong><ul>${p.warnings.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>` : '';
 
