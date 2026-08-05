@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biblioteca Sistema RED — EntenderTuNomina</title>
+<meta name="description" content="Biblioteca interactiva del Sistema RED: altas, bajas, claves, CNO, becarios y procedimientos oficiales de la Seguridad Social, explicados por Salvador Fernández.">
+<style>
+  :root{
+    --ink:#182B3A;
+    --ink-soft:#3E5164;
+    --paper:#E9E7DE;
+    --paper-deep:#DFDCCF;
+    --card:#FBFAF6;
+    --ledger:#2F5D50;
+    --ledger-deep:#20463B;
+    --gold:#C79A45;
+    --brick:#AE4A30;
+    --line:rgba(24,43,58,0.14);
+    --shadow: 0 18px 40px -20px rgba(24,43,58,0.35);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{font-family:'Fraunces', serif;margin:0 0 .4em;color:var(--ink);letter-spacing:-0.01em;}
+  a{color:inherit;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
+  img{max-width:100%;display:block;}
+
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+    background-image:repeating-linear-gradient(to bottom, transparent 0, transparent 37px, rgba(24,43,58,0.05) 38px);
+    opacity:.5;
+  }
+
+  header{position:sticky;top:0;z-index:50;background:rgba(31,54,77,0.96);backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,0.12);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;max-width:1120px;margin:0 auto;}
+  .brand{font-family:'Fraunces', serif;font-weight:600;font-size:1.15rem;display:flex;align-items:baseline;gap:.5em;color:#F3F1E8;}
+  .brand span.tag{
+    font-family:'IBM Plex Mono', monospace;font-size:.62rem;color:var(--gold);
+    letter-spacing:.14em;font-weight:600;border:1px solid var(--gold);padding:2px 6px;border-radius:3px;
+  }
+  nav.links{display:flex;gap:24px;font-size:.9rem;}
+  nav.links a{text-decoration:none;color:#B9C2CB;}
+  nav.links a:hover, nav.links a.active{color:#fff;}
+  .btn{
+    font-family:'IBM Plex Sans', sans-serif;font-weight:600;font-size:.88rem;
+    padding:10px 20px;border-radius:3px;text-decoration:none;
+    display:inline-flex;align-items:center;gap:8px;border:1px solid transparent;background:transparent;-webkit-appearance:none;appearance:none;outline:none;
+    transition:transform .15s ease, box-shadow .15s ease;cursor:pointer;
+  }
+  .btn-primary{background:var(--ledger);color:#fff;}
+  .btn-primary:hover{transform:translateY(-1px);box-shadow:0 8px 18px -8px rgba(47,93,80,0.55);}
+  .btn-ghost{border-color:var(--ink);color:var(--ink);}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper);}
+  .menu-toggle{display:none;background:none;border:none;font-size:1.4rem;cursor:pointer;color:#F3F1E8;padding:4px;line-height:1;}
+
+  /* ---------- Menú móvil desplegable ---------- */
+  .mobile-panel{
+    position:fixed;top:0;right:0;bottom:0;width:min(78vw, 320px);
+    background:var(--card);z-index:100;box-shadow:-18px 0 40px -20px rgba(24,43,58,0.5);
+    transform:translateX(100%);transition:transform .25s ease;padding:24px;overflow-y:auto;
+  }
+  .mobile-panel.open{transform:translateX(0);}
+  .mobile-panel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;}
+  .mobile-panel-head .brand{color:var(--ink);}
+  .mobile-panel-close{background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--ink);line-height:1;}
+  .mobile-panel nav{display:flex;flex-direction:column;gap:4px;}
+  .mobile-panel nav a{text-decoration:none;color:var(--ink);font-size:1.05rem;font-weight:500;padding:14px 4px;border-bottom:1px solid var(--line);}
+  .mobile-panel nav a.active{color:var(--ledger);}
+  .mobile-panel .btn{margin-top:22px;width:100%;justify-content:center;box-sizing:border-box;}
+  .mobile-overlay{display:none;position:fixed;inset:0;background:rgba(24,43,58,0.4);z-index:99;}
+  .mobile-overlay.open{display:block;}
+
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;font-size:.72rem;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--ledger);font-weight:600;margin-bottom:18px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--ledger);}
+
+  section{position:relative;z-index:1;padding:80px 0;}
+  .section-intro{color:var(--ink-soft);font-size:1.02rem;max-width:760px;margin:0 0 28px;}
+
+  /* ---------- Hero ---------- */
+  .page-hero{padding:72px 0 40px;}
+  .page-hero h1{font-size:clamp(2.1rem,4vw,3.1rem);font-weight:600;line-height:1.1;}
+  .page-hero p.lead{font-size:1.08rem;color:var(--ink-soft);max-width:60ch;margin:18px 0 22px;}
+  .page-hero .text-link{color:var(--ledger);font-weight:700;text-decoration:none;border-bottom:1px solid var(--ledger);font-size:.94rem;}
+  .page-hero .text-link:hover{color:var(--ledger-deep);border-color:var(--ledger-deep);}
+
+  .rb-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-top:36px;}
+  .rb-stat{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:18px 20px;}
+  .rb-stat strong{display:block;font-size:1.7rem;color:var(--ledger);}
+  .rb-stat span{display:block;margin-top:4px;color:var(--ink-soft);font-size:.82rem;}
+
+  /* ---------- Toolbar ---------- */
+  .rb-toolbar{
+    position:sticky;top:74px;z-index:40;
+    background:rgba(251,250,246,0.96);backdrop-filter:blur(8px);
+    border:1px solid var(--line);border-radius:8px;padding:18px 20px;
+    box-shadow:0 8px 22px -16px rgba(24,43,58,.3);
+  }
+  .rb-search{display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:4px;background:#fff;padding:0 14px;}
+  .rb-search span{font-size:20px;color:var(--ink-soft);}
+  .rb-search input{width:100%;border:0;outline:0;padding:12px 0;font:inherit;color:var(--ink);background:transparent;}
+  .rb-filters{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+  .rb-filter{
+    font-family:'IBM Plex Mono', monospace;font-size:.72rem;letter-spacing:.03em;
+    border:1px solid var(--line);background:#fff;color:var(--ink-soft);
+    border-radius:20px;padding:7px 14px;cursor:pointer;
+  }
+  .rb-filter.active,.rb-filter:hover{background:var(--ledger);border-color:var(--ledger);color:#fff;}
+  .rb-jump{display:flex;flex-wrap:wrap;gap:16px;margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);}
+  .rb-jump a{font-family:'IBM Plex Mono', monospace;font-size:.72rem;color:var(--ink-soft);text-decoration:none;}
+  .rb-jump a:hover{color:var(--ledger);}
+
+  /* ---------- Bloques (acordeón, mismo lenguaje visual que /cursos) ---------- */
+  .block-list{display:flex;flex-direction:column;gap:12px;margin-top:8px;}
+  details.block{background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden;}
+  details.block[open]{border-color:var(--ledger);}
+  details.block summary{list-style:none;cursor:pointer;padding:18px 22px;display:flex;align-items:center;gap:16px;}
+  details.block summary::-webkit-details-marker{display:none;}
+  .block-code{
+    font-family:'IBM Plex Mono', monospace;font-size:.66rem;color:var(--ledger);
+    border:1px solid var(--ledger);border-radius:4px;padding:4px 8px;letter-spacing:.03em;
+    white-space:nowrap;text-transform:uppercase;
+  }
+  .block-summary-text{flex:1;}
+  .block-summary-text h3{font-size:1rem;margin:0;font-family:'IBM Plex Sans',sans-serif;font-weight:600;}
+  .chevron{transition:transform .2s ease;color:var(--ink-soft);flex-shrink:0;}
+  details.block[open] .chevron{transform:rotate(180deg);}
+  .block-content{padding:0 22px 22px;border-top:1px dashed var(--line);}
+  .block-content > p.r-summary{margin-top:18px;color:var(--ink-soft);}
+
+  /* ---------- Piezas internas de las fichas ---------- */
+  .r-block{margin:18px 0;}
+  .r-block h4{font-size:.98rem;margin:0 0 8px;}
+  .r-block p{color:var(--ink-soft);font-size:.92rem;line-height:1.6;}
+  .r-block ul{padding-left:18px;margin:8px 0;}
+  .r-block li{margin:6px 0;line-height:1.55;color:var(--ink-soft);font-size:.92rem;}
+
+  .r-tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;}
+  .r-tile{border-top:2px solid var(--ledger);padding:14px 2px 0;}
+  .r-tile .num{font-size:.7rem;color:var(--ledger);letter-spacing:.08em;display:block;margin-bottom:4px;}
+  .r-tile strong{display:block;font-size:.94rem;margin-bottom:4px;}
+  .r-tile p{margin:0;}
+  .r-tile-code{text-align:center;border-top-color:var(--gold);}
+  .r-tile-code strong{font-size:1.8rem;color:var(--ledger);}
+
+  .r-step{display:grid;grid-template-columns:1fr minmax(180px,300px);gap:18px;align-items:start;}
+  .r-step img{width:100%;max-height:250px;object-fit:contain;border:1px solid var(--line);border-radius:6px;background:var(--paper);padding:6px;}
+
+  .r-code-grid{display:grid;grid-template-columns:1fr minmax(160px,220px);gap:18px;align-items:start;}
+
+  .r-table-wrap{overflow:auto;}
+  table.r-table{border-collapse:collapse;width:100%;min-width:520px;}
+  table.r-table th{font-family:'IBM Plex Mono', monospace;font-size:.68rem;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-soft);text-align:left;border-bottom:2px solid var(--line);padding:9px 10px;}
+  table.r-table td{padding:10px;border-bottom:1px solid var(--line);font-size:.88rem;color:var(--ink-soft);vertical-align:top;}
+  table.r-table td:first-child{font-weight:600;color:var(--ledger);}
+
+  .r-images{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;}
+  .r-images img{width:100%;border:1px solid var(--line);border-radius:6px;background:var(--paper);padding:6px;}
+
+  .r-notice{border:1px solid var(--ledger);background:rgba(47,93,80,0.06);border-radius:6px;padding:16px 18px;margin:16px 0;}
+  .r-notice strong{display:block;color:var(--ledger-deep);margin-bottom:4px;}
+  .r-notice p{color:var(--ink-soft);font-size:.9rem;margin:0 0 8px;}
+
+  .r-warning{border:1px solid var(--brick);background:rgba(174,74,48,0.06);border-radius:6px;padding:16px 18px;margin:16px 0;}
+  .r-warning strong{display:block;color:var(--brick);margin-bottom:6px;}
+  .r-warning ul{padding-left:18px;margin:0;}
+  .r-warning li{margin:6px 0;line-height:1.55;color:var(--ink-soft);font-size:.9rem;}
+
+  .r-badge{
+    display:inline-flex;align-items:center;font-family:'IBM Plex Mono', monospace;font-size:.64rem;
+    letter-spacing:.06em;text-transform:uppercase;border-radius:20px;padding:3px 9px;
+    background:var(--ledger);color:#fff;margin:0 8px 8px 0;
+  }
+  .r-source-row{display:flex;flex-wrap:wrap;gap:16px;margin-top:14px;}
+  .r-source{font-family:'IBM Plex Mono', monospace;font-size:.78rem;color:var(--ledger);text-decoration:none;border-bottom:1px solid var(--ledger);}
+  .r-source:hover{color:var(--ledger-deep);border-color:var(--ledger-deep);}
+
+  .rb-empty{border:1px dashed var(--line);padding:26px;border-radius:8px;color:var(--ink-soft);text-align:center;}
+
+  footer{
+    padding:36px 0;border-top:1px solid var(--line);font-size:.82rem;color:var(--ink-soft);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+  }
+
+  @media (max-width:860px){
+    nav.links{display:none;}
+    .menu-toggle{display:block;}
+    .nav > a.btn-primary{display:none;}
+    .rb-stats{grid-template-columns:repeat(2,1fr);}
+    .rb-toolbar{position:static;}
+    .r-step,.r-code-grid{grid-template-columns:1fr;}
+    details.block summary{flex-wrap:wrap;}
+    section{padding:56px 0;}
+  }
+
+  /* ---------- Banner de cookies ---------- */
+  .cookie-banner{display:none;position:fixed;left:0;right:0;bottom:0;z-index:200;background:var(--ink);border-top:1px solid rgba(255,255,255,0.15);}
+  .cookie-banner.visible{display:block;}
+  .cookie-banner-inner{max-width:1120px;margin:0 auto;padding:20px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+  .cookie-banner p{margin:0;color:#C9CFD4;font-size:.86rem;max-width:70ch;}
+  .cookie-banner p a{color:var(--gold);text-decoration:underline;}
+  .cookie-banner-actions{display:flex;gap:10px;flex-shrink:0;}
+  .cookie-banner .btn-ghost{border-color:rgba(255,255,255,0.4);color:#F3F1E8;}
+  .cookie-banner .btn-ghost:hover{background:rgba(255,255,255,0.1);color:#fff;}
+</style>
+</head>
+<body>
+<div class="cookie-banner" id="cookieBanner">
+  <div class="cookie-banner-inner">
+    <p>Usamos cookies técnicas necesarias para el funcionamiento del sitio. Si aceptas, también cargamos tipografías externas (Google Fonts) para mejorar el diseño. Más información en la <a href="cookies.html">Política de Cookies</a>.</p>
+    <div class="cookie-banner-actions">
+      <button id="cookieReject" class="btn btn-ghost">Rechazar</button>
+      <button id="cookieAccept" class="btn btn-primary">Aceptar</button>
+    </div>
+  </div>
+</div>
+
+
+<header>
+  <div class="nav">
+    <a href="index.html" style="text-decoration:none;">
+      <div class="brand">Entender<span style="color:var(--gold)">TuNómina</span> <span class="tag">S.F.</span></div>
+    </a>
+    <nav class="links">
+      <a href="index.html">Inicio</a>
+      <a href="index.html#servicios">Servicios</a>
+      <a href="cursos.html">Cursos</a>
+      <a href="biblioteca-red.html" class="active">Biblioteca RED</a>
+      <a href="index.html#sobre">Sobre mí</a>
+      <a href="index.html#medios">En medios</a>
+      <a href="index.html#contacto">Contacto</a>
+    </nav>
+    <a class="btn btn-primary" href="index.html#contacto">Consultar caso</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
+  </div>
+</header>
+
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<div class="mobile-panel" id="mobilePanel">
+  <div class="mobile-panel-head">
+    <div class="brand" style="font-size:1rem;">Menú</div>
+    <button class="mobile-panel-close" id="mobileClose" aria-label="Cerrar menú">✕</button>
+  </div>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="index.html#servicios">Servicios</a>
+    <a href="cursos.html">Cursos</a>
+    <a href="biblioteca-red.html" class="active">Biblioteca RED</a>
+    <a href="index.html#sobre">Sobre mí</a>
+    <a href="index.html#medios">En medios</a>
+    <a href="index.html#contacto">Contacto</a>
+  </nav>
+  <a class="btn btn-primary" href="index.html#contacto">Consultar caso</a>
+</div>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="eyebrow">Biblioteca interactiva</div>
+    <h1>Sistema RED, explicado<br><em style="font-style:italic;color:var(--ledger);">de fuente oficial a lenguaje claro.</em></h1>
+    <p class="lead">Consulta de afiliación, altas, bajas, claves, CNO, cotización y prácticas formativas — cada ficha enlaza directamente a su fuente oficial en la Seguridad Social, el BOE, el INE o el SEPE.</p>
+    <a class="text-link" target="_blank" rel="noreferrer" href="https://www.seg-social.es/wps/portal/wss/internet/InformacionUtil/5300">Abrir portal oficial del Sistema RED ↗</a>
+    <div class="rb-stats" id="red-stats"></div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="rb-toolbar">
+    <label class="rb-search"><span>⌕</span><input id="red-search" type="search" placeholder="Buscar por código, trámite o concepto..." autocomplete="off"></label>
+    <div class="rb-filters" id="red-filters"></div>
+    <nav class="rb-jump" aria-label="Índice"><a href="#altas">Altas</a><a href="#bajas">Bajas</a><a href="#biblioteca">Biblioteca</a><a href="#becarios">Becarios</a></nav>
+  </div>
+</div>
+
+<main id="red-content"></main>
+
+<footer>
+  <div class="wrap" style="display:flex;flex-direction:column;gap:14px;width:100%;">
+    <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+      <span>© 2026 EntenderTuNomina — Salvador Fernández</span>
+      <span class="mono">Fuentes oficiales: Seguridad Social · BOE · INE · SEPE</span>
+    </div>
+    <div style="display:flex;gap:18px;flex-wrap:wrap;font-size:.82rem;">
+      <a href="aviso-legal.html" style="color:var(--ink-soft);text-decoration:underline;">Aviso legal</a>
+      <a href="privacidad.html" style="color:var(--ink-soft);text-decoration:underline;">Privacidad</a>
+      <a href="cookies.html" style="color:var(--ink-soft);text-decoration:underline;">Cookies</a>
+      <a href="condiciones.html" style="color:var(--ink-soft);text-decoration:underline;">Condiciones de uso</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Botón flotante de reservas — Zoho Bookings -->
+<script src="https://bookings.nimbuspop.com/assets/embed.js"></script>
+<script>
+  function initZohoBooking(){
+    if (window.__zohoBookingInit) return;
+    window.__zohoBookingInit = true;
+    Bookings.buttonModal({
+      url: "https://entendertunomina.zohobookings.eu/portal-embed#/entendertunomina",
+      text: "Reservar ahora",
+      color: "#2F5D50",
+      textColor: "#ffffff",
+      position: "bottom-right"
+    });
+  }
+</script>
+
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const mobilePanel = document.getElementById('mobilePanel');
+  const mobileOverlay = document.getElementById('mobileOverlay');
+  const mobileClose = document.getElementById('mobileClose');
+  function openMenu(){mobilePanel.classList.add('open');mobileOverlay.classList.add('open');document.body.style.overflow='hidden';}
+  function closeMenu(){mobilePanel.classList.remove('open');mobileOverlay.classList.remove('open');document.body.style.overflow='';}
+  menuToggle.addEventListener('click', openMenu);
+  mobileClose.addEventListener('click', closeMenu);
+  mobileOverlay.addEventListener('click', closeMenu);
+  mobilePanel.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+</script>
+
+
+<script>
+  (function(){
+    function loadGoogleFonts(){
+      if (document.getElementById('gfonts-stylesheet')) return;
+      var l1 = document.createElement('link'); l1.rel='preconnect'; l1.href='https://fonts.googleapis.com';
+      var l2 = document.createElement('link'); l2.rel='preconnect'; l2.href='https://fonts.gstatic.com'; l2.crossOrigin='anonymous';
+      var l3 = document.createElement('link'); l3.id='gfonts-stylesheet'; l3.rel='stylesheet';
+      l3.href='https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap';
+      document.head.appendChild(l1);
+      document.head.appendChild(l2);
+      document.head.appendChild(l3);
+    }
+    var consent = localStorage.getItem('etn_cookie_consent');
+    var banner = document.getElementById('cookieBanner');
+    if (consent === 'accepted') {
+      loadGoogleFonts();
+      if (typeof initZohoBooking === 'function') initZohoBooking();
+    } else if (consent === 'rejected') {
+      if (typeof initZohoBooking === 'function') initZohoBooking();
+    } else {
+      if (banner) banner.classList.add('visible');
+    }
+    var acceptBtn = document.getElementById('cookieAccept');
+    var rejectBtn = document.getElementById('cookieReject');
+    if (acceptBtn) acceptBtn.addEventListener('click', function(){
+      localStorage.setItem('etn_cookie_consent','accepted');
+      loadGoogleFonts();
+      if (typeof initZohoBooking === 'function') initZohoBooking();
+      banner.classList.remove('visible');
+    });
+    if (rejectBtn) rejectBtn.addEventListener('click', function(){
+      localStorage.setItem('etn_cookie_consent','rejected');
+      if (typeof initZohoBooking === 'function') initZohoBooking();
+      banner.classList.remove('visible');
+    });
+  })();
+</script>
+
+<script src="red-data.js"></script>
+<script src="red-app.js"></script>
+</body>
+</html>
