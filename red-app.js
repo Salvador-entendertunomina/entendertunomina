@@ -43,8 +43,20 @@
   const altaSection = () => {
     if(!['Todos','Altas'].includes(state.filter)) return '';
     const p=page('001');
-    const stepsHtml=DATA.alta_steps.map((s,i)=>block(`alta-step-${i}`,s[0],s[1],`<div class="r-step"><div><p>${esc(s[3])}</p>${sourceLink(s[4],'Consultar fuente oficial del procedimiento')}</div><img src="${esc(s[2])}" alt="${esc(s[0])}" loading="lazy"></div>`,i===0)).join('');
-    return `<section class="section" id="altas"><div class="wrap"><div class="eyebrow">01 · Guía visual</div><h2>Alta de trabajador con contrato indefinido ordinario</h2><p class="section-intro">Recorrido completo desde los requisitos y el acceso hasta los campos de identificación y la tabla de mecanización.</p><div class="r-block"><h4>Requisitos previos</h4><div class="r-tiles">${[['Autorizado RED','Autorización activa para operar.'],['CCC asignado','Código de cuenta del cliente vinculado.'],['Identificación','DNI, NIE o pasaporte y NAF.'],['Datos laborales','Contrato, jornada, grupo, convenio y ocupación.']].map(x=>`<div class="r-tile"><strong>${esc(x[0])}</strong><p>${esc(x[1])}</p></div>`).join('')}</div></div><div class="block-list">${stepsHtml}</div>${p?sections(p):''}${p?(p.tables||[]).map(table).join(''):''}</div></section>`;
+    const sec = (heading) => p?.sections?.find(s=>s.heading===heading);
+    const tbl = (title) => p?.tables?.find(t=>t.title===title);
+    const sectionBody = (s) => s ? `<div class="r-block"><h4>${esc(s.heading)}</h4>${(s.paragraphs||[]).map(x=>`<p>${esc(x)}</p>`).join('')}${s.bullets?.length?`<ul>${s.bullets.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:''}</div>` : '';
+    const tableBody = (title) => { const t=tbl(title); return t ? table(t) : ''; };
+    // Contenido ampliado de cada paso, tomado de las secciones y tablas de la ficha 001
+    const extraByStep = [
+      sectionBody(sec('Alcance y requisitos')) + tableBody('Requisitos previos visibles'),
+      sectionBody(sec('Navegación')),
+      '',
+      tableBody('Campos de identificación de la pantalla de altas/bajas'),
+      sectionBody(sec('Criterios de cumplimentación')) + tableBody('Campos visibles del alta indefinida ordinaria') + tableBody('Campos de mecanización del alta ordinaria')
+    ];
+    const stepsHtml=DATA.alta_steps.map((s,i)=>block(`alta-step-${i}`,s[0],s[1],`<div class="r-step"><div><p>${esc(s[3])}</p>${sourceLink(s[4],'Consultar fuente oficial del procedimiento')}</div><img src="${esc(s[2])}" alt="${esc(s[0])}" loading="lazy"></div>${extraByStep[i]||''}`,i===0)).join('');
+    return `<section class="section" id="altas"><div class="wrap"><div class="eyebrow">01 · Guía visual</div><h2>Alta de trabajador con contrato indefinido ordinario</h2><p class="section-intro">Recorrido completo desde los requisitos y el acceso hasta los campos de identificación y la tabla de mecanización.</p><div class="r-block"><h4>Requisitos previos</h4><div class="r-tiles">${[['Autorizado RED','Autorización activa para operar.'],['CCC asignado','Código de cuenta del cliente vinculado.'],['Identificación','DNI, NIE o pasaporte y NAF.'],['Datos laborales','Contrato, jornada, grupo, convenio y ocupación.']].map(x=>`<div class="r-tile"><strong>${esc(x[0])}</strong><p>${esc(x[1])}</p></div>`).join('')}</div></div><div class="block-list">${stepsHtml}</div></div></section>`;
   };
 
   const bajasSection = () => {
