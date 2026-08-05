@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://entendertunomina.com/sitemap.xml
+Sitemap: https://www.entendertunomina.com/sitemap.xml
