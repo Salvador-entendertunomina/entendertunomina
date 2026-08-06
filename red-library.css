@@ -180,6 +180,8 @@ table.r-table{border-collapse:collapse;width:100%;min-width:520px;}
 table.r-table th{font-family:'IBM Plex Mono', monospace;font-size:.68rem;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-soft);text-align:left;border-bottom:2px solid var(--line);padding:9px 10px;}
 table.r-table td{padding:10px;border-bottom:1px solid var(--line);font-size:.88rem;color:var(--ink-soft);vertical-align:top;}
 table.r-table td:first-child{font-weight:600;color:var(--ledger);}
+.r-inline-link{color:var(--ledger);text-decoration:underline;text-underline-offset:2px;}
+.r-inline-link:hover{color:var(--ledger-deep);}
 
 .r-images{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;}
 .r-images img{width:100%;border:1px solid var(--line);border-radius:6px;background:var(--paper);padding:6px;}
