@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asignación de CCC o NAF a un autorizado RED — Biblioteca Sistema RED | EntenderTuNomina</title>
+<meta name="description" content="Flujo de solicitud, validación y confirmación de CCC/NAF por el autorizado y el cliente, con errores habituales y estados de confirmación.">
+<link rel="canonical" href="https://www.entendertunomina.com/biblioteca-red/asignacion-ccc-naf-autorizado-red.html">
+<link rel="stylesheet" href="/red-library.css">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.entendertunomina.com/biblioteca-red/asignacion-ccc-naf-autorizado-red.html">
+<meta property="og:title" content="Asignación de CCC o NAF a un autorizado RED — Biblioteca Sistema RED | EntenderTuNomina">
+<meta property="og:description" content="Flujo de solicitud, validación y confirmación de CCC/NAF por el autorizado y el cliente, con errores habituales y estados de confirmación.">
+<meta property="og:image" content="https://www.entendertunomina.com/og-image.png">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Asignación de CCC o NAF a un autorizado RED — Biblioteca Sistema RED | EntenderTuNomina">
+<meta name="twitter:description" content="Flujo de solicitud, validación y confirmación de CCC/NAF por el autorizado y el cliente, con errores habituales y estados de confirmación.">
+<meta name="twitter:image" content="https://www.entendertunomina.com/og-image.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LearningResource",
+  "name": "Asignación de CCC o NAF a un autorizado RED",
+  "description": "Flujo de solicitud, validación y confirmación de CCC/NAF por el autorizado y el cliente, con errores habituales y estados de confirmación.",
+  "url": "https://www.entendertunomina.com/biblioteca-red/asignacion-ccc-naf-autorizado-red.html",
+  "inLanguage": "es",
+  "learningResourceType": "Ficha de consulta",
+  "about": "Sistema RED de la Seguridad Social española",
+  "isPartOf": {
+    "@type": "LearningResource",
+    "name": "Biblioteca Sistema RED",
+    "url": "https://www.entendertunomina.com/biblioteca-red.html"
+  },
+  "author": { "@type": "Person", "name": "Salvador Fernández Martínez" },
+  "publisher": { "@type": "Person", "name": "Salvador Fernández Martínez" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Inicio","item":"https://www.entendertunomina.com/index.html"},
+    {"@type":"ListItem","position":2,"name":"Biblioteca RED","item":"https://www.entendertunomina.com/biblioteca-red.html"},
+    {"@type":"ListItem","position":3,"name":"Asignación de CCC o NAF a un autorizado RED","item":"https://www.entendertunomina.com/biblioteca-red/asignacion-ccc-naf-autorizado-red.html"}
+  ]
+}
+</script>
+</head>
+<body>
+<div class="cookie-banner" id="cookieBanner">
+  <div class="cookie-banner-inner">
+    <p>Usamos cookies técnicas necesarias para el funcionamiento del sitio. Si aceptas, también cargamos tipografías externas (Google Fonts) para mejorar el diseño. Más información en la <a href="/cookies.html">Política de Cookies</a>.</p>
+    <div class="cookie-banner-actions">
+      <button id="cookieReject" class="btn btn-ghost">Rechazar</button>
+      <button id="cookieAccept" class="btn btn-primary">Aceptar</button>
+    </div>
+  </div>
+</div>
+
+<header>
+  <div class="nav">
+    <a href="/index.html" style="text-decoration:none;">
+      <div class="brand">Entender<span style="color:var(--gold)">TuNómina</span> <span class="tag">S.F.</span></div>
+    </a>
+    <nav class="links">
+      <a href="/index.html">Inicio</a>
+      <a href="/index.html#servicios">Servicios</a>
+      <a href="/cursos.html">Cursos</a>
+      <a href="/biblioteca-red.html" class="active">Biblioteca RED</a>
+      <a href="/index.html#sobre">Sobre mí</a>
+      <a href="/index.html#medios">En medios</a>
+      <a href="/index.html#contacto">Contacto</a>
+    </nav>
+    <a class="btn btn-primary" href="/index.html#contacto">Consultar caso</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
+  </div>
+</header>
+
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<div class="mobile-panel" id="mobilePanel">
+  <div class="mobile-panel-head">
+    <div class="brand" style="font-size:1rem;">Menú</div>
+    <button class="mobile-panel-close" id="mobileClose" aria-label="Cerrar menú">✕</button>
+  </div>
+  <nav>
+    <a href="/index.html">Inicio</a>
+    <a href="/index.html#servicios">Servicios</a>
+    <a href="/cursos.html">Cursos</a>
+    <a href="/biblioteca-red.html" class="active">Biblioteca RED</a>
+    <a href="/index.html#sobre">Sobre mí</a>
+    <a href="/index.html#medios">En medios</a>
+    <a href="/index.html#contacto">Contacto</a>
+  </nav>
+  <a class="btn btn-primary" href="/index.html#contacto">Consultar caso</a>
+</div>
+
+<div class="wrap">
+  <nav class="rb-breadcrumb" aria-label="Migas de pan">
+    <a href="/index.html">Inicio</a><span class="sep">/</span><a href="/biblioteca-red.html">Biblioteca RED</a><span class="sep">/</span><span class="current">Asignación de CCC o NAF a un autorizado RED</span>
+  </nav>
+</div>
+
+<section class="entry-hero">
+  <div class="wrap">
+    <div class="eyebrow">autorización &gt; asignaciones</div>
+    <h1>Asignación de CCC o NAF a un autorizado RED</h1>
+    <p class="lead">Flujo de solicitud, validación y confirmación de CCC/NAF por el autorizado y el cliente, con errores habituales y estados de confirmación.</p>
+  </div>
+</section>
+
+<main>
+  <div class="wrap">
+    <div class="entry-body"><p class="r-summary">Flujo de solicitud, validación y confirmación de CCC/NAF por el autorizado y el cliente, con errores habituales y estados de confirmación.</p><div class="r-block"><h4>Qué significa asignar</h4><p>La asignación habilita al autorizado para actuar en nombre del titular del CCC o NAF en afiliación y cotización. Requiere autorización para terceros o profesional colegiado.</p></div><div class="r-block"><h4>Reglas previas</h4><p>Si se cambia de método y ya se confirmaron seguros sociales, la asignación espera al día 1 del mes siguiente; si se anulan los envíos del mes, puede hacerse en el mismo mes. Con el mismo método no hay ese bloqueo.</p></div><div class="r-block"><h4>Validaciones visibles</h4><p>El sistema muestra razón social y observaciones; no permite continuar hasta que todos los CCC sean correctos.</p></div><div class="r-block"><h4>Procedimiento paso a paso</h4><div class="r-tiles"><div class="r-tile"><span class="num mono">Paso 1</span><strong>Abrir gestión</strong><p>Entrar en Gestión de autorizaciones.</p></div><div class="r-tile"><span class="num mono">Paso 2</span><strong>Elegir asignación</strong><p>Abrir Asignación y rescisión de CCC o NAF.</p></div><div class="r-tile"><span class="num mono">Paso 3</span><strong>Cargar identificadores</strong><p>Elegir CCC o NAF e introducir todos los elementos.</p></div><div class="r-tile"><span class="num mono">Paso 4</span><strong>Validar y confirmar</strong><p>Corregir errores, pulsar Validar y confirmar.</p></div><div class="r-tile"><span class="num mono">Paso 5</span><strong>Esperar confirmación</strong><p>Si el NIF difiere, el cliente debe entrar en SEDESS &gt; Empresas &gt; RED.</p></div><div class="r-tile"><span class="num mono">Paso 6</span><strong>Confirmar o denegar</strong><p>Marcar Confirmar o Denegar, pulsar Validar y después Confirmar.</p></div><div class="r-tile"><span class="num mono">Paso 7</span><strong>Gestionar incidencias</strong><p>Usar el autorizado principal o corregir el CCC según el mensaje.</p></div></div></div><div class="r-block"><h4>Validaciones y errores</h4><div class="r-table-wrap"><table class="r-table"><thead><tr><th>Mensaje/resultado</th><th>Significado o acción</th></tr></thead><tbody><tr><td>Correcto</td><td>El CCC supera las validaciones</td></tr><tr><td>CCC ya asignado</td><td>Ya está asignado a la autorización</td></tr><tr><td>CCC inexistente</td><td>No figura en la base de datos TGSS</td></tr><tr><td>NIF no permitido</td><td>Autorización propia/empresa y CCC con NIF diferente</td></tr><tr><td>Error de usuario secundario</td><td>La solicitud debe hacerla el autorizado principal</td></tr><tr><td>Presentada liquidación</td><td>Bloqueo al asignar con distinto método tras presentar liquidación</td></tr><tr><td>No hay solicitudes pendientes</td><td>No existe petición que confirmar o denegar</td></tr></tbody></table></div></div><div class="r-block"><h4>Autenticación del cliente</h4><div class="r-table-wrap"><table class="r-table"><thead><tr><th>Titular</th><th>Métodos visibles</th></tr></thead><tbody><tr><td>CCC de persona física</td><td>Cl@ve permanente, Cl@ve PIN, SMS, DNIe o certificado</td></tr><tr><td>CCC de persona jurídica</td><td>Certificado digital de representante</td></tr></tbody></table></div></div><div class="r-block"><h4>Imágenes del proceso</h4><div class="r-images"><img src="/assets/red-screenshots/ccc-menu-nav.png" alt="Asignación de CCC o NAF a un autorizado RED — Sistema RED, paso 1 de 5" loading="lazy"><img src="/assets/red-screenshots/ccc-submenu-nav.png" alt="Asignación de CCC o NAF a un autorizado RED — Sistema RED, paso 2 de 5" loading="lazy"><img src="/assets/red-screenshots/ccc-seleccion-operacion.png" alt="Asignación de CCC o NAF a un autorizado RED — Sistema RED, paso 3 de 5" loading="lazy"><img src="/assets/red-screenshots/ccc-introducir-ccc.png" alt="Asignación de CCC o NAF a un autorizado RED — Sistema RED, paso 4 de 5" loading="lazy"><img src="/assets/red-screenshots/ccc-confirmacion.png" alt="Asignación de CCC o NAF a un autorizado RED — Sistema RED, paso 5 de 5" loading="lazy"></div></div><div class="r-warning"><strong>Advertencias y validaciones</strong><ul><li>Los usuarios secundarios no pueden presentar solicitudes de asignación.</li><li>Todos los CCC deben quedar correctos antes de continuar.</li><li>Una petición no confirmada ni denegada reaparece en el siguiente acceso.</li></ul></div><div class="r-source-row"><a class="r-source" target="_blank" rel="noreferrer" href="https://www.seg-social.es/wps/portal/wss/internet/InformacionUtil/5300/3620">Consultar fuente oficial ↗</a></div></div>
+    <div class="rb-related"><h4>Fichas relacionadas</h4><div class="rb-related-list"><a href="/biblioteca-red/claves-condicion-desempleado.html">Claves de condición de desempleado de trabajadores</a><a href="/biblioteca-red/tipos-inactividad-sistema-red.html">Tipos de inactividad en el Sistema RED</a><a href="/biblioteca-red/cambio-nie-a-dni-trabajador.html">Cambio de NIE a DNI de un trabajador</a><a href="/biblioteca-red/centro-especial-de-empleo.html">Qué es un Centro Especial de Empleo</a></div></div>
+    <a class="rb-back" href="/biblioteca-red.html">← Volver a la Biblioteca RED</a>
+  </div>
+</main>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Imagen ampliada">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Cerrar imagen">✕</button>
+  <img id="lightboxImg" src="" alt="">
+  <div class="lightbox-hint">Clic fuera de la imagen o Esc para cerrar</div>
+</div>
+
+<footer>
+  <div class="wrap" style="display:flex;flex-direction:column;gap:14px;width:100%;">
+    <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+      <span>© 2026 EntenderTuNomina — Salvador Fernández</span>
+      <span class="mono">Fuentes oficiales: Seguridad Social · BOE · INE · SEPE</span>
+    </div>
+    <div style="display:flex;gap:18px;flex-wrap:wrap;font-size:.82rem;">
+      <a href="/aviso-legal.html" style="color:var(--ink-soft);text-decoration:underline;">Aviso legal</a>
+      <a href="/privacidad.html" style="color:var(--ink-soft);text-decoration:underline;">Privacidad</a>
+      <a href="/cookies.html" style="color:var(--ink-soft);text-decoration:underline;">Cookies</a>
+      <a href="/condiciones.html" style="color:var(--ink-soft);text-decoration:underline;">Condiciones de uso</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Botón flotante de reservas — Zoho Bookings -->
+<script src="https://bookings.nimbuspop.com/assets/embed.js"></script>
+<script>
+  function initZohoBooking(){
+    if (window.__zohoBookingInit) return;
+    window.__zohoBookingInit = true;
+    Bookings.buttonModal({
+      url: "https://entendertunomina.zohobookings.eu/portal-embed#/entendertunomina",
+      text: "Reservar ahora",
+      color: "#2F5D50",
+      textColor: "#ffffff",
+      position: "bottom-right"
+    });
+  }
+</script>
+
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const mobilePanel = document.getElementById('mobilePanel');
+  const mobileOverlay = document.getElementById('mobileOverlay');
+  const mobileClose = document.getElementById('mobileClose');
+  function openMenu(){mobilePanel.classList.add('open');mobileOverlay.classList.add('open');document.body.style.overflow='hidden';}
+  function closeMenu(){mobilePanel.classList.remove('open');mobileOverlay.classList.remove('open');document.body.style.overflow='';}
+  menuToggle.addEventListener('click', openMenu);
+  mobileClose.addEventListener('click', closeMenu);
+  mobileOverlay.addEventListener('click', closeMenu);
+  mobilePanel.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+</script>
+
+<script>
+  (function(){
+    function loadGoogleFonts(){
+      if (document.getElementById('gfonts-stylesheet')) return;
+      var l1 = document.createElement('link'); l1.rel='preconnect'; l1.href='https://fonts.googleapis.com';
+      var l2 = document.createElement('link'); l2.rel='preconnect'; l2.href='https://fonts.gstatic.com'; l2.crossOrigin='anonymous';
+      var l3 = document.createElement('link'); l3.id='gfonts-stylesheet'; l3.rel='stylesheet';
+      l3.href='https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap';
+      document.head.appendChild(l1);
+      document.head.appendChild(l2);
+      document.head.appendChild(l3);
+    }
+    var consent = localStorage.getItem('etn_cookie_consent');
+    var banner = document.getElementById('cookieBanner');
+    if (consent === 'accepted') {
+      loadGoogleFonts();
+      if (typeof initZohoBooking === 'function') initZohoBooking();
+    } else if (consent === 'rejected') {
+      if (typeof initZohoBooking === 'function') initZohoBooking();
+    } else {
+      if (banner) banner.classList.add('visible');
+    }
+    var acceptBtn = document.getElementById('cookieAccept');
+    var rejectBtn = document.getElementById('cookieReject');
+    if (acceptBtn) acceptBtn.addEventListener('click', function(){
+      localStorage.setItem('etn_cookie_consent','accepted');
+      loadGoogleFonts();
+      if (typeof initZohoBooking === 'function') initZohoBooking();
+      banner.classList.remove('visible');
+    });
+    if (rejectBtn) rejectBtn.addEventListener('click', function(){
+      localStorage.setItem('etn_cookie_consent','rejected');
+      if (typeof initZohoBooking === 'function') initZohoBooking();
+      banner.classList.remove('visible');
+    });
+  })();
+</script>
+
+<script>
+  (function(){
+    var lightbox = document.getElementById('lightbox');
+    var lightboxImg = document.getElementById('lightboxImg');
+    var entryBody = document.querySelector('.entry-body');
+    function openLightbox(src, alt){
+      lightboxImg.src = src; lightboxImg.alt = alt || '';
+      lightbox.classList.add('open'); document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox(){
+      lightbox.classList.remove('open'); document.body.style.overflow = ''; lightboxImg.src = '';
+    }
+    if (entryBody) entryBody.addEventListener('click', function(e){
+      var img = e.target.closest('.r-step img, .r-images img');
+      if (img) openLightbox(img.src, img.alt);
+    });
+    document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', function(e){ if (e.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeLightbox(); });
+  })();
+</script>
+</body>
+</html>
