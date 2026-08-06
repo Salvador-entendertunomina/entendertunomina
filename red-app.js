@@ -27,13 +27,6 @@
     q('#red-filters').querySelectorAll('button').forEach(b => b.addEventListener('click', () => { state.filter = b.dataset.filter; render(); }));
   };
 
-  const jump = () => {
-    q('#red-jump').querySelectorAll('button').forEach(b => b.addEventListener('click', () => {
-      state.filter = b.dataset.filter; render();
-      q('#red-content').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }));
-  };
-
   const card = (entry) => `<a class="block-link" href="biblioteca-red/${esc(entry.slug)}.html"><div class="block-link-head"><span class="block-code mono">${esc(entry.category)}</span></div><h3>${esc(entry.title)}</h3><p>${esc(entry.teaser)}</p><span class="block-link-cta">Ver ficha completa →</span></a>`;
 
   const librarySection = () => {
@@ -47,6 +40,5 @@
   }
 
   q('#red-search').addEventListener('input', e => { state.query = e.target.value.trim().toLowerCase(); render(); });
-  jump();
   render();
 })();
