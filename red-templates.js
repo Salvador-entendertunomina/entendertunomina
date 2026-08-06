@@ -16,6 +16,25 @@
     return '/' + String(url).replace(/^\/+/, '');
   };
 
+  // Algunos textos de origen (celdas de tabla) traen enlaces en formato Markdown
+  // [texto](url) sin convertir. Los pasa a <a> reales; el resto del texto se escapa igual que esc().
+  const MD_LINK_RE = /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g;
+  const richText = (value) => {
+    const str = String(value ?? '');
+    if (!MD_LINK_RE.test(str)) return esc(str);
+    MD_LINK_RE.lastIndex = 0;
+    let out = '';
+    let lastIndex = 0;
+    let m;
+    while ((m = MD_LINK_RE.exec(str))) {
+      out += esc(str.slice(lastIndex, m.index));
+      out += `<a class="r-inline-link" target="_blank" rel="noreferrer" href="${esc(m[2])}">${esc(m[1])}</a>`;
+      lastIndex = MD_LINK_RE.lastIndex;
+    }
+    out += esc(str.slice(lastIndex));
+    return out;
+  };
+
   const officialUrl = (DATA, url) => url || DATA.official_home;
   const sourceLink = (DATA, url, label = 'Consultar fuente oficial') =>
     `<a class="r-source" target="_blank" rel="noreferrer" href="${esc(officialUrl(DATA, url))}">${esc(label)} ↗</a>`;
@@ -25,7 +44,7 @@
 
   const table = (t) => {
     const rows = t.rows || [];
-    const body = `<div class="r-table-wrap"><table class="r-table"><thead><tr>${(t.columns || []).map(c => `<th>${esc(c)}</th>`).join('')}</tr></thead><tbody>${rows.map(row => `<tr>${row.map(c => `<td>${esc(c)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+    const body = `<div class="r-table-wrap"><table class="r-table"><thead><tr>${(t.columns || []).map(c => `<th>${esc(c)}</th>`).join('')}</tr></thead><tbody>${rows.map(row => `<tr>${row.map(c => `<td>${richText(c)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
     if (rows.length > 15) {
       return `<div class="r-block"><details class="r-table-details"><summary><h4>${esc(t.title)}</h4><span class="r-table-count mono">${rows.length} filas · ver tabla</span></summary>${body}</details></div>`;
     }
@@ -158,5 +177,5 @@
     return entries;
   };
 
-  return { esc, assetUrl, officialUrl, sourceLink, block, table, sections, steps, images, warnings, fullPageBody, altaGuideBody, bajaCatalogBody, becariosBody, buildEntries, truncate };
+  return { esc, richText, assetUrl, officialUrl, sourceLink, block, table, sections, steps, images, warnings, fullPageBody, altaGuideBody, bajaCatalogBody, becariosBody, buildEntries, truncate };
 });
