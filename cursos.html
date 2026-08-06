@@ -29,11 +29,42 @@
     "name": "Salvador Fernández Martínez",
     "url": "https://www.entendertunomina.com/"
   },
-  "hasCourseInstance": {
-    "@type": "CourseInstance",
-    "courseMode": "online",
-    "courseWorkload": "PT23H"
-  },
+  "hasCourseInstance": [
+    {
+      "@type": "CourseInstance",
+      "courseMode": "online",
+      "name": "Clase suelta",
+      "description": "Una clase de 1 hora sobre un tema concreto del temario.",
+      "offers": {
+        "@type": "Offer",
+        "price": "20",
+        "priceCurrency": "EUR"
+      }
+    },
+    {
+      "@type": "CourseInstance",
+      "courseMode": "online",
+      "name": "Bloque completo",
+      "description": "Todas las clases de un bloque temático (2-3 clases).",
+      "offers": {
+        "@type": "Offer",
+        "price": "50",
+        "priceCurrency": "EUR"
+      }
+    },
+    {
+      "@type": "CourseInstance",
+      "courseMode": "online",
+      "name": "Curso completo",
+      "description": "Los 8 bloques, 23 clases, de cero a saber elaborar y explicar una nómina completa.",
+      "courseWorkload": "PT23H",
+      "offers": {
+        "@type": "Offer",
+        "price": "399",
+        "priceCurrency": "EUR"
+      }
+    }
+  ],
   "offers": {
     "@type": "AggregateOffer",
     "priceCurrency": "EUR",
