@@ -3,42 +3,39 @@
   const T = window.RedTemplates;
   const state = { filter: 'Todos', query: '' };
   const q = (sel) => document.querySelector(sel);
-  const esc = T.esc;
 
+  // El grid de fichas ya viene renderizado como HTML estático (para que
+  // los crawlers vean el contenido real sin ejecutar JS). Aquí solo se
+  // construye el índice de búsqueda (texto completo de cada ficha) y se
+  // filtran/ocultan las tarjetas ya existentes en el DOM.
   const entries = T.buildEntries(DATA);
+  const searchIndex = new Map(entries.map(e => [e.slug, e.searchText]));
 
-  const matches = (entry) => !state.query || entry.searchText.includes(state.query.toLowerCase());
-  const inFilter = (entry) => state.filter === 'Todos' || entry.groups.includes(state.filter);
-  const visibleEntries = () => entries.filter(e => inFilter(e) && matches(e));
+  const cards = Array.from(document.querySelectorAll('#red-card-grid .block-link'));
+  const emptyEl = q('#red-empty');
 
-  const stats = () => {
-    const cards = [
-      ['' + entries.length, 'fichas indexables'],
-      ['' + DATA.baja_pdf_codes.length, 'claves de baja'],
-      ['' + DATA.pages.filter(p => p.image_urls?.length).length, 'fuentes con imágenes'],
-      ['22', 'códigos de baja detallados']
-    ];
-    q('#red-stats').innerHTML = cards.map(([a, b]) => `<div class="rb-stat"><strong class="mono">${esc(a)}</strong><span>${esc(b)}</span></div>`).join('');
-  };
-
-  const filters = () => {
-    const names = ['Todos', 'Altas', 'Bajas', 'CNO', 'Identidad', 'Claves', 'Biblioteca', 'Becarios'];
-    q('#red-filters').innerHTML = names.map(n => `<button type="button" class="rb-filter ${state.filter === n ? 'active' : ''}" data-filter="${n}">${n}</button>`).join('');
-    q('#red-filters').querySelectorAll('button').forEach(b => b.addEventListener('click', () => { state.filter = b.dataset.filter; render(); }));
-  };
-
-  const card = (entry) => `<a class="block-link" href="biblioteca-red/${esc(entry.slug)}.html"><div class="block-link-head"><span class="block-code mono">${esc(entry.category)}</span></div><h3>${esc(entry.title)}</h3><p>${esc(entry.teaser)}</p><span class="block-link-cta">Ver ficha completa →</span></a>`;
-
-  const librarySection = () => {
-    const list = visibleEntries();
-    return `<section class="section" id="biblioteca"><div class="wrap"><div class="eyebrow">Consulta completa</div><h2>Biblioteca del Sistema RED</h2><p class="section-intro">Cada ficha tiene su propia página, con procedimiento, tablas, imágenes, advertencias y enlace a la fuente oficial.</p><div class="card-grid">${list.length ? list.map(card).join('') : '<div class="rb-empty">No hay fichas que coincidan con la búsqueda.</div>'}</div></div></section>`;
+  const matches = (card) => {
+    const groups = (card.dataset.groups || '').split(' ');
+    if (state.filter !== 'Todos' && !groups.includes(state.filter)) return false;
+    if (!state.query) return true;
+    return (searchIndex.get(card.dataset.slug) || '').includes(state.query);
   };
 
   function render() {
-    filters(); stats();
-    q('#red-content').innerHTML = librarySection();
+    let visible = 0;
+    cards.forEach(card => {
+      const show = matches(card);
+      card.hidden = !show;
+      if (show) visible++;
+    });
+    if (emptyEl) emptyEl.hidden = visible !== 0;
   }
 
+  q('#red-filters').querySelectorAll('button').forEach(b => b.addEventListener('click', () => {
+    state.filter = b.dataset.filter;
+    q('#red-filters').querySelectorAll('button').forEach(x => x.classList.toggle('active', x === b));
+    render();
+  }));
+
   q('#red-search').addEventListener('input', e => { state.query = e.target.value.trim().toLowerCase(); render(); });
-  render();
 })();
