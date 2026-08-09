@@ -118,6 +118,7 @@ function pageHtml(entry) {
       <a href="/index.html#servicios">Servicios</a>
       <a href="/cursos.html">Cursos</a>
       <a href="/biblioteca-red.html" class="active">Biblioteca RED</a>
+      <a href="/divulgacion.html">Divulgación</a>
       <a href="/index.html#sobre">Sobre mí</a>
       <a href="/index.html#medios">En medios</a>
       <a href="/index.html#contacto">Contacto</a>
@@ -138,6 +139,7 @@ function pageHtml(entry) {
     <a href="/index.html#servicios">Servicios</a>
     <a href="/cursos.html">Cursos</a>
     <a href="/biblioteca-red.html" class="active">Biblioteca RED</a>
+    <a href="/divulgacion.html">Divulgación</a>
     <a href="/index.html#sobre">Sobre mí</a>
     <a href="/index.html#medios">En medios</a>
     <a href="/index.html#contacto">Contacto</a>
