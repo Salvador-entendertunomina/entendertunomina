@@ -16,3 +16,4 @@ Cómo funciona:
 | Slug | Commit | Estado | Programado para | Publicado el |
 |---|---|---|---|---|
 | como-se-calcula-el-irpf-de-tu-nomina | bd2bf6a | publicado | 2026-08-09 | 2026-08-09 |
+| por-que-me-descuentan-tanto-de-la-nomina | 4ace9c3 | publicado (a petición expresa, fuera de cola) | 2026-08-09 | 2026-08-09 |
