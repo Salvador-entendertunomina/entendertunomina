@@ -42,8 +42,8 @@ function relatedBlock(entry) {
 }
 
 function pageHtml(entry) {
-  const title = `${entry.title} — Biblioteca Sistema RED | EntenderTuNomina`;
-  const description = T.truncate(entry.summary, 155);
+  const title = entry.metaTitle || `${entry.title} — Biblioteca Sistema RED | EntenderTuNomina`;
+  const description = entry.metaDescription || T.truncate(entry.summary, 155);
   const canonical = `${SITE}/biblioteca-red/${entry.slug}.html`;
   const body = entry.bodyHtml(DATA);
 

@@ -156,6 +156,8 @@
         title: p.title,
         category: p.category,
         summary: p.summary,
+        metaTitle: p.metaTitle,
+        metaDescription: p.metaDescription,
         teaser: truncate(p.summary, 130),
         groups: ENTRY_GROUPS[p.id] || ['Biblioteca'],
         searchText: [pageSearchText(p), ...extra].join(' ').toLowerCase(),
