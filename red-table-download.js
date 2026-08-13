@@ -48,14 +48,7 @@
     return { columns, rows };
   }
 
-  function buildPdf(title, columns, rows) {
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF({ orientation: 'landscape', unit: 'pt', format: 'a4' });
-    const pageWidth = doc.internal.pageSize.getWidth();
-    const pageHeight = doc.internal.pageSize.getHeight();
-    const margin = 40;
-
-    // Membrete
+  function drawLetterhead(doc, pageWidth, margin) {
     doc.setFillColor(47, 93, 80);
     doc.roundedRect(margin, 26, 32, 32, 6, 6, 'F');
     doc.setTextColor(255, 255, 255);
@@ -80,24 +73,11 @@
     doc.setDrawColor(199, 154, 69);
     doc.setLineWidth(1.1);
     doc.line(margin, 70, pageWidth - margin, 70);
+  }
 
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(12);
-    doc.setTextColor(24, 43, 58);
-    doc.text(title, margin, 90, { maxWidth: pageWidth - margin * 2 });
-
-    doc.autoTable({
-      startY: 100,
-      head: [columns],
-      body: rows,
-      margin: { left: margin, right: margin, bottom: 42 },
-      styles: { font: 'helvetica', fontSize: 7.6, cellPadding: 5, textColor: [62, 81, 100], lineColor: [223, 220, 207], lineWidth: 0.5, overflow: 'linebreak' },
-      headStyles: { fillColor: [47, 93, 80], textColor: 255, fontStyle: 'bold', fontSize: 7.8 },
-      alternateRowStyles: { fillColor: [251, 250, 246] }
-    });
-
-    // El pie se dibuja en una pasada final (no en didDrawPage) porque el número
-    // total de páginas no se conoce hasta que autoTable termina de paginar.
+  function drawFooters(doc, pageWidth, pageHeight, margin) {
+    // Se dibuja en una pasada final (no en didDrawPage) porque el número total
+    // de páginas no se conoce hasta que autoTable termina de paginar.
     const totalPages = doc.internal.getNumberOfPages();
     for (let i = 1; i <= totalPages; i++) {
       doc.setPage(i);
@@ -107,8 +87,66 @@
       doc.text('Fuente: Sistema RED / Tesorería General de la Seguridad Social — entendertunomina.com', margin, pageHeight - 18);
       doc.text('Página ' + i + ' de ' + totalPages, pageWidth - margin, pageHeight - 18, { align: 'right' });
     }
+  }
 
+  const TABLE_STYLES = {
+    styles: { font: 'helvetica', fontSize: 7.6, cellPadding: 5, textColor: [62, 81, 100], lineColor: [223, 220, 207], lineWidth: 0.5, overflow: 'linebreak' },
+    headStyles: { fillColor: [47, 93, 80], textColor: 255, fontStyle: 'bold', fontSize: 7.8 },
+    alternateRowStyles: { fillColor: [251, 250, 246] }
+  };
+
+  function buildPdf(title, columns, rows) {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({ orientation: 'landscape', unit: 'pt', format: 'a4' });
+    const pageWidth = doc.internal.pageSize.getWidth();
+    const pageHeight = doc.internal.pageSize.getHeight();
+    const margin = 40;
+
+    drawLetterhead(doc, pageWidth, margin);
+
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(12);
+    doc.setTextColor(24, 43, 58);
+    doc.text(title, margin, 90, { maxWidth: pageWidth - margin * 2 });
+
+    doc.autoTable(Object.assign({ startY: 100, head: [columns], body: rows, margin: { left: margin, right: margin, bottom: 42 } }, TABLE_STYLES));
+
+    drawFooters(doc, pageWidth, pageHeight, margin);
     doc.save('entendertunomina-' + slugify(title) + '.pdf');
+  }
+
+  function buildFullPdf(pageTitle, sections) {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({ orientation: 'landscape', unit: 'pt', format: 'a4' });
+    const pageWidth = doc.internal.pageSize.getWidth();
+    const pageHeight = doc.internal.pageSize.getHeight();
+    const margin = 40;
+
+    drawLetterhead(doc, pageWidth, margin);
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(12);
+    doc.setTextColor(24, 43, 58);
+    doc.text(pageTitle, margin, 90, { maxWidth: pageWidth - margin * 2 });
+
+    let cursorY = 102;
+    sections.forEach(sec => {
+      // Evita dejar un subtítulo huérfano al final de la página: si no cabe la
+      // cabecera de sección más un par de filas, se pasa a la siguiente página.
+      if (cursorY > pageHeight - 130) {
+        doc.addPage();
+        cursorY = margin + 10;
+      }
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(10.5);
+      doc.setTextColor(24, 43, 58);
+      doc.text(sec.title, margin, cursorY, { maxWidth: pageWidth - margin * 2 });
+
+      doc.autoTable(Object.assign({ startY: cursorY + 8, head: [sec.columns], body: sec.rows, margin: { left: margin, right: margin, bottom: 42 } }, TABLE_STYLES));
+      cursorY = doc.lastAutoTable.finalY + 26;
+    });
+
+    drawFooters(doc, pageWidth, pageHeight, margin);
+    doc.save('entendertunomina-' + slugify(pageTitle) + '.pdf');
   }
 
   function findTitle(block, tableWrap) {
@@ -151,14 +189,25 @@
     });
   }
 
-  function init() {
-    const blocks = document.querySelectorAll('.entry-body .r-block');
-    blocks.forEach(block => {
+  function findDownloadableTables() {
+    const found = [];
+    document.querySelectorAll('.entry-body .r-block').forEach(block => {
       const tableWrap = block.querySelector(':scope > .r-table-wrap, :scope > details.r-table-details > .r-table-wrap');
       if (!tableWrap) return;
       const table = tableWrap.querySelector('table.r-table');
       if (!table) return;
-      const title = findTitle(block, tableWrap);
+      found.push({ block, tableWrap, table, title: findTitle(block, tableWrap) });
+    });
+    return found;
+  }
+
+  function pageHeading() {
+    const h1 = document.querySelector('.entry-hero h1');
+    return h1 ? h1.textContent.trim() : document.title;
+  }
+
+  function initPerTableButtons(entries) {
+    entries.forEach(({ block, tableWrap, table, title }) => {
       const btn = makeButton();
       wireButton(btn, () => {
         const { columns, rows } = extractTable(table);
@@ -183,6 +232,44 @@
         row.appendChild(btn);
       }
     });
+  }
+
+  function initDownloadAllButton(btn, entries) {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (btn.disabled) return;
+      const original = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = 'Generando…';
+      ensureLibs()
+        .then(() => {
+          const sections = entries.map(({ table, title }) => {
+            const { columns, rows } = extractTable(table);
+            return { title: pdfSafeText(title), columns, rows };
+          }).filter(sec => sec.rows.length);
+          if (!sections.length) throw new Error('Sin tablas');
+          buildFullPdf(pdfSafeText(pageHeading()), sections);
+        })
+        .catch(err => {
+          console.error(err);
+          alert('No se ha podido generar el PDF. Inténtalo de nuevo.');
+        })
+        .finally(() => {
+          btn.disabled = false;
+          btn.innerHTML = original;
+        });
+    });
+  }
+
+  function init() {
+    const entries = findDownloadableTables();
+    if (!entries.length) return;
+    const allBtn = document.querySelector('[data-download-all]');
+    if (allBtn) {
+      initDownloadAllButton(allBtn, entries);
+    } else {
+      initPerTableButtons(entries);
+    }
   }
 
   if (document.readyState === 'loading') {

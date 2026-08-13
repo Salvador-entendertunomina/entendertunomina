@@ -148,7 +148,7 @@
   const bonificacionesCatalogBody = (DATA) => {
     const p = DATA.pages.find(x => x.id === 'bonificaciones');
     const b = DATA.bonificaciones_data;
-    const notice = `<div class="r-notice"><span class="r-badge">${b.categories.reduce((n, c) => n + c.rows.length, 0)} bonificaciones</span><strong>Cada código de contrato enlaza directamente a su ficha en la guía de claves de contrato.</strong><p>Pulsa cualquier código (por ejemplo 150 o 421) para ver su significado completo.</p></div>`;
+    const notice = `<div class="r-notice"><span class="r-badge">${b.categories.reduce((n, c) => n + c.rows.length, 0)} bonificaciones</span><strong>Cada código de contrato enlaza directamente a su ficha en la guía de claves de contrato.</strong><p>Pulsa cualquier código (por ejemplo 150 o 421) para ver su significado completo.</p><button type="button" class="r-pdf-btn r-pdf-btn-all" data-download-all><span aria-hidden="true">⬇</span> Descargar todas las bonificaciones en PDF</button></div>`;
     const catsHtml = b.categories.map(bonifCategoryTable).join('');
     const reqTable = alwaysCollapsibleTable({ title: 'Anexo I · Requisitos (R1–R24)', columns: ['Clave', 'Requisito'], rows: b.requisitos });
     const exclTable = alwaysCollapsibleTable({ title: 'Anexo I · Exclusiones (E1–E14)', columns: ['Clave', 'Exclusión'], rows: b.exclusiones });

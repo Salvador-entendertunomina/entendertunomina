@@ -185,6 +185,8 @@ a.block-link .block-link-cta{
 }
 .r-pdf-btn:hover{border-color:var(--ledger);color:var(--ledger-deep);}
 .r-pdf-btn:disabled{opacity:.6;cursor:wait;}
+.r-pdf-btn-all{margin-top:6px;padding:9px 18px;font-size:.76rem;background:var(--ledger);color:#fff;border-color:var(--ledger);white-space:normal;text-align:left;max-width:100%;}
+.r-pdf-btn-all:hover{background:var(--ledger-deep);border-color:var(--ledger-deep);color:#fff;}
 
 .r-table-wrap{overflow:auto;}
 table.r-table{border-collapse:collapse;width:100%;min-width:520px;}
