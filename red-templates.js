@@ -139,13 +139,19 @@
     return `<div class="r-block" id="${esc(cat.id)}"><details class="r-table-details"><summary><h4>${esc(cat.num)} — ${esc(cat.title)}</h4><span class="r-table-count mono">${cat.rows.length} bonificaciones · ver tabla</span></summary><p>${esc(cat.normativa)} · ${esc(cat.vigencia)}</p>${body}</details></div>`;
   };
 
+  const alwaysCollapsibleTable = (t) => {
+    const rows = t.rows || [];
+    const body = `<div class="r-table-wrap"><table class="r-table"><thead><tr>${(t.columns || []).map(c => `<th>${esc(c)}</th>`).join('')}</tr></thead><tbody>${rows.map(row => `<tr>${row.map(c => `<td>${richText(c)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+    return `<div class="r-block"><details class="r-table-details"><summary><h4>${esc(t.title)}</h4><span class="r-table-count mono">${rows.length} filas · ver tabla</span></summary>${body}</details></div>`;
+  };
+
   const bonificacionesCatalogBody = (DATA) => {
     const p = DATA.pages.find(x => x.id === 'bonificaciones');
     const b = DATA.bonificaciones_data;
     const notice = `<div class="r-notice"><span class="r-badge">${b.categories.reduce((n, c) => n + c.rows.length, 0)} bonificaciones</span><strong>Cada código de contrato enlaza directamente a su ficha en la guía de claves de contrato.</strong><p>Pulsa cualquier código (por ejemplo 150 o 421) para ver su significado completo.</p></div>`;
     const catsHtml = b.categories.map(bonifCategoryTable).join('');
-    const reqTable = table({ title: 'Anexo I · Requisitos (R1–R24)', columns: ['Clave', 'Requisito'], rows: b.requisitos });
-    const exclTable = table({ title: 'Anexo I · Exclusiones (E1–E14)', columns: ['Clave', 'Exclusión'], rows: b.exclusiones });
+    const reqTable = alwaysCollapsibleTable({ title: 'Anexo I · Requisitos (R1–R24)', columns: ['Clave', 'Requisito'], rows: b.requisitos });
+    const exclTable = alwaysCollapsibleTable({ title: 'Anexo I · Exclusiones (E1–E14)', columns: ['Clave', 'Exclusión'], rows: b.exclusiones });
     const warn = p?.warnings?.length ? `<div class="r-warning"><strong>Antes de aplicar una bonificación</strong><ul>${p.warnings.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div>` : '';
     return `${sections(p)}${notice}${catsHtml}${reqTable}${exclTable}${warn}<div class="r-source-row"><a class="r-source" href="/biblioteca-red/claves-de-contrato-de-trabajo.html">Ver guía de claves de contrato ↗</a></div>`;
   };
