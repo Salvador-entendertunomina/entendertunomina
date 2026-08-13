@@ -20,6 +20,10 @@ const bySlug = Object.fromEntries(entries.map(e => [e.id, e]));
 
 // Fichas relacionadas manuales para las 3 entradas "especiales" (guía de alta,
 // catálogo de bajas, becarios), que no comparten grupo de filtro con nadie más.
+// Fichas con botón de descarga en PDF para sus tablas (carga red-table-download.js,
+// que a su vez solo carga jsPDF al pulsar el botón por primera vez).
+const TABLE_DOWNLOAD_IDS = ['contrato', 'bonificaciones'];
+
 const RELATED_OVERRIDE = {
   '001': ['nss', 'cno', 'ccc', 'empresa'],
   'baja': ['plazos', 'obligados', 'casia', 'diferencias'],
@@ -285,7 +289,7 @@ function pageHtml(entry) {
     document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeLightbox(); });
   })();
 </script>
-</body>
+${TABLE_DOWNLOAD_IDS.includes(entry.id) ? '<script src="/red-table-download.js"></script>\n' : ''}</body>
 </html>
 `;
 }
