@@ -136,10 +136,7 @@
   const bonifCategoryTable = (cat) => {
     const rowsHtml = cat.rows.map(row => `<tr>${row.map((c, i) => `<td>${i === 3 ? linkContractCodes(c) : richText(c)}</td>`).join('')}</tr>`).join('');
     const body = `<div class="r-table-wrap"><table class="r-table"><thead><tr>${cat.columns.map(c => `<th>${esc(c)}</th>`).join('')}</tr></thead><tbody>${rowsHtml}</tbody></table></div>`;
-    if (cat.rows.length > 15) {
-      return `<div class="r-block" id="${esc(cat.id)}"><details class="r-table-details"><summary><h4>${esc(cat.num)} — ${esc(cat.title)}</h4><span class="r-table-count mono">${cat.rows.length} bonificaciones · ver tabla</span></summary><p>${esc(cat.normativa)} · ${esc(cat.vigencia)}</p>${body}</details></div>`;
-    }
-    return `<div class="r-block" id="${esc(cat.id)}"><h4>${esc(cat.num)} — ${esc(cat.title)}</h4><p>${esc(cat.normativa)} · ${esc(cat.vigencia)}</p>${body}</div>`;
+    return `<div class="r-block" id="${esc(cat.id)}"><details class="r-table-details"><summary><h4>${esc(cat.num)} — ${esc(cat.title)}</h4><span class="r-table-count mono">${cat.rows.length} bonificaciones · ver tabla</span></summary><p>${esc(cat.normativa)} · ${esc(cat.vigencia)}</p>${body}</details></div>`;
   };
 
   const bonificacionesCatalogBody = (DATA) => {
