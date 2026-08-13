@@ -111,7 +111,7 @@ section{position:relative;z-index:1;padding:80px 0;}
 
 /* ---------- Bloques (acordeón, mismo lenguaje visual que /cursos) ---------- */
 .block-list{display:flex;flex-direction:column;gap:12px;margin-top:8px;}
-details.block{background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden;}
+details.block{background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden;scroll-margin-top:96px;}
 details.block[open]{border-color:var(--ledger);}
 details.block summary{list-style:none;cursor:pointer;padding:18px 22px;display:flex;align-items:center;gap:16px;}
 details.block summary::-webkit-details-marker{display:none;}
@@ -145,7 +145,7 @@ a.block-link .block-link-cta{
 }
 
 /* ---------- Piezas internas de las fichas ---------- */
-.r-block{margin:18px 0;}
+.r-block{margin:18px 0;scroll-margin-top:96px;}
 .r-block h4{font-size:.98rem;margin:0 0 8px;}
 .r-block p{color:var(--ink-soft);font-size:.92rem;line-height:1.6;}
 .r-block ul{padding-left:18px;margin:8px 0;}

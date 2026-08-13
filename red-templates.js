@@ -40,7 +40,7 @@
     `<a class="r-source" target="_blank" rel="noreferrer" href="${esc(officialUrl(DATA, url))}">${esc(label)} ↗</a>`;
 
   const block = (id, title, tag, body, open = false) =>
-    `<details class="block" data-block="${esc(id)}" ${open ? 'open' : ''}><summary><span class="block-code mono">${esc(tag || 'Consulta')}</span><span class="block-summary-text"><h3>${esc(title)}</h3></span><svg class="chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><div class="block-content">${body}</div></details>`;
+    `<details class="block" id="${esc(id)}" data-block="${esc(id)}" ${open ? 'open' : ''}><summary><span class="block-code mono">${esc(tag || 'Consulta')}</span><span class="block-summary-text"><h3>${esc(title)}</h3></span><svg class="chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><div class="block-content">${body}</div></details>`;
 
   const table = (t) => {
     const rows = t.rows || [];
@@ -102,7 +102,58 @@
     return `${notice}<div class="block-list">${sectionsHtml}</div>${tablesHtml}${warn}`;
   };
 
-  // Catálogo de las 21 fichas indexables: 20 de DATA.pages + becarios_official.
+  const GROUP_LABELS = {
+    '1xx': ['1xx', 'Indefinido · Tiempo completo'],
+    '2xx': ['2xx', 'Indefinido · Tiempo parcial'],
+    '3xx': ['3xx', 'Fijo discontinuo'],
+    '4xx': ['4xx', 'Temporal · Tiempo completo'],
+    '5xx': ['5xx', 'Temporal · Tiempo parcial']
+  };
+  const GROUP_ORDER = ['1xx', '2xx', '3xx', '4xx', '5xx'];
+  const GROUP_TO_BONUS_ANCHOR = { '1xx': 'indefinida-inicial', '2xx': 'indefinida-inicial', '3xx': 'indefinida-inicial', '4xx': 'temporales-no-formativos', '5xx': 'temporales-no-formativos' };
+
+  const contratoCatalogBody = (DATA) => {
+    const p = DATA.pages.find(x => x.id === 'contrato');
+    const codes = DATA.contrato_pdf_codes;
+    const legend = `<div class="r-block"><h4>Cómo leer un código</h4><div class="r-tiles">${GROUP_ORDER.map(g => `<div class="r-tile"><span class="num mono">${esc(GROUP_LABELS[g][0])}</span><strong>${esc(GROUP_LABELS[g][1])}</strong></div>`).join('')}</div></div>`;
+    const quickTable = table({ title: 'Tabla de referencia rápida: los códigos más usados', columns: ['Código', 'Nombre', 'Tipo', 'Jornada', 'Dato clave'], rows: DATA.contrato_quick_ref });
+    const groups = GROUP_ORDER.map(g => {
+      const items = codes.filter(c => c.group === g);
+      if (!items.length) return '';
+      const cards = items.map(c => {
+        const bonusBadge = c.bonus ? `<div class="r-source-row"><a class="r-source" href="/biblioteca-red/bonificaciones-contratacion-seguridad-social.html#${esc(GROUP_TO_BONUS_ANCHOR[g])}">🎁 Con bonificación — ver en la guía de bonificaciones ↗</a></div>` : '';
+        return block(`c${c.code}`, `${c.code} · ${c.title}`, `${c.tipo} · ${c.jornada}`, `<div class="r-code-grid"><div><p>${esc(c.explanation)}</p><p><strong>Nota operativa:</strong> ${esc(c.note)}</p>${bonusBadge}</div><div class="r-tile r-tile-code"><span class="num mono">Código</span><strong class="mono">${esc(c.code)}</strong><p>${esc(c.tipo)} · ${esc(c.jornada)}</p></div></div>`);
+      }).join('');
+      return `<div class="r-block"><h4>${esc(GROUP_LABELS[g][0])} — ${esc(GROUP_LABELS[g][1])}</h4><div class="block-list">${cards}</div></div>`;
+    }).join('');
+    const warn = p?.warnings?.length ? `<div class="r-warning"><strong>Antes de mecanizar un contrato</strong><ul>${p.warnings.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div>` : '';
+    return `${sections(p)}${legend}${quickTable}${groups}${warn}<div class="r-source-row">${sourceLink(DATA, p.source_url, 'Consultar Tabla T-19 oficial')}<a class="r-source" href="/biblioteca-red/bonificaciones-contratacion-seguridad-social.html">Ver guía de bonificaciones a la contratación ↗</a></div>`;
+  };
+
+  const codeLink = (code) => `<a class="r-inline-link mono" href="/biblioteca-red/claves-de-contrato-de-trabajo.html#c${esc(code)}">${esc(code)}</a>`;
+  const linkContractCodes = (cellText) => String(cellText ?? '').split(/(\d{3})/g).map(part => /^\d{3}$/.test(part) ? codeLink(part) : esc(part)).join('');
+
+  const bonifCategoryTable = (cat) => {
+    const rowsHtml = cat.rows.map(row => `<tr>${row.map((c, i) => `<td>${i === 3 ? linkContractCodes(c) : richText(c)}</td>`).join('')}</tr>`).join('');
+    const body = `<div class="r-table-wrap"><table class="r-table"><thead><tr>${cat.columns.map(c => `<th>${esc(c)}</th>`).join('')}</tr></thead><tbody>${rowsHtml}</tbody></table></div>`;
+    if (cat.rows.length > 15) {
+      return `<div class="r-block" id="${esc(cat.id)}"><details class="r-table-details"><summary><h4>${esc(cat.num)} — ${esc(cat.title)}</h4><span class="r-table-count mono">${cat.rows.length} bonificaciones · ver tabla</span></summary><p>${esc(cat.normativa)} · ${esc(cat.vigencia)}</p>${body}</details></div>`;
+    }
+    return `<div class="r-block" id="${esc(cat.id)}"><h4>${esc(cat.num)} — ${esc(cat.title)}</h4><p>${esc(cat.normativa)} · ${esc(cat.vigencia)}</p>${body}</div>`;
+  };
+
+  const bonificacionesCatalogBody = (DATA) => {
+    const p = DATA.pages.find(x => x.id === 'bonificaciones');
+    const b = DATA.bonificaciones_data;
+    const notice = `<div class="r-notice"><span class="r-badge">${b.categories.reduce((n, c) => n + c.rows.length, 0)} bonificaciones</span><strong>Cada código de contrato enlaza directamente a su ficha en la guía de claves de contrato.</strong><p>Pulsa cualquier código (por ejemplo 150 o 421) para ver su significado completo.</p></div>`;
+    const catsHtml = b.categories.map(bonifCategoryTable).join('');
+    const reqTable = table({ title: 'Anexo I · Requisitos (R1–R24)', columns: ['Clave', 'Requisito'], rows: b.requisitos });
+    const exclTable = table({ title: 'Anexo I · Exclusiones (E1–E14)', columns: ['Clave', 'Exclusión'], rows: b.exclusiones });
+    const warn = p?.warnings?.length ? `<div class="r-warning"><strong>Antes de aplicar una bonificación</strong><ul>${p.warnings.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div>` : '';
+    return `${sections(p)}${notice}${catsHtml}${reqTable}${exclTable}${warn}<div class="r-source-row"><a class="r-source" href="/biblioteca-red/claves-de-contrato-de-trabajo.html">Ver guía de claves de contrato ↗</a></div>`;
+  };
+
+  // Catálogo de las 23 fichas indexables: 22 de DATA.pages + becarios_official.
   // groups[] son las etiquetas de filtro (además de "Todos") bajo las que debe
   // aparecer cada ficha en la portada. Único punto de verdad para portada y generador.
   const ENTRY_GROUPS = {
@@ -125,10 +176,12 @@
     'obligados': ['Biblioteca'],
     'casia': ['Biblioteca'],
     'plazos': ['Biblioteca'],
-    'rlc': ['Biblioteca']
+    'rlc': ['Biblioteca'],
+    'contrato': ['Contratos'],
+    'bonificaciones': ['Bonificaciones']
   };
 
-  const CUSTOM_BODY = { '001': altaGuideBody, 'baja': bajaCatalogBody };
+  const CUSTOM_BODY = { '001': altaGuideBody, 'baja': bajaCatalogBody, 'contrato': contratoCatalogBody, 'bonificaciones': bonificacionesCatalogBody };
 
   const truncate = (text, max) => {
     const t = String(text || '');
@@ -149,7 +202,12 @@
 
   const buildEntries = (DATA) => {
     const entries = DATA.pages.map(p => {
-      const extra = { '001': DATA.alta_steps.flatMap(s => [s[0], s[1], s[3]]), 'baja': DATA.baja_pdf_codes.flatMap(c => [c.code, c.title, c.explanation, c.note]) }[p.id] || [];
+      const extra = {
+        '001': DATA.alta_steps.flatMap(s => [s[0], s[1], s[3]]),
+        'baja': DATA.baja_pdf_codes.flatMap(c => [c.code, c.title, c.explanation, c.note]),
+        'contrato': DATA.contrato_pdf_codes.flatMap(c => [c.code, c.title, c.tipo, c.jornada, c.explanation, c.note]),
+        'bonificaciones': DATA.bonificaciones_data.categories.flatMap(cat => [cat.title, ...cat.rows.flatMap(r => r)])
+      }[p.id] || [];
       return {
         id: p.id,
         slug: p.slug,
@@ -179,5 +237,5 @@
     return entries;
   };
 
-  return { esc, richText, assetUrl, officialUrl, sourceLink, block, table, sections, steps, images, warnings, fullPageBody, altaGuideBody, bajaCatalogBody, becariosBody, buildEntries, truncate };
+  return { esc, richText, assetUrl, officialUrl, sourceLink, block, table, sections, steps, images, warnings, fullPageBody, altaGuideBody, bajaCatalogBody, becariosBody, contratoCatalogBody, bonificacionesCatalogBody, buildEntries, truncate };
 });

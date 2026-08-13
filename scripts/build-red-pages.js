@@ -23,7 +23,9 @@ const bySlug = Object.fromEntries(entries.map(e => [e.id, e]));
 const RELATED_OVERRIDE = {
   '001': ['nss', 'cno', 'ccc', 'empresa'],
   'baja': ['plazos', 'obligados', 'casia', 'diferencias'],
-  'becarios': ['obligados', 'plazos', 'casia']
+  'becarios': ['obligados', 'plazos', 'casia'],
+  'contrato': ['bonificaciones', 'grupo', 'regimen', 'desempleado'],
+  'bonificaciones': ['contrato', 'desempleado', 'plazos', 'grupo']
 };
 
 function relatedFor(entry) {
