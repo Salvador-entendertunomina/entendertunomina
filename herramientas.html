@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<title>Herramientas gratuitas de nómina — EntenderTuNomina</title>
+<meta name="description" content="Calculadoras gratuitas de nómina: bruto a neto, retención de IRPF, finiquito e indemnización por despido. Sin registro, resultados al instante.">
+<link rel="canonical" href="https://www.entendertunomina.com/herramientas.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.entendertunomina.com/herramientas.html">
+<meta property="og:title" content="Herramientas gratuitas de nómina — EntenderTuNomina">
+<meta property="og:description" content="Calculadoras gratuitas de nómina: bruto a neto, retención de IRPF, finiquito e indemnización por despido. Sin registro, resultados al instante.">
+<meta property="og:image" content="https://www.entendertunomina.com/og-image.png">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Herramientas gratuitas de nómina — EntenderTuNomina">
+<meta name="twitter:description" content="Calculadoras gratuitas de nómina: bruto a neto, retención de IRPF, finiquito e indemnización por despido. Sin registro, resultados al instante.">
+<meta name="twitter:image" content="https://www.entendertunomina.com/og-image.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Inicio","item":"https://www.entendertunomina.com/"},
+    {"@type":"ListItem","position":2,"name":"Herramientas gratuitas","item":"https://www.entendertunomina.com/herramientas.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Herramientas gratuitas de nómina",
+  "description": "Calculadoras gratuitas de nómina: bruto a neto, retención de IRPF, finiquito e indemnización por despido.",
+  "url": "https://www.entendertunomina.com/herramientas.html",
+  "inLanguage": "es",
+  "author": {"@type": "Person", "name": "Salvador Fernández Martínez"},
+  "hasPart": [
+    {"@type":"SoftwareApplication","name":"Calculadora de sueldo neto (bruto a neto)","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"url":"https://www.entendertunomina.com/herramientas.html#bruto-neto"},
+    {"@type":"SoftwareApplication","name":"Calculadora de retención de IRPF","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"url":"https://www.entendertunomina.com/herramientas.html#irpf"},
+    {"@type":"SoftwareApplication","name":"Calculadora de finiquito","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"url":"https://www.entendertunomina.com/herramientas.html#finiquito"},
+    {"@type":"SoftwareApplication","name":"Calculadora de indemnización por despido","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"url":"https://www.entendertunomina.com/herramientas.html#indemnizacion"}
+  ]
+}
+</script>
+<style>
+  :root{
+    --ink:#182B3A;--ink-soft:#3E5164;--paper:#E9E7DE;--paper-deep:#DFDCCF;--card:#FBFAF6;
+    --ledger:#2F5D50;--ledger-deep:#20463B;--gold:#C79A45;--brick:#AE4A30;
+    --line:rgba(24,43,58,0.14);--shadow: 0 18px 40px -20px rgba(24,43,58,0.35);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans', sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3,h4{font-family:'Fraunces', serif;margin:0 0 .4em;color:var(--ink);letter-spacing:-0.01em;}
+  a{color:inherit;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
+  img{max-width:100%;display:block;}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background-image:repeating-linear-gradient(to bottom, transparent 0, transparent 37px, rgba(24,43,58,0.05) 38px);opacity:.5;}
+  header{position:sticky;top:0;z-index:50;background:rgba(233,231,222,0.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;max-width:1120px;margin:0 auto;}
+  .brand{font-family:'Fraunces', serif;font-weight:600;font-size:1.15rem;display:flex;align-items:baseline;gap:.5em;}
+  .brand span.tag{font-family:'IBM Plex Mono', monospace;font-size:.62rem;color:var(--ledger);letter-spacing:.14em;font-weight:600;border:1px solid var(--ledger);padding:2px 6px;border-radius:3px;}
+  nav.links{display:flex;gap:18px;font-size:.86rem;}
+  nav.links a{text-decoration:none;color:var(--ink-soft);}
+  nav.links a:hover, nav.links a.active{color:var(--ink);}
+  .btn{font-family:'IBM Plex Sans', sans-serif;font-weight:600;font-size:.88rem;padding:10px 20px;border-radius:3px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;border:1px solid transparent;background:transparent;-webkit-appearance:none;appearance:none;outline:none;transition:transform .15s ease, box-shadow .15s ease;cursor:pointer;}
+  .btn-primary{background:var(--ledger);color:#fff;}
+  .btn-primary:hover{transform:translateY(-1px);box-shadow:0 8px 18px -8px rgba(47,93,80,0.55);}
+  .btn-ghost{border-color:var(--ink);color:var(--ink);}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper);}
+  .menu-toggle{display:none;background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--ink);padding:4px;line-height:1;}
+
+  .mobile-panel{position:fixed;top:0;right:0;bottom:0;width:min(78vw, 320px);background:var(--card);z-index:100;box-shadow:-18px 0 40px -20px rgba(24,43,58,0.5);transform:translateX(100%);transition:transform .25s ease;padding:24px;overflow-y:auto;}
+  .mobile-panel.open{transform:translateX(0);}
+  .mobile-panel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;}
+  .mobile-panel-close{background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--ink);line-height:1;}
+  .mobile-panel nav{display:flex;flex-direction:column;gap:4px;}
+  .mobile-panel nav a{text-decoration:none;color:var(--ink);font-size:1.05rem;font-weight:500;padding:14px 4px;border-bottom:1px solid var(--line);}
+  .mobile-panel nav a.active{color:var(--ledger);}
+  .mobile-panel .btn{margin-top:22px;width:100%;justify-content:center;box-sizing:border-box;}
+  .mobile-overlay{display:none;position:fixed;inset:0;background:rgba(24,43,58,0.4);z-index:99;}
+  .mobile-overlay.open{display:block;}
+
+  .eyebrow{font-family:'IBM Plex Mono', monospace;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ledger);font-weight:600;margin-bottom:18px;display:flex;align-items:center;gap:10px;}
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--ledger);}
+  section{position:relative;z-index:1;padding:80px 0;}
+  .section-head{max-width:680px;margin-bottom:36px;}
+  .section-head h2{font-size:clamp(1.6rem,2.8vw,2.2rem);font-weight:600;}
+  .section-head p{color:var(--ink-soft);font-size:1.02rem;margin-top:10px;}
+
+  .page-hero{padding:64px 0 40px;}
+  .page-hero h1{font-size:clamp(2.1rem,4vw,3.1rem);font-weight:600;line-height:1.1;max-width:18ch;}
+  .page-hero p.lead{font-size:1.08rem;color:var(--ink-soft);max-width:60ch;margin:18px 0 0;}
+
+  .hero-stats{display:flex;gap:28px;flex-wrap:wrap;margin-top:30px;}
+  .hero-stat{font-family:'IBM Plex Mono', monospace;}
+  .hero-stat strong{display:block;font-size:1.5rem;color:var(--ledger);}
+  .hero-stat span{font-size:.74rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.06em;}
+
+  .tool-nav{display:flex;flex-wrap:wrap;gap:10px;margin-top:36px;}
+  .tool-nav a{
+    font-family:'IBM Plex Mono', monospace;font-size:.8rem;text-decoration:none;color:var(--ink);
+    border:1px solid var(--line);background:var(--card);border-radius:20px;padding:9px 16px;
+    transition:border-color .15s ease, background .15s ease;
+  }
+  .tool-nav a:hover{border-color:var(--ledger);background:#fff;}
+
+  .disclaimer{
+    background:var(--paper-deep);border:1px solid var(--line);border-left:3px solid var(--gold);
+    border-radius:4px;padding:20px 24px;font-size:.88rem;color:var(--ink-soft);
+  }
+  .disclaimer strong{color:var(--ink);}
+
+  .tool-section{border-top:1px solid var(--line);}
+  .tool-section:first-of-type{border-top:none;}
+  .tool-head{display:flex;align-items:baseline;gap:14px;margin-bottom:8px;flex-wrap:wrap;}
+  .tool-code{font-family:'IBM Plex Mono', monospace;font-size:.7rem;letter-spacing:.1em;color:var(--gold);border:1px solid var(--gold);padding:2px 8px;border-radius:20px;}
+  .tool-head h2{font-size:clamp(1.5rem,2.6vw,2rem);margin:0;}
+  .tool-desc{color:var(--ink-soft);max-width:70ch;margin-bottom:36px;}
+
+  .tool-card{background:var(--card);border:1px solid var(--line);border-radius:6px;box-shadow:var(--shadow);overflow:hidden;}
+  .tool-grid{display:grid;grid-template-columns:1.05fr .95fr;}
+  .tool-form{padding:32px 34px;}
+  .field{margin-bottom:16px;}
+  .field label{display:block;font-family:'IBM Plex Mono', monospace;font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);margin-bottom:6px;}
+  .field input, .field select{width:100%;border:1px solid var(--line);background:#fff;border-radius:4px;padding:11px 13px;font-family:'IBM Plex Sans',sans-serif;font-size:.94rem;color:var(--ink);}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .field-hint{font-size:.76rem;color:var(--ink-soft);margin-top:4px;}
+
+  .tool-result{background:var(--ink);color:#F3F1E8;padding:28px 30px;display:flex;flex-direction:column;}
+  .tool-result .rlabel{font-family:'IBM Plex Mono', monospace;font-size:.66rem;letter-spacing:.1em;color:#9FB0BA;text-transform:uppercase;}
+  .tool-result .stamp{display:inline-block;margin-top:6px;border:1px solid var(--gold);color:var(--gold);padding:2px 9px;border-radius:20px;font-size:.62rem;font-family:'IBM Plex Mono', monospace;}
+  .r-line{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px dashed rgba(255,255,255,0.14);font-size:.88rem;}
+  .r-line:last-child{border-bottom:none;}
+  .r-line .concept{color:#C9CFD4;}
+  .r-line .amount{font-family:'IBM Plex Mono', monospace;font-weight:600;white-space:nowrap;}
+  .r-total{margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.18);}
+  .r-total .label{font-family:'IBM Plex Mono', monospace;font-size:.68rem;letter-spacing:.1em;color:#9FB0BA;text-transform:uppercase;}
+  .r-total .value{font-size:1.7rem;font-weight:600;color:var(--gold);font-family:'IBM Plex Mono', monospace;margin-top:4px;}
+  .r-empty{color:#9FB0BA;font-size:.9rem;margin:auto 0;}
+  .r-note{font-size:.76rem;color:#9FB0BA;margin-top:18px;}
+
+  @media (max-width:860px){
+    nav.links{display:none;}
+    .menu-toggle{display:block;}
+    .nav > a.btn-primary{display:none;}
+    .tool-grid{grid-template-columns:1fr;}
+    .field-row{grid-template-columns:1fr;}
+    section{padding:56px 0;}
+  }
+
+  .cta-band{background:var(--ledger-deep);color:#F3F1E8;border-radius:6px;padding:44px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;}
+  .cta-band h3{color:#F3F1E8;font-size:1.4rem;margin:0 0 6px;}
+  .cta-band p{color:#C9CFD4;margin:0;max-width:52ch;font-size:.94rem;}
+  .cta-band .btn{background:var(--gold);color:var(--ink);flex-shrink:0;}
+
+  footer{padding:36px 0;border-top:1px solid var(--line);font-size:.82rem;color:var(--ink-soft);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+
+  .cookie-banner{display:none;position:fixed;left:0;right:0;bottom:0;z-index:200;background:var(--ink);border-top:1px solid rgba(255,255,255,0.15);}
+  .cookie-banner.visible{display:block;}
+  .cookie-banner-inner{max-width:1120px;margin:0 auto;padding:20px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+  .cookie-banner p{margin:0;color:#C9CFD4;font-size:.86rem;max-width:70ch;}
+  .cookie-banner p a{color:var(--gold);text-decoration:underline;}
+  .cookie-banner-actions{display:flex;gap:10px;flex-shrink:0;}
+  .cookie-banner .btn-ghost{border-color:rgba(255,255,255,0.4);color:#F3F1E8;}
+  .cookie-banner .btn-ghost:hover{background:rgba(255,255,255,0.1);color:#fff;}
+</style>
+</head>
+<body>
+<div class="cookie-banner" id="cookieBanner">
+  <div class="cookie-banner-inner">
+    <p>Usamos cookies técnicas necesarias para el funcionamiento del sitio. Si aceptas, también cargamos tipografías externas (Google Fonts) para mejorar el diseño. Más información en la <a href="cookies.html">Política de Cookies</a>.</p>
+    <div class="cookie-banner-actions">
+      <button id="cookieReject" class="btn btn-ghost">Rechazar</button>
+      <button id="cookieAccept" class="btn btn-primary">Aceptar</button>
+    </div>
+  </div>
+</div>
+
+<header>
+  <div class="nav">
+    <a href="index.html" style="text-decoration:none;">
+      <div class="brand">Entender<span style="color:var(--ledger)">TuNómina</span> <span class="tag">S.F.</span></div>
+    </a>
+    <nav class="links">
+      <a href="index.html">Inicio</a>
+      <a href="index.html#servicios">Servicios</a>
+      <a href="cursos.html">Cursos</a>
+      <a href="herramientas.html" class="active">Herramientas</a>
+      <a href="biblioteca-red.html">Biblioteca RED</a>
+      <a href="divulgacion.html">Divulgación</a>
+      <a href="index.html#contacto">Contacto</a>
+    </nav>
+    <a class="btn btn-primary" href="#calculadoras">Ir a las calculadoras</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
+  </div>
+</header>
+
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<div class="mobile-panel" id="mobilePanel">
+  <div class="mobile-panel-head">
+    <div class="brand" style="font-size:1rem;">Menú</div>
+    <button class="mobile-panel-close" id="mobileClose" aria-label="Cerrar menú">✕</button>
+  </div>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="index.html#servicios">Servicios</a>
+    <a href="cursos.html">Cursos</a>
+    <a href="herramientas.html" class="active">Herramientas</a>
+    <a href="biblioteca-red.html">Biblioteca RED</a>
+    <a href="divulgacion.html">Divulgación</a>
+    <a href="index.html#contacto">Contacto</a>
+  </nav>
+  <a class="btn btn-primary" href="#calculadoras">Ir a las calculadoras</a>
+</div>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="eyebrow">Herramientas gratuitas · sin registro</div>
+    <h1>Calcula tu nómina<br>en segundos.</h1>
+    <p class="lead">Cuatro calculadoras gratuitas para resolver las dudas más habituales sobre nómina: cuánto neto vas a cobrar, qué retención de IRPF te corresponde, cómo se calcula un finiquito y qué indemnización te toca si te despiden. Sin registrarte, sin instalar nada.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><strong>4</strong><span>Calculadoras</span></div>
+      <div class="hero-stat"><strong>0 €</strong><span>Coste</span></div>
+      <div class="hero-stat"><strong>0</strong><span>Registro necesario</span></div>
+    </div>
+    <div class="tool-nav" id="calculadoras">
+      <a href="#bruto-neto">↓ Bruto a neto</a>
+      <a href="#irpf">↓ Retención IRPF</a>
+      <a href="#finiquito">↓ Finiquito</a>
+      <a href="#indemnizacion">↓ Indemnización por despido</a>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0;padding-bottom:56px;">
+  <div class="wrap">
+    <div class="disclaimer">
+      <strong>Antes de usar las calculadoras:</strong> son herramientas orientativas. Aplican los tipos generales de cotización a la Seguridad Social y la escala general de IRPF de referencia, sin tener en cuenta tu comunidad autónoma, tu convenio colectivo, otras rentas o circunstancias personales concretas. No sustituyen un cálculo oficial ni un asesoramiento profesional. Si necesitas certeza sobre tu caso, <a class="mono" style="color:var(--ledger);font-weight:600;" href="consulta.html">reserva una consulta individual</a>.
+    </div>
+  </div>
+</section>
+
+<!-- ---------- Bruto a neto ---------- -->
+<section class="tool-section" id="bruto-neto">
+  <div class="wrap">
+    <div class="tool-head"><span class="tool-code">HERRAMIENTA 01</span><h2>Calculadora de sueldo neto (bruto a neto)</h2></div>
+    <p class="tool-desc">Introduce tu salario bruto anual y calcula cuánto te queda en el bolsillo, mes a mes, después de la Seguridad Social y el IRPF.</p>
+
+    <div class="tool-card">
+      <div class="tool-grid">
+        <div class="tool-form">
+          <div class="field">
+            <label for="bn-bruto">Salario bruto anual</label>
+            <input id="bn-bruto" type="number" min="0" step="100" placeholder="Ej. 24000" value="24000">
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="bn-pagas">Número de pagas</label>
+              <select id="bn-pagas">
+                <option value="12">12 pagas</option>
+                <option value="14" selected>14 pagas</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="bn-contrato">Tipo de contrato</label>
+              <select id="bn-contrato">
+                <option value="indefinido">Indefinido</option>
+                <option value="temporal">Temporal</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="bn-hijos">Hijos a cargo (con derecho a mínimo por descendientes)</label>
+            <input id="bn-hijos" type="number" min="0" max="8" step="1" value="0">
+          </div>
+          <button class="btn btn-primary" onclick="calcBrutoNeto()" type="button">Calcular neto →</button>
+        </div>
+        <div class="tool-result">
+          <div id="bn-result"><p class="r-empty">Rellena tus datos y pulsa «Calcular neto» para ver el desglose.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ---------- IRPF ---------- -->
+<section class="tool-section" id="irpf">
+  <div class="wrap">
+    <div class="tool-head"><span class="tool-code">HERRAMIENTA 02</span><h2>Calculadora de retención de IRPF</h2></div>
+    <p class="tool-desc">Estima el porcentaje de retención de IRPF que debería aplicarte tu empresa según tu salario y tu situación familiar.</p>
+
+    <div class="tool-card">
+      <div class="tool-grid">
+        <div class="tool-form">
+          <div class="field">
+            <label for="ir-bruto">Salario bruto anual</label>
+            <input id="ir-bruto" type="number" min="0" step="100" placeholder="Ej. 24000" value="24000">
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="ir-pagas">Número de pagas</label>
+              <select id="ir-pagas">
+                <option value="12">12 pagas</option>
+                <option value="14" selected>14 pagas</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="ir-hijos">Hijos a cargo</label>
+              <input id="ir-hijos" type="number" min="0" max="8" step="1" value="0">
+            </div>
+          </div>
+          <button class="btn btn-primary" onclick="calcIRPF()" type="button">Calcular retención →</button>
+        </div>
+        <div class="tool-result">
+          <div id="ir-result"><p class="r-empty">Rellena tus datos y pulsa «Calcular retención» para ver tu % estimado.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ---------- Finiquito ---------- -->
+<section class="tool-section" id="finiquito">
+  <div class="wrap">
+    <div class="tool-head"><span class="tool-code">HERRAMIENTA 03</span><h2>Calculadora de finiquito</h2></div>
+    <p class="tool-desc">Calcula la parte proporcional de pagas extra y las vacaciones no disfrutadas que te corresponden al terminar tu contrato.</p>
+
+    <div class="tool-card">
+      <div class="tool-grid">
+        <div class="tool-form">
+          <div class="field">
+            <label for="fq-mensual">Salario bruto mensual (sin pagas extra)</label>
+            <input id="fq-mensual" type="number" min="0" step="50" placeholder="Ej. 1600" value="1600">
+          </div>
+          <div class="field">
+            <label for="fq-pagas">Número de pagas al año</label>
+            <select id="fq-pagas">
+              <option value="12">12 pagas (extras ya prorrateadas)</option>
+              <option value="14" selected>14 pagas (2 extras aparte)</option>
+            </select>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="fq-alta">Fecha de alta (o 1 enero si llevas &gt;1 año)</label>
+              <input id="fq-alta" type="date" value="2026-01-01">
+            </div>
+            <div class="field">
+              <label for="fq-baja">Fecha de baja / fin de contrato</label>
+              <input id="fq-baja" type="date" value="2026-06-30">
+            </div>
+          </div>
+          <div class="field">
+            <label for="fq-vacaciones">Días de vacaciones pendientes de disfrutar</label>
+            <input id="fq-vacaciones" type="number" min="0" max="60" step="1" value="0">
+            <div class="field-hint">Días naturales pendientes del año en curso.</div>
+          </div>
+          <button class="btn btn-primary" onclick="calcFiniquito()" type="button">Calcular finiquito →</button>
+        </div>
+        <div class="tool-result">
+          <div id="fq-result"><p class="r-empty">Rellena tus datos y pulsa «Calcular finiquito» para ver el desglose.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ---------- Indemnización ---------- -->
+<section class="tool-section" id="indemnizacion">
+  <div class="wrap">
+    <div class="tool-head"><span class="tool-code">HERRAMIENTA 04</span><h2>Calculadora de indemnización por despido</h2></div>
+    <p class="tool-desc">Estima la indemnización legal mínima según tu antigüedad, tu salario y el tipo de despido.</p>
+
+    <div class="tool-card">
+      <div class="tool-grid">
+        <div class="tool-form">
+          <div class="field">
+            <label for="dm-bruto">Salario bruto anual</label>
+            <input id="dm-bruto" type="number" min="0" step="100" placeholder="Ej. 24000" value="24000">
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="dm-inicio">Fecha de inicio del contrato</label>
+              <input id="dm-inicio" type="date" value="2020-01-01">
+            </div>
+            <div class="field">
+              <label for="dm-fin">Fecha de despido</label>
+              <input id="dm-fin" type="date" value="2026-06-30">
+            </div>
+          </div>
+          <div class="field">
+            <label for="dm-tipo">Tipo de despido</label>
+            <select id="dm-tipo">
+              <option value="objetivo">Procedente / objetivo — 20 días/año (máx. 12 mensualidades)</option>
+              <option value="improcedente">Improcedente — 33 días/año (máx. 24 mensualidades)</option>
+            </select>
+          </div>
+          <button class="btn btn-primary" onclick="calcIndemnizacion()" type="button">Calcular indemnización →</button>
+        </div>
+        <div class="tool-result">
+          <div id="dm-result"><p class="r-empty">Rellena tus datos y pulsa «Calcular indemnización» para ver el desglose.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cta-band">
+      <div>
+        <h3>¿Necesitas certeza sobre tu caso concreto?</h3>
+        <p>Estas calculadoras son un punto de partida. Si quieres que revisemos tu nómina, tu finiquito o tu indemnización real conmigo, reserva una consulta individual de 30 minutos.</p>
+      </div>
+      <a class="btn" href="consulta.html">Reservar consulta — 30 €</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex;flex-direction:column;gap:14px;width:100%;">
+    <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+      <span>© 2026 EntenderTuNomina — Salvador Fernández</span>
+      <span class="mono">entendertunomina.com</span>
+    </div>
+    <div style="display:flex;gap:18px;flex-wrap:wrap;font-size:.82rem;">
+      <a href="aviso-legal.html" style="color:var(--ink-soft);text-decoration:underline;">Aviso legal</a>
+      <a href="privacidad.html" style="color:var(--ink-soft);text-decoration:underline;">Privacidad</a>
+      <a href="cookies.html" style="color:var(--ink-soft);text-decoration:underline;">Cookies</a>
+      <a href="condiciones.html" style="color:var(--ink-soft);text-decoration:underline;">Condiciones de uso</a>
+    </div>
+  </div>
+</footer>
+
+<script src="https://bookings.nimbuspop.com/assets/embed.js"></script>
+<script>
+  function initZohoBooking(){
+    if (window.__zohoBookingInit) return;
+    window.__zohoBookingInit = true;
+    Bookings.buttonModal({
+      url: "https://entendertunomina.zohobookings.eu/portal-embed#/entendertunomina",
+      text: "Reservar ahora",
+      color: "#2F5D50",
+      textColor: "#ffffff",
+      position: "bottom-right"
+    });
+  }
+</script>
+
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const mobilePanel = document.getElementById('mobilePanel');
+  const mobileOverlay = document.getElementById('mobileOverlay');
+  const mobileClose = document.getElementById('mobileClose');
+  function openMenu(){mobilePanel.classList.add('open');mobileOverlay.classList.add('open');document.body.style.overflow='hidden';}
+  function closeMenu(){mobilePanel.classList.remove('open');mobileOverlay.classList.remove('open');document.body.style.overflow='';}
+  menuToggle.addEventListener('click', openMenu);
+  mobileClose.addEventListener('click', closeMenu);
+  mobileOverlay.addEventListener('click', closeMenu);
+  mobilePanel.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+</script>
+
+<script>
+  (function(){
+    function loadGoogleFonts(){
+      if (document.getElementById('gfonts-stylesheet')) return;
+      var l1 = document.createElement('link'); l1.rel='preconnect'; l1.href='https://fonts.googleapis.com';
+      var l2 = document.createElement('link'); l2.rel='preconnect'; l2.href='https://fonts.gstatic.com'; l2.crossOrigin='anonymous';
+      var l3 = document.createElement('link'); l3.id='gfonts-stylesheet'; l3.rel='stylesheet';
+      l3.href='https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap';
+      document.head.appendChild(l1);
+      document.head.appendChild(l2);
+      document.head.appendChild(l3);
+    }
+    var consent = localStorage.getItem('etn_cookie_consent');
+    var banner = document.getElementById('cookieBanner');
+    if (consent === 'accepted') {
+      loadGoogleFonts();
+      if (typeof initZohoBooking === 'function') initZohoBooking();
+    } else if (consent === 'rejected') {
+      if (typeof initZohoBooking === 'function') initZohoBooking();
+    } else {
+      if (banner) banner.classList.add('visible');
+    }
+    var acceptBtn = document.getElementById('cookieAccept');
+    var rejectBtn = document.getElementById('cookieReject');
+    if (acceptBtn) acceptBtn.addEventListener('click', function(){
+      localStorage.setItem('etn_cookie_consent','accepted');
+      loadGoogleFonts();
+      if (typeof initZohoBooking === 'function') initZohoBooking();
+      banner.classList.remove('visible');
+    });
+    if (rejectBtn) rejectBtn.addEventListener('click', function(){
+      localStorage.setItem('etn_cookie_consent','rejected');
+      if (typeof initZohoBooking === 'function') initZohoBooking();
+      banner.classList.remove('visible');
+    });
+  })();
+</script>
+
+<!-- ---------- Lógica de las calculadoras ---------- -->
+<script>
+(function(){
+  "use strict";
+
+  function eur(n){
+    return n.toLocaleString('es-ES', {style:'currency', currency:'EUR', maximumFractionDigits:2, minimumFractionDigits:2});
+  }
+  function pct(n){
+    return n.toLocaleString('es-ES', {maximumFractionDigits:1, minimumFractionDigits:1}) + ' %';
+  }
+  function num(id){
+    var v = parseFloat(document.getElementById(id).value);
+    return isNaN(v) ? 0 : v;
+  }
+
+  // Tramos generales de IRPF de referencia (escala combinada estatal + autonómica media, 2025)
+  var IRPF_BRACKETS = [
+    {hasta: 12450, tipo: 0.19},
+    {hasta: 20200, tipo: 0.24},
+    {hasta: 35200, tipo: 0.30},
+    {hasta: 60000, tipo: 0.37},
+    {hasta: 300000, tipo: 0.45},
+    {hasta: Infinity, tipo: 0.47}
+  ];
+  var MINIMO_PERSONAL = 5550;
+  var MINIMOS_HIJOS = [2400, 2700, 4000, 4400]; // 1º, 2º, 3º, 4º y siguientes (cada uno)
+  var BASE_MAX_ANUAL_SS = 4909.50 * 12; // referencia 2025
+
+  function progresivo(base){
+    if (base <= 0) return 0;
+    var cuota = 0, anterior = 0;
+    for (var i = 0; i < IRPF_BRACKETS.length; i++){
+      var tramo = IRPF_BRACKETS[i];
+      if (base > tramo.hasta){
+        cuota += (tramo.hasta - anterior) * tramo.tipo;
+        anterior = tramo.hasta;
+      } else {
+        cuota += (base - anterior) * tramo.tipo;
+        break;
+      }
+    }
+    return cuota;
+  }
+
+  function minimoPorHijos(n){
+    var total = 0;
+    for (var i = 0; i < n; i++){
+      total += MINIMOS_HIJOS[Math.min(i, MINIMOS_HIJOS.length - 1)];
+    }
+    return total;
+  }
+
+  function reduccionTrabajo(rnt){
+    if (rnt <= 14047.50) return 7302;
+    if (rnt < 19747.50) return Math.max(0, 7302 - 1.14202857 * (rnt - 14047.50));
+    return 0;
+  }
+
+  function cuotaSSTrabajador(brutoAnual, tipoContrato){
+    var tipos = {comunes: 0.0470, formacion: 0.0010, mei: 0.0013};
+    var desempleo = tipoContrato === 'temporal' ? 0.0160 : 0.0155;
+    var tipoTotal = tipos.comunes + tipos.formacion + tipos.mei + desempleo;
+    var baseCotizable = Math.min(brutoAnual, BASE_MAX_ANUAL_SS);
+    return {importe: baseCotizable * tipoTotal, tipo: tipoTotal};
+  }
+
+  function calcularIRPFAnual(brutoAnual, ssTrabajador, numHijos){
+    var rnt = Math.max(0, brutoAnual - ssTrabajador - 2000); // gasto deducible genérico
+    var reduccion = reduccionTrabajo(rnt);
+    var baseLiquidable = Math.max(0, rnt - reduccion);
+    var minimoTotal = MINIMO_PERSONAL + minimoPorHijos(numHijos);
+    var cuota = Math.max(0, progresivo(baseLiquidable) - progresivo(minimoTotal));
+    return cuota;
+  }
+
+  window.calcBrutoNeto = function(){
+    var bruto = num('bn-bruto');
+    var pagas = num('bn-pagas');
+    var contrato = document.getElementById('bn-contrato').value;
+    var hijos = num('bn-hijos');
+    var out = document.getElementById('bn-result');
+
+    if (bruto <= 0){
+      out.innerHTML = '<p class="r-empty">Introduce un salario bruto anual mayor que 0.</p>';
+      return;
+    }
+
+    var ss = cuotaSSTrabajador(bruto, contrato);
+    var irpfAnual = calcularIRPFAnual(bruto, ss.importe, hijos);
+    var netoAnual = bruto - ss.importe - irpfAnual;
+    var netoPorPaga = netoAnual / pagas;
+    var tipoIrpfEfectivo = bruto > 0 ? (irpfAnual / bruto) * 100 : 0;
+
+    out.innerHTML =
+      '<div class="rlabel">Resultado estimado</div><span class="stamp">ORIENTATIVO</span>' +
+      '<div class="r-line"><span class="concept">Salario bruto anual</span><span class="amount">' + eur(bruto) + '</span></div>' +
+      '<div class="r-line"><span class="concept">Seguridad Social (' + pct(ss.tipo * 100) + ')</span><span class="amount">− ' + eur(ss.importe) + '</span></div>' +
+      '<div class="r-line"><span class="concept">IRPF estimado (' + pct(tipoIrpfEfectivo) + ')</span><span class="amount">− ' + eur(irpfAnual) + '</span></div>' +
+      '<div class="r-total"><div class="label">Neto anual estimado</div><div class="value">' + eur(netoAnual) + '</div></div>' +
+      '<div class="r-line" style="margin-top:14px;"><span class="concept">Neto por paga (' + pagas + ' pagas)</span><span class="amount">' + eur(netoPorPaga) + '</span></div>' +
+      '<p class="r-note">Cálculo orientativo con tipos generales 2025. No considera comunidad autónoma, convenio colectivo ni otras rentas.</p>';
+  };
+
+  window.calcIRPF = function(){
+    var bruto = num('ir-bruto');
+    var pagas = num('ir-pagas');
+    var hijos = num('ir-hijos');
+    var out = document.getElementById('ir-result');
+
+    if (bruto <= 0){
+      out.innerHTML = '<p class="r-empty">Introduce un salario bruto anual mayor que 0.</p>';
+      return;
+    }
+
+    var ss = cuotaSSTrabajador(bruto, 'indefinido');
+    var irpfAnual = calcularIRPFAnual(bruto, ss.importe, hijos);
+    var tipoEfectivo = (irpfAnual / bruto) * 100;
+    var retencionPorPaga = irpfAnual / pagas;
+
+    out.innerHTML =
+      '<div class="rlabel">Resultado estimado</div><span class="stamp">ORIENTATIVO</span>' +
+      '<div class="r-total"><div class="label">Tipo de retención estimado</div><div class="value">' + pct(tipoEfectivo) + '</div></div>' +
+      '<div class="r-line" style="margin-top:16px;"><span class="concept">Cuota IRPF anual estimada</span><span class="amount">' + eur(irpfAnual) + '</span></div>' +
+      '<div class="r-line"><span class="concept">Retención por paga (' + pagas + ' pagas)</span><span class="amount">' + eur(retencionPorPaga) + '</span></div>' +
+      '<div class="r-line"><span class="concept">Mínimo personal y familiar aplicado</span><span class="amount">' + eur(MINIMO_PERSONAL + minimoPorHijos(hijos)) + '</span></div>' +
+      '<p class="r-note">Estimación con la escala general de IRPF de referencia (2025) y mínimo personal y familiar. La retención real puede variar según tu comunidad autónoma y tu situación completa.</p>';
+  };
+
+  function diasEntre(d1, d2){
+    return Math.max(0, (d2 - d1) / 86400000);
+  }
+
+  window.calcFiniquito = function(){
+    var mensual = num('fq-mensual');
+    var pagas = num('fq-pagas');
+    var altaStr = document.getElementById('fq-alta').value;
+    var bajaStr = document.getElementById('fq-baja').value;
+    var vacaciones = num('fq-vacaciones');
+    var out = document.getElementById('fq-result');
+
+    if (mensual <= 0 || !altaStr || !bajaStr){
+      out.innerHTML = '<p class="r-empty">Rellena el salario y las dos fechas para calcular.</p>';
+      return;
+    }
+
+    var alta = new Date(altaStr + 'T00:00:00');
+    var baja = new Date(bajaStr + 'T00:00:00');
+    if (baja <= alta){
+      out.innerHTML = '<p class="r-empty">La fecha de baja debe ser posterior a la fecha de alta.</p>';
+      return;
+    }
+
+    var inicioAnio = new Date(baja.getFullYear() + '-01-01T00:00:00');
+    var inicioComputo = alta > inicioAnio ? alta : inicioAnio;
+    var diasTrabajadosEnAnio = diasEntre(inicioComputo, baja) + 1;
+
+    var numExtras = pagas >= 14 ? 2 : 0;
+    var importeExtraAnual = mensual * numExtras;
+    var prorrateoExtra = (importeExtraAnual / 365) * diasTrabajadosEnAnio;
+
+    var salarioDiario = (mensual * 12) / 365;
+    var importeVacaciones = salarioDiario * vacaciones;
+
+    var total = prorrateoExtra + importeVacaciones;
+
+    out.innerHTML =
+      '<div class="rlabel">Resultado estimado</div><span class="stamp">ORIENTATIVO</span>' +
+      '<div class="r-line"><span class="concept">Días computados del año en curso</span><span class="amount">' + Math.round(diasTrabajadosEnAnio) + '</span></div>' +
+      '<div class="r-line"><span class="concept">Parte proporcional pagas extra</span><span class="amount">' + eur(prorrateoExtra) + '</span></div>' +
+      '<div class="r-line"><span class="concept">Vacaciones no disfrutadas (' + vacaciones + ' días)</span><span class="amount">' + eur(importeVacaciones) + '</span></div>' +
+      '<div class="r-total"><div class="label">Finiquito estimado</div><div class="value">' + eur(total) + '</div></div>' +
+      '<p class="r-note">Asume devengo lineal de pagas extra a lo largo del año natural y que aún no se ha cobrado nada de la paga pendiente. Ajusta si tu convenio establece otro periodo de devengo.</p>';
+  };
+
+  var REFORMA_2012 = new Date('2012-02-12T00:00:00');
+  var MS_POR_ANIO = 365.25 * 86400000;
+
+  window.calcIndemnizacion = function(){
+    var brutoAnual = num('dm-bruto');
+    var inicioStr = document.getElementById('dm-inicio').value;
+    var finStr = document.getElementById('dm-fin').value;
+    var tipo = document.getElementById('dm-tipo').value;
+    var out = document.getElementById('dm-result');
+
+    if (brutoAnual <= 0 || !inicioStr || !finStr){
+      out.innerHTML = '<p class="r-empty">Rellena el salario y las dos fechas para calcular.</p>';
+      return;
+    }
+
+    var inicio = new Date(inicioStr + 'T00:00:00');
+    var fin = new Date(finStr + 'T00:00:00');
+    if (fin <= inicio){
+      out.innerHTML = '<p class="r-empty">La fecha de despido debe ser posterior a la de inicio del contrato.</p>';
+      return;
+    }
+
+    var salarioDiario = brutoAnual / 365;
+    var diasIndemnizacion, topeInfo;
+
+    if (tipo === 'objetivo'){
+      var anios = (fin - inicio) / MS_POR_ANIO;
+      diasIndemnizacion = Math.min(anios * 20, 360);
+      topeInfo = 'Tope legal: 12 mensualidades (360 días de salario).';
+    } else {
+      if (inicio >= REFORMA_2012){
+        var aniosTot = (fin - inicio) / MS_POR_ANIO;
+        diasIndemnizacion = Math.min(aniosTot * 33, 720);
+      } else {
+        var anios1 = (REFORMA_2012 - inicio) / MS_POR_ANIO;
+        var anios2 = (fin - REFORMA_2012) / MS_POR_ANIO;
+        var dias1 = anios1 * 45;
+        var dias2 = anios2 * 33;
+        var cap = Math.min(Math.max(dias1, 720), 1260);
+        diasIndemnizacion = Math.min(dias1 + dias2, cap);
+      }
+      topeInfo = 'Tope legal: 24 mensualidades (720 días), salvo periodos anteriores a feb-2012 que puedan ampliarlo hasta 42 mensualidades.';
+    }
+
+    var importe = diasIndemnizacion * salarioDiario;
+    var antiguedadAnios = ((fin - inicio) / MS_POR_ANIO).toFixed(1);
+
+    out.innerHTML =
+      '<div class="rlabel">Resultado estimado</div><span class="stamp">ORIENTATIVO</span>' +
+      '<div class="r-line"><span class="concept">Antigüedad</span><span class="amount">' + antiguedadAnios + ' años</span></div>' +
+      '<div class="r-line"><span class="concept">Salario diario</span><span class="amount">' + eur(salarioDiario) + '</span></div>' +
+      '<div class="r-line"><span class="concept">Días de indemnización</span><span class="amount">' + Math.round(diasIndemnizacion) + '</span></div>' +
+      '<div class="r-total"><div class="label">Indemnización estimada</div><div class="value">' + eur(importe) + '</div></div>' +
+      '<p class="r-note">' + topeInfo + ' No incluye salarios de tramitación ni otras compensaciones que puedan corresponder según el caso.</p>';
+  };
+})();
+</script>
+
+</body>
+</html>

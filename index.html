@@ -189,7 +189,7 @@
     color:var(--ledger);letter-spacing:.14em;font-weight:600;
     border:1px solid var(--ledger);padding:2px 6px;border-radius:3px;
   }
-  nav.links{display:flex;gap:28px;font-size:.92rem;}
+  nav.links{display:flex;gap:18px;font-size:.86rem;}
   nav.links a{text-decoration:none;color:var(--ink-soft);position:relative;}
   nav.links a:hover{color:var(--ink);}
   .btn{
@@ -470,6 +470,29 @@
     .lib-mini{border-left:none;border-top:1px solid var(--line);}
   }
 
+  /* ---------- Banner Herramientas gratuitas ---------- */
+  #herramientas-banner .tools-banner{
+    background:var(--ledger);color:#F3F1E8;border-radius:6px;overflow:hidden;
+    display:grid;grid-template-columns:1.3fr 1fr;align-items:stretch;
+  }
+  .tools-text{padding:44px 44px;}
+  .tools-text .eyebrow{color:var(--gold);}
+  .tools-text .eyebrow::before{background:var(--gold);}
+  .tools-text h2{color:#F3F1E8;font-size:clamp(1.6rem,2.6vw,2.1rem);}
+  .tools-text p{color:#DCE3D9;font-size:.98rem;max-width:52ch;margin:12px 0 24px;}
+  .tools-mini{
+    background:rgba(255,255,255,0.06);border-left:1px solid rgba(255,255,255,0.16);
+    padding:32px 36px;display:flex;flex-direction:column;justify-content:center;gap:14px;
+  }
+  .tools-mini .tools-line{display:flex;justify-content:space-between;gap:12px;font-size:.88rem;padding:9px 0;border-bottom:1px dashed rgba(255,255,255,0.18);}
+  .tools-mini .tools-line:last-child{border-bottom:none;}
+  .tools-mini .tools-line span:first-child{color:#DCE3D9;}
+  .tools-mini .tools-line span:last-child{font-family:'IBM Plex Mono', monospace;font-weight:600;color:var(--gold);text-align:right;}
+  @media (max-width:860px){
+    #herramientas-banner .tools-banner{grid-template-columns:1fr;}
+    .tools-mini{border-left:none;border-top:1px solid rgba(255,255,255,0.16);}
+  }
+
   /* ---------- Banner de cookies ---------- */
   .cookie-banner{display:none;position:fixed;left:0;right:0;bottom:0;z-index:200;background:var(--ink);border-top:1px solid rgba(255,255,255,0.15);}
   .cookie-banner.visible{display:block;}
@@ -502,6 +525,7 @@
       <a href="index.html" class="active">Inicio</a>
       <a href="#servicios">Servicios</a>
       <a href="cursos.html">Cursos</a>
+      <a href="herramientas.html">Herramientas</a>
       <a href="#sobre">Sobre mí</a>
       <a href="#medios">En medios</a>
       <a href="divulgacion.html">Divulgación</a>
@@ -522,6 +546,7 @@
     <a href="index.html" class="active">Inicio</a>
     <a href="#servicios">Servicios</a>
     <a href="cursos.html">Cursos</a>
+    <a href="herramientas.html">Herramientas</a>
     <a href="#sobre">Sobre mí</a>
     <a href="#medios">En medios</a>
     <a href="divulgacion.html">Divulgación</a>
@@ -586,6 +611,25 @@
         <span class="st-price">Desde 20 €/h</span>
         <span class="st-cta">Ver clases →</span>
       </a>
+    </div>
+  </div>
+</section>
+
+<section id="herramientas-banner">
+  <div class="wrap">
+    <div class="tools-banner">
+      <div class="tools-text">
+        <div class="eyebrow">Herramientas gratuitas</div>
+        <h2>Calcula tu nómina<br>en segundos, sin registro.</h2>
+        <p>4 calculadoras gratuitas: bruto a neto, retención de IRPF, finiquito e indemnización por despido. Resultados al instante, sin necesidad de crear ninguna cuenta.</p>
+        <a class="btn btn-primary" style="background:var(--gold);color:var(--ink);" href="herramientas.html">Usar las calculadoras →</a>
+      </div>
+      <div class="tools-mini">
+        <div class="tools-line"><span>Calculadoras</span><span>4</span></div>
+        <div class="tools-line"><span>Incluye</span><span>Bruto/neto · IRPF · Finiquito · Despido</span></div>
+        <div class="tools-line"><span>Registro</span><span>No hace falta</span></div>
+        <div class="tools-line"><span>Coste</span><span>Gratis</span></div>
+      </div>
     </div>
   </div>
 </section>
