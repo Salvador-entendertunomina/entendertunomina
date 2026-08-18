@@ -45,8 +45,8 @@
     {"@type":"SoftwareApplication","name":"Calculadora de días de vacaciones generados","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"url":"https://www.entendertunomina.com/herramientas.html#vacaciones-proporcionales"},
     {"@type":"SoftwareApplication","name":"Calculadora de sueldo neto (bruto a neto)","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"url":"https://www.entendertunomina.com/herramientas.html#bruto-neto"},
     {"@type":"SoftwareApplication","name":"Calculadora de retención de IRPF","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"url":"https://www.entendertunomina.com/herramientas.html#irpf"},
-    {"@type":"SoftwareApplication","name":"Calculadora de finiquito","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"url":"https://www.entendertunomina.com/herramientas.html#finiquito"},
-    {"@type":"SoftwareApplication","name":"Calculadora de indemnización por despido","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"url":"https://www.entendertunomina.com/herramientas.html#indemnizacion"}
+    {"@type":"SoftwareApplication","name":"Calculadora de indemnización por despido","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"url":"https://www.entendertunomina.com/herramientas.html#indemnizacion"},
+    {"@type":"SoftwareApplication","name":"Calculadora de finiquito","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"url":"https://www.entendertunomina.com/herramientas.html#finiquito"}
   ]
 }
 </script>
@@ -269,8 +269,8 @@
       <a href="#vacaciones-proporcionales">↓ Vacaciones generadas</a>
       <a href="#bruto-neto">↓ Bruto a neto</a>
       <a href="#irpf">↓ Retención IRPF</a>
-      <a href="#finiquito">↓ Finiquito</a>
       <a href="#indemnizacion">↓ Indemnización por despido</a>
+      <a href="#finiquito">↓ Finiquito</a>
     </div>
   </div>
 </section>
@@ -376,54 +376,9 @@
 </section>
 
 <!-- ---------- Finiquito ---------- -->
-<section class="tool-section" id="finiquito">
-  <div class="wrap">
-    <div class="tool-head"><span class="tool-code">HERRAMIENTA 03</span><h2>Calculadora de finiquito</h2></div>
-    <p class="tool-desc">Calcula la parte proporcional de pagas extra y las vacaciones no disfrutadas que te corresponden al terminar tu contrato.</p>
-
-    <div class="tool-card">
-      <div class="tool-grid">
-        <div class="tool-form">
-          <div class="field">
-            <label for="fq-mensual">Salario bruto mensual (sin pagas extra)</label>
-            <input id="fq-mensual" type="number" min="0" step="50" placeholder="Ej. 1600" value="1600">
-          </div>
-          <div class="field">
-            <label for="fq-pagas">Número de pagas al año</label>
-            <select id="fq-pagas">
-              <option value="12">12 pagas (extras ya prorrateadas)</option>
-              <option value="14" selected>14 pagas (2 extras aparte)</option>
-            </select>
-          </div>
-          <div class="field-row">
-            <div class="field">
-              <label for="fq-alta">Fecha de alta (o 1 enero si llevas &gt;1 año)</label>
-              <input id="fq-alta" type="date" value="2026-01-01">
-            </div>
-            <div class="field">
-              <label for="fq-baja">Fecha de baja / fin de contrato</label>
-              <input id="fq-baja" type="date" value="2026-06-30">
-            </div>
-          </div>
-          <div class="field">
-            <label for="fq-vacaciones">Días de vacaciones pendientes de disfrutar</label>
-            <input id="fq-vacaciones" type="number" min="0" max="60" step="1" value="0">
-            <div class="field-hint">Días naturales pendientes del año en curso.</div>
-          </div>
-          <button class="btn btn-primary" onclick="calcFiniquito()" type="button">Calcular finiquito →</button>
-        </div>
-        <div class="tool-result">
-          <div id="fq-result"><p class="r-empty">Rellena tus datos y pulsa «Calcular finiquito» para ver el desglose.</p></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ---------- Indemnización ---------- -->
 <section class="tool-section" id="indemnizacion">
   <div class="wrap">
-    <div class="tool-head"><span class="tool-code">HERRAMIENTA 04</span><h2>Calculadora de indemnización por despido</h2></div>
+    <div class="tool-head"><span class="tool-code">HERRAMIENTA 03</span><h2>Calculadora de indemnización por despido</h2></div>
     <p class="tool-desc">Estima la indemnización legal mínima según tu antigüedad, tu salario y el tipo de despido.</p>
 
     <div class="tool-card">
@@ -454,6 +409,51 @@
         </div>
         <div class="tool-result">
           <div id="dm-result"><p class="r-empty">Rellena tus datos y pulsa «Calcular indemnización» para ver el desglose.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ---------- Finiquito ---------- -->
+<section class="tool-section" id="finiquito">
+  <div class="wrap">
+    <div class="tool-head"><span class="tool-code">HERRAMIENTA 04</span><h2>Calculadora de finiquito</h2></div>
+    <p class="tool-desc">Calcula la parte proporcional de pagas extra y las vacaciones no disfrutadas que te corresponden al terminar tu contrato.</p>
+
+    <div class="tool-card">
+      <div class="tool-grid">
+        <div class="tool-form">
+          <div class="field">
+            <label for="fq-mensual">Salario bruto mensual (sin pagas extra)</label>
+            <input id="fq-mensual" type="number" min="0" step="50" placeholder="Ej. 1600" value="1600">
+          </div>
+          <div class="field">
+            <label for="fq-pagas">Número de pagas al año</label>
+            <select id="fq-pagas">
+              <option value="12">12 pagas (extras ya prorrateadas)</option>
+              <option value="14" selected>14 pagas (2 extras aparte)</option>
+            </select>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="fq-alta">Fecha de alta (o 1 enero si llevas &gt;1 año)</label>
+              <input id="fq-alta" type="date" value="2026-01-01">
+            </div>
+            <div class="field">
+              <label for="fq-baja">Fecha de baja / fin de contrato</label>
+              <input id="fq-baja" type="date" value="2026-06-30">
+            </div>
+          </div>
+          <div class="field">
+            <label for="fq-vacaciones">Días de vacaciones pendientes de disfrutar</label>
+            <input id="fq-vacaciones" type="number" min="0" max="60" step="1" value="0">
+            <div class="field-hint">Días naturales pendientes del año en curso. ¿No sabes cuántos te quedan? <a href="#vacaciones-proporcionales" style="color:var(--ledger);font-weight:600;text-decoration:underline;">Calcúlalos aquí abajo ↓</a></div>
+          </div>
+          <button class="btn btn-primary" onclick="calcFiniquito()" type="button">Calcular finiquito →</button>
+        </div>
+        <div class="tool-result">
+          <div id="fq-result"><p class="r-empty">Rellena tus datos y pulsa «Calcular finiquito» para ver el desglose.</p></div>
         </div>
       </div>
     </div>
