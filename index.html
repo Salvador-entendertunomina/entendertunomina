@@ -189,7 +189,7 @@
     color:var(--ledger);letter-spacing:.14em;font-weight:600;
     border:1px solid var(--ledger);padding:2px 6px;border-radius:3px;
   }
-  nav.links{display:flex;gap:28px;font-size:.92rem;}
+  nav.links{display:flex;gap:18px;font-size:.86rem;}
   nav.links a{text-decoration:none;color:var(--ink-soft);position:relative;}
   nav.links a:hover{color:var(--ink);}
   .btn{
@@ -448,26 +448,55 @@
     section{padding:64px 0;}
   }
 
-  /* ---------- Banner Biblioteca RED (recurso gratuito) ---------- */
-  #biblioteca-banner .lib-banner{
-    background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden;
-    display:grid;grid-template-columns:1.3fr 1fr;align-items:stretch;
+  /* ---------- Banner destacado: Calculadora de vacaciones ---------- */
+  .vac-banner{
+    display:grid;grid-template-columns:1fr auto;align-items:center;gap:32px;
+    background:var(--ink);border-radius:8px;padding:40px 48px;
+    text-decoration:none;color:#F3F1E8;
+    border:1px solid rgba(199,154,69,0.35);
+    box-shadow:var(--shadow);
+    transition:transform .15s ease, box-shadow .15s ease;
+    margin-bottom:40px;
   }
-  .lib-text{padding:44px 44px;}
-  .lib-text .eyebrow{color:var(--ledger);}
-  .lib-text h2{font-size:clamp(1.6rem,2.6vw,2.1rem);}
-  .lib-text p{color:var(--ink-soft);font-size:.98rem;max-width:50ch;margin:12px 0 24px;}
-  .lib-mini{
-    background:var(--paper-deep);border-left:1px solid var(--line);
-    padding:32px 36px;display:flex;flex-direction:column;justify-content:center;gap:14px;
+  .vac-banner:hover{transform:translateY(-2px);box-shadow:0 24px 48px -20px rgba(24,43,58,0.5);}
+  .vac-flag{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'IBM Plex Mono', monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--gold);margin-bottom:14px;
   }
-  .lib-mini .lib-line{display:flex;justify-content:space-between;gap:12px;font-size:.88rem;padding:9px 0;border-bottom:1px dashed var(--line);}
-  .lib-mini .lib-line:last-child{border-bottom:none;}
-  .lib-mini .lib-line span:first-child{color:var(--ink-soft);}
-  .lib-mini .lib-line span:last-child{font-family:'IBM Plex Mono', monospace;font-weight:600;color:var(--ledger);text-align:right;}
+  .vac-flag::before{content:"●";font-size:.6em;}
+  .vac-banner h3{color:#F3F1E8;font-size:clamp(1.5rem,2.8vw,2.1rem);margin:0 0 .35em;max-width:20ch;}
+  .vac-banner p{color:#C9CFD4;font-size:1rem;max-width:52ch;margin:0 0 18px;}
+  .vac-cta{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'IBM Plex Sans',sans-serif;font-weight:600;font-size:.92rem;color:var(--gold);
+  }
+  .vac-banner-badge{
+    text-align:center;background:rgba(199,154,69,0.1);border:1px solid rgba(199,154,69,0.35);
+    border-radius:8px;padding:22px 30px;flex-shrink:0;
+  }
+  .vac-big{display:block;font-family:'Fraunces',serif;font-size:2.6rem;font-weight:600;color:var(--gold);line-height:1;}
+  .vac-badge-label{display:block;font-family:'IBM Plex Mono',monospace;font-size:.68rem;color:#C9CFD4;margin-top:8px;letter-spacing:.02em;}
   @media (max-width:860px){
-    #biblioteca-banner .lib-banner{grid-template-columns:1fr;}
-    .lib-mini{border-left:none;border-top:1px solid var(--line);}
+    .vac-banner{grid-template-columns:1fr;text-align:left;padding:32px 28px;}
+    .vac-banner-badge{justify-self:start;}
+  }
+
+  /* ---------- Recursos gratuitos: Biblioteca RED + Herramientas ---------- */
+  #recursos-gratuitos{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .free-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .free-card{
+    background:#fff;border:1px solid var(--line);border-radius:6px;
+    padding:40px 40px;box-shadow:var(--shadow);
+    display:flex;flex-direction:column;
+  }
+  .free-card .eyebrow{margin-bottom:14px;}
+  .free-card h3{font-size:clamp(1.25rem,2vw,1.5rem);}
+  .free-card p{color:var(--ink-soft);font-size:.96rem;margin:12px 0 26px;flex:1;}
+  .free-card.gold .eyebrow{color:var(--gold);}
+  .free-card.gold .eyebrow::before{background:var(--gold);}
+  @media (max-width:860px){
+    .free-grid{grid-template-columns:1fr;}
   }
 
   /* ---------- Banner de cookies ---------- */
@@ -502,6 +531,7 @@
       <a href="index.html" class="active">Inicio</a>
       <a href="#servicios">Servicios</a>
       <a href="cursos.html">Cursos</a>
+      <a href="herramientas.html">Herramientas</a>
       <a href="#sobre">Sobre mí</a>
       <a href="#medios">En medios</a>
       <a href="divulgacion.html">Divulgación</a>
@@ -522,6 +552,7 @@
     <a href="index.html" class="active">Inicio</a>
     <a href="#servicios">Servicios</a>
     <a href="cursos.html">Cursos</a>
+    <a href="herramientas.html">Herramientas</a>
     <a href="#sobre">Sobre mí</a>
     <a href="#medios">En medios</a>
     <a href="divulgacion.html">Divulgación</a>
@@ -609,20 +640,37 @@
   </div>
 </section>
 
-<section id="biblioteca-banner">
+<section id="recursos-gratuitos">
   <div class="wrap">
-    <div class="lib-banner">
-      <div class="lib-text">
-        <div class="eyebrow">Recurso gratuito</div>
-        <h2>La Biblioteca del Sistema RED,<br>abierta y sin coste.</h2>
+    <div class="section-head">
+      <div class="eyebrow">Herramientas gratuitas</div>
+      <h2>Recursos que puedes usar ahora mismo, sin coste</h2>
+      <p>Dos formas de resolver tus dudas por tu cuenta, sin necesidad de contactar conmigo: una biblioteca de consulta y unas calculadoras al instante.</p>
+    </div>
+    <a class="vac-banner" href="calculadora-vacaciones-pendientes.html">
+      <div>
+        <div class="vac-flag">Calculadora gratuita · Calendario 2026</div>
+        <h3>¿Sabes si tu empresa te debe días de vacaciones?</h3>
+        <p>Compara las horas de tu convenio con las que realmente trabajas, según tu comunidad autónoma y tu jornada. Descúbrelo en 2 minutos, gratis y sin registro.</p>
+        <span class="vac-cta">Calcular mis vacaciones →</span>
+      </div>
+      <div class="vac-banner-badge">
+        <span class="vac-big">¿+ días?</span>
+        <span class="vac-badge-label">Puede que te<br>correspondan</span>
+      </div>
+    </a>
+    <div class="free-grid">
+      <div class="free-card">
+        <div class="eyebrow">Biblioteca RED</div>
+        <h3>La Biblioteca del Sistema RED, abierta y sin coste.</h3>
         <p>20 fichas documentales, 22 claves de baja y la guía completa de altas, CNO y becarios — cada dato enlazado a su fuente oficial en la Seguridad Social, el BOE, el INE y el SEPE.</p>
         <a class="btn btn-primary" href="biblioteca-red.html">Abrir la biblioteca →</a>
       </div>
-      <div class="lib-mini">
-        <div class="lib-line"><span>Fichas documentales</span><span>20</span></div>
-        <div class="lib-line"><span>Claves de baja</span><span>22</span></div>
-        <div class="lib-line"><span>Guías paso a paso</span><span>Altas · CNO · Becarios</span></div>
-        <div class="lib-line"><span>Coste</span><span>Gratis, sin registro</span></div>
+      <div class="free-card gold">
+        <div class="eyebrow">Herramientas gratuitas</div>
+        <h3>Calcula tu nómina en segundos, sin registro.</h3>
+        <p>4 calculadoras gratuitas: bruto a neto, retención de IRPF, finiquito e indemnización por despido. Resultados al instante, sin necesidad de crear ninguna cuenta.</p>
+        <a class="btn btn-primary" style="background:var(--gold);color:var(--ink);" href="herramientas.html">Usar las calculadoras →</a>
       </div>
     </div>
   </div>
