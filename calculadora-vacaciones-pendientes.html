@@ -424,12 +424,12 @@
               <input type="number" id="horasVerano" value="6" step="0.5">
             </div>
             <div>
-              <label for="veranoInicio">Mes de inicio</label>
-              <select id="veranoInicio"></select>
+              <label for="veranoInicio">Fecha de inicio</label>
+              <input type="date" id="veranoInicio" value="2026-06-01">
             </div>
             <div>
-              <label for="veranoFin">Mes de fin</label>
-              <select id="veranoFin"></select>
+              <label for="veranoFin">Fecha de fin</label>
+              <input type="date" id="veranoFin" value="2026-09-30">
             </div>
           </div>
           <p class="adv-note">Si tu empresa reduce la jornada los viernes o en verano, indícalo aquí para que el cálculo sea correcto. Si no marcas nada, se asume la misma jornada todos los días laborables del año.</p>
@@ -615,12 +615,17 @@ var CCAA = {
 };
 var BASE = [["1 ene","Año Nuevo"],["6 ene","Epifanía"],["3 abr","Viernes Santo"],["1 may","Fiesta del Trabajo"],["15 ago","Asunción de la Virgen"],["12 oct","Fiesta Nacional"],["8 dic","Inmaculada Concepción"],["25 dic","Navidad"]];
 var MESES = {ene:0,feb:1,mar:2,abr:3,may:4,jun:5,jul:6,ago:7,sep:8,oct:9,nov:10,dic:11};
-var MESES_NOMBRES = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
 var DIAS = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
 
 function parseFecha(str){
   var p = str.split(' ');
   return new Date(2026, MESES[p[1]], parseInt(p[0],10));
+}
+
+function normalizarFechaAnio(str, anio){
+  if (!str) return null;
+  var d = new Date(str + 'T00:00:00');
+  return new Date(anio, d.getMonth(), d.getDate());
 }
 
 var selCcaa = document.getElementById('ccaa');
@@ -630,16 +635,6 @@ Object.keys(CCAA).forEach(function(n){
   if (n === "Comunidad de Madrid") o.selected = true;
   selCcaa.appendChild(o);
 });
-
-var selInicio = document.getElementById('veranoInicio');
-var selFin = document.getElementById('veranoFin');
-MESES_NOMBRES.forEach(function(m,i){
-  var o1 = document.createElement('option'); o1.value = i; o1.textContent = m;
-  var o2 = document.createElement('option'); o2.value = i; o2.textContent = m;
-  selInicio.appendChild(o1); selFin.appendChild(o2);
-});
-selInicio.value = 5;
-selFin.value = 8;
 
 document.getElementById('infoConvenioBtn').addEventListener('click', function(){
   var pop = document.getElementById('infoConvenioPop');
@@ -708,8 +703,8 @@ function recalcular(){
   var horasViernes = parseFloat(document.getElementById('horasViernes').value) || horasDia;
   var intensivoVerano = document.getElementById('chkVerano').checked;
   var horasVerano = parseFloat(document.getElementById('horasVerano').value) || horasDia;
-  var mesInicio = parseInt(selInicio.value,10);
-  var mesFin = parseInt(selFin.value,10);
+  var veranoInicioDate = normalizarFechaAnio(document.getElementById('veranoInicio').value, anio);
+  var veranoFinDate = normalizarFechaAnio(document.getElementById('veranoFin').value, anio);
 
   var festivos = BASE.concat(CCAA[selCcaa.value]);
 
@@ -718,8 +713,8 @@ function recalcular(){
   while (d.getFullYear() === anio){
     var dow = d.getDay();
     if (dow !== 0 && dow !== 6 && !esFestivoLista(d, festivos)){
-      var mes = d.getMonth();
-      var enVerano = intensivoVerano && (mesInicio <= mesFin ? (mes >= mesInicio && mes <= mesFin) : (mes >= mesInicio || mes <= mesFin));
+      var enVerano = intensivoVerano && veranoInicioDate && veranoFinDate &&
+        (veranoInicioDate <= veranoFinDate ? (d >= veranoInicioDate && d <= veranoFinDate) : (d >= veranoInicioDate || d <= veranoFinDate));
       if (enVerano) veranoCount++;
       else if (dow === 5) viernesCount++;
       else restoCount++;
@@ -793,11 +788,9 @@ function recalcular(){
 }
 
 selCcaa.addEventListener('change', recalcular);
-['locales','horasConvenio','horasDia','vacaciones','horasViernes','horasVerano'].forEach(function(id){
+['locales','horasConvenio','horasDia','vacaciones','horasViernes','horasVerano','veranoInicio','veranoFin'].forEach(function(id){
   document.getElementById(id).addEventListener('input', recalcular);
 });
-selInicio.addEventListener('change', recalcular);
-selFin.addEventListener('change', recalcular);
 recalcular();
 </script>
 
