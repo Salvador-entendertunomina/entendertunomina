@@ -446,11 +446,20 @@
               <input id="fq-baja" type="date" value="2026-06-30">
             </div>
           </div>
-          <div class="field">
-            <label for="fq-vacaciones">Días de vacaciones pendientes de disfrutar</label>
-            <input id="fq-vacaciones" type="number" min="0" max="60" step="1" value="0">
-            <div class="field-hint">Días naturales pendientes del año en curso. ¿No sabes cuántos te quedan? <a href="#vacaciones-proporcionales" style="color:var(--ledger);font-weight:600;text-decoration:underline;">Calcúlalos aquí abajo ↓</a></div>
+          <div class="field-row">
+            <div class="field">
+              <label for="fq-vacaciones">Días de vacaciones pendientes</label>
+              <input id="fq-vacaciones" type="number" min="0" max="60" step="0.5" value="0">
+            </div>
+            <div class="field">
+              <label for="fq-vacaciones-tipo">¿En qué tipo de días?</label>
+              <select id="fq-vacaciones-tipo">
+                <option value="naturales" selected>Naturales</option>
+                <option value="laborables">Laborables</option>
+              </select>
+            </div>
           </div>
+          <div class="field-hint">El finiquito siempre se abona en días naturales, que es como se cotiza a la Seguridad Social — si indicas días laborables, los convertimos automáticamente. ¿No sabes cuántos te quedan? <a href="#vacaciones-proporcionales" style="color:var(--ledger);font-weight:600;text-decoration:underline;">Calcúlalos aquí abajo ↓</a></div>
           <button class="btn btn-primary" onclick="calcFiniquito()" type="button">Calcular finiquito →</button>
         </div>
         <div class="tool-result">
@@ -750,6 +759,7 @@
     var altaStr = document.getElementById('fq-alta').value;
     var bajaStr = document.getElementById('fq-baja').value;
     var vacaciones = num('fq-vacaciones');
+    var vacacionesTipo = document.getElementById('fq-vacaciones-tipo').value;
     var out = document.getElementById('fq-result');
 
     if (mensual <= 0 || !altaStr || !bajaStr){
@@ -772,16 +782,23 @@
     var importeExtraAnual = mensual * numExtras;
     var prorrateoExtra = (importeExtraAnual / 365) * diasTrabajadosEnAnio;
 
+    // El finiquito siempre se abona en días naturales (referencia legal 30 naturales ≈ 22 laborables)
+    var vacacionesNaturales = vacacionesTipo === 'laborables' ? vacaciones * (30 / 22) : vacaciones;
+
     var salarioDiario = (mensual * 12) / 365;
-    var importeVacaciones = salarioDiario * vacaciones;
+    var importeVacaciones = salarioDiario * vacacionesNaturales;
 
     var total = prorrateoExtra + importeVacaciones;
+
+    var conceptoVacaciones = vacacionesTipo === 'laborables'
+      ? 'Vacaciones no disfrutadas (' + vacaciones + ' laborables → ' + vacacionesNaturales.toFixed(1).replace('.', ',') + ' naturales)'
+      : 'Vacaciones no disfrutadas (' + vacacionesNaturales.toFixed(1).replace('.', ',') + ' días naturales)';
 
     out.innerHTML =
       '<div class="rlabel">Resultado estimado</div><span class="stamp">ORIENTATIVO</span>' +
       '<div class="r-line"><span class="concept">Días computados del año en curso</span><span class="amount">' + Math.round(diasTrabajadosEnAnio) + '</span></div>' +
       '<div class="r-line"><span class="concept">Parte proporcional pagas extra</span><span class="amount">' + eur(prorrateoExtra) + '</span></div>' +
-      '<div class="r-line"><span class="concept">Vacaciones no disfrutadas (' + vacaciones + ' días)</span><span class="amount">' + eur(importeVacaciones) + '</span></div>' +
+      '<div class="r-line"><span class="concept">' + conceptoVacaciones + '</span><span class="amount">' + eur(importeVacaciones) + '</span></div>' +
       '<div class="r-total"><div class="label">Finiquito estimado</div><div class="value">' + eur(total) + '</div></div>' +
       '<p class="r-note">Asume devengo lineal de pagas extra a lo largo del año natural y que aún no se ha cobrado nada de la paga pendiente. Ajusta si tu convenio establece otro periodo de devengo.</p>';
   };
