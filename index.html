@@ -449,29 +449,37 @@
   }
 
   /* ---------- Banner destacado: Calculadora de vacaciones ---------- */
-  #vacaciones-banner{padding:0 0 40px;}
-  .vac-ribbon{
-    display:flex;align-items:center;gap:18px;
-    background:var(--ink);border-radius:8px;padding:16px 24px;
+  #vacaciones-banner{padding:0 0 32px;}
+  .vac-banner{
+    display:grid;grid-template-columns:1fr auto;align-items:center;gap:32px;
+    background:var(--ink);border-radius:8px;padding:40px 48px;
     text-decoration:none;color:#F3F1E8;
     border:1px solid rgba(199,154,69,0.35);
+    box-shadow:var(--shadow);
     transition:transform .15s ease, box-shadow .15s ease;
   }
-  .vac-ribbon:hover{transform:translateY(-1px);box-shadow:var(--shadow);}
-  .vac-ribbon-icon{
-    flex-shrink:0;width:34px;height:34px;border-radius:50%;
-    background:rgba(199,154,69,0.14);color:var(--gold);
-    display:flex;align-items:center;justify-content:center;font-size:1rem;
+  .vac-banner:hover{transform:translateY(-2px);box-shadow:0 24px 48px -20px rgba(24,43,58,0.5);}
+  .vac-flag{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'IBM Plex Mono', monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--gold);margin-bottom:14px;
   }
-  .vac-ribbon-text{flex:1;font-size:.92rem;color:#C9CFD4;line-height:1.4;}
-  .vac-ribbon-text strong{color:#F3F1E8;font-weight:600;}
-  .vac-ribbon-cta{
-    flex-shrink:0;font-family:'IBM Plex Sans',sans-serif;font-weight:600;font-size:.86rem;
-    color:var(--gold);white-space:nowrap;
+  .vac-flag::before{content:"●";font-size:.6em;}
+  .vac-banner h2{color:#F3F1E8;font-size:clamp(1.5rem,2.8vw,2.1rem);margin:0 0 .35em;max-width:20ch;}
+  .vac-banner p{color:#C9CFD4;font-size:1rem;max-width:52ch;margin:0 0 18px;}
+  .vac-cta{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'IBM Plex Sans',sans-serif;font-weight:600;font-size:.92rem;color:var(--gold);
   }
-  @media (max-width:640px){
-    .vac-ribbon{flex-wrap:wrap;}
-    .vac-ribbon-cta{width:100%;padding-left:52px;}
+  .vac-banner-badge{
+    text-align:center;background:rgba(199,154,69,0.1);border:1px solid rgba(199,154,69,0.35);
+    border-radius:8px;padding:22px 30px;flex-shrink:0;
+  }
+  .vac-big{display:block;font-family:'Fraunces',serif;font-size:2.6rem;font-weight:600;color:var(--gold);line-height:1;}
+  .vac-badge-label{display:block;font-family:'IBM Plex Mono',monospace;font-size:.68rem;color:#C9CFD4;margin-top:8px;letter-spacing:.02em;}
+  @media (max-width:860px){
+    .vac-banner{grid-template-columns:1fr;text-align:left;padding:32px 28px;}
+    .vac-banner-badge{justify-self:start;}
   }
 
   /* ---------- Recursos gratuitos: Biblioteca RED + Herramientas ---------- */
@@ -580,16 +588,6 @@
   </div>
 </section>
 
-<section id="vacaciones-banner">
-  <div class="wrap">
-    <a class="vac-ribbon" href="calculadora-vacaciones-pendientes.html">
-      <span class="vac-ribbon-icon">🗓</span>
-      <span class="vac-ribbon-text"><strong>¿Te deben días de vacaciones?</strong> Calculadora gratuita según tu convenio y comunidad autónoma, sin registro.</span>
-      <span class="vac-ribbon-cta">Calcular ahora →</span>
-    </a>
-  </div>
-</section>
-
 <section id="servicios">
   <div class="wrap">
     <div class="section-head">
@@ -639,6 +637,23 @@
         <div class="cb-line"><span>Precio</span><span>Desde 20 €</span></div>
       </div>
     </div>
+  </div>
+</section>
+
+<section id="vacaciones-banner">
+  <div class="wrap">
+    <a class="vac-banner" href="calculadora-vacaciones-pendientes.html">
+      <div>
+        <div class="vac-flag">Calculadora gratuita · Calendario 2026</div>
+        <h2>¿Sabes si tu empresa te debe días de vacaciones?</h2>
+        <p>Compara las horas de tu convenio con las que realmente trabajas, según tu comunidad autónoma y tu jornada. Descúbrelo en 2 minutos, gratis y sin registro.</p>
+        <span class="vac-cta">Calcular mis vacaciones →</span>
+      </div>
+      <div class="vac-banner-badge">
+        <span class="vac-big">¿+ días?</span>
+        <span class="vac-badge-label">Puede que te<br>correspondan</span>
+      </div>
+    </a>
   </div>
 </section>
 
