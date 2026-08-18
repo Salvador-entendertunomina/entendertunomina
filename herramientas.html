@@ -171,6 +171,24 @@
   .cookie-banner-actions{display:flex;gap:10px;flex-shrink:0;}
   .cookie-banner .btn-ghost{border-color:rgba(255,255,255,0.4);color:#F3F1E8;}
   .cookie-banner .btn-ghost:hover{background:rgba(255,255,255,0.1);color:#fff;}
+
+  /* ---------- Tablas de referencia (IRPF) ---------- */
+  .ref-tables{margin-top:28px;display:grid;grid-template-columns:1.3fr 1fr;gap:24px;}
+  .ref-table-card{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:24px 26px;}
+  .ref-table-card h4{font-size:.92rem;margin:0 0 14px;font-family:'IBM Plex Sans',sans-serif;font-weight:600;}
+  table.ref-table{width:100%;border-collapse:collapse;font-size:.86rem;}
+  table.ref-table th{
+    text-align:left;font-family:'IBM Plex Mono', monospace;font-size:.66rem;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--ink-soft);padding:0 0 8px;border-bottom:1px solid var(--line);
+  }
+  table.ref-table td{padding:9px 0;border-bottom:1px dashed var(--line);color:var(--ink-soft);}
+  table.ref-table tr:last-child td{border-bottom:none;}
+  table.ref-table td:last-child, table.ref-table th:last-child{text-align:right;font-family:'IBM Plex Mono', monospace;color:var(--ink);font-weight:600;}
+  .ref-source{font-size:.76rem;color:var(--ink-soft);margin-top:10px;grid-column:1 / -1;}
+  .ref-source a{color:var(--ledger);}
+  @media (max-width:860px){
+    .ref-tables{grid-template-columns:1fr;}
+  }
 </style>
 </head>
 <body>
@@ -323,6 +341,37 @@
           <div id="ir-result"><p class="r-empty">Rellena tus datos y pulsa «Calcular retención» para ver tu % estimado.</p></div>
         </div>
       </div>
+    </div>
+
+    <div class="ref-tables">
+      <div class="ref-table-card">
+        <h4>Escala general de IRPF 2026 (tramos de referencia)</h4>
+        <table class="ref-table">
+          <thead><tr><th>Base liquidable</th><th>Tipo aplicable</th></tr></thead>
+          <tbody>
+            <tr><td>Hasta 12.450 €</td><td>19 %</td></tr>
+            <tr><td>12.450 € – 20.200 €</td><td>24 %</td></tr>
+            <tr><td>20.200 € – 35.200 €</td><td>30 %</td></tr>
+            <tr><td>35.200 € – 60.000 €</td><td>37 %</td></tr>
+            <tr><td>60.000 € – 300.000 €</td><td>45 %</td></tr>
+            <tr><td>Más de 300.000 €</td><td>47 %</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="ref-table-card">
+        <h4>Mínimo personal y familiar 2026</h4>
+        <table class="ref-table">
+          <thead><tr><th>Concepto</th><th>Importe</th></tr></thead>
+          <tbody>
+            <tr><td>Mínimo del contribuyente (&lt;65 años)</td><td>5.550 €</td></tr>
+            <tr><td>Por el 1er hijo</td><td>2.400 €</td></tr>
+            <tr><td>Por el 2º hijo</td><td>2.700 €</td></tr>
+            <tr><td>Por el 3er hijo</td><td>4.000 €</td></tr>
+            <tr><td>Por el 4º hijo y siguientes</td><td>4.400 €</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="ref-source">Tramos estatales sin cambios respecto a 2025, combinados con una escala autonómica media de referencia. La escala real depende de tu comunidad autónoma. Mínimos según art. 57-58 LIRPF, invariables en 2026.</p>
     </div>
   </div>
 </section>
@@ -521,7 +570,7 @@
     return isNaN(v) ? 0 : v;
   }
 
-  // Tramos generales de IRPF de referencia (escala combinada estatal + autonómica media, 2025)
+  // Tramos generales de IRPF de referencia (escala combinada estatal + autonómica media, 2026 — sin cambios respecto a 2025)
   var IRPF_BRACKETS = [
     {hasta: 12450, tipo: 0.19},
     {hasta: 20200, tipo: 0.24},
@@ -532,7 +581,7 @@
   ];
   var MINIMO_PERSONAL = 5550;
   var MINIMOS_HIJOS = [2400, 2700, 4000, 4400]; // 1º, 2º, 3º, 4º y siguientes (cada uno)
-  var BASE_MAX_ANUAL_SS = 4909.50 * 12; // referencia 2025
+  var BASE_MAX_ANUAL_SS = 5101.20 * 12; // base máxima de cotización 2026
 
   function progresivo(base){
     if (base <= 0) return 0;
@@ -565,7 +614,7 @@
   }
 
   function cuotaSSTrabajador(brutoAnual, tipoContrato){
-    var tipos = {comunes: 0.0470, formacion: 0.0010, mei: 0.0013};
+    var tipos = {comunes: 0.0470, formacion: 0.0010, mei: 0.0015}; // MEI trabajador 2026: 0,15% (0,9% total)
     var desempleo = tipoContrato === 'temporal' ? 0.0160 : 0.0155;
     var tipoTotal = tipos.comunes + tipos.formacion + tipos.mei + desempleo;
     var baseCotizable = Math.min(brutoAnual, BASE_MAX_ANUAL_SS);
@@ -606,7 +655,7 @@
       '<div class="r-line"><span class="concept">IRPF estimado (' + pct(tipoIrpfEfectivo) + ')</span><span class="amount">− ' + eur(irpfAnual) + '</span></div>' +
       '<div class="r-total"><div class="label">Neto anual estimado</div><div class="value">' + eur(netoAnual) + '</div></div>' +
       '<div class="r-line" style="margin-top:14px;"><span class="concept">Neto por paga (' + pagas + ' pagas)</span><span class="amount">' + eur(netoPorPaga) + '</span></div>' +
-      '<p class="r-note">Cálculo orientativo con tipos generales 2025. No considera comunidad autónoma, convenio colectivo ni otras rentas.</p>';
+      '<p class="r-note">Cálculo orientativo con tipos generales 2026. No considera comunidad autónoma, convenio colectivo ni otras rentas.</p>';
   };
 
   window.calcIRPF = function(){
@@ -634,7 +683,7 @@
       '<div class="r-line" style="margin-top:14px;"><span class="concept">Seguridad Social deducible (' + pct(ss.tipo * 100) + ')</span><span class="amount">− ' + eur(ss.importe) + '</span></div>' +
       '<div class="r-line"><span class="concept">Gasto deducible genérico</span><span class="amount">− ' + eur(gastoGenerico) + '</span></div>' +
       '<div class="r-line"><span class="concept">Mínimo personal y familiar aplicado</span><span class="amount">' + eur(MINIMO_PERSONAL + minimoPorHijos(hijos)) + '</span></div>' +
-      '<p class="r-note">Estimación con la escala general de IRPF de referencia (2025). La base imponible ya descuenta la cuota de Seguridad Social del trabajador y el gasto deducible genérico de 2.000 €. La retención real puede variar según tu comunidad autónoma y tu situación completa.</p>';
+      '<p class="r-note">Estimación con la escala general de IRPF de referencia (2026). La base imponible ya descuenta la cuota de Seguridad Social del trabajador y el gasto deducible genérico de 2.000 €. La retención real puede variar según tu comunidad autónoma y tu situación completa.</p>';
   };
 
   function diasEntre(d1, d2){
