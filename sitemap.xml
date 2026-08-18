@@ -3,9 +3,16 @@
 
   <url>
     <loc>https://www.entendertunomina.com/</loc>
-    <lastmod>2026-08-06</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://www.entendertunomina.com/calculadora-vacaciones-pendientes.html</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
   </url>
 
   <url>
@@ -38,7 +45,7 @@
 
   <url>
     <loc>https://www.entendertunomina.com/herramientas.html</loc>
-    <lastmod>2026-08-17</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>

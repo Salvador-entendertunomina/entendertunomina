@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<title>¿Te deben días de vacaciones? Calculadora 2026 — EntenderTuNomina</title>
+<meta name="description" content="Calcula si tu empresa te debe días de vacaciones en 2026 según tu comunidad autónoma, tu convenio y tu jornada. Gratuita, sin registro, resultado al instante.">
+<link rel="canonical" href="https://www.entendertunomina.com/calculadora-vacaciones-pendientes.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.entendertunomina.com/calculadora-vacaciones-pendientes.html">
+<meta property="og:title" content="¿Te deben días de vacaciones? Calculadora 2026 — EntenderTuNomina">
+<meta property="og:description" content="Calcula si tu empresa te debe días de vacaciones en 2026 según tu comunidad autónoma, tu convenio y tu jornada. Gratuita, sin registro, resultado al instante.">
+<meta property="og:image" content="https://www.entendertunomina.com/og-image.png">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="¿Te deben días de vacaciones? Calculadora 2026 — EntenderTuNomina">
+<meta name="twitter:description" content="Calcula si tu empresa te debe días de vacaciones en 2026 según tu comunidad autónoma, tu convenio y tu jornada. Gratuita, sin registro, resultado al instante.">
+<meta name="twitter:image" content="https://www.entendertunomina.com/og-image.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Inicio","item":"https://www.entendertunomina.com/"},
+    {"@type":"ListItem","position":2,"name":"Herramientas gratuitas","item":"https://www.entendertunomina.com/herramientas.html"},
+    {"@type":"ListItem","position":3,"name":"Calculadora de vacaciones pendientes","item":"https://www.entendertunomina.com/calculadora-vacaciones-pendientes.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Calculadora de días de vacaciones pendientes 2026",
+  "description": "Calcula si tu empresa te debe días de vacaciones en 2026 comparando las horas de tu convenio con las horas reales trabajadas según tu comunidad autónoma, festivos y jornada.",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any",
+  "url": "https://www.entendertunomina.com/calculadora-vacaciones-pendientes.html",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
+  "author": {"@type": "Person", "name": "Salvador Fernández Martínez"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Cómo sé si mi empresa me debe días de vacaciones?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Comparando las horas anuales que fija tu convenio colectivo con las horas que realmente trabajas según tu jornada diaria y el calendario laboral de tu comunidad autónoma. Si trabajas más horas de las que marca tu convenio, esa diferencia se traduce en días de vacaciones adicionales que te corresponden."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Los festivos locales cuentan en el cálculo de vacaciones?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Los festivos locales de tu municipio (normalmente dos al año) restan días laborables del cómputo anual, pero no tienen una fecha fija a nivel nacional. Debes indicar cuántos tiene tu municipio y confirmar las fechas exactas en el Boletín Oficial de tu provincia."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué hago si el resultado dice que me deben días de vacaciones?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Coméntalo primero con Recursos Humanos mostrando el cálculo de horas de tu convenio frente a tu jornada real. Si tu empresa no está de acuerdo o no sabes cómo plantearlo, puedes reservar una consulta individual y lo revisamos juntos con tu contrato y tu convenio real."
+      }
+    }
+  ]
+}
+</script>
+<style>
+  :root{
+    --ink:#182B3A;--ink-soft:#3E5164;--paper:#E9E7DE;--paper-deep:#DFDCCF;--card:#FBFAF6;
+    --ledger:#2F5D50;--ledger-deep:#20463B;--gold:#C79A45;--brick:#AE4A30;
+    --line:rgba(24,43,58,0.14);--shadow: 0 18px 40px -20px rgba(24,43,58,0.35);
+    --paper-2:#F4F3ED;--danger:#A83A2E;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background-image:repeating-linear-gradient(to bottom, transparent 0, transparent 37px, rgba(24,43,58,0.05) 38px);opacity:.5;}
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    margin:0 0 .5em;
+    color:var(--ink);
+  }
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  a{color:var(--ledger);}
+  .wrap{max-width:760px;margin:0 auto;padding:0 24px;position:relative;z-index:1;}
+
+  /* ---------- Cabecera del sitio ---------- */
+  header{position:sticky;top:0;z-index:50;background:rgba(233,231,222,0.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;max-width:1120px;margin:0 auto;}
+  .brand{font-family:'Fraunces', serif;font-weight:600;font-size:1.15rem;display:flex;align-items:baseline;gap:.5em;text-decoration:none;color:var(--ink);}
+  .brand span.tag{font-family:'IBM Plex Mono', monospace;font-size:.62rem;color:var(--ledger);letter-spacing:.14em;font-weight:600;border:1px solid var(--ledger);padding:2px 6px;border-radius:3px;}
+  nav.links{display:flex;gap:18px;font-size:.86rem;}
+  nav.links a{text-decoration:none;color:var(--ink-soft);}
+  nav.links a:hover, nav.links a.active{color:var(--ink);}
+  .btn{font-family:'IBM Plex Sans', sans-serif;font-weight:600;font-size:.88rem;padding:10px 20px;border-radius:3px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;border:1px solid transparent;background:transparent;-webkit-appearance:none;appearance:none;outline:none;transition:transform .15s ease, box-shadow .15s ease;cursor:pointer;}
+  .btn-primary{background:var(--ledger);color:#fff;}
+  .btn-primary:hover{transform:translateY(-1px);box-shadow:0 8px 18px -8px rgba(47,93,80,0.55);}
+  .btn-ghost{border-color:var(--ink);color:var(--ink);}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper);}
+  .btn-outline-light{background:transparent;color:#fff;border-color:rgba(255,255,255,0.5);}
+  .btn-outline-light:hover{background:rgba(255,255,255,0.1);}
+  .menu-toggle{display:none;background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--ink);padding:4px;line-height:1;}
+
+  .mobile-panel{position:fixed;top:0;right:0;bottom:0;width:min(78vw, 320px);background:var(--card);z-index:100;box-shadow:-18px 0 40px -20px rgba(24,43,58,0.5);transform:translateX(100%);transition:transform .25s ease;padding:24px;overflow-y:auto;}
+  .mobile-panel.open{transform:translateX(0);}
+  .mobile-panel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;}
+  .mobile-panel-close{background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--ink);line-height:1;}
+  .mobile-panel nav{display:flex;flex-direction:column;gap:4px;}
+  .mobile-panel nav a{text-decoration:none;color:var(--ink);font-size:1.05rem;font-weight:500;padding:14px 4px;border-bottom:1px solid var(--line);}
+  .mobile-panel nav a.active{color:var(--ledger);}
+  .mobile-panel .btn{margin-top:22px;width:100%;justify-content:center;box-sizing:border-box;}
+  .mobile-overlay{display:none;position:fixed;inset:0;background:rgba(24,43,58,0.4);z-index:99;}
+  .mobile-overlay.open{display:block;}
+  @media (max-width:860px){
+    nav.links{display:none;}
+    .menu-toggle{display:block;}
+    .nav > a.btn-primary{display:none;}
+  }
+
+  /* ---------- Migas de pan ---------- */
+  .breadcrumb{font-family:'IBM Plex Mono', monospace;font-size:.72rem;color:var(--ink-soft);padding:18px 0 0;position:relative;z-index:1;}
+  .breadcrumb a{color:var(--ink-soft);text-decoration:none;}
+  .breadcrumb a:hover{color:var(--ledger);}
+  .breadcrumb .sep{margin:0 6px;opacity:.5;}
+  .breadcrumb .current{color:var(--ink);}
+
+  /* ---------- Contenido de la calculadora ---------- */
+  .hero{padding:24px 0 40px;position:relative;z-index:1;}
+  .hero .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    color:var(--ledger);
+    margin-bottom:14px;
+  }
+  .hero h1{font-size:35px;line-height:1.18;max-width:14ch;}
+  .hero p.lede{font-size:17px;max-width:56ch;color:rgba(24,43,58,0.82);}
+  .hero .hook-box{
+    margin-top:28px;
+    background:var(--paper-2);
+    border-left:3px solid var(--gold);
+    padding:16px 20px;
+    font-size:15px;
+    max-width:58ch;
+  }
+  .hero .hook-box strong{color:var(--ink);}
+
+  .card{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:28px 28px 24px;
+  }
+  .section{padding:0 0 44px;position:relative;z-index:1;}
+  .section-title{font-size:13px;font-family:'IBM Plex Mono', monospace;text-transform:uppercase;letter-spacing:.08em;color:var(--ledger);margin-bottom:6px;}
+
+  label{font-size:13px;color:rgba(24,43,58,0.72);display:block;margin-bottom:6px;font-weight:500;}
+  select, input[type=number], input[type=text]{
+    width:100%;
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:15px;
+    padding:10px 12px;
+    border:1px solid var(--line);
+    border-radius:3px;
+    background:#fff;
+    color:var(--ink);
+  }
+  select:focus, input:focus{outline:2px solid var(--gold);outline-offset:1px;}
+  .row{display:grid;gap:16px;margin-bottom:18px;}
+  .row.cols-2{grid-template-columns:1fr 1fr;}
+  .row.cols-3{grid-template-columns:1fr 1fr 1fr;}
+  @media (max-width:560px){
+    .row.cols-2, .row.cols-3{grid-template-columns:1fr;}
+    .hero h1{font-size:28px;max-width:none;}
+  }
+  .info-btn{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;border:1px solid var(--ledger);color:var(--ledger);background:#fff;font-size:11px;font-family:'IBM Plex Mono',monospace;cursor:pointer;margin-left:6px;vertical-align:middle;padding:0;line-height:1;}
+  .info-btn:hover, .info-btn:focus{background:var(--ledger);color:#fff;outline:none;}
+  .info-pop{display:none;margin-top:8px;background:var(--paper-2);border:1px solid var(--line);border-radius:4px;padding:12px 14px;font-size:13.5px;color:rgba(24,43,58,0.85);}
+  .info-pop.open{display:block;}
+  .info-pop a{font-weight:600;}
+
+  details.advanced{margin:6px 0 22px;border:1px dashed var(--line);border-radius:3px;padding:2px 16px;}
+  details.advanced summary{cursor:pointer;font-size:14px;color:var(--ledger);padding:12px 0;font-weight:500;list-style:none;display:flex;align-items:center;gap:8px;}
+  details.advanced summary::-webkit-details-marker{display:none;}
+  details.advanced summary::before{content:"+";font-family:'IBM Plex Mono',monospace;font-size:16px;}
+  details.advanced[open] summary::before{content:"–";}
+  details.advanced .adv-body{padding:4px 0 18px;}
+  details.advanced .adv-note{font-size:12px;color:rgba(24,43,58,0.6);margin-top:4px;}
+  .check-row{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+  .check-row input[type=checkbox]{width:16px;height:16px;}
+  .check-row label{margin:0;font-weight:500;}
+
+  .metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:22px 0;}
+  @media (max-width:560px){.metrics{grid-template-columns:1fr;}}
+  .metric{background:var(--paper-2);border-radius:3px;padding:14px 16px;}
+  .metric .label{font-size:12px;color:rgba(24,43,58,0.65);margin-bottom:4px;}
+  .metric .value{font-family:'IBM Plex Mono', monospace;font-size:22px;font-weight:500;color:var(--ink);}
+
+  .result{border-radius:8px;padding:36px 40px;margin:6px 0 24px;border:1px solid;}
+  .result.warning{background:#FBF1E4;border-color:var(--gold);}
+  .result.success{background:#EAF1EC;border-color:var(--ledger);}
+  .result.info{background:#EAEEF2;border-color:var(--ink);}
+  .result .eyebrow-result{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);opacity:0.55;margin-bottom:10px;}
+  .result .big-number{font-family:'Fraunces',serif;font-size:52px;font-weight:500;line-height:1;margin:0 0 22px;color:var(--ink);}
+  .result p{font-family:'Fraunces',serif;font-weight:400;font-size:17px;line-height:1.55;color:var(--ink);margin:0 0 14px;}
+  .result p:last-of-type{margin-bottom:0;}
+  .result strong{font-weight:600;}
+  .result .btn-inline{margin-top:22px;font-family:'IBM Plex Sans',sans-serif;}
+
+  table.festivos{width:100%;border-collapse:collapse;font-size:14px;margin-top:6px;}
+  table.festivos th{text-align:left;padding:9px 6px;border-bottom:1px solid var(--ink);font-family:'IBM Plex Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:rgba(24,43,58,0.65);font-weight:500;}
+  table.festivos td{padding:9px 6px;border-bottom:1px solid var(--line);}
+  table.festivos td.finde{color:rgba(24,43,58,0.5);font-style:italic;}
+  table.festivos tr.local td{font-weight:600;}
+
+  .disclaimer{
+    background:#fff;
+    border:1px solid var(--gold);
+    border-radius:3px;
+    padding:18px 20px;
+    font-size:14px;
+    color:rgba(24,43,58,0.85);
+  }
+  .disclaimer strong{color:var(--ink);}
+
+  .more-tools{font-size:14px;margin-top:16px;}
+  .more-tools a{color:var(--ledger);font-weight:600;text-decoration:none;border-bottom:1px solid var(--ledger);}
+
+  .faq-item{padding:18px 0;border-bottom:1px solid var(--line);}
+  .faq-item:last-child{border-bottom:none;}
+  .faq-item h3{font-family:'IBM Plex Sans',sans-serif;font-size:16px;font-weight:600;margin:0 0 8px;}
+  .faq-item p{font-size:14.5px;color:rgba(24,43,58,0.78);margin:0;}
+
+  .cta{background:var(--ledger);color:#fff;padding:52px 0;position:relative;z-index:1;}
+  .cta h2{color:#fff;font-size:25px;}
+  .cta p{color:rgba(255,255,255,0.85);max-width:52ch;font-size:15.5px;}
+  .cta-buttons{display:flex;gap:14px;margin-top:22px;flex-wrap:wrap;}
+
+  footer{padding:28px 0;text-align:center;font-size:13px;color:rgba(24,43,58,0.55);position:relative;z-index:1;}
+
+  /* ---------- Banner de cookies ---------- */
+  .cookie-banner{display:none;position:fixed;left:0;right:0;bottom:0;z-index:200;background:var(--ink);border-top:1px solid rgba(255,255,255,0.15);}
+  .cookie-banner.visible{display:block;}
+  .cookie-banner-inner{max-width:1120px;margin:0 auto;padding:20px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+  .cookie-banner p{margin:0;color:#C9CFD4;font-size:.86rem;max-width:70ch;}
+  .cookie-banner p a{color:var(--gold);text-decoration:underline;}
+  .cookie-banner-actions{display:flex;gap:10px;flex-shrink:0;}
+  .cookie-banner .btn-ghost{border-color:rgba(255,255,255,0.4);color:#F3F1E8;}
+  .cookie-banner .btn-ghost:hover{background:rgba(255,255,255,0.1);color:#fff;}
+</style>
+</head>
+<body>
+
+<div class="cookie-banner" id="cookieBanner">
+  <div class="cookie-banner-inner">
+    <p>Usamos cookies técnicas necesarias para el funcionamiento del sitio. Si aceptas, también cargamos tipografías externas (Google Fonts) para mejorar el diseño. Más información en la <a href="cookies.html">Política de Cookies</a>.</p>
+    <div class="cookie-banner-actions">
+      <button id="cookieReject" class="btn btn-ghost">Rechazar</button>
+      <button id="cookieAccept" class="btn btn-primary">Aceptar</button>
+    </div>
+  </div>
+</div>
+
+<header>
+  <div class="nav">
+    <a href="index.html" class="brand">Entender<span style="color:var(--ledger)">TuNómina</span> <span class="tag">S.F.</span></a>
+    <nav class="links">
+      <a href="index.html">Inicio</a>
+      <a href="index.html#servicios">Servicios</a>
+      <a href="cursos.html">Cursos</a>
+      <a href="herramientas.html" class="active">Herramientas</a>
+      <a href="biblioteca-red.html">Biblioteca RED</a>
+      <a href="divulgacion.html">Divulgación</a>
+      <a href="index.html#contacto">Contacto</a>
+    </nav>
+    <a class="btn btn-primary" href="#calculo">Calcular ahora</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
+  </div>
+</header>
+
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<div class="mobile-panel" id="mobilePanel">
+  <div class="mobile-panel-head">
+    <div class="brand" style="font-size:1rem;">Menú</div>
+    <button class="mobile-panel-close" id="mobileClose" aria-label="Cerrar menú">✕</button>
+  </div>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="index.html#servicios">Servicios</a>
+    <a href="cursos.html">Cursos</a>
+    <a href="herramientas.html" class="active">Herramientas</a>
+    <a href="biblioteca-red.html">Biblioteca RED</a>
+    <a href="divulgacion.html">Divulgación</a>
+    <a href="index.html#contacto">Contacto</a>
+  </nav>
+  <a class="btn btn-primary" href="#calculo">Calcular ahora</a>
+</div>
+
+<nav class="breadcrumb wrap" aria-label="Migas de pan">
+  <a href="index.html">Inicio</a><span class="sep">/</span><a href="herramientas.html">Herramientas</a><span class="sep">/</span><span class="current">Vacaciones pendientes</span>
+</nav>
+
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Calculadora · Calendario laboral 2026</p>
+    <h1>¿Sabes si tu empresa te debe días de vacaciones?</h1>
+    <p class="lede">Si haces 8 horas todos los días laborables del año y tu empresa no aplica jornada intensiva, es muy probable que estés trabajando más horas de las que marca tu convenio. Y eso, en días, se traduce en vacaciones que no te has llevado.</p>
+    <div class="hook-box">
+      <strong>El motivo:</strong> tu convenio fija un número de horas anuales. El calendario 2026 de tu comunidad fija un número de días laborables. Si multiplicas jornada diaria por días laborables, casi siempre sale un número mayor que las horas de tu convenio. Esa diferencia son días que te corresponden y que muchas empresas no calculan bien.
+    </div>
+  </div>
+</section>
+
+<section class="section" id="calculo">
+  <div class="wrap">
+    <div class="card">
+
+      <p class="section-title">1. Tu calendario</p>
+      <div class="row">
+        <div>
+          <label for="ccaa">Comunidad autónoma</label>
+          <select id="ccaa"></select>
+        </div>
+      </div>
+
+      <div class="row cols-2">
+        <div>
+          <label for="locales">Festivos locales de tu municipio</label>
+          <input type="number" id="locales" value="2" min="1">
+        </div>
+        <div>
+          <label for="vacaciones">Vacaciones estándar de referencia (días laborables)</label>
+          <input type="number" id="vacaciones" value="22" min="1">
+        </div>
+      </div>
+      <p class="field-error" id="errorLocales">El número de festivos locales no puede ser 0.</p>
+
+      <p class="section-title" style="margin-top:20px;">2. Tu contrato</p>
+      <div class="row cols-2">
+        <div>
+          <label for="horasConvenio">Horas anuales según tu convenio
+            <button type="button" class="info-btn" id="infoConvenioBtn" aria-label="Más información sobre las horas de convenio" aria-expanded="false">i</button>
+          </label>
+          <input type="number" id="horasConvenio" placeholder="Ej: 1800">
+          <div class="info-pop" id="infoConvenioPop">¿No conoces las horas de tu convenio? Resérvame una consulta y lo revisamos juntos en directo. <a href="/consulta.html">Reservar consulta →</a></div>
+        </div>
+        <div>
+          <label for="horasDia">Horas que trabajas al día (jornada normal)</label>
+          <input type="number" id="horasDia" value="8" step="0.5">
+        </div>
+      </div>
+      <p class="field-error" id="errorInputs">Introduce las horas de convenio y las horas al día para calcular.</p>
+
+      <details class="advanced">
+        <summary>Opciones avanzadas: jornada intensiva</summary>
+        <div class="adv-body">
+          <div class="check-row">
+            <input type="checkbox" id="chkViernes">
+            <label for="chkViernes">Hago jornada intensiva los viernes</label>
+          </div>
+          <div class="row cols-2" id="viernesFields" style="display:none;margin-bottom:6px;">
+            <div>
+              <label for="horasViernes">Horas que trabajas el viernes</label>
+              <input type="number" id="horasViernes" value="6" step="0.5">
+            </div>
+          </div>
+
+          <div class="check-row">
+            <input type="checkbox" id="chkVerano">
+            <label for="chkVerano">Hago jornada intensiva en verano</label>
+          </div>
+          <div class="row cols-3" id="veranoFields" style="display:none;">
+            <div>
+              <label for="horasVerano">Horas al día en verano</label>
+              <input type="number" id="horasVerano" value="6" step="0.5">
+            </div>
+            <div>
+              <label for="veranoInicio">Mes de inicio</label>
+              <select id="veranoInicio"></select>
+            </div>
+            <div>
+              <label for="veranoFin">Mes de fin</label>
+              <select id="veranoFin"></select>
+            </div>
+          </div>
+          <p class="adv-note">Si tu empresa reduce la jornada los viernes o en verano, indícalo aquí para que el cálculo sea correcto. Si no marcas nada, se asume la misma jornada todos los días laborables del año.</p>
+        </div>
+      </details>
+
+      <div class="metrics">
+        <div class="metric">
+          <div class="label">Días laborables del año</div>
+          <div class="value mono" id="diasLaborables">–</div>
+        </div>
+        <div class="metric">
+          <div class="label">Días exigidos por convenio</div>
+          <div class="value mono" id="diasConvenio">–</div>
+        </div>
+        <div class="metric">
+          <div class="label">Horas totales trabajadas (con vacaciones estándar)</div>
+          <div class="value mono" id="horasTrabajadas">–</div>
+        </div>
+        <div class="metric">
+          <div class="label">Diferencia con horas de convenio</div>
+          <div class="value mono" id="diferenciaHorasConvenio">–</div>
+        </div>
+      </div>
+
+      <div id="resultado" class="result" style="display:none;"></div>
+
+      <p class="section-title" style="margin-top:8px;">Festivos aplicables en 2026</p>
+      <table class="festivos">
+        <thead><tr><th>Fecha</th><th>Festivo</th><th>Día semana</th></tr></thead>
+        <tbody id="tablaFestivos"></tbody>
+      </table>
+
+    </div>
+
+    <div style="height:20px;"></div>
+
+    <div class="disclaimer">
+      <strong>Antes de sacar conclusiones:</strong> este cálculo asume que trabajas la misma jornada todos los días laborables del año. Si tu empresa aplica jornada intensiva los viernes o en verano, ábre "Opciones avanzadas" e indícalo para que el resultado sea correcto; de lo contrario, el cálculo sobrestimará tus horas trabajadas. Los festivos locales no tienen fecha fija a nivel nacional: consulta el Boletín Oficial de tu provincia para confirmar las de tu municipio. Esta herramienta es orientativa y no sustituye la revisión de tu convenio colectivo ni de tu contrato.
+    </div>
+    <p class="more-tools"><a href="herramientas.html">← Ver el resto de calculadoras gratuitas</a></p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="wrap">
+    <p class="section-title">Preguntas frecuentes</p>
+    <h2 style="font-size:22px;">Dudas habituales sobre vacaciones y jornada</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <h3>¿Cómo sé si mi empresa me debe días de vacaciones?</h3>
+        <p>Comparando las horas anuales que fija tu convenio colectivo con las horas que realmente trabajas según tu jornada diaria y el calendario laboral de tu comunidad autónoma. Si trabajas más horas de las que marca tu convenio, esa diferencia se traduce en días de vacaciones adicionales que te corresponden.</p>
+      </div>
+      <div class="faq-item">
+        <h3>¿Los festivos locales cuentan en el cálculo de vacaciones?</h3>
+        <p>Sí. Los festivos locales de tu municipio (normalmente dos al año) restan días laborables del cómputo anual, pero no tienen una fecha fija a nivel nacional. Debes indicar cuántos tiene tu municipio y confirmar las fechas exactas en el Boletín Oficial de tu provincia.</p>
+      </div>
+      <div class="faq-item">
+        <h3>¿Qué hago si el resultado dice que me deben días de vacaciones?</h3>
+        <p>Coméntalo primero con Recursos Humanos mostrando el cálculo de horas de tu convenio frente a tu jornada real. Si tu empresa no está de acuerdo o no sabes cómo plantearlo, puedes reservar una consulta individual y lo revisamos juntos con tu contrato y tu convenio real.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2>¿El resultado te ha dejado con dudas?</h2>
+    <p>Si el cálculo te sale a favor y quieres confirmarlo con tu contrato y tu convenio real, o si tu empresa te ha dicho que no te corresponde y no sabes si es cierto, puedo revisarlo contigo.</p>
+    <div class="cta-buttons">
+      <a class="btn" style="background:var(--gold);color:var(--ink);" href="/consulta.html">Reservar consulta de 30 min · 30€</a>
+      <a class="btn btn-outline-light" href="/index.html#contacto">Escríbeme</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 EntenderTuNomina · Salvador Fernández
+</footer>
+
+<script src="https://bookings.nimbuspop.com/assets/embed.js"></script>
+<script>
+  function initZohoBooking(){
+    if (window.__zohoBookingInit) return;
+    window.__zohoBookingInit = true;
+    Bookings.buttonModal({
+      url: "https://entendertunomina.zohobookings.eu/portal-embed#/entendertunomina",
+      text: "Reservar ahora",
+      color: "#2F5D50",
+      textColor: "#ffffff",
+      position: "bottom-right"
+    });
+  }
+</script>
+
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const mobilePanel = document.getElementById('mobilePanel');
+  const mobileOverlay = document.getElementById('mobileOverlay');
+  const mobileClose = document.getElementById('mobileClose');
+  function openMenu(){mobilePanel.classList.add('open');mobileOverlay.classList.add('open');document.body.style.overflow='hidden';}
+  function closeMenu(){mobilePanel.classList.remove('open');mobileOverlay.classList.remove('open');document.body.style.overflow='';}
+  menuToggle.addEventListener('click', openMenu);
+  mobileClose.addEventListener('click', closeMenu);
+  mobileOverlay.addEventListener('click', closeMenu);
+  mobilePanel.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+</script>
+
+<script>
+  (function(){
+    function loadGoogleFonts(){
+      if (document.getElementById('gfonts-stylesheet')) return;
+      var l1 = document.createElement('link'); l1.rel='preconnect'; l1.href='https://fonts.googleapis.com';
+      var l2 = document.createElement('link'); l2.rel='preconnect'; l2.href='https://fonts.gstatic.com'; l2.crossOrigin='anonymous';
+      var l3 = document.createElement('link'); l3.id='gfonts-stylesheet'; l3.rel='stylesheet';
+      l3.href='https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap';
+      document.head.appendChild(l1);
+      document.head.appendChild(l2);
+      document.head.appendChild(l3);
+    }
+    var consent = localStorage.getItem('etn_cookie_consent');
+    var banner = document.getElementById('cookieBanner');
+    if (consent === 'accepted') {
+      loadGoogleFonts();
+      if (typeof initZohoBooking === 'function') initZohoBooking();
+    } else if (consent === 'rejected') {
+      if (typeof initZohoBooking === 'function') initZohoBooking();
+    } else {
+      if (banner) banner.classList.add('visible');
+    }
+    var acceptBtn = document.getElementById('cookieAccept');
+    var rejectBtn = document.getElementById('cookieReject');
+    if (acceptBtn) acceptBtn.addEventListener('click', function(){
+      localStorage.setItem('etn_cookie_consent','accepted');
+      loadGoogleFonts();
+      if (typeof initZohoBooking === 'function') initZohoBooking();
+      banner.classList.remove('visible');
+    });
+    if (rejectBtn) rejectBtn.addEventListener('click', function(){
+      localStorage.setItem('etn_cookie_consent','rejected');
+      if (typeof initZohoBooking === 'function') initZohoBooking();
+      banner.classList.remove('visible');
+    });
+  })();
+</script>
+
+<!-- ---------- Lógica de la calculadora (sin cambios funcionales) ---------- -->
+<script>
+var CCAA = {
+  "Andalucía": [["28 feb","Día de Andalucía"],["2 abr","Jueves Santo"],["2 nov","Traslado Todos los Santos"],["7 dic","Traslado día Constitución"]],
+  "Aragón": [["2 abr","Jueves Santo"],["23 abr","San Jorge / Día de Aragón"],["2 nov","Traslado Todos los Santos"],["7 dic","Traslado día Constitución"]],
+  "Asturias": [["2 abr","Jueves Santo"],["8 sep","Día de Asturias"],["2 nov","Traslado Todos los Santos"],["7 dic","Traslado día Constitución"]],
+  "Illes Balears": [["2 mar","Día de les Illes Balears (traslado)"],["6 abr","Lunes de Pascua"],["2 nov","Traslado Todos los Santos"],["7 dic","Traslado día Constitución"]],
+  "Canarias": [["2 abr","Jueves Santo"],["30 may","Día de Canarias"],["2 nov","Traslado Todos los Santos"],["7 dic","Traslado día Constitución"]],
+  "Cantabria": [["2 abr","Jueves Santo"],["28 jul","Día Instituciones de Cantabria"],["2 nov","Traslado Todos los Santos"],["7 dic","Traslado día Constitución"]],
+  "Castilla-La Mancha": [["2 abr","Jueves Santo"],["6 abr","Lunes de Pascua"],["4 jun","Corpus Christi"],["7 dic","Traslado día Constitución"]],
+  "Castilla y León": [["2 abr","Jueves Santo"],["23 abr","Fiesta de Castilla y León"],["2 nov","Traslado Todos los Santos"],["7 dic","Traslado día Constitución"]],
+  "Cataluña": [["6 abr","Lunes de Pascua"],["24 jun","San Juan"],["11 sep","Fiesta Nacional de Cataluña"],["26 dic","San Esteban"]],
+  "Extremadura": [["2 abr","Jueves Santo"],["8 sep","Día de Extremadura"],["2 nov","Traslado Todos los Santos"],["7 dic","Traslado día Constitución"]],
+  "Galicia": [["19 mar","San José"],["2 abr","Jueves Santo"],["17 may","Día das Letras Galegas"],["25 jul","Santiago Apóstol"]],
+  "Comunidad de Madrid": [["19 mar","San José"],["2 abr","Jueves Santo"],["2 may","Fiesta de la Comunidad de Madrid"],["2 nov","Traslado Todos los Santos"]],
+  "Región de Murcia": [["19 mar","San José"],["2 abr","Jueves Santo"],["9 jun","Día Región de Murcia"],["2 nov","Traslado Todos los Santos"]],
+  "Navarra": [["2 abr","Jueves Santo"],["6 abr","Lunes de Pascua"],["2 nov","Traslado Todos los Santos"],["7 dic","Traslado día Constitución"]],
+  "País Vasco": [["2 abr","Jueves Santo"],["6 abr","Lunes de Pascua"],["25 jul","Santiago Apóstol"],["7 dic","Traslado día Constitución"]],
+  "La Rioja": [["19 mar","San José"],["2 abr","Jueves Santo"],["9 jun","Día de La Rioja"],["7 dic","Traslado día Constitución"]],
+  "Comunitat Valenciana": [["19 mar","San José"],["6 abr","Lunes de Pascua"],["24 jun","San Juan"],["9 oct","Día de la Comunitat Valenciana"]],
+  "Ceuta": [["2 abr","Jueves Santo"],["5 ago","Nuestra Señora de África"],["27 may","Sacrificio - Eidul Adha"],["2 sep","Día de Ceuta"]],
+  "Melilla": [["2 abr","Jueves Santo"],["20 mar","Fiesta del Eid Fitr"],["27 may","Sacrificio - Aid al Adha"],["7 dic","Traslado día Constitución"]]
+};
+var BASE = [["1 ene","Año Nuevo"],["6 ene","Epifanía"],["3 abr","Viernes Santo"],["1 may","Fiesta del Trabajo"],["15 ago","Asunción de la Virgen"],["12 oct","Fiesta Nacional"],["8 dic","Inmaculada Concepción"],["25 dic","Navidad"]];
+var MESES = {ene:0,feb:1,mar:2,abr:3,may:4,jun:5,jul:6,ago:7,sep:8,oct:9,nov:10,dic:11};
+var MESES_NOMBRES = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+var DIAS = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
+
+function parseFecha(str){
+  var p = str.split(' ');
+  return new Date(2026, MESES[p[1]], parseInt(p[0],10));
+}
+
+var selCcaa = document.getElementById('ccaa');
+Object.keys(CCAA).forEach(function(n){
+  var o = document.createElement('option');
+  o.value = n; o.textContent = n;
+  if (n === "Comunidad de Madrid") o.selected = true;
+  selCcaa.appendChild(o);
+});
+
+var selInicio = document.getElementById('veranoInicio');
+var selFin = document.getElementById('veranoFin');
+MESES_NOMBRES.forEach(function(m,i){
+  var o1 = document.createElement('option'); o1.value = i; o1.textContent = m;
+  var o2 = document.createElement('option'); o2.value = i; o2.textContent = m;
+  selInicio.appendChild(o1); selFin.appendChild(o2);
+});
+selInicio.value = 5;
+selFin.value = 8;
+
+document.getElementById('infoConvenioBtn').addEventListener('click', function(){
+  var pop = document.getElementById('infoConvenioPop');
+  var isOpen = pop.classList.toggle('open');
+  this.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+});
+
+document.getElementById('chkViernes').addEventListener('change', function(){
+  document.getElementById('viernesFields').style.display = this.checked ? 'grid' : 'none';
+  recalcular();
+});
+document.getElementById('chkVerano').addEventListener('change', function(){
+  document.getElementById('veranoFields').style.display = this.checked ? 'grid' : 'none';
+  recalcular();
+});
+
+function esFestivoLista(fecha, lista){
+  return lista.some(function(f){
+    var fd = parseFecha(f[0]);
+    return fd.getFullYear()===fecha.getFullYear() && fd.getMonth()===fecha.getMonth() && fd.getDate()===fecha.getDate();
+  });
+}
+
+function pintarTabla(){
+  var lista = BASE.concat(CCAA[selCcaa.value]).map(function(f){
+    return {fecha: parseFecha(f[0]), nombre: f[1], texto: f[0]};
+  });
+  lista.sort(function(a,b){ return a.fecha - b.fecha; });
+
+  var locales = parseInt(document.getElementById('locales').value,10) || 0;
+  var tbody = document.getElementById('tablaFestivos');
+  tbody.innerHTML = '';
+  lista.forEach(function(f){
+    var dow = f.fecha.getDay();
+    var esFinde = (dow === 0 || dow === 6);
+    var tr = document.createElement('tr');
+    tr.innerHTML = '<td>' + f.texto + '</td><td>' + f.nombre + '</td>' +
+      '<td class="' + (esFinde ? 'finde' : '') + '">' + DIAS[dow] + (esFinde ? ' (no resta laborables)' : '') + '</td>';
+    tbody.appendChild(tr);
+  });
+  for (var i=0;i<locales;i++){
+    var tr2 = document.createElement('tr');
+    tr2.className = 'local';
+    tr2.innerHTML = '<td>A definir</td><td>Festivo local (ayuntamiento)</td><td style="color:rgba(24,43,58,0.5);">–</td>';
+    tbody.appendChild(tr2);
+  }
+}
+
+function recalcular(){
+  var anio = 2026;
+  var locales = parseInt(document.getElementById('locales').value,10);
+  var errorLocales = document.getElementById('errorLocales');
+  if (!locales || locales < 1){
+    errorLocales.style.display = 'block';
+    document.getElementById('locales').value = 2;
+    locales = 2;
+  } else {
+    errorLocales.style.display = 'none';
+  }
+
+  var vacaciones = parseFloat(document.getElementById('vacaciones').value) || 0;
+  var horasDia = parseFloat(document.getElementById('horasDia').value);
+  var horasConvenio = parseFloat(document.getElementById('horasConvenio').value);
+
+  var intensivoViernes = document.getElementById('chkViernes').checked;
+  var horasViernes = parseFloat(document.getElementById('horasViernes').value) || horasDia;
+  var intensivoVerano = document.getElementById('chkVerano').checked;
+  var horasVerano = parseFloat(document.getElementById('horasVerano').value) || horasDia;
+  var mesInicio = parseInt(selInicio.value,10);
+  var mesFin = parseInt(selFin.value,10);
+
+  var festivos = BASE.concat(CCAA[selCcaa.value]);
+
+  var restoCount = 0, viernesCount = 0, veranoCount = 0;
+  var d = new Date(anio,0,1);
+  while (d.getFullYear() === anio){
+    var dow = d.getDay();
+    if (dow !== 0 && dow !== 6 && !esFestivoLista(d, festivos)){
+      var mes = d.getMonth();
+      var enVerano = intensivoVerano && (mesInicio <= mesFin ? (mes >= mesInicio && mes <= mesFin) : (mes >= mesInicio || mes <= mesFin));
+      if (enVerano) veranoCount++;
+      else if (dow === 5) viernesCount++;
+      else restoCount++;
+    }
+    d.setDate(d.getDate()+1);
+  }
+
+  restoCount = Math.max(restoCount - locales, 0);
+
+  var diasLaborables = restoCount + viernesCount + veranoCount;
+  document.getElementById('diasLaborables').textContent = diasLaborables;
+
+  var restanteVac = vacaciones;
+  var restoWork = Math.max(restoCount - restanteVac, 0);
+  restanteVac = Math.max(restanteVac - restoCount, 0);
+  var viernesWork = Math.max(viernesCount - restanteVac, 0);
+  restanteVac = Math.max(restanteVac - viernesCount, 0);
+  var veranoWork = Math.max(veranoCount - restanteVac, 0);
+
+  var horasTrabajadas = restoWork*horasDia + viernesWork*(intensivoViernes ? horasViernes : horasDia) + veranoWork*(intensivoVerano ? horasVerano : horasDia);
+  document.getElementById('horasTrabajadas').textContent = horasDia ? Math.round(horasTrabajadas).toLocaleString('es-ES') + ' h' : '–';
+
+  var errorEl = document.getElementById('errorInputs');
+  var resultado = document.getElementById('resultado');
+
+  if (!horasConvenio || !horasDia || horasConvenio <= 0 || horasDia <= 0){
+    document.getElementById('diasConvenio').textContent = '–';
+    document.getElementById('diferenciaHorasConvenio').textContent = '–';
+    resultado.style.display = 'none';
+    errorEl.style.display = (document.getElementById('horasConvenio').value.trim() !== '' || document.getElementById('horasDia').value.trim() !== '') ? 'block' : 'none';
+    pintarTabla();
+    return;
+  }
+  errorEl.style.display = 'none';
+
+  var diasConvenio = horasConvenio / horasDia;
+  document.getElementById('diasConvenio').textContent = diasConvenio.toFixed(1).replace('.', ',');
+
+  var diferenciaHorasConv = horasTrabajadas - horasConvenio;
+  var signo = diferenciaHorasConv > 0 ? '+' : '';
+  document.getElementById('diferenciaHorasConvenio').textContent = signo + Math.round(diferenciaHorasConv).toLocaleString('es-ES') + ' h';
+
+  var diferenciaDias = diferenciaHorasConv / horasDia;
+  var vacacionesCalculadas = vacaciones + diferenciaDias;
+
+  var html = '';
+  if (diferenciaDias > 0.4){
+    resultado.className = 'result warning';
+    html = '<p class="eyebrow-result">El resultado</p>' +
+      '<p class="big-number">+' + diferenciaDias.toFixed(1).replace('.', ',') + ' días</p>' +
+      '<p>Con estos datos trabajarías <strong>' + Math.round(diferenciaHorasConv).toLocaleString('es-ES') + ' horas</strong> por encima de tu convenio: son días de vacaciones que no te estás llevando.</p>' +
+      '<p>En total te podrían corresponder <strong>' + vacacionesCalculadas.toFixed(1).replace('.', ',') + '</strong> días de vacaciones en lugar de ' + vacaciones + '.</p>' +
+      '<a class="btn btn-inline" style="background:var(--gold);color:var(--ink);" href="/consulta.html">Reservar consulta →</a>';
+  } else if (diferenciaDias < -0.4){
+    resultado.className = 'result info';
+    html = '<p class="eyebrow-result">El resultado</p>' +
+      '<p class="big-number">' + diferenciaDias.toFixed(1).replace('.', ',') + ' días</p>' +
+      '<p>Con estos datos trabajarías <strong>' + Math.round(Math.abs(diferenciaHorasConv)).toLocaleString('es-ES') + ' horas</strong> por debajo de tu convenio. Revisa las horas de convenio u horas al día introducidas, o si tu jornada intensiva real no está reflejada en las opciones avanzadas.</p>' +
+      '<a class="btn btn-ghost btn-inline" href="/consulta.html">Reservar consulta →</a>';
+  } else {
+    resultado.className = 'result success';
+    html = '<p class="eyebrow-result">El resultado</p>' +
+      '<p class="big-number">Todo cuadra</p>' +
+      '<p>Las horas trabajadas coinciden con las que marca tu convenio. No parece haber días de vacaciones adicionales pendientes por este cálculo.</p>' +
+      '<p>Si tienes dudas sobre otro concepto de tu nómina (IRPF, horas extra, finiquito), puedo revisarlo contigo.</p>' +
+      '<a class="btn btn-ghost btn-inline" href="/consulta.html">Reservar consulta →</a>';
+  }
+  resultado.innerHTML = html;
+  resultado.style.display = 'block';
+  pintarTabla();
+}
+
+selCcaa.addEventListener('change', recalcular);
+['locales','horasConvenio','horasDia','vacaciones','horasViernes','horasVerano'].forEach(function(id){
+  document.getElementById(id).addEventListener('input', recalcular);
+});
+selInicio.addEventListener('change', recalcular);
+selFin.addEventListener('change', recalcular);
+recalcular();
+</script>
+
+</body>
+</html>

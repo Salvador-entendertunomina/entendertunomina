@@ -9,17 +9,17 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 <title>Herramientas gratuitas de nómina — EntenderTuNomina</title>
-<meta name="description" content="Calculadoras gratuitas de nómina: bruto a neto, retención de IRPF, finiquito e indemnización por despido. Sin registro, resultados al instante.">
+<meta name="description" content="Calculadoras gratuitas: días de vacaciones pendientes, bruto a neto, retención de IRPF, finiquito e indemnización por despido. Sin registro, resultados al instante.">
 <link rel="canonical" href="https://www.entendertunomina.com/herramientas.html">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.entendertunomina.com/herramientas.html">
 <meta property="og:title" content="Herramientas gratuitas de nómina — EntenderTuNomina">
-<meta property="og:description" content="Calculadoras gratuitas de nómina: bruto a neto, retención de IRPF, finiquito e indemnización por despido. Sin registro, resultados al instante.">
+<meta property="og:description" content="Calculadoras gratuitas: días de vacaciones pendientes, bruto a neto, retención de IRPF, finiquito e indemnización por despido. Sin registro, resultados al instante.">
 <meta property="og:image" content="https://www.entendertunomina.com/og-image.png">
 <meta property="og:locale" content="es_ES">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Herramientas gratuitas de nómina — EntenderTuNomina">
-<meta name="twitter:description" content="Calculadoras gratuitas de nómina: bruto a neto, retención de IRPF, finiquito e indemnización por despido. Sin registro, resultados al instante.">
+<meta name="twitter:description" content="Calculadoras gratuitas: días de vacaciones pendientes, bruto a neto, retención de IRPF, finiquito e indemnización por despido. Sin registro, resultados al instante.">
 <meta name="twitter:image" content="https://www.entendertunomina.com/og-image.png">
 <script type="application/ld+json">
 {
@@ -41,6 +41,7 @@
   "inLanguage": "es",
   "author": {"@type": "Person", "name": "Salvador Fernández Martínez"},
   "hasPart": [
+    {"@type":"SoftwareApplication","name":"Calculadora de días de vacaciones pendientes","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"url":"https://www.entendertunomina.com/calculadora-vacaciones-pendientes.html"},
     {"@type":"SoftwareApplication","name":"Calculadora de sueldo neto (bruto a neto)","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"url":"https://www.entendertunomina.com/herramientas.html#bruto-neto"},
     {"@type":"SoftwareApplication","name":"Calculadora de retención de IRPF","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"url":"https://www.entendertunomina.com/herramientas.html#irpf"},
     {"@type":"SoftwareApplication","name":"Calculadora de finiquito","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"url":"https://www.entendertunomina.com/herramientas.html#finiquito"},
@@ -111,6 +112,23 @@
     transition:border-color .15s ease, background .15s ease;
   }
   .tool-nav a:hover{border-color:var(--ledger);background:#fff;}
+  .tool-nav a:first-child{background:var(--gold);border-color:var(--gold);color:var(--ink);font-weight:600;}
+  .tool-nav a:first-child:hover{background:var(--ink);border-color:var(--ink);color:#fff;}
+
+  .featured-tool{
+    display:grid;grid-template-columns:1fr auto;align-items:center;gap:28px;
+    background:var(--ink);color:#F3F1E8;border-radius:6px;padding:32px 36px;
+    text-decoration:none;border:1px solid rgba(199,154,69,0.35);
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .featured-tool:hover{transform:translateY(-2px);box-shadow:var(--shadow);}
+  .featured-flag{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:10px;}
+  .featured-tool h2{color:#F3F1E8;font-size:clamp(1.3rem,2.4vw,1.7rem);margin:0 0 .3em;}
+  .featured-tool p{color:#C9CFD4;font-size:.94rem;margin:0;max-width:60ch;}
+  .featured-cta{font-family:'IBM Plex Sans',sans-serif;font-weight:600;font-size:.9rem;color:var(--gold);white-space:nowrap;}
+  @media (max-width:860px){
+    .featured-tool{grid-template-columns:1fr;text-align:left;}
+  }
 
   .disclaimer{
     background:var(--paper-deep);border:1px solid var(--line);border-left:3px solid var(--gold);
@@ -225,13 +243,14 @@
   <div class="wrap">
     <div class="eyebrow">Herramientas gratuitas · sin registro</div>
     <h1>Calcula tu nómina<br>en segundos.</h1>
-    <p class="lead">Cuatro calculadoras gratuitas para resolver las dudas más habituales sobre nómina: cuánto neto vas a cobrar, qué retención de IRPF te corresponde, cómo se calcula un finiquito y qué indemnización te toca si te despiden. Sin registrarte, sin instalar nada.</p>
+    <p class="lead">Cinco calculadoras gratuitas para resolver las dudas más habituales sobre nómina: si te deben días de vacaciones, cuánto neto vas a cobrar, qué retención de IRPF te corresponde, cómo se calcula un finiquito y qué indemnización te toca si te despiden. Sin registrarte, sin instalar nada.</p>
     <div class="hero-stats">
-      <div class="hero-stat"><strong>4</strong><span>Calculadoras</span></div>
+      <div class="hero-stat"><strong>5</strong><span>Calculadoras</span></div>
       <div class="hero-stat"><strong>0 €</strong><span>Coste</span></div>
       <div class="hero-stat"><strong>0</strong><span>Registro necesario</span></div>
     </div>
     <div class="tool-nav" id="calculadoras">
+      <a href="calculadora-vacaciones-pendientes.html">★ Vacaciones pendientes</a>
       <a href="#bruto-neto">↓ Bruto a neto</a>
       <a href="#irpf">↓ Retención IRPF</a>
       <a href="#finiquito">↓ Finiquito</a>
@@ -240,7 +259,20 @@
   </div>
 </section>
 
-<section style="padding-top:0;padding-bottom:56px;">
+<section style="padding-top:0;padding-bottom:0;">
+  <div class="wrap">
+    <a class="featured-tool" href="calculadora-vacaciones-pendientes.html">
+      <div>
+        <span class="featured-flag">La más buscada · Calendario 2026</span>
+        <h2>¿Te deben días de vacaciones?</h2>
+        <p>Compara las horas de tu convenio con las que realmente trabajas según tu comunidad autónoma, festivos y jornada. Si la diferencia es positiva, hay días que no te estás llevando.</p>
+      </div>
+      <span class="featured-cta">Calcular ahora →</span>
+    </a>
+  </div>
+</section>
+
+<section style="padding-top:40px;padding-bottom:56px;">
   <div class="wrap">
     <div class="disclaimer">
       <strong>Antes de usar las calculadoras:</strong> son herramientas orientativas. Aplican los tipos generales de cotización a la Seguridad Social y la escala general de IRPF de referencia, sin tener en cuenta tu comunidad autónoma, tu convenio colectivo, otras rentas o circunstancias personales concretas. No sustituyen un cálculo oficial ni un asesoramiento profesional. Si necesitas certeza sobre tu caso, <a class="mono" style="color:var(--ledger);font-weight:600;" href="consulta.html">reserva una consulta individual</a>.
