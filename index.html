@@ -449,7 +449,6 @@
   }
 
   /* ---------- Banner destacado: Calculadora de vacaciones ---------- */
-  #vacaciones-banner{padding:0 0 32px;}
   .vac-banner{
     display:grid;grid-template-columns:1fr auto;align-items:center;gap:32px;
     background:var(--ink);border-radius:8px;padding:40px 48px;
@@ -457,6 +456,7 @@
     border:1px solid rgba(199,154,69,0.35);
     box-shadow:var(--shadow);
     transition:transform .15s ease, box-shadow .15s ease;
+    margin-bottom:40px;
   }
   .vac-banner:hover{transform:translateY(-2px);box-shadow:0 24px 48px -20px rgba(24,43,58,0.5);}
   .vac-flag{
@@ -465,7 +465,7 @@
     color:var(--gold);margin-bottom:14px;
   }
   .vac-flag::before{content:"●";font-size:.6em;}
-  .vac-banner h2{color:#F3F1E8;font-size:clamp(1.5rem,2.8vw,2.1rem);margin:0 0 .35em;max-width:20ch;}
+  .vac-banner h3{color:#F3F1E8;font-size:clamp(1.5rem,2.8vw,2.1rem);margin:0 0 .35em;max-width:20ch;}
   .vac-banner p{color:#C9CFD4;font-size:1rem;max-width:52ch;margin:0 0 18px;}
   .vac-cta{
     display:inline-flex;align-items:center;gap:8px;
@@ -640,12 +640,17 @@
   </div>
 </section>
 
-<section id="vacaciones-banner">
+<section id="recursos-gratuitos">
   <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Herramientas gratuitas</div>
+      <h2>Recursos que puedes usar ahora mismo, sin coste</h2>
+      <p>Dos formas de resolver tus dudas por tu cuenta, sin necesidad de contactar conmigo: una biblioteca de consulta y unas calculadoras al instante.</p>
+    </div>
     <a class="vac-banner" href="calculadora-vacaciones-pendientes.html">
       <div>
         <div class="vac-flag">Calculadora gratuita · Calendario 2026</div>
-        <h2>¿Sabes si tu empresa te debe días de vacaciones?</h2>
+        <h3>¿Sabes si tu empresa te debe días de vacaciones?</h3>
         <p>Compara las horas de tu convenio con las que realmente trabajas, según tu comunidad autónoma y tu jornada. Descúbrelo en 2 minutos, gratis y sin registro.</p>
         <span class="vac-cta">Calcular mis vacaciones →</span>
       </div>
@@ -654,16 +659,6 @@
         <span class="vac-badge-label">Puede que te<br>correspondan</span>
       </div>
     </a>
-  </div>
-</section>
-
-<section id="recursos-gratuitos">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Herramientas gratuitas</div>
-      <h2>Recursos que puedes usar ahora mismo, sin coste</h2>
-      <p>Dos formas de resolver tus dudas por tu cuenta, sin necesidad de contactar conmigo: una biblioteca de consulta y unas calculadoras al instante.</p>
-    </div>
     <div class="free-grid">
       <div class="free-card">
         <div class="eyebrow">Biblioteca RED</div>
