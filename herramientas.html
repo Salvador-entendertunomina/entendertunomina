@@ -464,7 +464,7 @@
 <section class="tool-section" id="vacaciones-proporcionales">
   <div class="wrap">
     <div class="tool-head"><span class="tool-code">HERRAMIENTA 05</span><h2>Calculadora de días de vacaciones generados</h2></div>
-    <p class="tool-desc">Indica hasta qué fecha quieres calcular y descubre cuántos días de vacaciones has generado ya este año, tanto en días laborables como en días naturales — útil si estás a mitad de año o si tu contrato empezó más tarde del 1 de enero.</p>
+    <p class="tool-desc">Indica hasta qué fecha quieres calcular y descubre cuántos días de vacaciones has generado ya este año, tanto en días laborables como en días naturales. Indica también los que ya hayas disfrutado para saber cuántos te quedan pendientes — útil si estás a mitad de año o si tu contrato empezó más tarde del 1 de enero.</p>
 
     <div class="tool-card">
       <div class="tool-grid">
@@ -479,6 +479,19 @@
           <div class="field" id="vp-inicio-field" style="display:none;">
             <label for="vp-inicio">Fecha en la que iniciaste tu contrato</label>
             <input id="vp-inicio" type="date" value="2026-01-01">
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="vp-disfrutados">Días de vacaciones ya disfrutados</label>
+              <input id="vp-disfrutados" type="number" min="0" step="0.5" value="0">
+            </div>
+            <div class="field">
+              <label for="vp-disfrutados-tipo">¿En qué tipo de días?</label>
+              <select id="vp-disfrutados-tipo">
+                <option value="laborables" selected>Laborables</option>
+                <option value="naturales">Naturales</option>
+              </select>
+            </div>
           </div>
           <button type="button" class="field-toggle" id="vp-toggle-referencia">✎ Cambiar los días de referencia (22 laborables · 30 naturales)</button>
           <div class="field-row" id="vp-referencia-field" style="display:none;">
@@ -877,13 +890,30 @@
     var generadosNaturales = fraccion * vacNaturales;
     var generadosLaborables = fraccion * vacLaborables;
 
+    var disfrutados = num('vp-disfrutados');
+    var disfrutadosTipo = document.getElementById('vp-disfrutados-tipo').value;
+    var disfrutadosNaturales, disfrutadosLaborables;
+    if (disfrutadosTipo === 'naturales'){
+      disfrutadosNaturales = disfrutados;
+      disfrutadosLaborables = vacNaturales > 0 ? disfrutados * (vacLaborables / vacNaturales) : 0;
+    } else {
+      disfrutadosLaborables = disfrutados;
+      disfrutadosNaturales = vacLaborables > 0 ? disfrutados * (vacNaturales / vacLaborables) : 0;
+    }
+
+    var restantesNaturales = Math.max(generadosNaturales - disfrutadosNaturales, 0);
+    var restantesLaborables = Math.max(generadosLaborables - disfrutadosLaborables, 0);
+    var excesoDisfrutado = disfrutadosNaturales > generadosNaturales;
+
     out.innerHTML =
       '<div class="rlabel">Resultado estimado</div><span class="stamp">ORIENTATIVO</span>' +
       '<div class="r-line"><span class="concept">Días computados</span><span class="amount">' + diasTranscurridos + ' de ' + diasEnAnio + '</span></div>' +
       '<div class="r-line"><span class="concept">Porcentaje del año generado</span><span class="amount">' + pct(fraccion * 100) + '</span></div>' +
-      '<div class="r-total"><div class="label">Vacaciones generadas (días naturales)</div><div class="value">' + generadosNaturales.toFixed(1).replace('.', ',') + '</div></div>' +
-      '<div class="r-chip-row"><span class="r-chip"><span class="chip-label">También en días laborables</span><span class="chip-value">' + generadosLaborables.toFixed(1).replace('.', ',') + '</span></span></div>' +
-      '<p class="r-note" style="margin-top:16px;">Cálculo proporcional al tiempo trabajado dentro del año en curso, contando desde el 1 de enero o desde tu fecha de alta si es posterior. Muchos convenios redondean el resultado a tu favor al día completo más cercano.</p>';
+      '<div class="r-line" style="margin-top:14px;"><span class="concept">Generadas hasta la fecha (naturales)</span><span class="amount">' + generadosNaturales.toFixed(1).replace('.', ',') + '</span></div>' +
+      '<div class="r-line"><span class="concept">Ya disfrutadas (naturales)</span><span class="amount">− ' + disfrutadosNaturales.toFixed(1).replace('.', ',') + '</span></div>' +
+      '<div class="r-total"><div class="label">Vacaciones restantes por disfrutar (días naturales)</div><div class="value">' + restantesNaturales.toFixed(1).replace('.', ',') + '</div></div>' +
+      '<div class="r-chip-row"><span class="r-chip"><span class="chip-label">También en días laborables</span><span class="chip-value">' + restantesLaborables.toFixed(1).replace('.', ',') + '</span></span></div>' +
+      '<p class="r-note" style="margin-top:16px;">' + (excesoDisfrutado ? 'Has indicado más días disfrutados de los que llevas generados a esta fecha — revisa los datos introducidos. ' : '') + 'Cálculo proporcional al tiempo trabajado dentro del año en curso, contando desde el 1 de enero o desde tu fecha de alta si es posterior. Muchos convenios redondean el resultado a tu favor al día completo más cercano.</p>';
   };
 })();
 </script>
