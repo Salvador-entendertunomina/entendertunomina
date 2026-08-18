@@ -621,6 +621,7 @@
     }
 
     var ss = cuotaSSTrabajador(bruto, 'indefinido');
+    var gastoGenerico = 2000;
     var irpfAnual = calcularIRPFAnual(bruto, ss.importe, hijos);
     var tipoEfectivo = (irpfAnual / bruto) * 100;
     var retencionPorPaga = irpfAnual / pagas;
@@ -630,8 +631,10 @@
       '<div class="r-total"><div class="label">Tipo de retención estimado</div><div class="value">' + pct(tipoEfectivo) + '</div></div>' +
       '<div class="r-line" style="margin-top:16px;"><span class="concept">Cuota IRPF anual estimada</span><span class="amount">' + eur(irpfAnual) + '</span></div>' +
       '<div class="r-line"><span class="concept">Retención por paga (' + pagas + ' pagas)</span><span class="amount">' + eur(retencionPorPaga) + '</span></div>' +
+      '<div class="r-line" style="margin-top:14px;"><span class="concept">Seguridad Social deducible (' + pct(ss.tipo * 100) + ')</span><span class="amount">− ' + eur(ss.importe) + '</span></div>' +
+      '<div class="r-line"><span class="concept">Gasto deducible genérico</span><span class="amount">− ' + eur(gastoGenerico) + '</span></div>' +
       '<div class="r-line"><span class="concept">Mínimo personal y familiar aplicado</span><span class="amount">' + eur(MINIMO_PERSONAL + minimoPorHijos(hijos)) + '</span></div>' +
-      '<p class="r-note">Estimación con la escala general de IRPF de referencia (2025) y mínimo personal y familiar. La retención real puede variar según tu comunidad autónoma y tu situación completa.</p>';
+      '<p class="r-note">Estimación con la escala general de IRPF de referencia (2025). La base imponible ya descuenta la cuota de Seguridad Social del trabajador y el gasto deducible genérico de 2.000 €. La retención real puede variar según tu comunidad autónoma y tu situación completa.</p>';
   };
 
   function diasEntre(d1, d2){
