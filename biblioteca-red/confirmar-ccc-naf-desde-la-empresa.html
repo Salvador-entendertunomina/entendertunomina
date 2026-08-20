@@ -1,59 +1,4 @@
-#!/usr/bin/env node
-// Genera una página HTML estática e indexable por cada ficha de la Biblioteca RED,
-// a partir de red-data.js + red-templates.js. Volver a ejecutar tras editar red-data.js.
-// Uso: node scripts/build-red-pages.js
-
-const fs = require('fs');
-const path = require('path');
-
-const ROOT = path.resolve(__dirname, '..');
-const OUT_DIR = path.join(ROOT, 'biblioteca-red');
-const SITE = 'https://www.entendertunomina.com';
-
-global.window = {};
-require(path.join(ROOT, 'red-data.js'));
-const DATA = global.window.SISTEMA_RED_DATA;
-const T = require(path.join(ROOT, 'red-templates.js'));
-
-const entries = T.buildEntries(DATA);
-const bySlug = Object.fromEntries(entries.map(e => [e.id, e]));
-
-// Fichas relacionadas manuales para las 3 entradas "especiales" (guía de alta,
-// catálogo de bajas, becarios), que no comparten grupo de filtro con nadie más.
-// Fichas con botón de descarga en PDF para sus tablas (carga red-table-download.js,
-// que a su vez solo carga jsPDF al pulsar el botón por primera vez).
-const TABLE_DOWNLOAD_IDS = ['contrato', 'bonificaciones'];
-
-const RELATED_OVERRIDE = {
-  '001': ['nss', 'cno', 'ccc', 'empresa'],
-  'baja': ['plazos', 'obligados', 'casia', 'diferencias'],
-  'becarios': ['obligados', 'plazos', 'casia'],
-  'contrato': ['bonificaciones', 'grupo', 'regimen', 'desempleado'],
-  'bonificaciones': ['contrato', 'desempleado', 'plazos', 'grupo']
-};
-
-function relatedFor(entry) {
-  if (RELATED_OVERRIDE[entry.id]) {
-    return RELATED_OVERRIDE[entry.id].map(id => bySlug[id]).filter(Boolean);
-  }
-  const shared = entries.filter(e => e.id !== entry.id && e.groups.some(g => entry.groups.includes(g)));
-  return shared.slice(0, 4);
-}
-
-function relatedBlock(entry) {
-  const items = relatedFor(entry);
-  if (!items.length) return '';
-  const links = items.map(e => `<a href="/biblioteca-red/${T.esc(e.slug)}.html">${T.esc(e.title)}</a>`).join('');
-  return `<div class="rb-related"><h4>Fichas relacionadas</h4><div class="rb-related-list">${links}</div></div>`;
-}
-
-function pageHtml(entry) {
-  const title = entry.metaTitle || `${entry.title} — Biblioteca Sistema RED | EntenderTuNomina`;
-  const description = entry.metaDescription || T.truncate(entry.summary, 155);
-  const canonical = `${SITE}/biblioteca-red/${entry.slug}.html`;
-  const body = entry.bodyHtml(DATA);
-
-  return `<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -63,34 +8,34 @@ function pageHtml(entry) {
 <link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
-<title>${T.esc(title)}</title>
-<meta name="description" content="${T.esc(description)}">
-<link rel="canonical" href="${canonical}">
+<title>Cómo confirmar la asignación de un CCC o NAF desde la empresa</title>
+<meta name="description" content="Guía para empresas: cómo entrar en SEDESS, localizar la solicitud de asignación de CCC o NAF pendiente de un asesor RED y confirmarla o denegarla.">
+<link rel="canonical" href="https://www.entendertunomina.com/biblioteca-red/confirmar-ccc-naf-desde-la-empresa.html">
 <link rel="stylesheet" href="/red-library.css">
 <meta property="og:type" content="article">
-<meta property="og:url" content="${canonical}">
-<meta property="og:title" content="${T.esc(title)}">
-<meta property="og:description" content="${T.esc(description)}">
-<meta property="og:image" content="${SITE}/og-image.png">
+<meta property="og:url" content="https://www.entendertunomina.com/biblioteca-red/confirmar-ccc-naf-desde-la-empresa.html">
+<meta property="og:title" content="Cómo confirmar la asignación de un CCC o NAF desde la empresa">
+<meta property="og:description" content="Guía para empresas: cómo entrar en SEDESS, localizar la solicitud de asignación de CCC o NAF pendiente de un asesor RED y confirmarla o denegarla.">
+<meta property="og:image" content="https://www.entendertunomina.com/og-image.png">
 <meta property="og:locale" content="es_ES">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="${T.esc(title)}">
-<meta name="twitter:description" content="${T.esc(description)}">
-<meta name="twitter:image" content="${SITE}/og-image.png">
+<meta name="twitter:title" content="Cómo confirmar la asignación de un CCC o NAF desde la empresa">
+<meta name="twitter:description" content="Guía para empresas: cómo entrar en SEDESS, localizar la solicitud de asignación de CCC o NAF pendiente de un asesor RED y confirmarla o denegarla.">
+<meta name="twitter:image" content="https://www.entendertunomina.com/og-image.png">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "LearningResource",
-  "name": ${JSON.stringify(entry.title)},
-  "description": ${JSON.stringify(description)},
-  "url": ${JSON.stringify(canonical)},
+  "name": "Cómo confirma la empresa la asignación de un CCC o NAF a su autorizado RED",
+  "description": "Guía para empresas: cómo entrar en SEDESS, localizar la solicitud de asignación de CCC o NAF pendiente de un asesor RED y confirmarla o denegarla.",
+  "url": "https://www.entendertunomina.com/biblioteca-red/confirmar-ccc-naf-desde-la-empresa.html",
   "inLanguage": "es",
   "learningResourceType": "Ficha de consulta",
   "about": "Sistema RED de la Seguridad Social española",
   "isPartOf": {
     "@type": "LearningResource",
     "name": "Biblioteca Sistema RED",
-    "url": "${SITE}/biblioteca-red.html"
+    "url": "https://www.entendertunomina.com/biblioteca-red.html"
   },
   "author": { "@type": "Person", "name": "Salvador Fernández Martínez" },
   "publisher": { "@type": "Person", "name": "Salvador Fernández Martínez" }
@@ -101,9 +46,9 @@ function pageHtml(entry) {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    {"@type":"ListItem","position":1,"name":"Inicio","item":"${SITE}/index.html"},
-    {"@type":"ListItem","position":2,"name":"Biblioteca RED","item":"${SITE}/biblioteca-red.html"},
-    {"@type":"ListItem","position":3,"name":${JSON.stringify(entry.title)},"item":"${canonical}"}
+    {"@type":"ListItem","position":1,"name":"Inicio","item":"https://www.entendertunomina.com/index.html"},
+    {"@type":"ListItem","position":2,"name":"Biblioteca RED","item":"https://www.entendertunomina.com/biblioteca-red.html"},
+    {"@type":"ListItem","position":3,"name":"Cómo confirma la empresa la asignación de un CCC o NAF a su autorizado RED","item":"https://www.entendertunomina.com/biblioteca-red/confirmar-ccc-naf-desde-la-empresa.html"}
   ]
 }
 </script>
@@ -162,22 +107,22 @@ function pageHtml(entry) {
 
 <div class="wrap">
   <nav class="rb-breadcrumb" aria-label="Migas de pan">
-    <a href="/index.html">Inicio</a><span class="sep">/</span><a href="/biblioteca-red.html">Biblioteca RED</a><span class="sep">/</span><span class="current">${T.esc(entry.title)}</span>
+    <a href="/index.html">Inicio</a><span class="sep">/</span><a href="/biblioteca-red.html">Biblioteca RED</a><span class="sep">/</span><span class="current">Cómo confirma la empresa la asignación de un CCC o NAF a su autorizado RED</span>
   </nav>
 </div>
 
 <section class="entry-hero">
   <div class="wrap">
-    <div class="eyebrow">${T.esc(entry.category)}</div>
-    <h1>${T.esc(entry.title)}</h1>
-    <p class="lead">${T.esc(entry.summary)}</p>
+    <div class="eyebrow">autorización &gt; confirmación</div>
+    <h1>Cómo confirma la empresa la asignación de un CCC o NAF a su autorizado RED</h1>
+    <p class="lead">Guía para la empresa (no para el asesor): cómo entrar en la Sede Electrónica de la Seguridad Social, localizar la solicitud de asignación pendiente y confirmarla o denegarla.</p>
   </div>
 </section>
 
 <main>
   <div class="wrap">
-    <div class="entry-body">${body}</div>
-    ${relatedBlock(entry)}
+    <div class="entry-body"><p class="r-summary">Guía para la empresa (no para el asesor): cómo entrar en la Sede Electrónica de la Seguridad Social, localizar la solicitud de asignación pendiente y confirmarla o denegarla.</p><div class="r-block"><h4>Quién debe confirmar y por qué</h4><p>Cuando un asesor o gestoría solicita que se le asigne un CCC o NAF con un NIF distinto al de su propia autorización, el Sistema RED no activa la asignación de forma automática: exige que el propio titular del CCC o NAF la confirme desde la Sede Electrónica de la Seguridad Social (SEDESS). Es la garantía de que la empresa conoce y acepta que ese autorizado gestione su afiliación y cotización.</p><p>Mientras la empresa no confirme, la solicitud queda pendiente y el autorizado no puede operar con ese CCC o NAF.</p></div><div class="r-block"><h4>Qué necesita la empresa antes de entrar</h4><ul><li>Un sistema de identificación admitido: Cl@ve permanente, Cl@ve PIN, DNIe o certificado digital.</li><li>Si el titular es una persona jurídica, certificado digital de representante de la empresa (no basta el certificado personal de un empleado sin apoderamiento).</li><li>Conocer el CCC o NAF exacto que el autorizado ha solicitado, para localizar la petición correcta si hay varias pendientes.</li></ul></div><div class="r-block"><h4>Guía en construcción</h4><p>Esta ficha se está completando con el paso a paso y capturas reales de la pantalla de confirmación en SEDESS, vistas desde la empresa. Los pasos siguientes son provisionales y se sustituirán por la secuencia exacta en cuanto estén las imágenes.</p></div><div class="r-block"><h4>Procedimiento paso a paso</h4><div class="r-tiles"><div class="r-tile"><span class="num mono">Paso 1</span><strong>Entrar en la Sede Electrónica</strong><p>Acceder a sede.seg-social.gob.es e identificarse con Cl@ve, certificado digital o DNIe, según la titularidad del CCC o NAF.</p></div><div class="r-tile"><span class="num mono">Paso 2</span><strong>Localizar la solicitud pendiente</strong><p>Buscar, dentro del apartado de empresas, las autorizaciones o asignaciones RED pendientes de confirmar. (Ruta exacta pendiente de detallar con las capturas del proceso.)</p></div><div class="r-tile"><span class="num mono">Paso 3</span><strong>Revisar los datos de la solicitud</strong><p>Comprobar que el CCC o NAF y el autorizado que la ha solicitado son los correctos antes de decidir.</p></div><div class="r-tile"><span class="num mono">Paso 4</span><strong>Confirmar o denegar</strong><p>Marcar Confirmar si la solicitud es correcta, o Denegar en caso contrario, y validar la decisión.</p></div></div></div><div class="r-warning"><strong>Advertencias y validaciones</strong><ul><li>Si la solicitud no se confirma ni se deniega, vuelve a aparecer pendiente en el siguiente acceso: no desaparece sola.</li><li>Confirmar la asignación da acceso al autorizado para actuar en afiliación y cotización de ese CCC o NAF; conviene comprobar que la solicitud corresponde realmente al asesor acordado antes de confirmar.</li></ul></div><div class="r-source-row"><a class="r-source" target="_blank" rel="noreferrer" href="https://sede.seg-social.gob.es">Consultar fuente oficial ↗</a></div></div>
+    <div class="rb-related"><h4>Fichas relacionadas</h4><div class="rb-related-list"><a href="/biblioteca-red/claves-condicion-desempleado.html">Claves de condición de desempleado de trabajadores</a><a href="/biblioteca-red/tipos-inactividad-sistema-red.html">Tipos de inactividad en el Sistema RED</a><a href="/biblioteca-red/cambio-nie-a-dni-trabajador.html">Cambio de NIE a DNI de un trabajador</a><a href="/biblioteca-red/centro-especial-de-empleo.html">Qué es un Centro Especial de Empleo</a></div></div>
     <a class="rb-back" href="/biblioteca-red.html">← Volver a la Biblioteca RED</a>
   </div>
 </main>
@@ -291,33 +236,5 @@ function pageHtml(entry) {
     document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeLightbox(); });
   })();
 </script>
-${TABLE_DOWNLOAD_IDS.includes(entry.id) ? '<script src="/red-table-download.js"></script>\n' : ''}</body>
+</body>
 </html>
-`;
-}
-
-function buildSitemap() {
-  const mainUrls = [
-    ['/', 'weekly', '1.0'],
-    ['/biblioteca-red.html', 'weekly', '0.9'],
-    ['/cursos.html', 'weekly', '0.8'],
-    ['/empresas.html', 'monthly', '0.7'],
-    ['/consulta.html', 'monthly', '0.7'],
-    ['/clases.html', 'monthly', '0.7']
-  ];
-  const entryUrls = entries.map(e => [`/biblioteca-red/${e.slug}.html`, 'monthly', '0.6']);
-  const rows = [...mainUrls, ...entryUrls].map(([loc, freq, prio]) =>
-    `  <url>\n    <loc>${SITE}${loc}</loc>\n    <changefreq>${freq}</changefreq>\n    <priority>${prio}</priority>\n  </url>`
-  ).join('\n');
-  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${rows}\n</urlset>\n`;
-}
-
-fs.mkdirSync(OUT_DIR, { recursive: true });
-entries.forEach(entry => {
-  const html = pageHtml(entry);
-  fs.writeFileSync(path.join(OUT_DIR, `${entry.slug}.html`), html);
-});
-fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), buildSitemap());
-
-console.log(`Generadas ${entries.length} fichas en ${path.relative(ROOT, OUT_DIR)}/`);
-console.log('sitemap.xml actualizado.');

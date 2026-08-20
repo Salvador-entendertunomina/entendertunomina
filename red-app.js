@@ -15,7 +15,7 @@
   const emptyEl = q('#red-empty');
 
   const matches = (card) => {
-    const groups = (card.dataset.groups || '').split(' ');
+    const groups = (card.dataset.groups || '').split(',');
     if (state.filter !== 'Todos' && !groups.includes(state.filter)) return false;
     if (!state.query) return true;
     return (searchIndex.get(card.dataset.slug) || '').includes(state.query);
