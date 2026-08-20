@@ -42,7 +42,7 @@
   };
 
   const filters = () => {
-    const names=['Todos','Altas','Bajas','CNO','Identidad','Claves','Biblioteca','Becarios'];
+    const names=['Todos','Altas','Bajas','CNO','Autorizado RED','Claves','Biblioteca','Becarios'];
     q('#red-filters').innerHTML=names.map(n=>`<button type="button" class="rb-filter ${state.filter===n?'active':''}" data-filter="${n}">${n}</button>`).join('');
     q('#red-filters').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{state.filter=b.dataset.filter; render();}));
   };
@@ -83,10 +83,10 @@
   };
 
   const librarySection = () => {
-    if(!['Todos','Biblioteca','CNO','Identidad','Claves'].includes(state.filter)) return '';
+    if(!['Todos','Biblioteca','CNO','Autorizado RED','Claves'].includes(state.filter)) return '';
     let list=visiblePages();
     if(state.filter==='CNO') list=list.filter(p=>['cno','varcno'].includes(p.id));
-    if(state.filter==='Identidad') list=list.filter(p=>['nie','empresa','nss','ccc'].includes(p.id));
+    if(state.filter==='Autorizado RED') list=list.filter(p=>['nie','empresa','nss','ccc','confirmar-ccc'].includes(p.id));
     if(state.filter==='Claves') list=list.filter(p=>['desempleado','inactividad','grupo','regimen'].includes(p.id));
     if(state.filter==='Biblioteca') list=list.filter(p=>!['001','baja','plazos'].includes(p.id));
     return `<section class="section" id="biblioteca"><div class="wrap"><div class="eyebrow">06 · Consulta completa</div><h2>Biblioteca del Sistema RED</h2><p class="section-intro">Fichas documentales con secciones, procedimientos, tablas, imágenes, advertencias y enlaces oficiales.</p><div class="block-list">${list.length?list.map((p,i)=>block(`page-${p.id}`,p.title,p.category,fullPageBody(p),i===0)).join(''):'<div class="rb-empty">No hay fichas que coincidan con la búsqueda.</div>'}</div></div></section>`;
