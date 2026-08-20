@@ -3,6 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
 <title>Curso Nóminas y Seguridad Social — EntenderTuNomina</title>
 <meta name="description" content="Curso online en directo de Nóminas y Seguridad Social con Salvador Fernández: 23 clases, 8 bloques. Reserva clases sueltas, bloques o el curso completo.">
 <link rel="canonical" href="https://www.entendertunomina.com/cursos.html">
@@ -10,12 +15,12 @@
 <meta property="og:url" content="https://www.entendertunomina.com/cursos.html">
 <meta property="og:title" content="Curso Nóminas y Seguridad Social — EntenderTuNomina">
 <meta property="og:description" content="Curso online en directo de Nóminas y Seguridad Social con Salvador Fernández: 23 clases, 8 bloques. Reserva clases sueltas, bloques o el curso completo.">
-<meta property="og:image" content="https://www.entendertunomina.com/salvador-headshot.png">
+<meta property="og:image" content="https://www.entendertunomina.com/og-image.png">
 <meta property="og:locale" content="es_ES">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Curso Nóminas y Seguridad Social — EntenderTuNomina">
 <meta name="twitter:description" content="Curso online en directo de Nóminas y Seguridad Social con Salvador Fernández: 23 clases, 8 bloques. Reserva clases sueltas, bloques o el curso completo.">
-<meta name="twitter:image" content="https://www.entendertunomina.com/salvador-headshot.png">
+<meta name="twitter:image" content="https://www.entendertunomina.com/og-image.png">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -29,11 +34,42 @@
     "name": "Salvador Fernández Martínez",
     "url": "https://www.entendertunomina.com/"
   },
-  "hasCourseInstance": {
-    "@type": "CourseInstance",
-    "courseMode": "online",
-    "courseWorkload": "PT23H"
-  },
+  "hasCourseInstance": [
+    {
+      "@type": "CourseInstance",
+      "courseMode": "online",
+      "name": "Clase suelta",
+      "description": "Una clase de 1 hora sobre un tema concreto del temario.",
+      "offers": {
+        "@type": "Offer",
+        "price": "20",
+        "priceCurrency": "EUR"
+      }
+    },
+    {
+      "@type": "CourseInstance",
+      "courseMode": "online",
+      "name": "Bloque completo",
+      "description": "Todas las clases de un bloque temático (2-3 clases).",
+      "offers": {
+        "@type": "Offer",
+        "price": "50",
+        "priceCurrency": "EUR"
+      }
+    },
+    {
+      "@type": "CourseInstance",
+      "courseMode": "online",
+      "name": "Curso completo",
+      "description": "Los 8 bloques, 23 clases, de cero a saber elaborar y explicar una nómina completa.",
+      "courseWorkload": "PT23H",
+      "offers": {
+        "@type": "Offer",
+        "price": "399",
+        "priceCurrency": "EUR"
+      }
+    }
+  ],
   "offers": {
     "@type": "AggregateOffer",
     "priceCurrency": "EUR",
@@ -83,7 +119,7 @@
     font-family:'IBM Plex Mono', monospace;font-size:.62rem;color:var(--gold);
     letter-spacing:.14em;font-weight:600;border:1px solid var(--gold);padding:2px 6px;border-radius:3px;
   }
-  nav.links{display:flex;gap:28px;font-size:.92rem;}
+  nav.links{display:flex;gap:18px;font-size:.86rem;}
   nav.links a{text-decoration:none;color:#B9C2CB;}
   nav.links a:hover, nav.links a.active{color:#fff;}
   .btn{
@@ -284,9 +320,10 @@
       <a href="index.html">Inicio</a>
       <a href="index.html#servicios">Servicios</a>
       <a href="cursos.html" class="active">Cursos</a>
+      <a href="herramientas.html">Herramientas</a>
       <a href="index.html#sobre">Sobre mí</a>
       <a href="index.html#medios">En medios</a>
-      <a href="index.html#divulgacion">Divulgación</a>
+      <a href="divulgacion.html">Divulgación</a>
       <a href="index.html#contacto">Contacto</a>
     </nav>
     <a class="btn btn-primary" href="#precios">Reservar clase</a>
@@ -304,9 +341,10 @@
     <a href="index.html">Inicio</a>
     <a href="index.html#servicios">Servicios</a>
     <a href="cursos.html" class="active">Cursos</a>
+    <a href="herramientas.html">Herramientas</a>
     <a href="index.html#sobre">Sobre mí</a>
     <a href="index.html#medios">En medios</a>
-    <a href="index.html#divulgacion">Divulgación</a>
+    <a href="divulgacion.html">Divulgación</a>
     <a href="index.html#contacto">Contacto</a>
   </nav>
   <a class="btn btn-primary" href="#precios">Reservar clase</a>
