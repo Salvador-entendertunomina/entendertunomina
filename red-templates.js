@@ -51,7 +51,7 @@
     return `<div class="r-block"><h4>${esc(t.title)}</h4>${body}</div>`;
   };
 
-  const sections = (p) => (p.sections || []).map(s => `<div class="r-block"><h4>${esc(s.heading)}</h4>${(s.paragraphs || []).map(x => `<p>${esc(x)}</p>`).join('')}${s.bullets?.length ? `<ul>${s.bullets.map(x => `<li>${esc(x)}</li>`).join('')}</ul>` : ''}</div>`).join('');
+  const sections = (p) => (p.sections || []).map(s => `<div class="r-block"><h4>${esc(s.heading)}</h4>${(s.paragraphs || []).map(x => `<p>${richText(x)}</p>`).join('')}${s.bullets?.length ? `<ul>${s.bullets.map(x => `<li>${esc(x)}</li>`).join('')}</ul>` : ''}</div>`).join('');
 
   const steps = (p) => p.steps?.length ? `<div class="r-block"><h4>Procedimiento paso a paso</h4><div class="r-tiles">${p.steps.map(s => `<div class="r-tile"><span class="num mono">Paso ${esc(s.order)}</span><strong>${esc(s.title)}</strong><p>${esc(s.detail)}</p></div>`).join('')}</div></div>` : '';
 
