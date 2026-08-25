@@ -75,6 +75,11 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://www.entendertunomina.com/divulgacion/que-es-el-modelo-145.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
   <url>
     <loc>https://www.entendertunomina.com/biblioteca-red/alta-trabajador-contrato-indefinido.html</loc>
