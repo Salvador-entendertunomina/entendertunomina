@@ -80,6 +80,11 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://www.entendertunomina.com/divulgacion/que-son-los-grupos-de-cotizacion.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
   <url>
     <loc>https://www.entendertunomina.com/biblioteca-red/alta-trabajador-contrato-indefinido.html</loc>
