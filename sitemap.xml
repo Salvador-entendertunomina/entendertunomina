@@ -71,6 +71,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.entendertunomina.com/divulgacion/por-que-cambia-el-irpf-cada-ano.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.entendertunomina.com/biblioteca-red/alta-trabajador-contrato-indefinido.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
