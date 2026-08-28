@@ -12,6 +12,7 @@
 <meta name="description" content="Desde el 1 de enero de 2024, los alumnos universitarios y de formación profesional que realizan prácticas formativas o prácticas académicas externas…">
 <link rel="canonical" href="https://www.entendertunomina.com/biblioteca-red/becarios-en-la-seguridad-social.html">
 <link rel="stylesheet" href="/red-library.css">
+<link rel="stylesheet" href="/fonts/fonts.css">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://www.entendertunomina.com/biblioteca-red/becarios-en-la-seguridad-social.html">
 <meta property="og:title" content="Becarios y prácticas formativas — Biblioteca Sistema RED | EntenderTuNomina">
@@ -54,33 +55,23 @@
 </script>
 </head>
 <body>
-<div class="cookie-banner" id="cookieBanner">
-  <div class="cookie-banner-inner">
-    <p>Usamos cookies técnicas necesarias para el funcionamiento del sitio. Si aceptas, también cargamos tipografías externas (Google Fonts) para mejorar el diseño. Más información en la <a href="/cookies.html">Política de Cookies</a>.</p>
-    <div class="cookie-banner-actions">
-      <button id="cookieReject" class="btn btn-ghost">Rechazar</button>
-      <button id="cookieAccept" class="btn btn-primary">Aceptar</button>
-    </div>
-  </div>
-</div>
-
 <header>
   <div class="nav">
-    <a href="/index.html" style="text-decoration:none;">
+    <a href="/" style="text-decoration:none;">
       <div class="brand">Entender<span style="color:var(--gold)">TuNómina</span> <span class="tag">S.F.</span></div>
     </a>
     <nav class="links">
-      <a href="/index.html">Inicio</a>
-      <a href="/index.html#servicios">Servicios</a>
+      <a href="/">Inicio</a>
+      <a href="/#servicios">Servicios</a>
       <a href="/cursos.html">Cursos</a>
       <a href="/herramientas.html">Herramientas</a>
       <a href="/biblioteca-red.html" class="active">Biblioteca RED</a>
       <a href="/divulgacion.html">Divulgación</a>
-      <a href="/index.html#sobre">Sobre mí</a>
-      <a href="/index.html#medios">En medios</a>
-      <a href="/index.html#contacto">Contacto</a>
+      <a href="/#sobre">Sobre mí</a>
+      <a href="/#medios">En medios</a>
+      <a href="/#contacto">Contacto</a>
     </nav>
-    <a class="btn btn-primary" href="/index.html#contacto">Consultar caso</a>
+    <a class="btn btn-primary" href="/#contacto">Consultar caso</a>
     <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
   </div>
 </header>
@@ -92,22 +83,22 @@
     <button class="mobile-panel-close" id="mobileClose" aria-label="Cerrar menú">✕</button>
   </div>
   <nav>
-    <a href="/index.html">Inicio</a>
-    <a href="/index.html#servicios">Servicios</a>
+    <a href="/">Inicio</a>
+    <a href="/#servicios">Servicios</a>
     <a href="/cursos.html">Cursos</a>
     <a href="/herramientas.html">Herramientas</a>
     <a href="/biblioteca-red.html" class="active">Biblioteca RED</a>
     <a href="/divulgacion.html">Divulgación</a>
-    <a href="/index.html#sobre">Sobre mí</a>
-    <a href="/index.html#medios">En medios</a>
-    <a href="/index.html#contacto">Contacto</a>
+    <a href="/#sobre">Sobre mí</a>
+    <a href="/#medios">En medios</a>
+    <a href="/#contacto">Contacto</a>
   </nav>
-  <a class="btn btn-primary" href="/index.html#contacto">Consultar caso</a>
+  <a class="btn btn-primary" href="/#contacto">Consultar caso</a>
 </div>
 
 <div class="wrap">
   <nav class="rb-breadcrumb" aria-label="Migas de pan">
-    <a href="/index.html">Inicio</a><span class="sep">/</span><a href="/biblioteca-red.html">Biblioteca RED</a><span class="sep">/</span><span class="current">Becarios y prácticas formativas</span>
+    <a href="/">Inicio</a><span class="sep">/</span><a href="/biblioteca-red.html">Biblioteca RED</a><span class="sep">/</span><span class="current">Becarios y prácticas formativas</span>
   </nav>
 </div>
 
@@ -178,41 +169,7 @@
 </script>
 
 <script>
-  (function(){
-    function loadGoogleFonts(){
-      if (document.getElementById('gfonts-stylesheet')) return;
-      var l1 = document.createElement('link'); l1.rel='preconnect'; l1.href='https://fonts.googleapis.com';
-      var l2 = document.createElement('link'); l2.rel='preconnect'; l2.href='https://fonts.gstatic.com'; l2.crossOrigin='anonymous';
-      var l3 = document.createElement('link'); l3.id='gfonts-stylesheet'; l3.rel='stylesheet';
-      l3.href='https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap';
-      document.head.appendChild(l1);
-      document.head.appendChild(l2);
-      document.head.appendChild(l3);
-    }
-    var consent = localStorage.getItem('etn_cookie_consent');
-    var banner = document.getElementById('cookieBanner');
-    if (consent === 'accepted') {
-      loadGoogleFonts();
-      if (typeof initZohoBooking === 'function') initZohoBooking();
-    } else if (consent === 'rejected') {
-      if (typeof initZohoBooking === 'function') initZohoBooking();
-    } else {
-      if (banner) banner.classList.add('visible');
-    }
-    var acceptBtn = document.getElementById('cookieAccept');
-    var rejectBtn = document.getElementById('cookieReject');
-    if (acceptBtn) acceptBtn.addEventListener('click', function(){
-      localStorage.setItem('etn_cookie_consent','accepted');
-      loadGoogleFonts();
-      if (typeof initZohoBooking === 'function') initZohoBooking();
-      banner.classList.remove('visible');
-    });
-    if (rejectBtn) rejectBtn.addEventListener('click', function(){
-      localStorage.setItem('etn_cookie_consent','rejected');
-      if (typeof initZohoBooking === 'function') initZohoBooking();
-      banner.classList.remove('visible');
-    });
-  })();
+  if (typeof initZohoBooking === 'function') initZohoBooking();
 </script>
 
 <script>
