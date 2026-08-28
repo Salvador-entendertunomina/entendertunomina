@@ -109,7 +109,8 @@
   ]
 }
 </script>
-<link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="preload" href="/fonts/fonts.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/fonts/fonts.css"></noscript>
 <style>
   :root{
     --ink:#182B3A;--ink-soft:#3E5164;--paper:#E9E7DE;--paper-deep:#DFDCCF;--card:#FBFAF6;
@@ -338,6 +339,7 @@
   <a href="/">Inicio</a><span class="sep">/</span><a href="herramientas.html">Herramientas</a><span class="sep">/</span><span class="current">Vacaciones pendientes</span>
 </nav>
 
+<main>
 <section class="hero">
   <div class="wrap">
     <p class="eyebrow">Calculadora · Calendario laboral 2026</p>
@@ -512,6 +514,8 @@
     </div>
   </div>
 </section>
+
+</main>
 
 <footer>
   © 2026 EntenderTuNomina · Salvador Fernández

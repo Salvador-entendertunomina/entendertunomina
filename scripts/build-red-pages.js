@@ -68,7 +68,8 @@ function pageHtml(entry) {
 <meta name="description" content="${T.esc(description)}">
 <link rel="canonical" href="${canonical}">
 <link rel="stylesheet" href="/red-library.css">
-<link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="preload" href="/fonts/fonts.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/fonts/fonts.css"></noscript>
 <meta property="og:type" content="article">
 <meta property="og:url" content="${canonical}">
 <meta property="og:title" content="${T.esc(title)}">

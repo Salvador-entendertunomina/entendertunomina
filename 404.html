@@ -10,7 +10,8 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 <title>Página no encontrada (404) — EntenderTuNomina</title>
-<link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="preload" href="/fonts/fonts.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/fonts/fonts.css"></noscript>
 <style>
   :root{
     --ink:#182B3A;--ink-soft:#3E5164;--paper:#E9E7DE;--paper-deep:#DFDCCF;--card:#FBFAF6;
@@ -110,6 +111,7 @@
   <a class="btn btn-primary" href="/">Volver al inicio</a>
 </div>
 
+<main>
 <section class="error-section">
   <div class="wrap">
     <div class="error-code mono">Error 404 · Partida no encontrada</div>
@@ -135,6 +137,8 @@
     </div>
   </div>
 </section>
+
+</main>
 
 <footer>
   <div class="wrap" style="display:flex;flex-direction:column;gap:14px;width:100%;">

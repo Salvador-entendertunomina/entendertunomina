@@ -123,7 +123,8 @@
   }
 }
 </script>
-<link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="preload" href="/fonts/fonts.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/fonts/fonts.css"></noscript>
 <style>
   :root{
     --ink:#182B3A;
@@ -541,6 +542,7 @@
   <a class="btn btn-primary" href="#servicios">Reservar taller</a>
 </div>
 
+<main>
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
@@ -695,7 +697,7 @@
     </div>
     <div class="about-grid">
       <div class="about-photo">
-        <img src="salvador-headshot.png" alt="Salvador Fernández Martínez" width="512" height="512">
+        <img src="salvador-headshot.jpg" alt="Salvador Fernández Martínez" width="512" height="512">
       </div>
       <div>
         <div class="credential-line"><span class="code mono">Nombre</span><span>Salvador Fernández Martínez</span></div>
@@ -810,6 +812,8 @@
     </div>
   </div>
 </section>
+
+</main>
 
 <footer>
   <div class="wrap" style="display:flex;flex-direction:column;gap:14px;width:100%;">
