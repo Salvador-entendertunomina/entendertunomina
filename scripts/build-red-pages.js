@@ -101,7 +101,7 @@ function pageHtml(entry) {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    {"@type":"ListItem","position":1,"name":"Inicio","item":"${SITE}/index.html"},
+    {"@type":"ListItem","position":1,"name":"Inicio","item":"${SITE}/"},
     {"@type":"ListItem","position":2,"name":"Biblioteca RED","item":"${SITE}/biblioteca-red.html"},
     {"@type":"ListItem","position":3,"name":${JSON.stringify(entry.title)},"item":"${canonical}"}
   ]
