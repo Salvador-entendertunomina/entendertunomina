@@ -303,7 +303,16 @@ function buildSitemap() {
     ['/cursos.html', 'weekly', '0.8'],
     ['/empresas.html', 'monthly', '0.7'],
     ['/consulta.html', 'monthly', '0.7'],
-    ['/clases.html', 'monthly', '0.7']
+    ['/clases.html', 'monthly', '0.7'],
+    ['/herramientas.html', 'monthly', '0.9'],
+    ['/calculadora-vacaciones-pendientes.html', 'monthly', '0.95'],
+    ['/divulgacion.html', 'weekly', '0.8'],
+    ['/divulgacion/como-se-calcula-el-irpf-de-tu-nomina.html', 'monthly', '0.7'],
+    ['/divulgacion/por-que-me-descuentan-tanto-de-la-nomina.html', 'monthly', '0.7'],
+    ['/divulgacion/como-se-calcula-la-paga-extra.html', 'monthly', '0.7'],
+    ['/divulgacion/deuda-vacaciones.html', 'monthly', '0.7'],
+    ['/divulgacion/que-cotizo-cada-mes-para-que-sirve.html', 'monthly', '0.7'],
+    ['/divulgacion/por-que-cambia-el-irpf-cada-ano.html', 'monthly', '0.7']
   ];
   const entryUrls = entries.map(e => [`/biblioteca-red/${e.slug}.html`, 'monthly', '0.6']);
   const rows = [...mainUrls, ...entryUrls].map(([loc, freq, prio]) =>
