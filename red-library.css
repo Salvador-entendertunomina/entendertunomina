@@ -128,12 +128,8 @@ details.block[open] .chevron{transform:rotate(180deg);}
 .block-content > p.r-summary{margin-top:18px;color:var(--ink-soft);}
 
 /* ---------- Tarjetas-enlace a fichas propias (portada) ---------- */
-.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:8px;}
-@media (min-width:960px){
-  .card-grid a.block-link[data-cat="seguridad-social"]{grid-column:1;}
-  .card-grid a.block-link[data-cat="fiscalidad"]{grid-column:2;}
-  .card-grid a.block-link[data-cat="derechos-laborales"]{grid-column:3;}
-}
+.card-grid{display:flex;flex-wrap:wrap;gap:14px;margin-top:8px;align-items:flex-start;}
+.card-col{display:flex;flex-direction:column;gap:14px;flex:1 1 280px;min-width:280px;}
 a.block-link{
   background:var(--card);border:1px solid var(--line);border-radius:6px;
   padding:18px 22px;text-decoration:none;display:flex;flex-direction:column;gap:10px;
