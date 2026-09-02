@@ -5,6 +5,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { execSync } = require('child_process');
 
 const ROOT = path.resolve(__dirname, '..');
 const OUT_DIR = path.join(ROOT, 'biblioteca-red');
@@ -67,6 +68,8 @@ function pageHtml(entry) {
 <meta name="description" content="${T.esc(description)}">
 <link rel="canonical" href="${canonical}">
 <link rel="stylesheet" href="/red-library.css">
+<link rel="preload" href="/fonts/fonts.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/fonts/fonts.css"></noscript>
 <meta property="og:type" content="article">
 <meta property="og:url" content="${canonical}">
 <meta property="og:title" content="${T.esc(title)}">
@@ -101,7 +104,7 @@ function pageHtml(entry) {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    {"@type":"ListItem","position":1,"name":"Inicio","item":"${SITE}/index.html"},
+    {"@type":"ListItem","position":1,"name":"Inicio","item":"${SITE}/"},
     {"@type":"ListItem","position":2,"name":"Biblioteca RED","item":"${SITE}/biblioteca-red.html"},
     {"@type":"ListItem","position":3,"name":${JSON.stringify(entry.title)},"item":"${canonical}"}
   ]
@@ -109,33 +112,23 @@ function pageHtml(entry) {
 </script>
 </head>
 <body>
-<div class="cookie-banner" id="cookieBanner">
-  <div class="cookie-banner-inner">
-    <p>Usamos cookies técnicas necesarias para el funcionamiento del sitio. Si aceptas, también cargamos tipografías externas (Google Fonts) para mejorar el diseño. Más información en la <a href="/cookies.html">Política de Cookies</a>.</p>
-    <div class="cookie-banner-actions">
-      <button id="cookieReject" class="btn btn-ghost">Rechazar</button>
-      <button id="cookieAccept" class="btn btn-primary">Aceptar</button>
-    </div>
-  </div>
-</div>
-
 <header>
   <div class="nav">
-    <a href="/index.html" style="text-decoration:none;">
+    <a href="/" style="text-decoration:none;">
       <div class="brand">Entender<span style="color:var(--gold)">TuNómina</span> <span class="tag">S.F.</span></div>
     </a>
     <nav class="links">
-      <a href="/index.html">Inicio</a>
-      <a href="/index.html#servicios">Servicios</a>
+      <a href="/">Inicio</a>
+      <a href="/#servicios">Servicios</a>
       <a href="/cursos.html">Cursos</a>
       <a href="/herramientas.html">Herramientas</a>
       <a href="/biblioteca-red.html" class="active">Biblioteca RED</a>
       <a href="/divulgacion.html">Divulgación</a>
-      <a href="/index.html#sobre">Sobre mí</a>
-      <a href="/index.html#medios">En medios</a>
-      <a href="/index.html#contacto">Contacto</a>
+      <a href="/#sobre">Sobre mí</a>
+      <a href="/#medios">En medios</a>
+      <a href="/#contacto">Contacto</a>
     </nav>
-    <a class="btn btn-primary" href="/index.html#contacto">Consultar caso</a>
+    <a class="btn btn-primary" href="/#contacto">Consultar caso</a>
     <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
   </div>
 </header>
@@ -147,22 +140,22 @@ function pageHtml(entry) {
     <button class="mobile-panel-close" id="mobileClose" aria-label="Cerrar menú">✕</button>
   </div>
   <nav>
-    <a href="/index.html">Inicio</a>
-    <a href="/index.html#servicios">Servicios</a>
+    <a href="/">Inicio</a>
+    <a href="/#servicios">Servicios</a>
     <a href="/cursos.html">Cursos</a>
     <a href="/herramientas.html">Herramientas</a>
     <a href="/biblioteca-red.html" class="active">Biblioteca RED</a>
     <a href="/divulgacion.html">Divulgación</a>
-    <a href="/index.html#sobre">Sobre mí</a>
-    <a href="/index.html#medios">En medios</a>
-    <a href="/index.html#contacto">Contacto</a>
+    <a href="/#sobre">Sobre mí</a>
+    <a href="/#medios">En medios</a>
+    <a href="/#contacto">Contacto</a>
   </nav>
-  <a class="btn btn-primary" href="/index.html#contacto">Consultar caso</a>
+  <a class="btn btn-primary" href="/#contacto">Consultar caso</a>
 </div>
 
 <div class="wrap">
   <nav class="rb-breadcrumb" aria-label="Migas de pan">
-    <a href="/index.html">Inicio</a><span class="sep">/</span><a href="/biblioteca-red.html">Biblioteca RED</a><span class="sep">/</span><span class="current">${T.esc(entry.title)}</span>
+    <a href="/">Inicio</a><span class="sep">/</span><a href="/biblioteca-red.html">Biblioteca RED</a><span class="sep">/</span><span class="current">${T.esc(entry.title)}</span>
   </nav>
 </div>
 
@@ -233,41 +226,7 @@ function pageHtml(entry) {
 </script>
 
 <script>
-  (function(){
-    function loadGoogleFonts(){
-      if (document.getElementById('gfonts-stylesheet')) return;
-      var l1 = document.createElement('link'); l1.rel='preconnect'; l1.href='https://fonts.googleapis.com';
-      var l2 = document.createElement('link'); l2.rel='preconnect'; l2.href='https://fonts.gstatic.com'; l2.crossOrigin='anonymous';
-      var l3 = document.createElement('link'); l3.id='gfonts-stylesheet'; l3.rel='stylesheet';
-      l3.href='https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap';
-      document.head.appendChild(l1);
-      document.head.appendChild(l2);
-      document.head.appendChild(l3);
-    }
-    var consent = localStorage.getItem('etn_cookie_consent');
-    var banner = document.getElementById('cookieBanner');
-    if (consent === 'accepted') {
-      loadGoogleFonts();
-      if (typeof initZohoBooking === 'function') initZohoBooking();
-    } else if (consent === 'rejected') {
-      if (typeof initZohoBooking === 'function') initZohoBooking();
-    } else {
-      if (banner) banner.classList.add('visible');
-    }
-    var acceptBtn = document.getElementById('cookieAccept');
-    var rejectBtn = document.getElementById('cookieReject');
-    if (acceptBtn) acceptBtn.addEventListener('click', function(){
-      localStorage.setItem('etn_cookie_consent','accepted');
-      loadGoogleFonts();
-      if (typeof initZohoBooking === 'function') initZohoBooking();
-      banner.classList.remove('visible');
-    });
-    if (rejectBtn) rejectBtn.addEventListener('click', function(){
-      localStorage.setItem('etn_cookie_consent','rejected');
-      if (typeof initZohoBooking === 'function') initZohoBooking();
-      banner.classList.remove('visible');
-    });
-  })();
+  if (typeof initZohoBooking === 'function') initZohoBooking();
 </script>
 
 <script>
@@ -296,6 +255,27 @@ ${TABLE_DOWNLOAD_IDS.includes(entry.id) ? '<script src="/red-table-download.js">
 `;
 }
 
+// Fecha de última modificación real de un fichero: se usa la fecha del
+// último commit que lo tocó (más fiable que el mtime, que solo refleja
+// el momento del checkout). Si el fichero es nuevo/sin historial, cae al mtime.
+function lastMod(relPath) {
+  const absPath = path.join(ROOT, relPath);
+  try {
+    // Un fichero con cambios sin commitear (por ejemplo, recién regenerado
+    // en este mismo build) cuenta como modificado hoy; si no, usamos la
+    // fecha del último commit que lo tocó.
+    const status = execSync(`git status --porcelain -- ${JSON.stringify(relPath)}`, { cwd: ROOT, encoding: 'utf8' }).trim();
+    if (status) return new Date().toISOString().slice(0, 10);
+    const out = execSync(`git log -1 --format=%cI -- ${JSON.stringify(relPath)}`, { cwd: ROOT, encoding: 'utf8' }).trim();
+    if (out) return out.slice(0, 10);
+  } catch (e) { /* git no disponible o fichero sin historial: seguimos al fallback */ }
+  try {
+    return fs.statSync(absPath).mtime.toISOString().slice(0, 10);
+  } catch (e) {
+    return new Date().toISOString().slice(0, 10);
+  }
+}
+
 function buildSitemap() {
   const mainUrls = [
     ['/', 'weekly', '1.0'],
@@ -303,12 +283,23 @@ function buildSitemap() {
     ['/cursos.html', 'weekly', '0.8'],
     ['/empresas.html', 'monthly', '0.7'],
     ['/consulta.html', 'monthly', '0.7'],
-    ['/clases.html', 'monthly', '0.7']
+    ['/clases.html', 'monthly', '0.7'],
+    ['/herramientas.html', 'monthly', '0.9'],
+    ['/calculadora-vacaciones-pendientes.html', 'monthly', '0.95'],
+    ['/divulgacion.html', 'weekly', '0.8'],
+    ['/divulgacion/como-se-calcula-el-irpf-de-tu-nomina.html', 'monthly', '0.7'],
+    ['/divulgacion/por-que-me-descuentan-tanto-de-la-nomina.html', 'monthly', '0.7'],
+    ['/divulgacion/como-se-calcula-la-paga-extra.html', 'monthly', '0.7'],
+    ['/divulgacion/deuda-vacaciones.html', 'monthly', '0.7'],
+    ['/divulgacion/que-cotizo-cada-mes-para-que-sirve.html', 'monthly', '0.7'],
+    ['/divulgacion/por-que-cambia-el-irpf-cada-ano.html', 'monthly', '0.7']
   ];
   const entryUrls = entries.map(e => [`/biblioteca-red/${e.slug}.html`, 'monthly', '0.6']);
-  const rows = [...mainUrls, ...entryUrls].map(([loc, freq, prio]) =>
-    `  <url>\n    <loc>${SITE}${loc}</loc>\n    <changefreq>${freq}</changefreq>\n    <priority>${prio}</priority>\n  </url>`
-  ).join('\n');
+  const rows = [...mainUrls, ...entryUrls].map(([loc, freq, prio]) => {
+    const relPath = loc === '/' ? 'index.html' : loc.replace(/^\//, '');
+    const mod = lastMod(relPath);
+    return `  <url>\n    <loc>${SITE}${loc}</loc>\n    <lastmod>${mod}</lastmod>\n    <changefreq>${freq}</changefreq>\n    <priority>${prio}</priority>\n  </url>`;
+  }).join('\n');
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${rows}\n</urlset>\n`;
 }
 

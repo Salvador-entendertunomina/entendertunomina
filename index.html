@@ -10,17 +10,17 @@
 <link rel="manifest" href="/site.webmanifest">
 <meta name="google-site-verification" content="2lym2P-7HzE9xDoYVUaTqBTyFa3vjc-5dq1UsHxalKg" />
 <title>EntenderTuNomina | ¿Quieres entender tu nómina?</title>
-<meta name="description" content="Te ayudo a entender tu nómina sin tecnicismos, con formación clara sobre IRPF y cotizaciones. Talleres para empresas y particulares con Salvador Fernández, especialista en nóminas.">
+<meta name="description" content="Formación clara sobre nóminas, IRPF y cotizaciones, sin tecnicismos. Talleres para empresas y consultas individuales con Salvador Fernández.">
 <link rel="canonical" href="https://www.entendertunomina.com/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.entendertunomina.com/">
 <meta property="og:title" content="EntenderTuNomina | ¿Quieres entender tu nómina?">
-<meta property="og:description" content="Te ayudo a entender tu nómina sin tecnicismos, con formación clara sobre IRPF y cotizaciones. Talleres para empresas y particulares con Salvador Fernández, especialista en nóminas.">
+<meta property="og:description" content="Formación clara sobre nóminas, IRPF y cotizaciones, sin tecnicismos. Talleres para empresas y consultas individuales con Salvador Fernández.">
 <meta property="og:image" content="https://www.entendertunomina.com/og-image.png">
 <meta property="og:locale" content="es_ES">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="EntenderTuNomina | ¿Quieres entender tu nómina?">
-<meta name="twitter:description" content="Te ayudo a entender tu nómina sin tecnicismos, con formación clara sobre IRPF y cotizaciones. Talleres para empresas y particulares con Salvador Fernández, especialista en nóminas.">
+<meta name="twitter:description" content="Formación clara sobre nóminas, IRPF y cotizaciones, sin tecnicismos. Talleres para empresas y consultas individuales con Salvador Fernández.">
 <meta name="twitter:image" content="https://www.entendertunomina.com/og-image.png">
 <script type="application/ld+json">
 {
@@ -123,6 +123,8 @@
   }
 }
 </script>
+<link rel="preload" href="/fonts/fonts.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/fonts/fonts.css"></noscript>
 <style>
   :root{
     --ink:#182B3A;
@@ -156,7 +158,7 @@
   a{color:inherit;}
   .mono{font-family:'IBM Plex Mono', monospace;}
   .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
-  img{max-width:100%;display:block;}
+  img{max-width:100%;height:auto;display:block;}
 
   /* ---------- Textura de fondo tipo papel de contabilidad ---------- */
   body::before{
@@ -498,37 +500,16 @@
   @media (max-width:860px){
     .free-grid{grid-template-columns:1fr;}
   }
-
-  /* ---------- Banner de cookies ---------- */
-  .cookie-banner{display:none;position:fixed;left:0;right:0;bottom:0;z-index:200;background:var(--ink);border-top:1px solid rgba(255,255,255,0.15);}
-  .cookie-banner.visible{display:block;}
-  .cookie-banner-inner{max-width:1120px;margin:0 auto;padding:20px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
-  .cookie-banner p{margin:0;color:#C9CFD4;font-size:.86rem;max-width:70ch;}
-  .cookie-banner p a{color:var(--gold);text-decoration:underline;}
-  .cookie-banner-actions{display:flex;gap:10px;flex-shrink:0;}
-  .cookie-banner .btn-ghost{border-color:rgba(255,255,255,0.4);color:#F3F1E8;}
-  .cookie-banner .btn-ghost:hover{background:rgba(255,255,255,0.1);color:#fff;}
 </style>
 </head>
 <body>
-<div class="cookie-banner" id="cookieBanner">
-  <div class="cookie-banner-inner">
-    <p>Usamos cookies técnicas necesarias para el funcionamiento del sitio. Si aceptas, también cargamos tipografías externas (Google Fonts) para mejorar el diseño. Más información en la <a href="cookies.html">Política de Cookies</a>.</p>
-    <div class="cookie-banner-actions">
-      <button id="cookieReject" class="btn btn-ghost">Rechazar</button>
-      <button id="cookieAccept" class="btn btn-primary">Aceptar</button>
-    </div>
-  </div>
-</div>
-
-
 <header>
   <div class="nav">
-    <a href="index.html" style="text-decoration:none;">
+    <a href="/" style="text-decoration:none;">
       <div class="brand">Entender<span style="color:var(--ledger)">TuNómina</span> <span class="tag">S.F.</span></div>
     </a>
     <nav class="links">
-      <a href="index.html" class="active">Inicio</a>
+      <a href="/" class="active">Inicio</a>
       <a href="#servicios">Servicios</a>
       <a href="cursos.html">Cursos</a>
       <a href="herramientas.html">Herramientas</a>
@@ -549,7 +530,7 @@
     <button class="mobile-panel-close" id="mobileClose" aria-label="Cerrar menú">✕</button>
   </div>
   <nav>
-    <a href="index.html" class="active">Inicio</a>
+    <a href="/" class="active">Inicio</a>
     <a href="#servicios">Servicios</a>
     <a href="cursos.html">Cursos</a>
     <a href="herramientas.html">Herramientas</a>
@@ -561,6 +542,7 @@
   <a class="btn btn-primary" href="#servicios">Reservar taller</a>
 </div>
 
+<main>
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
@@ -715,7 +697,7 @@
     </div>
     <div class="about-grid">
       <div class="about-photo">
-        <img src="salvador-headshot.png" alt="Salvador Fernández Martínez">
+        <img src="salvador-headshot.jpg" alt="Salvador Fernández Martínez" width="512" height="512">
       </div>
       <div>
         <div class="credential-line"><span class="code mono">Nombre</span><span>Salvador Fernández Martínez</span></div>
@@ -831,6 +813,8 @@
   </div>
 </section>
 
+</main>
+
 <footer>
   <div class="wrap" style="display:flex;flex-direction:column;gap:14px;width:100%;">
     <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;">
@@ -886,41 +870,7 @@
 
 
 <script>
-  (function(){
-    function loadGoogleFonts(){
-      if (document.getElementById('gfonts-stylesheet')) return;
-      var l1 = document.createElement('link'); l1.rel='preconnect'; l1.href='https://fonts.googleapis.com';
-      var l2 = document.createElement('link'); l2.rel='preconnect'; l2.href='https://fonts.gstatic.com'; l2.crossOrigin='anonymous';
-      var l3 = document.createElement('link'); l3.id='gfonts-stylesheet'; l3.rel='stylesheet';
-      l3.href='https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap';
-      document.head.appendChild(l1);
-      document.head.appendChild(l2);
-      document.head.appendChild(l3);
-    }
-    var consent = localStorage.getItem('etn_cookie_consent');
-    var banner = document.getElementById('cookieBanner');
-    if (consent === 'accepted') {
-      loadGoogleFonts();
-      if (typeof initZohoBooking === 'function') initZohoBooking();
-    } else if (consent === 'rejected') {
-      if (typeof initZohoBooking === 'function') initZohoBooking();
-    } else {
-      if (banner) banner.classList.add('visible');
-    }
-    var acceptBtn = document.getElementById('cookieAccept');
-    var rejectBtn = document.getElementById('cookieReject');
-    if (acceptBtn) acceptBtn.addEventListener('click', function(){
-      localStorage.setItem('etn_cookie_consent','accepted');
-      loadGoogleFonts();
-      if (typeof initZohoBooking === 'function') initZohoBooking();
-      banner.classList.remove('visible');
-    });
-    if (rejectBtn) rejectBtn.addEventListener('click', function(){
-      localStorage.setItem('etn_cookie_consent','rejected');
-      if (typeof initZohoBooking === 'function') initZohoBooking();
-      banner.classList.remove('visible');
-    });
-  })();
+  if (typeof initZohoBooking === 'function') initZohoBooking();
 </script>
 
 </body>

@@ -109,6 +109,8 @@
   ]
 }
 </script>
+<link rel="preload" href="/fonts/fonts.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/fonts/fonts.css"></noscript>
 <style>
   :root{
     --ink:#182B3A;--ink-soft:#3E5164;--paper:#E9E7DE;--paper-deep:#DFDCCF;--card:#FBFAF6;
@@ -294,35 +296,15 @@
   .cta-buttons{display:flex;gap:14px;margin-top:22px;flex-wrap:wrap;}
 
   footer{padding:28px 0;text-align:center;font-size:13px;color:rgba(24,43,58,0.55);position:relative;z-index:1;}
-
-  /* ---------- Banner de cookies ---------- */
-  .cookie-banner{display:none;position:fixed;left:0;right:0;bottom:0;z-index:200;background:var(--ink);border-top:1px solid rgba(255,255,255,0.15);}
-  .cookie-banner.visible{display:block;}
-  .cookie-banner-inner{max-width:1120px;margin:0 auto;padding:20px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
-  .cookie-banner p{margin:0;color:#C9CFD4;font-size:.86rem;max-width:70ch;}
-  .cookie-banner p a{color:var(--gold);text-decoration:underline;}
-  .cookie-banner-actions{display:flex;gap:10px;flex-shrink:0;}
-  .cookie-banner .btn-ghost{border-color:rgba(255,255,255,0.4);color:#F3F1E8;}
-  .cookie-banner .btn-ghost:hover{background:rgba(255,255,255,0.1);color:#fff;}
 </style>
 </head>
 <body>
 
-<div class="cookie-banner" id="cookieBanner">
-  <div class="cookie-banner-inner">
-    <p>Usamos cookies técnicas necesarias para el funcionamiento del sitio. Si aceptas, también cargamos tipografías externas (Google Fonts) para mejorar el diseño. Más información en la <a href="cookies.html">Política de Cookies</a>.</p>
-    <div class="cookie-banner-actions">
-      <button id="cookieReject" class="btn btn-ghost">Rechazar</button>
-      <button id="cookieAccept" class="btn btn-primary">Aceptar</button>
-    </div>
-  </div>
-</div>
-
 <header>
   <div class="nav">
-    <a href="index.html" class="brand">Entender<span style="color:var(--ledger)">TuNómina</span> <span class="tag">S.F.</span></a>
+    <a href="/" class="brand">Entender<span style="color:var(--ledger)">TuNómina</span> <span class="tag">S.F.</span></a>
     <nav class="links">
-      <a href="index.html">Inicio</a>
+      <a href="/">Inicio</a>
       <a href="index.html#servicios">Servicios</a>
       <a href="cursos.html">Cursos</a>
       <a href="herramientas.html" class="active">Herramientas</a>
@@ -342,7 +324,7 @@
     <button class="mobile-panel-close" id="mobileClose" aria-label="Cerrar menú">✕</button>
   </div>
   <nav>
-    <a href="index.html">Inicio</a>
+    <a href="/">Inicio</a>
     <a href="index.html#servicios">Servicios</a>
     <a href="cursos.html">Cursos</a>
     <a href="herramientas.html" class="active">Herramientas</a>
@@ -354,9 +336,10 @@
 </div>
 
 <nav class="breadcrumb wrap" aria-label="Migas de pan">
-  <a href="index.html">Inicio</a><span class="sep">/</span><a href="herramientas.html">Herramientas</a><span class="sep">/</span><span class="current">Vacaciones pendientes</span>
+  <a href="/">Inicio</a><span class="sep">/</span><a href="herramientas.html">Herramientas</a><span class="sep">/</span><span class="current">Vacaciones pendientes</span>
 </nav>
 
+<main>
 <section class="hero">
   <div class="wrap">
     <p class="eyebrow">Calculadora · Calendario laboral 2026</p>
@@ -532,6 +515,8 @@
   </div>
 </section>
 
+</main>
+
 <footer>
   © 2026 EntenderTuNomina · Salvador Fernández
 </footer>
@@ -565,41 +550,7 @@
 </script>
 
 <script>
-  (function(){
-    function loadGoogleFonts(){
-      if (document.getElementById('gfonts-stylesheet')) return;
-      var l1 = document.createElement('link'); l1.rel='preconnect'; l1.href='https://fonts.googleapis.com';
-      var l2 = document.createElement('link'); l2.rel='preconnect'; l2.href='https://fonts.gstatic.com'; l2.crossOrigin='anonymous';
-      var l3 = document.createElement('link'); l3.id='gfonts-stylesheet'; l3.rel='stylesheet';
-      l3.href='https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap';
-      document.head.appendChild(l1);
-      document.head.appendChild(l2);
-      document.head.appendChild(l3);
-    }
-    var consent = localStorage.getItem('etn_cookie_consent');
-    var banner = document.getElementById('cookieBanner');
-    if (consent === 'accepted') {
-      loadGoogleFonts();
-      if (typeof initZohoBooking === 'function') initZohoBooking();
-    } else if (consent === 'rejected') {
-      if (typeof initZohoBooking === 'function') initZohoBooking();
-    } else {
-      if (banner) banner.classList.add('visible');
-    }
-    var acceptBtn = document.getElementById('cookieAccept');
-    var rejectBtn = document.getElementById('cookieReject');
-    if (acceptBtn) acceptBtn.addEventListener('click', function(){
-      localStorage.setItem('etn_cookie_consent','accepted');
-      loadGoogleFonts();
-      if (typeof initZohoBooking === 'function') initZohoBooking();
-      banner.classList.remove('visible');
-    });
-    if (rejectBtn) rejectBtn.addEventListener('click', function(){
-      localStorage.setItem('etn_cookie_consent','rejected');
-      if (typeof initZohoBooking === 'function') initZohoBooking();
-      banner.classList.remove('visible');
-    });
-  })();
+  if (typeof initZohoBooking === 'function') initZohoBooking();
 </script>
 
 <!-- ---------- Lógica de la calculadora (sin cambios funcionales) ---------- -->

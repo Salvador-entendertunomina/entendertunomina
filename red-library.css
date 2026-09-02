@@ -22,7 +22,7 @@ h1,h2,h3,h4{font-family:'Fraunces', serif;margin:0 0 .4em;color:var(--ink);lette
 a{color:inherit;}
 .mono{font-family:'IBM Plex Mono', monospace;}
 .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
-img{max-width:100%;display:block;}
+img{max-width:100%;height:auto;display:block;}
 
 body::before{
   content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
@@ -274,13 +274,3 @@ footer{
   .r-table-meta{width:100%;justify-content:flex-start;}
   section{padding:56px 0;}
 }
-
-/* ---------- Banner de cookies ---------- */
-.cookie-banner{display:none;position:fixed;left:0;right:0;bottom:0;z-index:200;background:var(--ink);border-top:1px solid rgba(255,255,255,0.15);}
-.cookie-banner.visible{display:block;}
-.cookie-banner-inner{max-width:1120px;margin:0 auto;padding:20px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
-.cookie-banner p{margin:0;color:#C9CFD4;font-size:.86rem;max-width:70ch;}
-.cookie-banner p a{color:var(--gold);text-decoration:underline;}
-.cookie-banner-actions{display:flex;gap:10px;flex-shrink:0;}
-.cookie-banner .btn-ghost{border-color:rgba(255,255,255,0.4);color:#F3F1E8;}
-.cookie-banner .btn-ghost:hover{background:rgba(255,255,255,0.1);color:#fff;}

@@ -12,6 +12,8 @@
 <meta name="description" content="Artículos claros sobre IRPF, Seguridad Social, cotizaciones y derechos laborales en tu nómina, escritos por Salvador Fernández, especialista en nóminas.">
 <link rel="canonical" href="https://www.entendertunomina.com/divulgacion.html">
 <link rel="stylesheet" href="red-library.css">
+<link rel="preload" href="fonts/fonts.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="fonts/fonts.css"></noscript>
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.entendertunomina.com/divulgacion.html">
 <meta property="og:title" content="Divulgación: la nómina, concepto a concepto — EntenderTuNomina">
@@ -89,30 +91,20 @@
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    {"@type":"ListItem","position":1,"name":"Inicio","item":"https://www.entendertunomina.com/index.html"},
+    {"@type":"ListItem","position":1,"name":"Inicio","item":"https://www.entendertunomina.com/"},
     {"@type":"ListItem","position":2,"name":"Divulgación","item":"https://www.entendertunomina.com/divulgacion.html"}
   ]
 }
 </script>
 </head>
 <body>
-<div class="cookie-banner" id="cookieBanner">
-  <div class="cookie-banner-inner">
-    <p>Usamos cookies técnicas necesarias para el funcionamiento del sitio. Si aceptas, también cargamos tipografías externas (Google Fonts) para mejorar el diseño. Más información en la <a href="cookies.html">Política de Cookies</a>.</p>
-    <div class="cookie-banner-actions">
-      <button id="cookieReject" class="btn btn-ghost">Rechazar</button>
-      <button id="cookieAccept" class="btn btn-primary">Aceptar</button>
-    </div>
-  </div>
-</div>
-
 <header>
   <div class="nav">
-    <a href="index.html" style="text-decoration:none;">
+    <a href="/" style="text-decoration:none;">
       <div class="brand">Entender<span style="color:var(--gold)">TuNómina</span> <span class="tag">S.F.</span></div>
     </a>
     <nav class="links">
-      <a href="index.html">Inicio</a>
+      <a href="/">Inicio</a>
       <a href="index.html#servicios">Servicios</a>
       <a href="cursos.html">Cursos</a>
       <a href="herramientas.html">Herramientas</a>
@@ -134,7 +126,7 @@
     <button class="mobile-panel-close" id="mobileClose" aria-label="Cerrar menú">✕</button>
   </div>
   <nav>
-    <a href="index.html">Inicio</a>
+    <a href="/">Inicio</a>
     <a href="index.html#servicios">Servicios</a>
     <a href="cursos.html">Cursos</a>
     <a href="herramientas.html">Herramientas</a>
@@ -187,6 +179,12 @@
             <div class="block-link-head"><span class="block-code mono">fiscalidad</span></div>
             <h3>¿Por qué me cambia el porcentaje de IRPF cada año?</h3>
             <p>El porcentaje de IRPF de tu nómina cambia porque Hacienda actualiza los tramos y porque tu situación personal o salarial también puede haber cambiado.</p>
+            <span class="block-link-cta">Leer artículo →</span>
+          </a>
+          <a class="block-link" data-cat="fiscalidad" href="divulgacion/que-es-el-modelo-145.html">
+            <div class="block-link-head"><span class="block-code mono">fiscalidad</span></div>
+            <h3>¿Qué es el modelo 145 y por qué tengo que rellenarlo?</h3>
+            <p>El modelo 145 es el documento donde declaras tu situación personal y familiar a tu empresa para que calcule correctamente tu retención de IRPF.</p>
             <span class="block-link-cta">Leer artículo →</span>
           </a>
         </div>
@@ -254,41 +252,7 @@
 </script>
 
 <script>
-  (function(){
-    function loadGoogleFonts(){
-      if (document.getElementById('gfonts-stylesheet')) return;
-      var l1 = document.createElement('link'); l1.rel='preconnect'; l1.href='https://fonts.googleapis.com';
-      var l2 = document.createElement('link'); l2.rel='preconnect'; l2.href='https://fonts.gstatic.com'; l2.crossOrigin='anonymous';
-      var l3 = document.createElement('link'); l3.id='gfonts-stylesheet'; l3.rel='stylesheet';
-      l3.href='https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap';
-      document.head.appendChild(l1);
-      document.head.appendChild(l2);
-      document.head.appendChild(l3);
-    }
-    var consent = localStorage.getItem('etn_cookie_consent');
-    var banner = document.getElementById('cookieBanner');
-    if (consent === 'accepted') {
-      loadGoogleFonts();
-      if (typeof initZohoBooking === 'function') initZohoBooking();
-    } else if (consent === 'rejected') {
-      if (typeof initZohoBooking === 'function') initZohoBooking();
-    } else {
-      if (banner) banner.classList.add('visible');
-    }
-    var acceptBtn = document.getElementById('cookieAccept');
-    var rejectBtn = document.getElementById('cookieReject');
-    if (acceptBtn) acceptBtn.addEventListener('click', function(){
-      localStorage.setItem('etn_cookie_consent','accepted');
-      loadGoogleFonts();
-      if (typeof initZohoBooking === 'function') initZohoBooking();
-      banner.classList.remove('visible');
-    });
-    if (rejectBtn) rejectBtn.addEventListener('click', function(){
-      localStorage.setItem('etn_cookie_consent','rejected');
-      if (typeof initZohoBooking === 'function') initZohoBooking();
-      banner.classList.remove('visible');
-    });
-  })();
+  if (typeof initZohoBooking === 'function') initZohoBooking();
 </script>
 
 </body>
