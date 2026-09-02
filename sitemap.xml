@@ -50,13 +50,13 @@
   </url>
   <url>
     <loc>https://www.entendertunomina.com/divulgacion.html</loc>
-    <lastmod>2026-08-28</lastmod>
+    <lastmod>2026-09-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.entendertunomina.com/divulgacion/como-se-calcula-el-irpf-de-tu-nomina.html</loc>
-    <lastmod>2026-08-28</lastmod>
+    <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -87,6 +87,12 @@
   <url>
     <loc>https://www.entendertunomina.com/divulgacion/por-que-cambia-el-irpf-cada-ano.html</loc>
     <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.entendertunomina.com/divulgacion/que-es-el-modelo-145.html</loc>
+    <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
