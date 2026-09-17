@@ -250,7 +250,8 @@ function pageHtml(entry) {
     document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeLightbox(); });
   })();
 </script>
-${TABLE_DOWNLOAD_IDS.includes(entry.id) ? '<script src="/red-table-download.js"></script>\n' : ''}</body>
+${TABLE_DOWNLOAD_IDS.includes(entry.id) ? '<script src="/red-table-download.js"></script>\n' : ''}<script defer src="/_vercel/insights/script.js"></script>
+</body>
 </html>
 `;
 }

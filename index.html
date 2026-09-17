@@ -135,6 +135,7 @@
     --ledger:#2F5D50;
     --ledger-deep:#20463B;
     --gold:#C79A45;
+    --gold-ink:#7F5C22;
     --brick:#AE4A30;
     --line:rgba(24,43,58,0.14);
     --shadow: 0 18px 40px -20px rgba(24,43,58,0.35);
@@ -495,8 +496,8 @@
   .free-card .eyebrow{margin-bottom:14px;}
   .free-card h3{font-size:clamp(1.25rem,2vw,1.5rem);}
   .free-card p{color:var(--ink-soft);font-size:.96rem;margin:12px 0 26px;flex:1;}
-  .free-card.gold .eyebrow{color:var(--gold);}
-  .free-card.gold .eyebrow::before{background:var(--gold);}
+  .free-card.gold .eyebrow{color:var(--gold-ink);}
+  .free-card.gold .eyebrow::before{background:var(--gold-ink);}
   @media (max-width:860px){
     .free-grid{grid-template-columns:1fr;}
   }
@@ -783,7 +784,7 @@
       <h2>Hablemos de tu equipo</h2>
     </div>
     <div class="contact-grid">
-      <form onsubmit="event.preventDefault(); window.location.href='mailto:salvador@entendertunomina.com?subject=Consulta desde la web';">
+      <form id="contactForm" onsubmit="event.preventDefault(); enviarConsulta();">
         <div class="field">
           <label for="nombre">Nombre</label>
           <input id="nombre" type="text" required>
@@ -868,10 +869,28 @@
   mobilePanel.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
 </script>
 
+<script>
+  function enviarConsulta(){
+    var nombre = document.getElementById('nombre').value.trim();
+    var empresa = document.getElementById('empresa').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var mensaje = document.getElementById('mensaje').value.trim();
+    var asunto = 'Consulta desde la web' + (empresa ? ' — ' + empresa : '');
+    var cuerpo = 'Nombre: ' + nombre + '\n'
+      + (empresa ? 'Empresa: ' + empresa + '\n' : '')
+      + 'Email: ' + email + '\n\n'
+      + 'Mensaje:\n' + mensaje;
+    window.location.href = 'mailto:salvador@entendertunomina.com'
+      + '?subject=' + encodeURIComponent(asunto)
+      + '&body=' + encodeURIComponent(cuerpo);
+  }
+</script>
+
 
 <script>
   if (typeof initZohoBooking === 'function') initZohoBooking();
 </script>
 
+<script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>

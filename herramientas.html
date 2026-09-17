@@ -55,7 +55,7 @@
 <style>
   :root{
     --ink:#182B3A;--ink-soft:#3E5164;--paper:#E9E7DE;--paper-deep:#DFDCCF;--card:#FBFAF6;
-    --ledger:#2F5D50;--ledger-deep:#20463B;--gold:#C79A45;--brick:#AE4A30;
+    --ledger:#2F5D50;--ledger-deep:#20463B;--gold:#C79A45;--gold-ink:#7F5C22;--brick:#AE4A30;
     --line:rgba(24,43,58,0.14);--shadow: 0 18px 40px -20px rgba(24,43,58,0.35);
   }
   *{box-sizing:border-box;}
@@ -142,7 +142,7 @@
   .tool-section{border-top:1px solid var(--line);}
   .tool-section:first-of-type{border-top:none;}
   .tool-head{display:flex;align-items:baseline;gap:14px;margin-bottom:8px;flex-wrap:wrap;}
-  .tool-code{font-family:'IBM Plex Mono', monospace;font-size:.7rem;letter-spacing:.1em;color:var(--gold);border:1px solid var(--gold);padding:2px 8px;border-radius:20px;}
+  .tool-code{font-family:'IBM Plex Mono', monospace;font-size:.7rem;letter-spacing:.1em;color:var(--gold-ink);border:1px solid var(--gold-ink);padding:2px 8px;border-radius:20px;}
   .tool-head h2{font-size:clamp(1.5rem,2.6vw,2rem);margin:0;}
   .tool-desc{color:var(--ink-soft);max-width:70ch;margin-bottom:36px;}
 
@@ -888,5 +888,6 @@
 })();
 </script>
 
+<script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
