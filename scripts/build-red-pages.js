@@ -280,6 +280,7 @@ function lastMod(relPath) {
 function buildSitemap() {
   const mainUrls = [
     ['/', 'weekly', '1.0'],
+    ['/sobre-mi.html', 'monthly', '0.6'],
     ['/biblioteca-red.html', 'weekly', '0.9'],
     ['/cursos.html', 'weekly', '0.8'],
     ['/empresas.html', 'monthly', '0.7'],

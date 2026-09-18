@@ -25,34 +25,6 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Salvador Fernández Martínez",
-  "url": "https://www.entendertunomina.com/",
-  "image": "https://www.entendertunomina.com/og-image.png",
-  "jobTitle": "Especialista en nóminas, IRPF y Seguridad Social",
-  "description": "Especialista en nóminas, IRPF y Seguridad Social con más de 10 años de experiencia. Diplomado en Ciencias Empresariales (Universidad de Murcia) y Máster en asesoría laboral, legal, contable y fiscal.",
-  "email": "salvador@entendertunomina.com",
-  "knowsAbout": ["Nóminas", "Seguridad Social", "IRPF", "Derecho laboral", "Sistema RED"],
-  "alumniOf": {
-    "@type": "CollegeOrUniversity",
-    "name": "Universidad de Murcia"
-  },
-  "worksFor": {
-    "@id": "https://www.entendertunomina.com/#organization"
-  },
-  "sameAs": [
-    "https://www.linkedin.com/in/entendertunomina",
-    "https://www.youtube.com/@entendertunomina",
-    "https://www.accountexespana.es/speakers/salvador-fernandez-martinez/",
-    "https://www.elperiodico.com/es/economia/20251111/salvador-fernandez-payfit-mei-no-va-a-marcar-diferencia-sueldo-dv-123595520",
-    "https://www.consumidorglobal.com/hogar/si-tu-nomina-final-ano-es-mas-baja-salvador-fernandez-payfit-explica-por_17609_102.html",
-    "https://www.elespanol.com/invertia/disruptores/opinion/20251008/nomina-eterna-desconocida-ia-puede-ayudar-entender/1003743960344_12.html"
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "@id": "https://www.entendertunomina.com/#organization",
   "name": "EntenderTuNomina",
@@ -307,23 +279,13 @@
   .section-head p{color:var(--ink-soft);font-size:1.02rem;margin-top:10px;}
   .divider{height:1px;background:var(--line);}
 
-  /* ---------- Sobre mí ---------- */
-  #sobre{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
-  .about-grid{display:grid;grid-template-columns:280px 1fr;gap:56px;align-items:start;}
-  .about-photo{
-    border-radius:6px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);
-  }
-  .about-photo img{filter:grayscale(.15) contrast(1.03);}
-  .credential-line{
-    display:flex;gap:14px;padding:13px 0;border-bottom:1px solid var(--line);
-    font-size:.92rem;align-items:baseline;
-  }
-  .credential-line:last-child{border-bottom:none;}
-  .credential-line .code{
-    font-family:'IBM Plex Mono', monospace;font-size:.68rem;color:var(--ledger);
-    min-width:118px;letter-spacing:.06em;text-transform:uppercase;padding-top:2px;
-  }
-  .about-bio{margin-top:26px;color:var(--ink-soft);font-size:1rem;max-width:64ch;}
+  /* ---------- Sobre mí (teaser en home) ---------- */
+  #sobre{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:64px 0;}
+  .about-teaser{display:grid;grid-template-columns:140px 1fr;gap:36px;align-items:center;}
+  .about-teaser-photo{border-radius:6px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);}
+  .about-teaser-photo img{filter:grayscale(.15) contrast(1.03);}
+  .about-teaser h2{font-size:clamp(1.4rem,2.4vw,1.8rem);margin-bottom:10px;}
+  .about-bio{color:var(--ink-soft);font-size:1rem;max-width:60ch;margin:0 0 16px;}
   .about-bio strong{color:var(--ink);}
 
   /* ---------- En medios ---------- */
@@ -440,8 +402,8 @@
     .nav > a.btn-primary{display:none;}
     .hero-grid{grid-template-columns:1fr;}
     .payslip{transform:none;justify-self:center;max-width:420px;}
-    .about-grid{grid-template-columns:1fr;}
-    .about-photo{max-width:220px;}
+    .about-teaser{grid-template-columns:1fr;text-align:center;}
+    .about-teaser-photo{max-width:160px;margin:0 auto;}
     .press-item{grid-template-columns:1fr;gap:8px;}
     .article-grid{grid-template-columns:1fr;}
     .service-grid{grid-template-columns:1fr;}
@@ -515,7 +477,7 @@
       <a href="cursos.html">Cursos</a>
       <a href="herramientas.html">Herramientas</a>
       <a href="divulgacion.html">Divulgación</a>
-      <a href="#sobre">Sobre mí</a>
+      <a href="sobre-mi.html">Sobre mí</a>
       <a href="#medios">En medios</a>
       <a href="#contacto">Contacto</a>
     </nav>
@@ -536,7 +498,7 @@
     <a href="cursos.html">Cursos</a>
     <a href="herramientas.html">Herramientas</a>
     <a href="divulgacion.html">Divulgación</a>
-    <a href="#sobre">Sobre mí</a>
+    <a href="sobre-mi.html">Sobre mí</a>
     <a href="#medios">En medios</a>
     <a href="#contacto">Contacto</a>
   </nav>
@@ -692,30 +654,15 @@
 
 <section id="sobre">
   <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Quién soy</div>
-      <h2>Diez años traduciendo nóminas al lenguaje humano</h2>
-    </div>
-    <div class="about-grid">
-      <div class="about-photo">
+    <div class="about-teaser">
+      <div class="about-teaser-photo">
         <img src="salvador-headshot.jpg" alt="Salvador Fernández Martínez" width="512" height="512">
       </div>
       <div>
-        <div class="credential-line"><span class="code mono">Nombre</span><span>Salvador Fernández Martínez</span></div>
-        <div class="credential-line"><span class="code mono">Ocupación</span><span>Especialista en nóminas, IRPF y Seguridad Social — más de 10 años de experiencia</span></div>
-        <div class="credential-line"><span class="code mono">Formación</span><span>Diplomado en Ciencias Empresariales (Universidad de Murcia) y Máster en asesoría laboral, legal, contable y fiscal</span></div>
-        <div class="credential-line"><span class="code mono">Especialidad</span><span>Fiscalidad, derecho laboral y contabilidad aplicada a la nómina</span></div>
-        <div class="credential-line"><span class="code mono">Ponente</span><span>Accountex España y foros del sector laboral y de Seguridad Social</span></div>
-
-        <p class="about-bio">
-          Soy Salvador, con más de 10 años de experiencia en asesoría laboral, fiscal y contable. He gestionado equipos de asesores laborales, formado a profesionales en el cálculo e interpretación de nóminas, y colaborado directamente con equipos de producto en la adaptación de software de nóminas a los cambios normativos.
-        </p>
-        <p class="about-bio">
-          ¿Quieres entender de verdad cómo funciona una nómina, un contrato o la normativa laboral? Te lo explico de forma clara y práctica, desde la experiencia real, sin fórmulas memorizadas ni teoría vacía.
-        </p>
-        <p class="about-bio">
-          <strong>EntenderTuNomina</strong> nace como un proyecto personal e independiente en el que traslado esa misma vocación de divulgar y enseñar, para que cualquier persona pueda entender su nómina sin ayuda de un experto, y cualquier empresa pueda demostrar que forma bien a su equipo.
-        </p>
+        <div class="eyebrow">Quién soy</div>
+        <h2>Diez años traduciendo nóminas al lenguaje humano</h2>
+        <p class="about-bio">Soy Salvador Fernández, especialista en nóminas, IRPF y Seguridad Social con más de 10 años de experiencia formando equipos y resolviendo dudas reales.</p>
+        <a class="text-link" href="sobre-mi.html">Conoce mi trayectoria completa →</a>
       </div>
     </div>
   </div>
