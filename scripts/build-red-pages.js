@@ -124,8 +124,7 @@ function pageHtml(entry) {
       <a href="/herramientas.html">Herramientas</a>
       <a href="/biblioteca-red.html" class="active">Biblioteca RED</a>
       <a href="/divulgacion.html">Divulgación</a>
-      <a href="/#sobre">Sobre mí</a>
-      <a href="/#medios">En medios</a>
+      <a href="/sobre-mi.html">Sobre mí</a>
       <a href="/#contacto">Contacto</a>
     </nav>
     <a class="btn btn-primary" href="/#contacto">Consultar caso</a>
@@ -146,8 +145,7 @@ function pageHtml(entry) {
     <a href="/herramientas.html">Herramientas</a>
     <a href="/biblioteca-red.html" class="active">Biblioteca RED</a>
     <a href="/divulgacion.html">Divulgación</a>
-    <a href="/#sobre">Sobre mí</a>
-    <a href="/#medios">En medios</a>
+    <a href="/sobre-mi.html">Sobre mí</a>
     <a href="/#contacto">Contacto</a>
   </nav>
   <a class="btn btn-primary" href="/#contacto">Consultar caso</a>
@@ -188,6 +186,7 @@ function pageHtml(entry) {
       <span class="mono">Fuentes oficiales: Seguridad Social · BOE · INE · SEPE</span>
     </div>
     <div style="display:flex;gap:18px;flex-wrap:wrap;font-size:.82rem;">
+      <a href="/sobre-mi.html" style="color:var(--ink-soft);text-decoration:underline;">Sobre mí</a>
       <a href="/aviso-legal.html" style="color:var(--ink-soft);text-decoration:underline;">Aviso legal</a>
       <a href="/privacidad.html" style="color:var(--ink-soft);text-decoration:underline;">Privacidad</a>
       <a href="/cookies.html" style="color:var(--ink-soft);text-decoration:underline;">Cookies</a>
