@@ -124,8 +124,7 @@ function pageHtml(entry) {
       <a href="/herramientas.html">Herramientas</a>
       <a href="/biblioteca-red.html" class="active">Biblioteca RED</a>
       <a href="/divulgacion.html">Divulgación</a>
-      <a href="/#sobre">Sobre mí</a>
-      <a href="/#medios">En medios</a>
+      <a href="/sobre-mi.html">Sobre mí</a>
       <a href="/#contacto">Contacto</a>
     </nav>
     <a class="btn btn-primary" href="/#contacto">Consultar caso</a>
@@ -146,8 +145,7 @@ function pageHtml(entry) {
     <a href="/herramientas.html">Herramientas</a>
     <a href="/biblioteca-red.html" class="active">Biblioteca RED</a>
     <a href="/divulgacion.html">Divulgación</a>
-    <a href="/#sobre">Sobre mí</a>
-    <a href="/#medios">En medios</a>
+    <a href="/sobre-mi.html">Sobre mí</a>
     <a href="/#contacto">Contacto</a>
   </nav>
   <a class="btn btn-primary" href="/#contacto">Consultar caso</a>
@@ -188,6 +186,7 @@ function pageHtml(entry) {
       <span class="mono">Fuentes oficiales: Seguridad Social · BOE · INE · SEPE</span>
     </div>
     <div style="display:flex;gap:18px;flex-wrap:wrap;font-size:.82rem;">
+      <a href="/sobre-mi.html" style="color:var(--ink-soft);text-decoration:underline;">Sobre mí</a>
       <a href="/aviso-legal.html" style="color:var(--ink-soft);text-decoration:underline;">Aviso legal</a>
       <a href="/privacidad.html" style="color:var(--ink-soft);text-decoration:underline;">Privacidad</a>
       <a href="/cookies.html" style="color:var(--ink-soft);text-decoration:underline;">Cookies</a>
@@ -250,7 +249,8 @@ function pageHtml(entry) {
     document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeLightbox(); });
   })();
 </script>
-${TABLE_DOWNLOAD_IDS.includes(entry.id) ? '<script src="/red-table-download.js"></script>\n' : ''}</body>
+${TABLE_DOWNLOAD_IDS.includes(entry.id) ? '<script src="/red-table-download.js"></script>\n' : ''}<script defer src="/_vercel/insights/script.js"></script>
+</body>
 </html>
 `;
 }
@@ -279,6 +279,7 @@ function lastMod(relPath) {
 function buildSitemap() {
   const mainUrls = [
     ['/', 'weekly', '1.0'],
+    ['/sobre-mi.html', 'monthly', '0.6'],
     ['/biblioteca-red.html', 'weekly', '0.9'],
     ['/cursos.html', 'weekly', '0.8'],
     ['/empresas.html', 'monthly', '0.7'],
@@ -295,7 +296,8 @@ function buildSitemap() {
     ['/divulgacion/por-que-cambia-el-irpf-cada-ano.html', 'monthly', '0.7'],
     ['/divulgacion/que-es-el-modelo-145.html', 'monthly', '0.7'],
     ['/divulgacion/que-son-los-grupos-de-cotizacion.html', 'monthly', '0.7'],
-    ['/divulgacion/irpf-diferente-segun-comunidad-autonoma.html', 'monthly', '0.7']
+    ['/divulgacion/irpf-diferente-segun-comunidad-autonoma.html', 'monthly', '0.7'],
+    ['/divulgacion/nomina-muestra-aportacion-empresa-seguridad-social.html', 'monthly', '0.7']
   ];
   const entryUrls = entries.map(e => [`/biblioteca-red/${e.slug}.html`, 'monthly', '0.6']);
   const rows = [...mainUrls, ...entryUrls].map(([loc, freq, prio]) => {
