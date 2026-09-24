@@ -664,6 +664,10 @@
           <input id="empresa" type="text">
         </div>
         <div class="field">
+          <label for="telefono">Teléfono</label>
+          <input id="telefono" type="tel">
+        </div>
+        <div class="field">
           <label for="email">Email</label>
           <input id="email" type="email" required>
         </div>
@@ -677,6 +681,7 @@
       <div class="contact-info">
         <div class="p-line"><span class="concept">Email</span><a href="mailto:salvador@entendertunomina.com">salvador@entendertunomina.com</a></div>
         <div class="p-line"><span class="concept">LinkedIn</span><span>linkedin.com/in/entendertunomina</span></div>
+        <div class="p-line"><span class="concept">Instagram</span><span>@entendertunomina</span></div>
         <div class="p-line"><span class="concept">YouTube</span><span>@entendertunomina</span></div>
         <div class="p-line"><span class="concept">Reservas</span><span>Botón «Reservar ahora» en la web</span></div>
       </div>
@@ -743,11 +748,13 @@
   function enviarConsulta(){
     var nombre = document.getElementById('nombre').value.trim();
     var empresa = document.getElementById('empresa').value.trim();
+    var telefono = document.getElementById('telefono').value.trim();
     var email = document.getElementById('email').value.trim();
     var mensaje = document.getElementById('mensaje').value.trim();
     var asunto = 'Consulta desde la web' + (empresa ? ' — ' + empresa : '');
     var cuerpo = 'Nombre: ' + nombre + '\n'
       + (empresa ? 'Empresa: ' + empresa + '\n' : '')
+      + (telefono ? 'Teléfono: ' + telefono + '\n' : '')
       + 'Email: ' + email + '\n\n'
       + 'Mensaje:\n' + mensaje;
     window.location.href = 'mailto:salvador@entendertunomina.com'
