@@ -297,7 +297,8 @@ function buildSitemap() {
     ['/divulgacion/que-es-el-modelo-145.html', 'monthly', '0.7'],
     ['/divulgacion/que-son-los-grupos-de-cotizacion.html', 'monthly', '0.7'],
     ['/divulgacion/irpf-diferente-segun-comunidad-autonoma.html', 'monthly', '0.7'],
-    ['/divulgacion/nomina-muestra-aportacion-empresa-seguridad-social.html', 'monthly', '0.7']
+    ['/divulgacion/nomina-muestra-aportacion-empresa-seguridad-social.html', 'monthly', '0.7'],
+    ['/divulgacion/que-es-la-base-reguladora.html', 'monthly', '0.7']
   ];
   const entryUrls = entries.map(e => [`/biblioteca-red/${e.slug}.html`, 'monthly', '0.6']);
   const rows = [...mainUrls, ...entryUrls].map(([loc, freq, prio]) => {
