@@ -300,7 +300,8 @@ function buildSitemap() {
     ['/divulgacion/nomina-muestra-aportacion-empresa-seguridad-social.html', 'monthly', '0.7'],
     ['/divulgacion/que-es-la-base-reguladora.html', 'monthly', '0.7'],
     ['/divulgacion/pagas-extra-prorrateadas-como-saberlo.html', 'monthly', '0.7'],
-    ['/divulgacion/que-incluye-el-finiquito.html', 'monthly', '0.7']
+    ['/divulgacion/que-incluye-el-finiquito.html', 'monthly', '0.7'],
+    ['/divulgacion/finiquito-baja-voluntaria.html', 'monthly', '0.7']
   ];
   const entryUrls = entries.map(e => [`/biblioteca-red/${e.slug}.html`, 'monthly', '0.6']);
   const rows = [...mainUrls, ...entryUrls].map(([loc, freq, prio]) => {
