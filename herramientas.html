@@ -46,7 +46,7 @@
     {"@type":"SoftwareApplication","name":"Calculadora de sueldo neto (bruto a neto)","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"url":"https://www.entendertunomina.com/herramientas.html#bruto-neto"},
     {"@type":"SoftwareApplication","name":"Calculadora de retención de IRPF","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"url":"https://www.entendertunomina.com/herramientas.html#irpf"},
     {"@type":"SoftwareApplication","name":"Calculadora de indemnización por despido","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"url":"https://www.entendertunomina.com/herramientas.html#indemnizacion"},
-    {"@type":"SoftwareApplication","name":"Calculadora de finiquito","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"url":"https://www.entendertunomina.com/herramientas.html#finiquito"}
+    {"@type":"SoftwareApplication","name":"Calculadora de finiquito","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"url":"https://www.entendertunomina.com/calculadora-finiquito.html"}
   ]
 }
 </script>
@@ -250,22 +250,30 @@
     </div>
     <div class="tool-nav" id="calculadoras">
       <a href="calculadora-vacaciones-pendientes.html">★ Vacaciones pendientes</a>
+      <a href="calculadora-finiquito.html">★ Finiquito</a>
       <a href="#vacaciones-proporcionales">↓ Vacaciones generadas</a>
       <a href="#bruto-neto">↓ Bruto a neto</a>
       <a href="#irpf">↓ Retención IRPF</a>
       <a href="#indemnizacion">↓ Indemnización por despido</a>
-      <a href="#finiquito">↓ Finiquito</a>
     </div>
   </div>
 </section>
 
 <section style="padding-top:0;padding-bottom:0;">
-  <div class="wrap">
+  <div class="wrap" style="display:flex;flex-direction:column;gap:16px;">
     <a class="featured-tool" href="calculadora-vacaciones-pendientes.html">
       <div>
         <span class="featured-flag">La más buscada · Calendario 2026</span>
         <h2>¿Te deben días de vacaciones?</h2>
         <p>Compara las horas de tu convenio con las que realmente trabajas según tu comunidad autónoma, festivos y jornada. Si la diferencia es positiva, hay días que no te estás llevando.</p>
+      </div>
+      <span class="featured-cta">Calcular ahora →</span>
+    </a>
+    <a class="featured-tool" href="calculadora-finiquito.html">
+      <div>
+        <span class="featured-flag">Calculadora de finiquito 2026</span>
+        <h2>¿Cuánto te corresponde de finiquito?</h2>
+        <p>Parte proporcional de pagas extra y vacaciones no disfrutadas al terminar tu contrato. Se cobra siempre, incluida la baja voluntaria.</p>
       </div>
       <span class="featured-cta">Calcular ahora →</span>
     </a>
@@ -398,66 +406,10 @@
     </div>
   </div>
 </section>
-
-<!-- ---------- Finiquito ---------- -->
-<section class="tool-section" id="finiquito">
-  <div class="wrap">
-    <div class="tool-head"><span class="tool-code">HERRAMIENTA 04</span><h2>Calculadora de finiquito</h2></div>
-    <p class="tool-desc">Calcula la parte proporcional de pagas extra y las vacaciones no disfrutadas que te corresponden al terminar tu contrato.</p>
-
-    <div class="tool-card">
-      <div class="tool-grid">
-        <div class="tool-form">
-          <div class="field">
-            <label for="fq-mensual">Salario bruto mensual (sin pagas extra)</label>
-            <input id="fq-mensual" type="number" min="0" step="50" placeholder="Ej. 1600" value="1600">
-          </div>
-          <div class="field">
-            <label for="fq-pagas">Número de pagas al año</label>
-            <select id="fq-pagas">
-              <option value="12">12 pagas (extras ya prorrateadas)</option>
-              <option value="14" selected>14 pagas (2 extras aparte)</option>
-            </select>
-          </div>
-          <div class="field-row">
-            <div class="field">
-              <label for="fq-alta">Fecha de alta</label>
-              <input id="fq-alta" type="date" value="2026-01-01">
-              <div class="field-hint">O 1 de enero si llevas más de 1 año.</div>
-            </div>
-            <div class="field">
-              <label for="fq-baja">Fecha de baja / fin de contrato</label>
-              <input id="fq-baja" type="date" value="2026-06-30">
-            </div>
-          </div>
-          <div class="field-row">
-            <div class="field">
-              <label for="fq-vacaciones">Días de vacaciones pendientes</label>
-              <input id="fq-vacaciones" type="number" min="0" max="60" step="0.5" value="0">
-            </div>
-            <div class="field">
-              <label for="fq-vacaciones-tipo">¿En qué tipo de días?</label>
-              <select id="fq-vacaciones-tipo">
-                <option value="naturales" selected>Naturales</option>
-                <option value="laborables">Laborables</option>
-              </select>
-            </div>
-          </div>
-          <div class="field-hint">El finiquito siempre se abona en días naturales, que es como se cotiza a la Seguridad Social — si indicas días laborables, los convertimos automáticamente. ¿No sabes cuántos te quedan? <a href="#vacaciones-proporcionales" style="color:var(--ledger);font-weight:600;text-decoration:underline;">Calcúlalos aquí abajo ↓</a></div>
-          <button class="btn btn-primary" onclick="calcFiniquito()" type="button">Calcular finiquito →</button>
-        </div>
-        <div class="tool-result">
-          <div id="fq-result"><p class="r-empty">Rellena tus datos y pulsa «Calcular finiquito» para ver el desglose.</p></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ---------- Vacaciones proporcionales ---------- -->
 <section class="tool-section" id="vacaciones-proporcionales">
   <div class="wrap">
-    <div class="tool-head"><span class="tool-code">HERRAMIENTA 05</span><h2>Calculadora de días de vacaciones generados</h2></div>
+    <div class="tool-head"><span class="tool-code">HERRAMIENTA 04</span><h2>Calculadora de días de vacaciones generados</h2></div>
     <p class="tool-desc">Indica hasta qué fecha quieres calcular y descubre cuántos días de vacaciones has generado ya este año, tanto en días laborables como en días naturales. Indica también los que ya hayas disfrutado para saber cuántos te quedan pendientes — útil si estás a mitad de año o si tu contrato empezó más tarde del 1 de enero.</p>
 
     <div class="tool-card">
@@ -700,60 +652,6 @@
       '<div class="r-line"><span class="concept">Gasto deducible genérico</span><span class="amount">− ' + eur(gastoGenerico) + '</span></div>' +
       '<div class="r-line"><span class="concept">Mínimo personal y familiar aplicado</span><span class="amount">' + eur(MINIMO_PERSONAL + minimoPorHijos(hijos)) + '</span></div>' +
       '<p class="r-note">Estimación con la escala general de IRPF de referencia (2026). La base imponible ya descuenta la cuota de Seguridad Social del trabajador y el gasto deducible genérico de 2.000 €. La retención real puede variar según tu comunidad autónoma y tu situación completa.</p>';
-  };
-
-  function diasEntre(d1, d2){
-    return Math.max(0, (d2 - d1) / 86400000);
-  }
-
-  window.calcFiniquito = function(){
-    var mensual = num('fq-mensual');
-    var pagas = num('fq-pagas');
-    var altaStr = document.getElementById('fq-alta').value;
-    var bajaStr = document.getElementById('fq-baja').value;
-    var vacaciones = num('fq-vacaciones');
-    var vacacionesTipo = document.getElementById('fq-vacaciones-tipo').value;
-    var out = document.getElementById('fq-result');
-
-    if (mensual <= 0 || !altaStr || !bajaStr){
-      out.innerHTML = '<p class="r-empty">Rellena el salario y las dos fechas para calcular.</p>';
-      return;
-    }
-
-    var alta = new Date(altaStr + 'T00:00:00');
-    var baja = new Date(bajaStr + 'T00:00:00');
-    if (baja <= alta){
-      out.innerHTML = '<p class="r-empty">La fecha de baja debe ser posterior a la fecha de alta.</p>';
-      return;
-    }
-
-    var inicioAnio = new Date(baja.getFullYear() + '-01-01T00:00:00');
-    var inicioComputo = alta > inicioAnio ? alta : inicioAnio;
-    var diasTrabajadosEnAnio = diasEntre(inicioComputo, baja) + 1;
-
-    var numExtras = pagas >= 14 ? 2 : 0;
-    var importeExtraAnual = mensual * numExtras;
-    var prorrateoExtra = (importeExtraAnual / 365) * diasTrabajadosEnAnio;
-
-    // El finiquito siempre se abona en días naturales (referencia legal 30 naturales ≈ 22 laborables)
-    var vacacionesNaturales = vacacionesTipo === 'laborables' ? vacaciones * (30 / 22) : vacaciones;
-
-    var salarioDiario = (mensual * 12) / 365;
-    var importeVacaciones = salarioDiario * vacacionesNaturales;
-
-    var total = prorrateoExtra + importeVacaciones;
-
-    var conceptoVacaciones = vacacionesTipo === 'laborables'
-      ? 'Vacaciones no disfrutadas (' + vacaciones + ' laborables → ' + vacacionesNaturales.toFixed(1).replace('.', ',') + ' naturales)'
-      : 'Vacaciones no disfrutadas (' + vacacionesNaturales.toFixed(1).replace('.', ',') + ' días naturales)';
-
-    out.innerHTML =
-      '<div class="rlabel">Resultado estimado</div><span class="stamp">ORIENTATIVO</span>' +
-      '<div class="r-line"><span class="concept">Días computados del año en curso</span><span class="amount">' + Math.round(diasTrabajadosEnAnio) + '</span></div>' +
-      '<div class="r-line"><span class="concept">Parte proporcional pagas extra</span><span class="amount">' + eur(prorrateoExtra) + '</span></div>' +
-      '<div class="r-line"><span class="concept">' + conceptoVacaciones + '</span><span class="amount">' + eur(importeVacaciones) + '</span></div>' +
-      '<div class="r-total"><div class="label">Finiquito estimado</div><div class="value">' + eur(total) + '</div></div>' +
-      '<p class="r-note">Asume devengo lineal de pagas extra a lo largo del año natural y que aún no se ha cobrado nada de la paga pendiente. Ajusta si tu convenio establece otro periodo de devengo.</p>';
   };
 
   var REFORMA_2012 = new Date('2012-02-12T00:00:00');

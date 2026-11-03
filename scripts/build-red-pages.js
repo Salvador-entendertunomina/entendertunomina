@@ -287,6 +287,7 @@ function buildSitemap() {
     ['/clases.html', 'monthly', '0.7'],
     ['/herramientas.html', 'monthly', '0.9'],
     ['/calculadora-vacaciones-pendientes.html', 'monthly', '0.95'],
+    ['/calculadora-finiquito.html', 'monthly', '0.95'],
     ['/divulgacion.html', 'weekly', '0.8'],
     ['/divulgacion/como-se-calcula-el-irpf-de-tu-nomina.html', 'monthly', '0.7'],
     ['/divulgacion/por-que-me-descuentan-tanto-de-la-nomina.html', 'monthly', '0.7'],

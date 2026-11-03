@@ -1,0 +1,19 @@
+{
+  "redirects": [
+    {
+      "source": "/biblioteca-red/claves-baja-seguridad-social.html",
+      "destination": "/biblioteca-red/claves-de-baja-seguridad-social.html",
+      "permanent": true
+    },
+    {
+      "source": "/biblioteca-red/claves-de-seguridad-social-baja.html",
+      "destination": "/biblioteca-red/claves-de-baja-seguridad-social.html",
+      "permanent": true
+    },
+    {
+      "source": "/divulgacion/por-que-cambia-el-porcentaje-de-irpf-cada-año",
+      "destination": "/divulgacion/por-que-cambia-el-irpf-cada-ano.html",
+      "permanent": true
+    }
+  ]
+}
