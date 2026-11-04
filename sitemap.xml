@@ -62,7 +62,7 @@
   </url>
   <url>
     <loc>https://www.entendertunomina.com/divulgacion.html</loc>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-11-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -153,6 +153,12 @@
   <url>
     <loc>https://www.entendertunomina.com/divulgacion/diferencia-finiquito-indemnizacion.html</loc>
     <lastmod>2026-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.entendertunomina.com/divulgacion/baja-medica-afecta-paga-extra.html</loc>
+    <lastmod>2026-11-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
