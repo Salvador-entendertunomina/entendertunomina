@@ -304,7 +304,8 @@ function buildSitemap() {
     ['/divulgacion/que-incluye-el-finiquito.html', 'monthly', '0.7'],
     ['/divulgacion/finiquito-baja-voluntaria.html', 'monthly', '0.7'],
     ['/divulgacion/diferencia-finiquito-indemnizacion.html', 'monthly', '0.7'],
-    ['/divulgacion/baja-medica-afecta-paga-extra.html', 'monthly', '0.7']
+    ['/divulgacion/baja-medica-afecta-paga-extra.html', 'monthly', '0.7'],
+    ['/divulgacion/seguridad-social-jornada-parcial.html', 'monthly', '0.7']
   ];
   const entryUrls = entries.map(e => [`/biblioteca-red/${e.slug}.html`, 'monthly', '0.6']);
   const rows = [...mainUrls, ...entryUrls].map(([loc, freq, prio]) => {

@@ -62,7 +62,7 @@
   </url>
   <url>
     <loc>https://www.entendertunomina.com/divulgacion.html</loc>
-    <lastmod>2026-11-04</lastmod>
+    <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -159,6 +159,12 @@
   <url>
     <loc>https://www.entendertunomina.com/divulgacion/baja-medica-afecta-paga-extra.html</loc>
     <lastmod>2026-11-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.entendertunomina.com/divulgacion/seguridad-social-jornada-parcial.html</loc>
+    <lastmod>2026-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
