@@ -62,7 +62,7 @@
   </url>
   <url>
     <loc>https://www.entendertunomina.com/divulgacion.html</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -171,6 +171,12 @@
   <url>
     <loc>https://www.entendertunomina.com/divulgacion/declaracion-renta-un-solo-pagador.html</loc>
     <lastmod>2026-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.entendertunomina.com/divulgacion/dos-pagadores-irpf.html</loc>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
