@@ -211,14 +211,20 @@
   </div>
 </section>
 
+<div class="wrap">
+  <div class="rb-toolbar">
+    <label class="rb-search"><span>⌕</span><input id="div-search" type="search" placeholder="Buscar por tema, palabra o pregunta..." autocomplete="off"></label>
+    <div class="rb-filters" id="div-filters"><button type="button" class="rb-filter active" data-filter="Todos">Todos</button><button type="button" class="rb-filter" data-filter="seguridad-social">Seguridad Social</button><button type="button" class="rb-filter" data-filter="fiscalidad">Fiscalidad</button><button type="button" class="rb-filter" data-filter="derechos-laborales">Derechos laborales</button></div>
+  </div>
+</div>
+
 <main>
   <section class="section" id="articulos">
     <div class="wrap">
       <div class="eyebrow">Artículos</div>
       <h2>Todo lo publicado</h2>
       <p class="section-intro">Cada artículo tiene su propia página, con preguntas frecuentes y ejemplos con números reales.</p>
-      <div class="card-grid">
-        <div class="card-col" data-cat="seguridad-social">
+      <div class="card-grid" id="div-card-grid">
           <a class="block-link" data-cat="seguridad-social" href="divulgacion/por-que-me-descuentan-tanto-de-la-nomina.html">
             <div class="block-link-head"><span class="block-code mono">seguridad social</span></div>
             <h3>¿Por qué me descuentan tanto de la nómina?</h3>
@@ -261,8 +267,6 @@
             <p>Trabajar a tiempo parcial reduce proporcionalmente tu base de cotización, lo que afecta al importe de tus futuras prestaciones, aunque no al tiempo para acceder a ellas.</p>
             <span class="block-link-cta">Leer artículo →</span>
           </a>
-        </div>
-        <div class="card-col" data-cat="fiscalidad">
           <a class="block-link" data-cat="fiscalidad" href="divulgacion/como-se-calcula-el-irpf-de-tu-nomina.html">
             <div class="block-link-head"><span class="block-code mono">fiscalidad</span></div>
             <h3>¿Cómo se calcula el IRPF de tu nómina?</h3>
@@ -299,8 +303,6 @@
             <p>Con dos o más pagadores, el límite para no declarar baja a 15.876 euros y la declaración puede salir a pagar, aunque no sea un error.</p>
             <span class="block-link-cta">Leer artículo →</span>
           </a>
-        </div>
-        <div class="card-col" data-cat="derechos-laborales">
           <a class="block-link" data-cat="derechos-laborales" href="divulgacion/como-se-calcula-la-paga-extra.html">
             <div class="block-link-head"><span class="block-code mono">derechos laborales</span></div>
             <h3>¿Cómo se calcula la paga extra?</h3>
@@ -337,7 +339,7 @@
             <p>El finiquito liquida cantidades pendientes de cobrar (salario, vacaciones, pagas extra). La indemnización es una compensación aparte, solo en ciertos despidos.</p>
             <span class="block-link-cta">Leer artículo →</span>
           </a>
-        </div>
+        <div class="rb-empty" id="div-empty" hidden>No hay artículos que coincidan con la búsqueda.</div>
       </div>
     </div>
   </section>
@@ -390,6 +392,54 @@
 
 <script>
   if (typeof initZohoBooking === 'function') initZohoBooking();
+</script>
+
+<script>
+(function(){
+  "use strict";
+  var state = { filter: 'Todos', query: '' };
+  var cards = Array.prototype.slice.call(document.querySelectorAll('#div-card-grid .block-link'));
+  var emptyEl = document.getElementById('div-empty');
+
+  var searchIndex = cards.map(function(card){
+    return (card.textContent || '').trim().toLowerCase().replace(/\s+/g, ' ');
+  });
+
+  function matches(card, i){
+    if (state.filter !== 'Todos' && card.dataset.cat !== state.filter) return false;
+    if (!state.query) return true;
+    return searchIndex[i].indexOf(state.query) !== -1;
+  }
+
+  function render(){
+    var visible = 0;
+    cards.forEach(function(card, i){
+      var show = matches(card, i);
+      card.hidden = !show;
+      if (show) visible++;
+    });
+    if (emptyEl) emptyEl.hidden = visible !== 0;
+  }
+
+  var filtersEl = document.getElementById('div-filters');
+  if (filtersEl) {
+    filtersEl.querySelectorAll('button').forEach(function(b){
+      b.addEventListener('click', function(){
+        state.filter = b.dataset.filter;
+        filtersEl.querySelectorAll('button').forEach(function(x){ x.classList.toggle('active', x === b); });
+        render();
+      });
+    });
+  }
+
+  var searchEl = document.getElementById('div-search');
+  if (searchEl) {
+    searchEl.addEventListener('input', function(e){
+      state.query = e.target.value.trim().toLowerCase();
+      render();
+    });
+  }
+})();
 </script>
 
 <script defer src="/_vercel/insights/script.js"></script>
