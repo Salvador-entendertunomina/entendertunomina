@@ -130,6 +130,7 @@ details.block[open] .chevron{transform:rotate(180deg);}
 /* ---------- Tarjetas-enlace a fichas propias (portada) ---------- */
 .card-grid{display:flex;flex-wrap:wrap;gap:14px;margin-top:8px;align-items:flex-start;}
 .card-col{display:flex;flex-direction:column;gap:14px;flex:1 1 280px;min-width:280px;}
+.card-col[hidden]{display:none;}
 a.block-link{
   background:var(--card);border:1px solid var(--line);border-radius:6px;
   padding:18px 22px;text-decoration:none;display:flex;flex-direction:column;gap:10px;
